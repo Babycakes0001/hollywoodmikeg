@@ -34,7 +34,9 @@ a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
 /* ===== NAVIGATION ===== */
-/* nav-height is set dynamically by main.js */
+:root {
+  --nav-height: 530px; /* banner 430 + name ~52 + nav row 48 */
+}
 
 .nav {
   position: fixed;
@@ -55,13 +57,13 @@ img { max-width: 100%; display: block; }
   display: block;
   text-decoration: none;
   width: 100%;
-  overflow: hidden;
 }
 
 .nav-banner-img {
+  width: auto;
+  height: 430px;
+  max-width: 100%;
   display: block;
-  max-width: none;
-  height: auto;
   margin: 0 auto;
   background: #1c1c1c;
 }
@@ -810,7 +812,7 @@ img { max-width: 100%; display: block; }
 @media (max-width: 768px) {
   :root { --nav-height: 160px; }
 
-  .nav-banner-img { max-width: none; height: auto; }
+  .nav-banner-img { width: 100%; height: auto; }
   .nav-site-name { font-size: 1.1rem; padding: 0.35rem 0 0.25rem; }
   .nav-row { padding: 0 1rem; justify-content: flex-end; }
   .nav-links { display: none; }
