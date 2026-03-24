@@ -35,14 +35,14 @@ img { max-width: 100%; display: block; }
 
 /* ===== NAVIGATION ===== */
 :root {
-  --nav-height: 210px; /* banner 110 + name ~52 + nav row 48 */
+  --nav-height: 530px; /* banner 430 + name ~52 + nav row 48 */
 }
 
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  background: var(--cream);
+  background: #1c1c1c;
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--light-border);
   transition: box-shadow var(--transition);
@@ -60,9 +60,11 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-banner-img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 430px;
+  max-width: 100%;
   display: block;
+  margin: 0 auto;
   background: #1c1c1c;
 }
 
