@@ -13,7 +13,7 @@
   --accent-dark: #8a7050;
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Montserrat', sans-serif;
-  --nav-height: 70px;
+  --nav-height: 0px;
   --transition: 0.3s ease;
 }
 
@@ -34,13 +34,10 @@ a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
 /* ===== NAVIGATION ===== */
-:root {
-  --nav-height: 530px; /* banner 430 + name ~52 + nav row 48 */
-}
+/* nav scrolls with page — no fixed height offset needed */
 
 .nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
+  position: relative;
   z-index: 1000;
   background: #1c1c1c;
   backdrop-filter: blur(8px);
@@ -60,11 +57,9 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-banner-img {
-  width: auto;
-  height: 430px;
-  max-width: 100%;
+  width: 100%;
+  height: auto;
   display: block;
-  margin: 0 auto;
   background: #1c1c1c;
 }
 
@@ -161,8 +156,7 @@ img { max-width: 100%; display: block; }
 .mobile-menu {
   display: none;
   flex-direction: column;
-  position: fixed;
-  top: var(--nav-height);
+  position: relative;
   left: 0; right: 0;
   background: var(--cream);
   border-bottom: 1px solid var(--light-border);
@@ -222,7 +216,7 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   background: var(--cream);
   overflow: hidden;
-  padding-top: var(--nav-height);
+  padding-top: 0;
 }
 
 .hero::before {
@@ -383,7 +377,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== PAGE HEADER ===== */
 .page-header {
-  padding-top: calc(var(--nav-height) + 3rem);
+  padding-top: 3rem;
   padding-bottom: 3rem;
   text-align: center;
   background: var(--cream);
@@ -810,7 +804,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  :root { --nav-height: 160px; }
+  :root { --nav-height: 0px; }
 
   .nav-banner-img { width: 100%; height: auto; }
   .nav-site-name { font-size: 1.1rem; padding: 0.35rem 0 0.25rem; }
