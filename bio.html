@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bio / Resume | Hollywood Mike G</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo"><img src="images/banner.jpg" alt="Hollywood Mike G" class="nav-banner-img"><span class="nav-site-name">HollywoodMikeG<span class="nav-site-tld">.com</span></span></a>
+    <div class="nav-row">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="bio.html" class="active">Bio / Resume</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="bio.html">Bio / Resume</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="videos.html">Videos</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <h1>Bio <em>&</em> Resume</h1>
+  </div>
+
+  <main class="bio-page">
+
+    <!-- BIO SECTION -->
+    <section class="bio-section fade-in">
+      <div class="bio-photo-placeholder">
+        <span>Your Headshot Here</span>
+      </div>
+      <div class="bio-text">
+        <h2>About Mike</h2>
+        <p>
+          A native of Oregon, Hollywood Mike G left a rising career as a Communications Behavioral 
+          Specialist focusing on autism to pursue his passion for film. Shortly after arriving in 
+          Hollywood, he landed his first major gig on NBC's <em>The Tonight Show with Jay Leno</em> 
+          and was quickly signed to a prominent talent agency.
+        </p>
+        <p>
+          Due in part to his background in Communications and Behavior, Mike was booking jobs 
+          back to back. While working on sets, he recognized a niche market demand and founded 
+          MG Casting — providing productions with talent, locations, vehicles, animals, music, 
+          clothing lines, product placement, and investors, which naturally led him into producing.
+        </p>
+        <p>
+          Mike is known for his work in <em>Domino</em>, <em>Crank</em>, and <em>The Way Back</em>, 
+          and continues to bring raw authenticity and dynamic presence to every role he takes on.
+        </p>
+        <div class="resume-links">
+          <a href="https://m.imdb.com/name/nm1943914/" target="_blank" class="btn">IMDb Profile</a>
+          <a href="https://app.castingnetworks.com/talent/public-profile/632ba3ec-fb39-11eb-86c3-87616407e96c" target="_blank" class="btn btn-outline">Casting Networks</a>
+          <a href="https://resumes.actorsaccess.com/hollywoodmikeg" target="_blank" class="btn btn-outline">Actors Access</a>
+        </div>
+        <p class="rep-note" style="margin-top:1.5rem;"><em>Represented by: <a href="https://www.artistsunitedagencyla.com/" target="_blank" style="color: var(--accent);">Artists United Agency LA</a></em><br>
+        Irene Lucia Sullivan — Talent Agent<br>
+        <a href="mailto:artistsunitedagencyla@gmail.com" style="color: var(--accent);">artistsunitedagencyla@gmail.com</a><br>
+        <a href="tel:3239700740" style="color: var(--accent);">323-970-0740</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Hollywood Mike G &nbsp;|&nbsp; All Rights Reserved</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

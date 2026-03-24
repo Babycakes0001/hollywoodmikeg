@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hollywood Mike G | Actor</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo"><img src="images/banner.jpg" alt="Hollywood Mike G" class="nav-banner-img"><span class="nav-site-name">HollywoodMikeG<span class="nav-site-tld">.com</span></span></a>
+    <div class="nav-row">
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="bio.html">Bio / Resume</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="bio.html">Bio / Resume</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="videos.html">Videos</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-sub">Welcome to the world of</p>
+      <h1 class="hero-title">Hollywood<br><em>Mike G</em></h1>
+      <p class="hero-tagline">Actor &nbsp;·&nbsp; Performer &nbsp;·&nbsp; Storyteller</p>
+      <a href="bio.html" class="btn">Discover More</a>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO TILES -->
+  <section class="tiles-section">
+    <h2 class="section-title">Portfolio</h2>
+    <div class="tiles">
+
+      <a href="bio.html" class="tile">
+        <div class="tile-img tile-bio"></div>
+        <div class="tile-label">
+          <span>Bio / Resume</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <a href="gallery.html" class="tile">
+        <div class="tile-img tile-gallery"></div>
+        <div class="tile-label">
+          <span>Gallery</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <a href="videos.html" class="tile">
+        <div class="tile-img tile-video"></div>
+        <div class="tile-label">
+          <span>Videos</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <a href="contact.html" class="tile">
+        <div class="tile-img tile-contact"></div>
+        <div class="tile-label">
+          <span>Contact</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- SOCIAL STRIP -->
+  <section class="social-strip">
+    <p>Follow the journey</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/hollywoodmikeg" target="_blank" aria-label="Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a href="https://x.com/hollywoodmikeg" target="_blank" aria-label="X / Twitter">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 16M20 4L4 20"/></svg>
+        X
+      </a>
+      <a href="https://m.imdb.com/name/nm1943914/" target="_blank" aria-label="IMDb">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><text x="5" y="16" font-size="8" fill="currentColor" stroke="none" font-family="sans-serif" font-weight="bold">IMDb</text></svg>
+        IMDb
+      </a>
+      <a href="https://youtu.be/Ce42hhUSdJo" target="_blank" aria-label="YouTube">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/></svg>
+        Demo Reel
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Hollywood Mike G &nbsp;|&nbsp; All Rights Reserved</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

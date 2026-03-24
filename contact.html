@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Hollywood Mike G</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo"><img src="images/banner.jpg" alt="Hollywood Mike G" class="nav-banner-img"><span class="nav-site-name">HollywoodMikeG<span class="nav-site-tld">.com</span></span></a>
+    <div class="nav-row">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="bio.html">Bio / Resume</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="bio.html">Bio / Resume</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="videos.html">Videos</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="page-header">
+    <h1>Get in Touch</h1>
+  </div>
+
+  <main class="contact-page">
+
+    <div class="contact-wrapper contact-agent-only">
+      <div class="contact-info fade-in">
+        <h2>Get in Touch</h2>
+        <p>For casting inquiries, representation, bookings, or any industry-related questions, please contact my talent agent directly.</p>
+
+        <div class="agent-card">
+          <div class="agent-header">
+            <a href="https://www.artistsunitedagencyla.com/" target="_blank">
+              <span class="agent-agency">Artists United Agency LA</span>
+            </a>
+          </div>
+          <p class="agent-name">Irene Lucia Sullivan</p>
+          <p class="agent-title">Talent Agent</p>
+          <div class="contact-details" style="margin-top:1.5rem;">
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:artistsunitedagencyla@gmail.com">artistsunitedagencyla@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+              <a href="tel:3239700740">323-970-0740</a>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+              <a href="https://www.artistsunitedagencyla.com/" target="_blank">artistsunitedagencyla.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-follow" style="margin-top:2.5rem;">
+          <p style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:1rem;">Follow Hollywood Mike G</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              <a href="https://www.instagram.com/hollywoodmikeg" target="_blank">@hollywoodmikeg</a>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 16M20 4L4 20"/></svg>
+              <a href="https://x.com/hollywoodmikeg" target="_blank">@hollywoodmikeg</a>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><text x="5" y="16" font-size="7" fill="currentColor" stroke="none" font-family="sans-serif" font-weight="bold">IMDb</text></svg>
+              <a href="https://m.imdb.com/name/nm1943914/" target="_blank">IMDb Profile</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Hollywood Mike G &nbsp;|&nbsp; All Rights Reserved</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

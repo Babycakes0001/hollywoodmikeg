@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery | Hollywood Mike G</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo"><img src="images/banner.jpg" alt="Hollywood Mike G" class="nav-banner-img"><span class="nav-site-name">HollywoodMikeG<span class="nav-site-tld">.com</span></span></a>
+    <div class="nav-row">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="bio.html">Bio / Resume</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="bio.html">Bio / Resume</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="videos.html">Videos</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="page-header">
+    <h1>Gallery</h1>
+  </div>
+
+  <main class="gallery-page">
+    <p class="gallery-intro">A selection of headshots and production stills.</p>
+
+    <div class="gallery-grid">
+      <!-- Replace src with your actual image paths e.g. images/photo1.jpg -->
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <div class="gallery-placeholder">Photo 1<br><small>Replace with your image</small></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <div class="gallery-placeholder">Photo 2<br><small>Replace with your image</small></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <div class="gallery-placeholder">Photo 3<br><small>Replace with your image</small></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <div class="gallery-placeholder">Photo 4<br><small>Replace with your image</small></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <div class="gallery-placeholder">Photo 5<br><small>Replace with your image</small></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <div class="gallery-placeholder">Photo 6<br><small>Replace with your image</small></div>
+      </div>
+    </div>
+
+    <p class="gallery-note">
+      <em>To add your photos: upload your images to an <code>images/</code> folder on your server, 
+      then replace the placeholder divs with <code>&lt;img src="images/yourphoto.jpg"&gt;</code></em>
+    </p>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="Gallery photo"/>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Hollywood Mike G &nbsp;|&nbsp; All Rights Reserved</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
