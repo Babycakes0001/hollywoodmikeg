@@ -61,10 +61,10 @@ img { max-width: 100%; display: block; }
 
 .nav-banner-img {
   width: 100%;
-  height: 110px;
-  object-fit: cover;
-  object-position: center 40%;
+  max-height: 140px;
+  object-fit: contain;
   display: block;
+  background: #1c1c1c;
 }
 
 .nav-site-name {
@@ -812,7 +812,7 @@ img { max-width: 100%; display: block; }
 @media (max-width: 768px) {
   :root { --nav-height: 160px; }
 
-  .nav-banner-img { height: 75px; }
+  .nav-banner-img { max-height: 90px; }
   .nav-site-name { font-size: 1.1rem; padding: 0.35rem 0 0.25rem; }
   .nav-row { padding: 0 1rem; justify-content: flex-end; }
   .nav-links { display: none; }
