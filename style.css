@@ -326,10 +326,9 @@ img { max-width: 100%; display: block; }
 .tile:hover .tile-img { transform: scale(1.04); }
 
 /* Placeholder tile backgrounds — replace with real images */
-.tile-bio    { background-color: #e8e2d8; background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(184,156,110,0.1) 10px, rgba(184,156,110,0.1) 20px); }
-.tile-gallery { background-color: #ddd7cc; background-image: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(184,156,110,0.1) 10px, rgba(184,156,110,0.1) 20px); }
-.tile-video  { background-color: #e2ddd5; background-image: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(184,156,110,0.1) 15px, rgba(184,156,110,0.1) 30px); }
-.tile-contact { background-color: #d8d2c8; background-image: repeating-linear-gradient(-45deg, transparent, transparent 15px, rgba(184,156,110,0.1) 15px, rgba(184,156,110,0.1) 30px); }
+.tile-bio     { background: url('images/tile-bio.jpg') center/cover no-repeat; }
+.tile-video   { background: url('images/tile-video.jpg') center/cover no-repeat; }
+.tile-contact { background: url('images/tile-contact.jpg') center/cover no-repeat; }
 
 .tile-label {
   display: flex;
