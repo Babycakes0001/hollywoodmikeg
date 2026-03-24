@@ -5,6 +5,17 @@
 // Set footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Dynamically measure nav height and set CSS variable
+function updateNavHeight() {
+  const nav = document.getElementById('nav');
+  if (nav) {
+    document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
+  }
+}
+updateNavHeight();
+window.addEventListener('resize', updateNavHeight);
+window.addEventListener('load', updateNavHeight);
+
 // Nav scroll effect
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('nav');
