@@ -202,9 +202,16 @@
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
     .page { page-break-after: always; break-after: page; }
   }
+
+/* WP NAV BAR */
+.wp-nav{position:sticky;top:0;z-index:9999;background:#0a0a0a;border-bottom:1px solid #2a3a2a;padding:10px 20px;display:flex;justify-content:center;gap:8px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.wp-nav a{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#39ff14;border:1px solid #2a3a2a;padding:6px 16px;border-radius:3px;text-decoration:none;transition:all 0.2s;}
+.wp-nav a:hover{border-color:#39ff14;background:#111a11;}
+.wp-nav a.active{background:#39ff14;color:#0a0a0a;border-color:#39ff14;}
 </style>
 </head>
 <body>
+<div class="wp-nav"><a href="/wp">Presentation</a><a href="/soul_interview">Soul Interview</a><a class="active" href="/soulid">Soul ID Format</a></div><div class="wp-nav"><a href="/wp">Presentation</a><a href="/soul_interview">Soul Interview</a><a class="active" href="/soulid">Soul ID Format</a></div>
 
 <!-- ══ PAGE 1 — COVER ══ -->
 <div class="page">
