@@ -164,6 +164,21 @@
 .name-field input:focus { outline:none; border-color:#39ff14; }
 .name-field input::placeholder { color:#444; }
 
+
+/* DISABLED STATE */
+.btn-download.disabled {
+  opacity:0.3; cursor:not-allowed; pointer-events:none;
+}
+.progress-notice {
+  font-size:12px; color:#555; margin-bottom:16px; text-align:center;
+  font-family:'Helvetica Neue',sans-serif; letter-spacing:0.05em;
+}
+.progress-notice.ready { color:#39ff14; }
+.progress-count {
+  font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+  color:#39ff14; text-align:center; margin-bottom:8px;
+}
+
 </style>
 </head>
 <body>
@@ -208,9 +223,11 @@
     <h2>Your Soul ID is Ready</h2>
     <p class="lead">You've done the work. Now download what you've built.</p>
     
+    <div id="progress-count" class="progress-count">0 of 77 questions answered</div>
+    <div id="progress-notice" class="progress-notice">Complete all questions to unlock downloads</div>
     <div class="download-buttons">
-      <button class="btn-download primary" onclick="downloadPDF()">Download Soul Interview (PDF)</button>
-      <button class="btn-download secondary" onclick="downloadSoulID()">Generate Soul ID Package (.zip)</button>
+      <button id="btn-pdf" class="btn-download primary disabled" onclick="downloadPDF()">Download Soul Interview (PDF)</button>
+      <button id="btn-zip" class="btn-download secondary disabled" onclick="downloadSoulID()">Generate Soul ID Package (.zip)</button>
     </div>
     
     <div class="upsell-section">
@@ -658,7 +675,69 @@
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js">
+
+// Progress tracking — unlock buttons when all questions are answered
+function countAnswered() {
+  var total = 0;
+  var answered = 0;
+  
+  // Pillar 1: Q1-32 companion only
+  for (var i = 1; i <= 32; i++) {
+    total++;
+    if (getVal('q' + i + '-companion')) answered++;
+  }
+  
+  // Pillar 2: Q33-57 both
+  for (var i = 33; i <= 57; i++) {
+    total += 2;
+    if (getVal('q' + i + '-companion')) answered++;
+    if (getVal('q' + i + '-owner')) answered++;
+  }
+  
+  // Pillar 3: Q58-77 owner only
+  for (var i = 58; i <= 77; i++) {
+    total++;
+    if (getVal('q' + i + '-owner')) answered++;
+  }
+  
+  return { answered: answered, total: total };
+}
+
+function updateProgress() {
+  var p = countAnswered();
+  var pct = Math.round((p.answered / p.total) * 100);
+  
+  var countEl = document.getElementById('progress-count');
+  var noticeEl = document.getElementById('progress-notice');
+  var btnPdf = document.getElementById('btn-pdf');
+  var btnZip = document.getElementById('btn-zip');
+  
+  countEl.textContent = p.answered + ' of ' + p.total + ' fields completed (' + pct + '%)';
+  
+  if (p.answered >= p.total) {
+    noticeEl.textContent = 'All fields complete — your downloads are ready.';
+    noticeEl.className = 'progress-notice ready';
+    btnPdf.className = 'btn-download primary';
+    btnZip.className = 'btn-download secondary';
+  } else {
+    noticeEl.textContent = 'Complete all fields to unlock downloads';
+    noticeEl.className = 'progress-notice';
+    btnPdf.className = 'btn-download primary disabled';
+    btnZip.className = 'btn-download secondary disabled';
+  }
+}
+
+// Listen on all textareas
+document.addEventListener('DOMContentLoaded', function() {
+  var textareas = document.querySelectorAll('.answer-textarea');
+  for (var i = 0; i < textareas.length; i++) {
+    textareas[i].addEventListener('input', updateProgress);
+  }
+  updateProgress();
+});
+
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
 <script>
 function getVal(id) {
