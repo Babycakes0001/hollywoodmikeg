@@ -15,7 +15,8 @@
   }
 
   .page {
-    width: 816px;
+    width: 100%;
+    max-width: 816px;
     min-height: 1056px;
     margin: 0 auto;
     padding: 44px 56px;
@@ -199,6 +200,9 @@
 
   .spacer { flex: 1; }
 
+  @media (max-width: 850px) {
+    .page { padding: 24px 16px; min-height: auto; }
+  }
   @media print {
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
     .page { page-break-after: always; break-after: page; }

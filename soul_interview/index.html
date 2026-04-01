@@ -8,11 +8,14 @@
   body { background:#0a0a0a; color:#f0ede8; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; }
 
   .page {
-    width:816px; min-height:1056px; padding:44px 56px;
+    width:100%; max-width:816px; min-height:1056px; padding:44px 56px;
     display:flex; flex-direction:column;
     page-break-after:always; break-after:page;
     background:#0a0a0a;
     margin:0 auto;
+  }
+  @media (max-width:850px) {
+    .page { padding:24px 16px; min-height:auto; }
   }
 
   .page-header {
