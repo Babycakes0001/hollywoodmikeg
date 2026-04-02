@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sm0kBot — Queen Mary Exclusive Tobacconist Agreement</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .print-bar { display: none !important; }
+    .contract { box-shadow: none; border: none; }
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f5f0;
+    color: #1a1a1a;
+    line-height: 1.7;
+  }
+
+  .print-bar {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .print-bar button {
+    background: #e8b923;
+    color: #000;
+    border: none;
+    padding: 12px 36px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin: 0 8px;
+  }
+  .print-bar button:hover { background: #f5d76e; }
+
+  .contract {
+    max-width: 816px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 60px 72px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    border-radius: 4px;
+  }
+
+  @media (max-width: 850px) {
+    .contract { padding: 30px 20px; margin: 20px 10px; }
+  }
+
+  .contract-header {
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 3px double #1a1a1a;
+    margin-bottom: 30px;
+  }
+  .contract-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .contract-header h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+    letter-spacing: 1px;
+  }
+  .contract-header .contract-id {
+    font-size: 12px;
+    color: #999;
+    margin-top: 12px;
+  }
+
+  .section {
+    margin-bottom: 24px;
+  }
+  .section h3 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #333;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .section p, .section li {
+    font-size: 13.5px;
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 8px;
+  }
+  .section ol, .section ul {
+    padding-left: 24px;
+  }
+  .section ol li {
+    margin-bottom: 10px;
+  }
+
+  .parties-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+  }
+  .parties-table td {
+    padding: 8px 16px;
+    font-size: 13.5px;
+    vertical-align: top;
+    border: 1px solid #e0e0e0;
+  }
+  .parties-table .label {
+    font-weight: 600;
+    width: 120px;
+    background: #fafaf8;
+    color: #555;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .sig-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid #1a1a1a;
+  }
+  .sig-party h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    margin-bottom: 40px;
+  }
+  .sig-line {
+    border-bottom: 1px solid #333;
+    margin-bottom: 6px;
+    min-height: 30px;
+  }
+  .sig-label {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 24px;
+  }
+
+  .highlight-box {
+    background: #faf8f0;
+    border-left: 4px solid #e8b923;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .highlight-box p {
+    margin-bottom: 4px;
+  }
+
+  .schedule {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 3px double #1a1a1a;
+  }
+  .schedule h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .machine-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+  .machine-table th {
+    background: #f0f0eb;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #555;
+    border-bottom: 2px solid #ddd;
+  }
+  .machine-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #eee;
+  }
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="contract">
+
+  <!-- HEADER -->
+  <div class="contract-header">
+    <h1>Exclusive Tobacconist Agreement</h1>
+    <h2>Sm0kBot AI Smoke Shop &mdash; The Queen Mary</h2>
+    <div class="contract-id">Agreement No. SMK-QM-2026-001</div>
+  </div>
+
+  <!-- PREAMBLE -->
+  <div class="section">
+    <p>This Exclusive Tobacconist Agreement ("Agreement") is entered into as of ______________, 2026 ("Effective Date"), by and between:</p>
+
+    <table class="parties-table">
+      <tr>
+        <td class="label">Operator</td>
+        <td><strong>SmOkBot</strong>, a California business, with principal offices at 6285 East Spring Street #343, Long Beach, CA 90808 ("Operator")</td>
+      </tr>
+      <tr>
+        <td class="label">Contact</td>
+        <td>Mike Gonzalez &nbsp;|&nbsp; (310) 999-1902</td>
+      </tr>
+      <tr>
+        <td class="label">Venue</td>
+        <td><strong>The Queen Mary</strong>, located at 1126 Queens Highway, Long Beach, CA 90802, and its managing entity _______________________________ ("Venue")</td>
+      </tr>
+      <tr>
+        <td class="label">Contact</td>
+        <td>_______________________________ &nbsp;|&nbsp; Title: _______________________________</td>
+      </tr>
+    </table>
+
+    <p>Collectively referred to as the "Parties." Each Party represents that it has the authority to enter into this Agreement and to perform its obligations hereunder.</p>
+  </div>
+
+  <!-- RECITALS -->
+  <div class="section">
+    <h3>Recitals</h3>
+    <p><strong>WHEREAS</strong>, the Venue operates The Queen Mary, a historic ocean liner, hotel, and event destination in Long Beach, California; and</p>
+    <p><strong>WHEREAS</strong>, the Operator provides AI-powered, age-verified tobacco vending machines under the Sm0kBot brand, fully equipped with Identivend AV3000 age verification technology; and</p>
+    <p><strong>WHEREAS</strong>, the Parties desire to enter into an exclusive arrangement for the Operator to serve as the sole automated tobacco vendor aboard The Queen Mary, in compliance with all applicable federal, state, and local laws;</p>
+    <p><strong>NOW, THEREFORE</strong>, in consideration of the mutual covenants set forth herein, the Parties agree as follows:</p>
+  </div>
+
+  <!-- ARTICLE 1: DEFINITIONS -->
+  <div class="section">
+    <h3>Article 1 &mdash; Definitions</h3>
+    <ol>
+      <li><strong>"Equipment"</strong> means the Sm0kBot automated tobacco vending machines, including all hardware, software, age verification systems (Identivend AV3000), payment processing systems (Nayax Touch), and associated components, as described in Schedule A.</li>
+      <li><strong>"Premises"</strong> means the designated locations aboard The Queen Mary where Equipment is installed, as mutually agreed upon in writing.</li>
+      <li><strong>"Products"</strong> means all tobacco products, nicotine products, and smoking accessories authorized for sale through the Equipment, including but not limited to: premium cigars, cigarettes, ZYN nicotine pouches, chewing tobacco, lighters, and rolling papers.</li>
+      <li><strong>"Approved Areas"</strong> means locations within the Premises that are restricted to persons aged 21 and over, as required by California Business and Professions Code Section 22960.</li>
+    </ol>
+  </div>
+
+  <!-- ARTICLE 2: EXCLUSIVITY & TERM -->
+  <div class="section">
+    <h3>Article 2 &mdash; Exclusivity &amp; Term</h3>
+    <ol>
+      <li><strong>Exclusive Rights.</strong> The Venue hereby grants to the Operator the exclusive right to install, operate, and maintain automated tobacco vending machines aboard The Queen Mary for the duration of this Agreement. During the Term, the Venue shall not permit any other automated tobacco vending machines, tobacco kiosks, or self-service tobacco dispensing equipment on the Premises. This exclusivity does not restrict the Venue from operating traditional staffed retail that may include tobacco products.</li>
+      <li><strong>Term.</strong> This Agreement shall commence on the Effective Date and continue for a period of twenty-four (24) months ("Initial Term"), unless earlier terminated in accordance with Article 9.</li>
+      <li><strong>Renewal.</strong> Upon expiration of the Initial Term, this Agreement shall automatically renew for successive twelve (12) month periods ("Renewal Terms") unless either Party provides written notice of non-renewal at least sixty (60) days prior to the expiration of the then-current term.</li>
+    </ol>
+  </div>
+
+  <!-- ARTICLE 3: OPERATOR OBLIGATIONS -->
+  <div class="section">
+    <h3>Article 3 &mdash; Operator Obligations</h3>
+    <p>The Operator shall, at its sole cost and expense:</p>
+    <ol>
+      <li><strong>Installation.</strong> Provide, deliver, and install all Equipment at mutually agreed Approved Areas on the Premises. Installation shall be coordinated with the Venue to minimize disruption to operations.</li>
+      <li><strong>Licensing &amp; Compliance.</strong> Obtain and maintain all required licenses, including but not limited to:
+        <ul style="margin-top:6px">
+          <li>California Cigarette and Tobacco Products Retailer's License (CDTFA)</li>
+          <li>City of Long Beach Tobacco Retailer Permit</li>
+          <li>Any FDA registrations or authorizations required for Products</li>
+        </ul>
+      </li>
+      <li><strong>Age Verification.</strong> Operate all Equipment with active Identivend AV3000 AI age verification technology, ensuring dual-factor verification (3D facial scan and government-issued ID) for every transaction, in compliance with California Business and Professions Code Sections 22960-22963 and Penal Code Section 308.</li>
+      <li><strong>Placement Compliance.</strong> Ensure all Equipment is placed exclusively in Approved Areas where minors are prohibited, as required by California law. Equipment shall be within direct line-of-sight of a Venue employee during operating hours, per B&P Code Section 22962.</li>
+      <li><strong>Stocking &amp; Inventory.</strong> Maintain adequate inventory at all times, restock on a regular schedule, and ensure all Products are fresh, properly stored, and authorized for sale in California.</li>
+      <li><strong>Maintenance &amp; Repairs.</strong> Maintain all Equipment in good working order. The Operator shall respond to reported malfunctions within twenty-four (24) hours and complete repairs within seventy-two (72) hours.</li>
+      <li><strong>Insurance.</strong> Maintain, at minimum:
+        <ul style="margin-top:6px">
+          <li>Commercial General Liability: $1,000,000 per occurrence / $2,000,000 aggregate</li>
+          <li>Product Liability: $1,000,000 per occurrence</li>
+          <li>Workers' Compensation as required by California law</li>
+        </ul>
+        The Venue shall be named as an additional insured on all applicable policies.
+      </li>
+      <li><strong>Custom Design.</strong> Provide custom vinyl wraps for all Equipment, designed to complement the aesthetic and historic character of The Queen Mary, subject to the Venue's prior written approval of designs.</li>
+      <li><strong>Reporting.</strong> Provide monthly reports to the Venue including: gross sales, transaction counts, age verification statistics, and compliance audit summaries.</li>
+      <li><strong>Health Warnings.</strong> Display all health warnings and signage required by federal (FDA), state, and local law on or adjacent to all Equipment.</li>
+    </ol>
+  </div>
+
+  <!-- ARTICLE 4: VENUE OBLIGATIONS -->
+  <div class="section">
+    <h3>Article 4 &mdash; Venue Obligations</h3>
+    <p>The Venue shall:</p>
+    <ol>
+      <li><strong>Access.</strong> Provide the Operator with reasonable access to the Premises for installation, restocking, maintenance, and repair of Equipment.</li>
+      <li><strong>Utilities.</strong> Provide standard electrical power (110V/120V, 15A circuit) at each Equipment location at no cost to the Operator.</li>
+      <li><strong>Security.</strong> Exercise reasonable care to protect Equipment from theft, vandalism, or unauthorized tampering.</li>
+      <li><strong>Signage.</strong> Permit the Operator to display required legal signage in the immediate vicinity of Equipment.</li>
+      <li><strong>21+ Enforcement.</strong> Continue enforcing existing age restrictions in Approved Areas where Equipment is placed, consistent with California law.</li>
+    </ol>
+  </div>
+
+  <!-- ARTICLE 5: FINANCIAL TERMS -->
+  <div class="section">
+    <h3>Article 5 &mdash; Financial Terms</h3>
+
+    <div class="highlight-box">
+      <p><strong>Zero-Cost Amenity Model.</strong> The Venue shall pay no installation fees, maintenance fees, stocking fees, or licensing costs. The Operator provides all Equipment and services at its sole expense as described in Article 3.</p>
+    </div>
+
+    <ol>
+      <li><strong>Revenue Arrangement.</strong> [Select one:]
+        <ul style="margin-top:6px">
+          <li><strong>Option A &mdash; Commission:</strong> The Operator shall pay the Venue ____% of monthly gross sales from Equipment, payable within fifteen (15) days of each calendar month's end.</li>
+          <li><strong>Option B &mdash; Zero Cost / No Commission:</strong> The Equipment operates as a complimentary guest amenity with no revenue sharing. The Operator retains all sales proceeds.</li>
+        </ul>
+      </li>
+      <li><strong>Taxes.</strong> The Operator is solely responsible for all sales tax, excise tax, and tobacco-specific taxes imposed by federal, state, or local authorities.</li>
+      <li><strong>Audit Rights.</strong> The Venue may, upon thirty (30) days' written notice, audit the Operator's sales records for Equipment on the Premises, no more than once per calendar year.</li>
+    </ol>
+  </div>
+
+  <!-- ARTICLE 6: INDEMNIFICATION -->
+  <div class="section">
+    <h3>Article 6 &mdash; Indemnification &amp; Liability</h3>
+    <ol>
+      <li><strong>Operator Indemnification.</strong> The Operator shall indemnify, defend, and hold harmless the Venue and its officers, directors, employees, and agents from and against all claims, damages, losses, fines, penalties, and expenses (including reasonable attorneys' fees) arising from:
+        <ul style="margin-top:6px">
+          <li>The Operator's operation, maintenance, or stocking of Equipment</li>
+          <li>Any sale of Products in violation of applicable law</li>
+          <li>Any failure of age verification systems</li>
+          <li>Product liability claims related to Products sold through Equipment</li>
+          <li>Any regulatory action related to the Operator's tobacco licenses or permits</li>
+        </ul>
+      </li>
+      <li><strong>Limitation.</strong> In no event shall the Venue be liable for any indirect, incidental, consequential, or punitive damages arising from this Agreement.</li>
+    </ol>
+  </div>
+
+  <!-- ARTICLE 7: INTELLECTUAL PROPERTY -->
+  <div class="section">
+    <h3>Article 7 &mdash; Intellectual Property</h3>
+    <ol>
+      <li>The Sm0kBot name, logo, trade dress, and associated branding remain the sole property of the Operator.</li>
+      <li>Any use of The Queen Mary's name, logo, or imagery by the Operator in marketing materials requires the Venue's prior written consent.</li>
+    </ol>
+  </div>
+
+  <!-- ARTICLE 8: REPRESENTATIONS & WARRANTIES -->
+  <div class="section">
+    <h3>Article 8 &mdash; Representations &amp; Warranties</h3>
+    <ol>
+      <li>The Operator represents and warrants that:
+        <ul style="margin-top:6px">
+          <li>It is duly authorized to conduct business in the State of California</li>
+          <li>All Equipment meets or exceeds applicable safety and regulatory standards</li>
+          <li>The Identivend AV3000 system is designed to comply with California 21+ tobacco age verification requirements</li>
+          <li>All Products sold will be lawfully obtained and authorized for sale in California</li>
+        </ul>
+      </li>
+      <li>The Venue represents and warrants that:
+        <ul style="margin-top:6px">
+          <li>It has the authority to grant the rights described in this Agreement</li>
+          <li>The designated Approved Areas maintain 21+ age restrictions as required for tobacco vending machine placement under California law</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <!-- ARTICLE 9: TERMINATION -->
+  <div class="section">
+    <h3>Article 9 &mdash; Termination</h3>
+    <ol>
+      <li><strong>Termination for Cause.</strong> Either Party may terminate this Agreement upon thirty (30) days' written notice if the other Party materially breaches any provision and fails to cure such breach within the thirty-day notice period.</li>
+      <li><strong>Termination for Regulatory Change.</strong> If a change in federal, state, or local law renders the operation of tobacco vending machines at the Premises unlawful, either Party may terminate this Agreement immediately upon written notice, without penalty.</li>
+      <li><strong>Termination by Venue.</strong> The Venue may terminate this Agreement with ninety (90) days' written notice for any reason, provided the Operator is given reasonable time to remove Equipment.</li>
+      <li><strong>Effect of Termination.</strong> Upon termination, the Operator shall remove all Equipment from the Premises within fifteen (15) business days at its own expense. Removal shall be performed with reasonable care to avoid damage to the Premises. Any outstanding financial obligations shall survive termination.</li>
+    </ol>
+  </div>
+
+  <!-- ARTICLE 10: GENERAL PROVISIONS -->
+  <div class="section">
+    <h3>Article 10 &mdash; General Provisions</h3>
+    <ol>
+      <li><strong>Governing Law.</strong> This Agreement shall be governed by the laws of the State of California, without regard to conflict of law principles.</li>
+      <li><strong>Dispute Resolution.</strong> Any dispute arising under this Agreement shall first be subject to good-faith mediation in Los Angeles County, California. If mediation fails, disputes shall be resolved by binding arbitration under the rules of the American Arbitration Association.</li>
+      <li><strong>Notices.</strong> All notices shall be in writing and delivered by certified mail, overnight courier, or email with confirmed receipt to the addresses set forth above.</li>
+      <li><strong>Assignment.</strong> Neither Party may assign this Agreement without the prior written consent of the other Party, except in connection with a merger, acquisition, or sale of substantially all assets.</li>
+      <li><strong>Force Majeure.</strong> Neither Party shall be liable for failure to perform due to causes beyond its reasonable control, including but not limited to acts of God, government orders, pandemics, or natural disasters.</li>
+      <li><strong>Entire Agreement.</strong> This Agreement, together with all Schedules attached hereto, constitutes the entire agreement between the Parties and supersedes all prior negotiations, representations, and agreements relating to the subject matter hereof.</li>
+      <li><strong>Amendments.</strong> This Agreement may only be amended by a written instrument signed by both Parties.</li>
+      <li><strong>Severability.</strong> If any provision of this Agreement is held invalid or unenforceable, the remaining provisions shall continue in full force and effect.</li>
+      <li><strong>Counterparts.</strong> This Agreement may be executed in counterparts, each of which shall be deemed an original.</li>
+    </ol>
+  </div>
+
+  <!-- SIGNATURES -->
+  <div class="sig-block">
+    <div class="sig-party">
+      <h4>Operator &mdash; SmOkBot</h4>
+      <div class="sig-line"></div>
+      <div class="sig-label">Signature</div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Name: Mike Gonzalez</div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Title</div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Date</div>
+    </div>
+    <div class="sig-party">
+      <h4>Venue &mdash; The Queen Mary</h4>
+      <div class="sig-line"></div>
+      <div class="sig-label">Signature</div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Name</div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Title</div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Date</div>
+    </div>
+  </div>
+
+  <!-- SCHEDULE A -->
+  <div class="schedule">
+    <h2>Schedule A &mdash; Equipment Specifications</h2>
+
+    <table class="machine-table">
+      <tr>
+        <th>Specification</th>
+        <th>OMNI ELITE</th>
+        <th>OMNI VISTA</th>
+      </tr>
+      <tr>
+        <td>Dimensions</td>
+        <td>76.5" &times; 57.5" &times; 33.5"</td>
+        <td>78" &times; 29.5" &times; 37"</td>
+      </tr>
+      <tr>
+        <td>Display</td>
+        <td>22" Touchscreen (Side)</td>
+        <td>43" Touchscreen (Front)</td>
+      </tr>
+      <tr>
+        <td>Product Slots</td>
+        <td>45 &ndash; 60</td>
+        <td>30 &ndash; 42</td>
+      </tr>
+      <tr>
+        <td>Item Capacity</td>
+        <td>180 &ndash; 1,300</td>
+        <td>120 &ndash; 900</td>
+      </tr>
+      <tr>
+        <td>Age Verification</td>
+        <td colspan="2">Identivend AV3000 &mdash; 3D Facial Scan + Government ID Verification</td>
+      </tr>
+      <tr>
+        <td>Payment System</td>
+        <td colspan="2">Nayax Touch &mdash; Cashless (Tap, Chip, Swipe, Mobile Pay)</td>
+      </tr>
+      <tr>
+        <td>Exterior</td>
+        <td colspan="2">Custom Vinyl Wrap (design subject to Venue approval)</td>
+      </tr>
+    </table>
+
+    <p style="font-size:13px;color:#666;margin-top:16px">
+      <strong>Selected Equipment for this Agreement:</strong> [To be completed during site walk]
+    </p>
+    <p style="font-size:13px;color:#666;margin-top:8px">
+      <strong>Agreed Placement Location(s):</strong> [To be completed during site walk]
+    </p>
+  </div>
+
+  <p style="text-align:center;margin-top:40px;font-size:11px;color:#999">
+    &mdash; End of Agreement &mdash;
+  </p>
+
+</div>
+
+</body>
+</html>
