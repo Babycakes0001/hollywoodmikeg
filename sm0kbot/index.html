@@ -11,8 +11,8 @@
 
   @media print {
     @page {
-      size: landscape;
-      margin: 0;
+      size: 11in 8.5in;
+      margin: 0.35in 0.5in;
     }
 
     body {
@@ -20,108 +20,139 @@
       print-color-adjust: exact !important;
       background: #0d1117 !important;
       color: #d4d4d4 !important;
+      font-size: 11px !important;
     }
 
     .print-bar, .nav-top, .section-divider { display: none !important; }
 
-    /* === CORE: Each slide = one clean landscape page === */
+    /* === CORE: Each slide = one landscape page, content must fit 7.8in tall === */
     .slide {
       page-break-after: always;
       page-break-inside: avoid;
       break-inside: avoid;
-      min-height: 0;
-      height: 100vh;
+      min-height: 0 !important;
+      max-height: 7.5in;
       max-width: 100%;
-      padding: 60px 80px;
-      margin: 0 auto;
+      padding: 28px 40px;
+      margin: 0;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: center;
       border: none !important;
       border-radius: 0 !important;
+      box-shadow: none !important;
     }
     .slide:last-of-type { page-break-after: avoid; }
 
-    /* === NEVER split these elements across pages === */
+    /* === NEVER split === */
     .card, .machine-card, .benefit-row, .flow-step, .highlight-box,
     .two-col, .three-col, .compliance-flow, .spec-grid, .stats-row,
     .sig-block, .contact-block {
       page-break-inside: avoid;
       break-inside: avoid;
     }
-
-    /* Headings never orphaned from their content */
-    h2, h3, h4 {
-      page-break-after: avoid;
-      break-after: avoid;
-    }
-
-    /* Paragraph orphan/widow control */
+    h2, h3, h4 { page-break-after: avoid; break-after: avoid; }
     p { orphans: 3; widows: 3; }
 
-    /* === TYPOGRAPHY: Luxury print sizing === */
-    .slide-content h2 { font-size: 30px; margin-bottom: 6px; font-weight: 700; letter-spacing: 0.5px; }
-    .slide-content .subtitle { margin-bottom: 28px; font-size: 14px; color: #999; letter-spacing: 0.3px; }
-    .slide-content h3 { font-size: 17px; margin-bottom: 10px; }
-    .feature-list li { padding: 5px 0; padding-left: 24px; font-size: 12.5px; line-height: 1.6; color: #d4d4d4; }
-    .card p, .benefit-text p { color: #b0b0b0; }
+    /* === TYPOGRAPHY: Compact luxury === */
+    .slide-content h2 { font-size: 24px; margin-bottom: 4px; }
+    .slide-content .subtitle { margin-bottom: 14px; font-size: 11px; color: #999; }
+    .slide-content h3 { font-size: 13px; margin-bottom: 6px; }
+    .feature-list li { padding: 2px 0; padding-left: 18px; font-size: 10.5px; line-height: 1.5; }
+    .feature-list li::before { font-size: 10px; }
+    .card p, .benefit-text p, .card li { font-size: 10px !important; line-height: 1.4 !important; }
 
-    /* === SPACING: Generous gutters, luxury whitespace === */
-    .card { padding: 22px; border-radius: 10px; }
-    .machine-card { padding: 28px 24px; }
-    .two-col { gap: 36px; }
-    .three-col { gap: 24px; }
-    .benefit-row { padding: 10px 0; gap: 16px; }
-    .benefit-icon { width: 36px; height: 36px; font-size: 18px; border-radius: 8px; }
-    .benefit-text h4 { font-size: 14px; }
-    .benefit-text p { font-size: 12px; line-height: 1.5; }
+    /* === SPACING: Tight but clean === */
+    .card { padding: 12px 14px; border-radius: 8px; }
+    .card.gold-border { padding: 12px 14px; }
+    .card h4 { font-size: 13px; margin-bottom: 3px; }
+    .machine-card { padding: 16px 14px; }
+    .two-col { gap: 20px; }
+    .three-col { gap: 14px; }
+
+    /* === BENEFIT ROWS: Compact === */
+    .benefit-row { padding: 5px 0; gap: 10px; border-bottom-color: #1a1a1a; }
+    .benefit-icon { width: 28px; height: 28px; font-size: 14px; border-radius: 6px; }
+    .benefit-text h4 { font-size: 11.5px; margin-bottom: 1px; }
+    .benefit-text p { font-size: 9.5px !important; line-height: 1.3 !important; }
 
     /* === STATS === */
-    .stat .number { font-size: 38px; }
-    .stat .label { font-size: 10px; letter-spacing: 1.5px; }
+    .stat { padding: 8px; }
+    .stat .number { font-size: 28px; }
+    .stat .label { font-size: 8px; letter-spacing: 1px; margin-top: 3px; }
+    .stats-row { gap: 20px !important; margin-top: 16px !important; }
 
-    /* === MACHINE SPECS: Image prominent === */
-    .machine-img { max-width: 220px; margin-bottom: 14px; }
-    .spec-grid { gap: 8px; margin-top: 14px; }
-    .spec-item { padding: 8px 12px; border-radius: 6px; }
-    .spec-item .spec-label { font-size: 9px; letter-spacing: 1.2px; }
-    .spec-item .spec-value { font-size: 12.5px; }
-    .machine-card h3 { font-size: 22px; }
-    .machine-card .machine-type { font-size: 11px; letter-spacing: 2.5px; }
-    .rec-badge { font-size: 9px !important; padding: 3px 16px !important; }
+    /* === MACHINE CARDS: Images smaller === */
+    .machine-img { max-width: 140px; margin-bottom: 8px; }
+    .machine-card h3 { font-size: 17px; margin-bottom: 2px; }
+    .machine-card .machine-type { font-size: 9px; letter-spacing: 2px; margin-bottom: 8px; }
+    .machine-card p { font-size: 9.5px !important; margin-bottom: 8px !important; }
+    .spec-grid { gap: 5px; margin-top: 8px; }
+    .spec-item { padding: 5px 8px; border-radius: 4px; }
+    .spec-item .spec-label { font-size: 7px; letter-spacing: 1px; }
+    .spec-item .spec-value { font-size: 10px; margin-top: 1px; }
+    .rec-badge { font-size: 7px !important; padding: 2px 12px !important; top: -9px !important; }
 
     /* === COMPLIANCE FLOW === */
-    .compliance-flow { gap: 14px; margin: 24px 0; }
-    .flow-step { padding: 18px 16px; width: 180px; }
-    .flow-step .step-num { font-size: 10px; }
-    .flow-step .step-title { font-size: 14px; }
-    .flow-step .step-desc { font-size: 10.5px; }
-    .flow-arrow { font-size: 20px; }
+    .compliance-flow { gap: 10px; margin: 14px 0; }
+    .flow-step { padding: 12px 10px; width: 150px; }
+    .flow-step .step-num { font-size: 8px; margin-bottom: 4px; }
+    .flow-step .step-title { font-size: 11px; margin-bottom: 3px; }
+    .flow-step .step-desc { font-size: 8.5px; line-height: 1.3; }
+    .flow-arrow { font-size: 16px; }
 
     /* === TITLE SLIDE === */
     .slide-title {
       min-height: 0 !important;
-      padding: 60px 80px;
+      padding: 36px 60px;
       background: linear-gradient(135deg, #0d1117 0%, #1a1a2e 50%, #0d1117 100%) !important;
     }
-    .slide-title h1 { font-size: 48px; }
-    .slide-title .venue-name { font-size: 32px; }
-    .slide-title .tagline { font-size: 18px; margin-bottom: 28px; }
-    .slide-title img { width: 300px !important; }
-    .slide-title .brand-badge { font-size: 11px; padding: 6px 24px; }
-    .slide-title .prepared-for { font-size: 12px; }
+    .slide-title h1 { font-size: 40px; }
+    .slide-title .venue-name { font-size: 26px; }
+    .slide-title .venue-sub { font-size: 12px; }
+    .slide-title .tagline { font-size: 16px; margin-bottom: 20px; }
+    .slide-title img { width: 240px !important; margin-bottom: 14px !important; }
+    .slide-title .brand-badge { font-size: 9px; padding: 5px 18px; margin-bottom: 16px; }
+    .slide-title .prepared-for { font-size: 10px; margin-top: 28px; padding-top: 16px; }
+    .slide-title .date-line { font-size: 11px; margin-top: 20px; }
+    .slide-title div[style*="margin:40px"] { margin: 20px 0 !important; }
+
+    /* === QUEEN MARY FIT: cards + stats on one page === */
+    .three-col .card div[style*="font-size:36px"] { font-size: 24px !important; margin-bottom: 6px !important; }
+    .three-col .card h4 { font-size: 12px; }
+    .three-col .card p { font-size: 9px !important; line-height: 1.3 !important; }
+
+    /* === PRODUCTS SLIDE === */
+    .three-col .card div[style*="font-size:42px"] { font-size: 26px !important; margin-bottom: 6px !important; }
 
     /* === CTA SLIDE === */
-    .cta-headline { font-size: 34px !important; }
-    .cta-sub { font-size: 15px; margin-bottom: 30px !important; }
-    .contact-block { padding: 24px 40px; }
-    .contact-block .contact-name { font-size: 20px; }
-    .next-steps-row { gap: 20px !important; }
-    .next-steps-row .flow-step { width: 170px; }
+    .cta-headline { font-size: 28px !important; margin-bottom: 10px !important; }
+    .cta-sub { font-size: 12px !important; margin: 0 auto 20px !important; max-width: 500px !important; }
+    .contact-block { padding: 16px 30px; }
+    .contact-block .contact-name { font-size: 16px; }
+    .contact-block .contact-title { font-size: 11px; margin-bottom: 10px; }
+    .contact-block .contact-detail { font-size: 11px; margin-bottom: 3px; }
+    .next-steps-row { gap: 14px !important; margin-bottom: 20px !important; }
+    .next-steps-row .flow-step { width: 140px; }
+    .next-steps-row .flow-arrow { font-size: 16px; }
 
-    /* === FOOTER === */
-    .slide-footer { margin-top: auto; padding-top: 12px; font-size: 10px; }
+    /* === EVENT SERVICES === */
+    .three-col .card p[style*="color:#e8b923"] { font-size: 9px !important; margin-top: 6px !important; }
+
+    /* === ABOUT OPERATOR === */
+    .slide-content .two-col p[style*="line-height:1.8"] { font-size: 10.5px !important; line-height: 1.5 !important; margin-bottom: 10px !important; }
+
+    /* === FOOTER: pinned to bottom === */
+    .slide-footer { margin-top: auto; padding-top: 8px; font-size: 9px; border-top-color: #1a1a1a; }
+
+    /* === ZERO-COST MODEL: compact list === */
+    .slide-content div[style*="max-width:700px"] { max-width: 100% !important; }
+
+    /* === REVENUE IMPACT === */
+    .card p[style*="line-height:1.8"] { font-size: 10px !important; line-height: 1.5 !important; }
+    .card p[style*="font-size:18px"] { font-size: 13px !important; }
+    .card[style*="display:inline-block"] { padding: 12px 24px !important; }
   }
 
   body {
