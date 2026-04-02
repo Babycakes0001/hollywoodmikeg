@@ -2,656 +2,247 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sm0kBot — Queen Mary Exclusive Partnership Proposal</title>
+<title>Sm0kBot — Queen Mary Pitch Deck</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
-  * { margin:0; padding:0; box-sizing:border-box; }
+  /* ═══════════════════════════════════════════════════════════
+     DESIGNED FOR PRINT — 11x8.5" landscape, 0.5" margins
+     Content area: 960 x 720 px at 96dpi
+     ═══════════════════════════════════════════════════════════ */
 
-  @media print {
-    @page {
-      size: 11in 8.5in;
-      margin: 0.35in 0.5in;
-    }
+  @page { size: 11in 8.5in; margin: 0.5in; }
 
-    body {
-      -webkit-print-color-adjust: exact !important;
-      print-color-adjust: exact !important;
-      background: #0d1117 !important;
-      color: #d4d4d4 !important;
-      font-size: 11px !important;
-    }
-
-    .print-bar, .nav-top, .section-divider { display: none !important; }
-
-    /* === CORE: Each slide = one landscape page, content must fit 7.8in tall === */
-    .slide {
-      page-break-after: always;
-      page-break-inside: avoid;
-      break-inside: avoid;
-      min-height: 0 !important;
-      max-height: 7.5in;
-      max-width: 100%;
-      padding: 28px 40px;
-      margin: 0;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border: none !important;
-      border-radius: 0 !important;
-      box-shadow: none !important;
-    }
-    .slide:last-of-type { page-break-after: avoid; }
-
-    /* === NEVER split === */
-    .card, .machine-card, .benefit-row, .flow-step, .highlight-box,
-    .two-col, .three-col, .compliance-flow, .spec-grid, .stats-row,
-    .sig-block, .contact-block {
-      page-break-inside: avoid;
-      break-inside: avoid;
-    }
-    h2, h3, h4 { page-break-after: avoid; break-after: avoid; }
-    p { orphans: 3; widows: 3; }
-
-    /* === TYPOGRAPHY: Compact luxury === */
-    .slide-content h2 { font-size: 24px; margin-bottom: 4px; }
-    .slide-content .subtitle { margin-bottom: 14px; font-size: 11px; color: #999; }
-    .slide-content h3 { font-size: 13px; margin-bottom: 6px; }
-    .feature-list li { padding: 2px 0; padding-left: 18px; font-size: 10.5px; line-height: 1.5; }
-    .feature-list li::before { font-size: 10px; }
-    .card p, .benefit-text p, .card li { font-size: 10px !important; line-height: 1.4 !important; }
-
-    /* === SPACING: Tight but clean === */
-    .card { padding: 12px 14px; border-radius: 8px; }
-    .card.gold-border { padding: 12px 14px; }
-    .card h4 { font-size: 13px; margin-bottom: 3px; }
-    .machine-card { padding: 16px 14px; }
-    .two-col { gap: 20px; }
-    .three-col { gap: 14px; }
-
-    /* === BENEFIT ROWS: Compact === */
-    .benefit-row { padding: 5px 0; gap: 10px; border-bottom-color: #1a1a1a; }
-    .benefit-icon { width: 28px; height: 28px; font-size: 14px; border-radius: 6px; }
-    .benefit-text h4 { font-size: 11.5px; margin-bottom: 1px; }
-    .benefit-text p { font-size: 9.5px !important; line-height: 1.3 !important; }
-
-    /* === STATS === */
-    .stat { padding: 8px; }
-    .stat .number { font-size: 28px; }
-    .stat .label { font-size: 8px; letter-spacing: 1px; margin-top: 3px; }
-    .stats-row { gap: 20px !important; margin-top: 16px !important; }
-
-    /* === MACHINE CARDS: Images smaller === */
-    .machine-img { max-width: 140px; margin-bottom: 8px; }
-    .machine-card h3 { font-size: 17px; margin-bottom: 2px; }
-    .machine-card .machine-type { font-size: 9px; letter-spacing: 2px; margin-bottom: 8px; }
-    .machine-card p { font-size: 9.5px !important; margin-bottom: 8px !important; }
-    .spec-grid { gap: 5px; margin-top: 8px; }
-    .spec-item { padding: 5px 8px; border-radius: 4px; }
-    .spec-item .spec-label { font-size: 7px; letter-spacing: 1px; }
-    .spec-item .spec-value { font-size: 10px; margin-top: 1px; }
-    .rec-badge { font-size: 7px !important; padding: 2px 12px !important; top: -9px !important; }
-
-    /* === COMPLIANCE FLOW === */
-    .compliance-flow { gap: 10px; margin: 14px 0; }
-    .flow-step { padding: 12px 10px; width: 150px; }
-    .flow-step .step-num { font-size: 8px; margin-bottom: 4px; }
-    .flow-step .step-title { font-size: 11px; margin-bottom: 3px; }
-    .flow-step .step-desc { font-size: 8.5px; line-height: 1.3; }
-    .flow-arrow { font-size: 16px; }
-
-    /* === TITLE SLIDE === */
-    .slide-title {
-      min-height: 0 !important;
-      padding: 36px 60px;
-      background: linear-gradient(135deg, #0d1117 0%, #1a1a2e 50%, #0d1117 100%) !important;
-    }
-    .slide-title h1 { font-size: 40px; }
-    .slide-title .venue-name { font-size: 26px; }
-    .slide-title .venue-sub { font-size: 12px; }
-    .slide-title .tagline { font-size: 16px; margin-bottom: 20px; }
-    .slide-title img { width: 240px !important; margin-bottom: 14px !important; }
-    .slide-title .brand-badge { font-size: 9px; padding: 5px 18px; margin-bottom: 16px; }
-    .slide-title .prepared-for { font-size: 10px; margin-top: 28px; padding-top: 16px; }
-    .slide-title .date-line { font-size: 11px; margin-top: 20px; }
-    .slide-title div[style*="margin:40px"] { margin: 20px 0 !important; }
-
-    /* === QUEEN MARY FIT: cards + stats on one page === */
-    .three-col .card div[style*="font-size:36px"] { font-size: 24px !important; margin-bottom: 6px !important; }
-    .three-col .card h4 { font-size: 12px; }
-    .three-col .card p { font-size: 9px !important; line-height: 1.3 !important; }
-
-    /* === PRODUCTS SLIDE === */
-    .three-col .card div[style*="font-size:42px"] { font-size: 26px !important; margin-bottom: 6px !important; }
-
-    /* === CTA SLIDE === */
-    .cta-headline { font-size: 28px !important; margin-bottom: 10px !important; }
-    .cta-sub { font-size: 12px !important; margin: 0 auto 20px !important; max-width: 500px !important; }
-    .contact-block { padding: 16px 30px; }
-    .contact-block .contact-name { font-size: 16px; }
-    .contact-block .contact-title { font-size: 11px; margin-bottom: 10px; }
-    .contact-block .contact-detail { font-size: 11px; margin-bottom: 3px; }
-    .next-steps-row { gap: 14px !important; margin-bottom: 20px !important; }
-    .next-steps-row .flow-step { width: 140px; }
-    .next-steps-row .flow-arrow { font-size: 16px; }
-
-    /* === EVENT SERVICES === */
-    .three-col .card p[style*="color:#e8b923"] { font-size: 9px !important; margin-top: 6px !important; }
-
-    /* === ABOUT OPERATOR === */
-    .slide-content .two-col p[style*="line-height:1.8"] { font-size: 10.5px !important; line-height: 1.5 !important; margin-bottom: 10px !important; }
-
-    /* === FOOTER: pinned to bottom === */
-    .slide-footer { margin-top: auto; padding-top: 8px; font-size: 9px; border-top-color: #1a1a1a; }
-
-    /* === ZERO-COST MODEL: compact list === */
-    .slide-content div[style*="max-width:700px"] { max-width: 100% !important; }
-
-    /* === REVENUE IMPACT === */
-    .card p[style*="line-height:1.8"] { font-size: 10px !important; line-height: 1.5 !important; }
-    .card p[style*="font-size:18px"] { font-size: 13px !important; }
-    .card[style*="display:inline-block"] { padding: 12px 24px !important; }
+  *, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   body {
     font-family: 'Inter', sans-serif;
-    background: #0a0a0a;
-    color: #fff;
-  }
-
-  /* Top nav */
-  .nav-top {
-    background: #111;
-    border-bottom: 1px solid #222;
-    padding: 12px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .nav-top .brand {
-    font-size: 14px;
-    font-weight: 700;
-    color: #e8b923;
-    letter-spacing: 2px;
-  }
-  .nav-top .nav-links a {
-    color: #888;
-    text-decoration: none;
-    font-size: 13px;
-    margin-left: 24px;
-    transition: color 0.2s;
-  }
-  .nav-top .nav-links a:hover { color: #e8b923; }
-  .nav-top .print-btn {
-    background: #e8b923;
-    color: #000;
-    border: none;
-    padding: 8px 20px;
+    background: #0d1117;
+    color: #d4d4d4;
     font-size: 12px;
-    font-weight: 700;
-    border-radius: 6px;
-    cursor: pointer;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    line-height: 1.45;
   }
-  .nav-top .print-btn:hover { background: #f5d76e; }
 
-  .slide {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto 60px;
-    min-height: 600px;
-    padding: 60px 70px;
-    position: relative;
+  /* ── PAGE FRAME ── */
+  .page {
+    width: 960px;
+    height: 720px;
     overflow: hidden;
+    padding: 44px 56px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: #0d1117;
+    page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: avoid; }
+
+  /* ── FOOTER ── */
+  .pg-foot {
+    position: absolute;
+    bottom: 20px;
+    left: 56px;
+    right: 56px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: #444;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 6px;
   }
 
-  @media (max-width: 768px) {
-    .slide { padding: 30px 20px; min-height: auto; }
-    .two-col, .three-col { grid-template-columns: 1fr !important; }
-    .compliance-flow { flex-direction: column; }
-    .flow-arrow { transform: rotate(90deg); }
-    .stat .number { font-size: 32px; }
-    .slide-title h1 { font-size: 36px; }
-    .slide-title .venue-name { font-size: 26px; }
-    .slide-content h2 { font-size: 28px; }
-    .machine-card { margin-bottom: 20px; }
-    .contact-block { padding: 20px 24px; }
-    .stats-row { flex-direction: column; gap: 10px !important; }
-    .cta-headline { font-size: 28px !important; }
-    .next-steps-row { flex-direction: column !important; }
-  }
-
-  /* Slide 1 — Title */
-  .slide-title {
-    background: linear-gradient(135deg, #0d1117 0%, #1a1a2e 50%, #0d1117 100%);
-    text-align: center;
-    border: 1px solid #333;
-    border-radius: 12px;
-    min-height: 700px;
-  }
-  .slide-title .brand-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, #e8b923, #f5d76e);
-    color: #000;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 8px 28px;
-    border-radius: 30px;
-    margin-bottom: 30px;
-  }
-  .slide-title h1 {
+  /* ── TYPOGRAPHY ── */
+  h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 58px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-    background: linear-gradient(135deg, #e8b923, #f5d76e, #e8b923);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .slide-title .tagline {
-    font-size: 20px;
-    color: #ccc;
-    font-weight: 300;
-    letter-spacing: 1px;
-    margin-bottom: 40px;
-  }
-  .slide-title .venue-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 38px;
-    color: #fff;
-    margin-bottom: 10px;
-  }
-  .slide-title .venue-sub {
-    font-size: 15px;
-    color: #999;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-  .slide-title .date-line {
-    margin-top: 40px;
-    font-size: 14px;
-    color: #666;
-    letter-spacing: 1px;
-  }
-  .slide-title .prepared-for {
-    margin-top: 50px;
-    padding-top: 30px;
-    border-top: 1px solid #333;
-    font-size: 13px;
-    color: #888;
-    letter-spacing: 1px;
-  }
-
-  /* Common slide styles */
-  .slide-content {
-    background: linear-gradient(180deg, #0d1117, #111827);
-    border: 1px solid #222;
-    border-radius: 12px;
-  }
-  .slide-content h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    margin-bottom: 10px;
+    font-size: 28px;
     color: #e8b923;
+    margin-bottom: 4px;
   }
-  .slide-content .subtitle {
-    font-size: 16px;
-    color: #999;
-    margin-bottom: 40px;
-    letter-spacing: 0.5px;
-  }
-  .slide-content h3 {
-    font-size: 20px;
-    color: #e8b923;
-    margin-bottom: 12px;
-    font-weight: 600;
-  }
+  .sub { font-size: 12px; color: #888; margin-bottom: 20px; letter-spacing: 0.3px; }
+  h3 { font-size: 14px; color: #e8b923; font-weight: 600; margin-bottom: 8px; }
+  h4 { font-size: 12px; color: #fff; margin-bottom: 4px; }
 
-  /* Grid layouts */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-  }
-  .three-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 30px;
-  }
+  /* ── GRID ── */
+  .row { display: flex; gap: 28px; }
+  .row > * { flex: 1; min-width: 0; }
+  .row-3 { display: flex; gap: 18px; }
+  .row-3 > * { flex: 1; min-width: 0; }
 
-  /* Cards */
+  /* ── CARDS ── */
   .card {
     background: rgba(255,255,255,0.03);
     border: 1px solid #2a2a2a;
-    border-radius: 12px;
-    padding: 30px;
+    border-radius: 10px;
+    padding: 14px 16px;
   }
-  .card.gold-border {
-    border-color: #e8b923;
-  }
-  .card h4 {
-    font-size: 18px;
-    color: #fff;
-    margin-bottom: 6px;
-  }
+  .card.gold { border-color: #e8b923; }
+  .card p { font-size: 10.5px; color: #aaa; line-height: 1.4; }
 
-  /* Lists */
-  .feature-list {
-    list-style: none;
-    padding: 0;
-  }
-  .feature-list li {
-    padding: 8px 0;
-    padding-left: 28px;
+  /* ── LISTS ── */
+  ul.fl { list-style: none; padding: 0; }
+  ul.fl li {
+    padding: 3px 0 3px 20px;
     position: relative;
+    font-size: 11px;
     color: #ccc;
-    font-size: 15px;
-    line-height: 1.5;
+    line-height: 1.45;
   }
-  .feature-list li::before {
+  ul.fl li::before {
     content: '\2713';
     position: absolute;
     left: 0;
     color: #e8b923;
     font-weight: 700;
+    font-size: 10px;
   }
 
-  /* Stat blocks */
-  .stat {
-    text-align: center;
-    padding: 20px;
-  }
-  .stat .number {
-    font-size: 48px;
-    font-weight: 700;
-    color: #e8b923;
-    line-height: 1;
-  }
-  .stat .label {
-    font-size: 13px;
-    color: #999;
-    margin-top: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+  /* ── STATS ── */
+  .stats { display: flex; justify-content: center; gap: 40px; margin-top: 16px; }
+  .st { text-align: center; }
+  .st .n { font-size: 30px; font-weight: 700; color: #e8b923; line-height: 1; }
+  .st .l { font-size: 8px; color: #888; text-transform: uppercase; letter-spacing: 1.2px; margin-top: 4px; }
 
-  /* Machine comparison */
-  .machine-card {
+  /* ── MACHINE CARDS ── */
+  .mc {
     background: rgba(255,255,255,0.03);
     border: 1px solid #2a2a2a;
-    border-radius: 16px;
-    padding: 40px 30px;
+    border-radius: 14px;
+    padding: 16px 18px;
     text-align: center;
     position: relative;
   }
-  .machine-card.recommended {
-    border-color: #e8b923;
-    box-shadow: 0 0 40px rgba(232,185,35,0.1);
+  .mc.rec { border-color: #e8b923; box-shadow: 0 0 20px rgba(232,185,35,0.08); }
+  .mc .badge {
+    position: absolute; top: -9px; left: 50%; transform: translateX(-50%);
+    background: #e8b923; color: #000; font-size: 7px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 14px;
+    border-radius: 12px; white-space: nowrap;
   }
-  .machine-card .rec-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #e8b923;
-    color: #000;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 4px 20px;
-    border-radius: 20px;
-    white-space: nowrap;
-  }
-  .machine-img {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-    border-radius: 12px;
-    margin: 0 auto 20px;
-    display: block;
-    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4));
-  }
-  .machine-card h3 {
-    font-size: 26px;
-    color: #fff;
-    margin-bottom: 4px;
-    font-family: 'Playfair Display', serif;
-  }
-  .machine-card .machine-type {
-    font-size: 13px;
-    color: #e8b923;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-  }
-  .spec-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 20px;
-    text-align: left;
-  }
-  .spec-item {
-    background: rgba(255,255,255,0.04);
-    padding: 12px 16px;
-    border-radius: 8px;
-  }
-  .spec-item .spec-label {
-    font-size: 10px;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  .spec-item .spec-value {
-    font-size: 15px;
-    color: #fff;
-    font-weight: 600;
-    margin-top: 2px;
-  }
+  .mc img { display: block; margin: 0 auto 8px; height: 140px; width: auto; border-radius: 8px; }
+  .mc h3 { font-size: 18px; color: #fff; font-family: 'Playfair Display', serif; margin-bottom: 2px; }
+  .mc .mt { font-size: 9px; color: #e8b923; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+  .mc p { font-size: 9.5px; color: #999; margin-bottom: 8px; line-height: 1.3; }
+  .sg { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .si { background: rgba(255,255,255,0.04); padding: 4px 8px; border-radius: 4px; }
+  .si .sl { font-size: 7px; color: #777; text-transform: uppercase; letter-spacing: 0.8px; }
+  .si .sv { font-size: 10px; color: #fff; font-weight: 600; }
 
-  /* Benefits section */
-  .benefit-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 16px 0;
-    border-bottom: 1px solid #1a1a1a;
-  }
-  .benefit-row:last-child { border-bottom: none; }
-  .benefit-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: rgba(232,185,35,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
-  }
-  .benefit-text h4 {
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 4px;
-  }
-  .benefit-text p {
-    font-size: 14px;
-    color: #999;
-    line-height: 1.5;
-  }
-
-  /* Compliance slide */
-  .compliance-flow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin: 30px 0;
-  }
-  .flow-step {
+  /* ── FLOW STEPS ── */
+  .flow { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 16px 0; }
+  .fs {
     background: rgba(232,185,35,0.08);
     border: 1px solid rgba(232,185,35,0.2);
-    border-radius: 16px;
-    padding: 24px 20px;
+    border-radius: 12px;
+    padding: 14px 14px;
     text-align: center;
-    width: 200px;
-    flex-shrink: 0;
+    width: 170px;
   }
-  .flow-step .step-num {
-    font-size: 12px;
-    color: #e8b923;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .flow-step .step-title {
-    font-size: 16px;
-    color: #fff;
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-  .flow-step .step-desc {
-    font-size: 12px;
-    color: #999;
-    line-height: 1.4;
-  }
-  .flow-arrow {
-    font-size: 24px;
-    color: #e8b923;
-  }
+  .fs .sn { font-size: 8px; color: #e8b923; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .fs .st2 { font-size: 13px; color: #fff; font-weight: 600; margin-bottom: 4px; }
+  .fs .sd { font-size: 9px; color: #999; line-height: 1.3; }
+  .fa { font-size: 18px; color: #e8b923; }
 
-  /* Divider */
-  .section-divider {
-    text-align: center;
-    padding: 20px 0;
-    margin: 0 auto;
-    max-width: 1100px;
+  /* ── BENEFIT ROWS ── */
+  .br { display: flex; align-items: flex-start; gap: 12px; padding: 5px 0; border-bottom: 1px solid #1a1a1a; }
+  .br:last-child { border-bottom: none; }
+  .bi {
+    width: 28px; height: 28px; border-radius: 6px;
+    background: rgba(232,185,35,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
   }
-  .section-divider span {
-    display: inline-block;
-    width: 60px;
-    height: 2px;
-    background: #e8b923;
-    opacity: 0.3;
-  }
+  .bt h4 { font-size: 11.5px; color: #fff; margin-bottom: 0; }
+  .bt p { font-size: 9.5px; color: #999; line-height: 1.3; }
 
-  /* CTA Slide */
-  .slide-cta { text-align: center; }
-  .cta-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    color: #e8b923;
-    margin-bottom: 16px;
-  }
-  .cta-sub {
-    font-size: 18px;
-    color: #ccc;
-    max-width: 600px;
-    margin: 0 auto 50px;
-    line-height: 1.6;
-  }
-  .contact-block {
+  /* ── CONTACT BLOCK ── */
+  .cb {
     display: inline-block;
     background: rgba(232,185,35,0.08);
     border: 1px solid rgba(232,185,35,0.3);
-    border-radius: 16px;
-    padding: 30px 50px;
+    border-radius: 12px;
+    padding: 18px 36px;
     text-align: left;
   }
-  .contact-block .contact-name {
-    font-size: 22px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 4px;
-  }
-  .contact-block .contact-title {
-    font-size: 14px;
-    color: #e8b923;
-    margin-bottom: 16px;
-  }
-  .contact-block .contact-detail {
-    font-size: 14px;
-    color: #ccc;
-    margin-bottom: 6px;
-  }
+  .cb .cn { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+  .cb .ct { font-size: 11px; color: #e8b923; margin-bottom: 10px; }
+  .cb .cd { font-size: 11px; color: #ccc; margin-bottom: 3px; }
 
-  /* Slide footer */
-  .slide-footer {
-    margin-top: 30px;
-    padding-top: 16px;
-    border-top: 1px solid #1a1a1a;
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: #444;
+  /* ── TITLE PAGE STYLES ── */
+  .title-page {
+    text-align: center;
+    background: linear-gradient(135deg, #0d1117 0%, #1a1a2e 50%, #0d1117 100%);
   }
+  .title-page .badge-top {
+    display: inline-block; background: linear-gradient(135deg, #e8b923, #f5d76e);
+    color: #000; font-weight: 700; font-size: 10px; letter-spacing: 3px;
+    text-transform: uppercase; padding: 6px 22px; border-radius: 20px; margin-bottom: 16px;
+  }
+  .title-page img { width: 260px; border-radius: 10px; margin: 0 auto 14px; display: block; filter: drop-shadow(0 0 24px rgba(0,100,255,0.25)); }
+  .title-page .tl { font-size: 17px; color: #ccc; font-weight: 300; letter-spacing: 1px; margin-bottom: 20px; }
+  .title-page .vn { font-family: 'Playfair Display', serif; font-size: 30px; color: #fff; margin-bottom: 6px; }
+  .title-page .vs { font-size: 12px; color: #888; letter-spacing: 2px; text-transform: uppercase; }
+  .title-page .dl { font-size: 11px; color: #555; margin-top: 18px; }
+  .title-page .pf { font-size: 10px; color: #777; margin-top: 24px; padding-top: 16px; border-top: 1px solid #333; }
+
+  /* ── SCREEN-ONLY: button bar ── */
+  .btn-bar { text-align: center; padding: 20px; background: #111; }
+  .btn-bar button {
+    background: #e8b923; color: #000; border: none; padding: 12px 32px;
+    font-size: 14px; font-weight: 700; border-radius: 6px; cursor: pointer; letter-spacing: 1px;
+  }
+  .btn-bar button:hover { background: #f5d76e; }
+  .btn-bar a { color: #888; font-size: 12px; margin-left: 20px; text-decoration: none; }
+  .btn-bar a:hover { color: #e8b923; }
+  @media print { .btn-bar { display: none; } }
+
+  /* ── SCREEN: spacing between pages ── */
+  @media screen { .page { margin: 20px auto; border-radius: 8px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); } }
 </style>
 </head>
 <body>
 
-<!-- STICKY NAV -->
-<nav class="nav-top">
-  <div class="brand">SM0KBOT</div>
-  <div class="nav-links">
-    <a href="#opportunity">Opportunity</a>
-    <a href="#machines">Machines</a>
-    <a href="#compliance">Compliance</a>
-    <a href="#model">Zero-Cost</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <button class="print-btn" onclick="window.print()">Save PDF</button>
-</nav>
+<div class="btn-bar">
+  <button onclick="window.print()">Save as PDF</button>
+</div>
 
-<!-- ===================== SLIDE 1: TITLE ===================== -->
-<div class="slide slide-title">
+<!-- ═══════════ PAGE 1: TITLE ═══════════ -->
+<div class="page title-page">
   <div>
-    <div class="brand-badge">Exclusive Partnership Proposal</div>
-    <img src="IMG_6893.jpeg" alt="Sm0kBot Logo" style="width:360px;max-width:90%;height:auto;border-radius:12px;margin:0 auto 24px;display:block;filter:drop-shadow(0 0 30px rgba(0,100,255,0.3));">
-    <div class="tagline">AI-Powered Premium Tobacco Vending</div>
-    <div style="margin:40px 0">
-      <div class="venue-name">The Queen Mary</div>
-      <div class="venue-sub">Long Beach, California</div>
+    <div class="badge-top">Exclusive Partnership Proposal</div>
+    <img src="IMG_6893.jpeg" alt="Sm0kBot">
+    <div class="tl">AI-Powered Premium Tobacco Vending</div>
+    <div style="margin:20px 0">
+      <div class="vn">The Queen Mary</div>
+      <div class="vs">Long Beach, California</div>
     </div>
-    <div class="date-line">Presented April 2, 2026</div>
-    <div class="prepared-for">
-      Prepared by Mike Gonzalez &nbsp;&bull;&nbsp; Sm0kBot &nbsp;&bull;&nbsp; (310) 999-1902
-    </div>
+    <div class="dl">Presented April 2, 2026</div>
+    <div class="pf">Prepared by Mike Gonzalez &bull; Sm0kBot &bull; (310) 999-1902</div>
   </div>
 </div>
 
-<!-- ===================== SLIDE 2: OPPORTUNITY ===================== -->
-<div class="section-divider"><span></span></div>
-<div class="slide slide-content" id="opportunity">
+<!-- ═══════════ PAGE 2: OPPORTUNITY ═══════════ -->
+<div class="page">
   <h2>The Opportunity</h2>
-  <p class="subtitle">Premium tobacco access for a world-class destination &mdash; at zero cost to the venue</p>
-
-  <div class="two-col">
+  <div class="sub">Premium tobacco access for a world-class destination &mdash; at zero cost to the venue</div>
+  <div class="row">
     <div>
       <h3>The Challenge</h3>
-      <ul class="feature-list">
-        <li>Hotel guests, bar patrons, and event attendees leave the ship to purchase tobacco products</li>
-        <li>Every departure is lost revenue &mdash; gaming, dining, drinks, and gift shop spend walks out the door</li>
-        <li>Staffing a traditional tobacco counter requires payroll, training, and compliance overhead</li>
+      <ul class="fl">
+        <li>Hotel guests, bar patrons, and event attendees leave the ship to purchase tobacco</li>
+        <li>Every departure is lost revenue &mdash; dining, drinks, and gift shop spend walks out the door</li>
+        <li>Staffing a tobacco counter requires payroll, training, and compliance overhead</li>
         <li>California's strict 21+ regulations demand airtight age verification</li>
       </ul>
     </div>
     <div>
       <h3>The Sm0kBot Solution</h3>
-      <ul class="feature-list">
+      <ul class="fl">
         <li>AI-powered tobacco vending keeps patrons on board and spending</li>
         <li>Zero cost to the Queen Mary &mdash; no installation fees, no maintenance, no staffing</li>
         <li>Full regulatory compliance through military-grade age verification AI</li>
@@ -660,371 +251,207 @@
       </ul>
     </div>
   </div>
-
-  <div class="slide-footer">
-    <span>Sm0kBot &mdash; Confidential</span>
-    <span>2</span>
-  </div>
+  <div class="pg-foot"><span>Sm0kBot &mdash; Confidential</span><span>2</span></div>
 </div>
 
-<!-- ===================== SLIDE 3: QUEEN MARY FIT ===================== -->
-<div class="section-divider"><span></span></div>
-<div class="slide slide-content">
+<!-- ═══════════ PAGE 3: WHY QUEEN MARY ═══════════ -->
+<div class="page">
   <h2>Why the Queen Mary</h2>
-  <p class="subtitle">A legendary venue deserves a premium amenity</p>
-
-  <div class="three-col">
+  <div class="sub">A legendary venue deserves a premium amenity</div>
+  <div class="row-3">
     <div class="card">
-      <div style="font-size:36px;margin-bottom:12px">&#x1F6A2;</div>
+      <div style="font-size:24px;margin-bottom:8px">&#x1F6A2;</div>
       <h4>Hotel &amp; Tourism</h4>
-      <p style="color:#999;font-size:14px;line-height:1.6">
-        Guests staying aboard want convenience. A Sm0kBot in the lobby means they never need to leave &mdash; their tobacco run becomes another reason to stay and spend.
-      </p>
+      <p>Guests staying aboard want convenience. A Sm0kBot in the lobby means they never need to leave &mdash; their tobacco run becomes another reason to stay and spend.</p>
     </div>
     <div class="card">
-      <div style="font-size:36px;margin-bottom:12px">&#x1F378;</div>
+      <div style="font-size:24px;margin-bottom:8px">&#x1F378;</div>
       <h4>Bars &amp; Restaurants</h4>
-      <p style="color:#999;font-size:14px;line-height:1.6">
-        The Observation Bar, Sir Winston's, Chelsea Chowder House &mdash; premium cigar and tobacco access pairs naturally with world-class food and cocktails.
-      </p>
+      <p>The Observation Bar, Sir Winston's, Chelsea Chowder House &mdash; premium cigar access pairs naturally with world-class food and cocktails.</p>
     </div>
     <div class="card">
-      <div style="font-size:36px;margin-bottom:12px">&#x1F389;</div>
+      <div style="font-size:24px;margin-bottom:8px">&#x1F389;</div>
       <h4>Events &amp; Nightlife</h4>
-      <p style="color:#999;font-size:14px;line-height:1.6">
-        With 80+ events annually from corporate galas to Dark Harbor, Sm0kBot captures demand from thousands of attendees who would otherwise leave.
-      </p>
+      <p>With 80+ events annually from corporate galas to Dark Harbor, Sm0kBot captures demand from thousands who would otherwise leave.</p>
     </div>
   </div>
-
-  <div class="stats-row" style="margin-top:40px;display:flex;justify-content:center;gap:60px">
-    <div class="stat">
-      <div class="number">1.5M+</div>
-      <div class="label">Annual Visitors</div>
-    </div>
-    <div class="stat">
-      <div class="number">346</div>
-      <div class="label">Hotel Staterooms</div>
-    </div>
-    <div class="stat">
-      <div class="number">80+</div>
-      <div class="label">Events Per Year</div>
-    </div>
-    <div class="stat">
-      <div class="number">~10%</div>
-      <div class="label">Retained Spend Uplift</div>
-    </div>
+  <div class="stats">
+    <div class="st"><div class="n">1.5M+</div><div class="l">Annual Visitors</div></div>
+    <div class="st"><div class="n">346</div><div class="l">Hotel Staterooms</div></div>
+    <div class="st"><div class="n">80+</div><div class="l">Events Per Year</div></div>
+    <div class="st"><div class="n">~10%</div><div class="l">Retained Spend Uplift</div></div>
   </div>
-
-  <div class="slide-footer">
-    <span>Sm0kBot &mdash; Confidential</span>
-    <span>3</span>
-  </div>
+  <div class="pg-foot"><span>Sm0kBot &mdash; Confidential</span><span>3</span></div>
 </div>
 
-<!-- ===================== SLIDE 4: MACHINES ===================== -->
-<div class="section-divider"><span></span></div>
-<div class="slide slide-content" id="machines">
+<!-- ═══════════ PAGE 4: MACHINE OPTIONS ═══════════ -->
+<div class="page">
   <h2>Machine Options</h2>
-  <p class="subtitle">Select the configuration that best fits your space aboard the Queen Mary</p>
-
-  <div class="two-col" style="gap:30px">
-    <!-- OMNI ELITE -->
-    <div class="machine-card recommended">
-      <div class="rec-badge">Recommended for High Traffic</div>
-      <img src="IMG_6888.jpeg" alt="OMNI ELITE Machine" class="machine-img">
+  <div class="sub">Select the configuration that best fits your space aboard the Queen Mary</div>
+  <div class="row" style="gap:24px">
+    <div class="mc rec">
+      <div class="badge">Recommended for High Traffic</div>
+      <img src="IMG_6888.jpeg" alt="OMNI ELITE">
       <h3>OMNI ELITE</h3>
-      <div class="machine-type">Maximum Capacity</div>
-      <p style="color:#999;font-size:14px;margin-bottom:20px">
-        Larger footprint with side-mounted 22&Prime; touchscreen. Ideal for lobby, bar areas, or event corridors with high foot traffic.
-      </p>
-      <div class="spec-grid">
-        <div class="spec-item">
-          <div class="spec-label">Dimensions</div>
-          <div class="spec-value">76.5&Prime; &times; 57.5&Prime; &times; 33.5&Prime;</div>
-        </div>
-        <div class="spec-item">
-          <div class="spec-label">Display</div>
-          <div class="spec-value">22&Prime; Touchscreen (Side)</div>
-        </div>
-        <div class="spec-item">
-          <div class="spec-label">Product Slots</div>
-          <div class="spec-value">45 &mdash; 60 Slots</div>
-        </div>
-        <div class="spec-item">
-          <div class="spec-label">Total Capacity</div>
-          <div class="spec-value">180 &mdash; 1,300 Items</div>
-        </div>
-        <div class="spec-item">
-          <div class="spec-label">Age Verification</div>
-          <div class="spec-value">Identivend AV3000</div>
-        </div>
-        <div class="spec-item">
-          <div class="spec-label">Payment</div>
-          <div class="spec-value">Nayax Cashless</div>
-        </div>
+      <div class="mt">Maximum Capacity</div>
+      <p>Larger footprint with side-mounted 22&#x2033; touchscreen. Ideal for lobby or bar areas.</p>
+      <div class="sg">
+        <div class="si"><div class="sl">Dimensions</div><div class="sv">76.5&#x2033; &times; 57.5&#x2033; &times; 33.5&#x2033;</div></div>
+        <div class="si"><div class="sl">Display</div><div class="sv">22&#x2033; Touchscreen (Side)</div></div>
+        <div class="si"><div class="sl">Product Slots</div><div class="sv">45 &mdash; 60 Slots</div></div>
+        <div class="si"><div class="sl">Capacity</div><div class="sv">180 &mdash; 1,300 Items</div></div>
+        <div class="si"><div class="sl">Age Verify</div><div class="sv">Identivend AV3000</div></div>
+        <div class="si"><div class="sl">Payment</div><div class="sv">Nayax Cashless</div></div>
       </div>
     </div>
-
-    <!-- OMNI VISTA -->
-    <div class="machine-card">
-      <img src="IMG_6889.jpeg" alt="OMNI VISTA Machine" class="machine-img">
+    <div class="mc">
+      <img src="IMG_6889.jpeg" alt="OMNI VISTA">
       <h3>OMNI VISTA</h3>
-      <div class="machine-type">Compact Powerhouse</div>
-      <p style="color:#999;font-size:14px;margin-bottom:20px">
-        Slim profile with front-facing 43&Prime; cinematic touchscreen. Perfect for tighter spaces &mdash; hallways, alcoves, or near restaurants.
-      </p>
-      <div class="spec-grid">
-        <div class="spec-item">
-          <div class="spec-label">Dimensions</div>
-          <div class="spec-value">78&Prime; &times; 29.5&Prime; &times; 37&Prime;</div>
-        </div>
-        <div class="spec-item">
-          <div class="spec-label">Display</div>
-          <div class="spec-value">43&Prime; Touchscreen (Front)</div>
-        </div>
-        <div class="spec-item">
-          <div class="spec-label">Product Slots</div>
-          <div class="spec-value">30 &mdash; 42 Slots</div>
-        </div>
-        <div class="spec-item">
-          <div class="spec-label">Total Capacity</div>
-          <div class="spec-value">120 &mdash; 900 Items</div>
-        </div>
-        <div class="spec-item">
-          <div class="spec-label">Age Verification</div>
-          <div class="spec-value">Identivend AV3000</div>
-        </div>
-        <div class="spec-item">
-          <div class="spec-label">Payment</div>
-          <div class="spec-value">Nayax Cashless</div>
-        </div>
+      <div class="mt">Compact Powerhouse</div>
+      <p>Slim profile with front-facing 43&#x2033; cinematic touchscreen. Perfect for tighter spaces.</p>
+      <div class="sg">
+        <div class="si"><div class="sl">Dimensions</div><div class="sv">78&#x2033; &times; 29.5&#x2033; &times; 37&#x2033;</div></div>
+        <div class="si"><div class="sl">Display</div><div class="sv">43&#x2033; Touchscreen (Front)</div></div>
+        <div class="si"><div class="sl">Product Slots</div><div class="sv">30 &mdash; 42 Slots</div></div>
+        <div class="si"><div class="sl">Capacity</div><div class="sv">120 &mdash; 900 Items</div></div>
+        <div class="si"><div class="sl">Age Verify</div><div class="sv">Identivend AV3000</div></div>
+        <div class="si"><div class="sl">Payment</div><div class="sv">Nayax Cashless</div></div>
       </div>
     </div>
   </div>
-
-  <p style="text-align:center;color:#888;font-size:13px;margin-top:30px">
-    Both options feature custom vinyl wraps &mdash; designed to match the Queen Mary's aesthetic perfectly. Choose the model that fits your space best.
-  </p>
-
-  <div class="slide-footer">
-    <span>Sm0kBot &mdash; Confidential</span>
-    <span>4</span>
-  </div>
+  <p style="text-align:center;color:#666;font-size:10px;margin-top:10px">Both options feature custom vinyl wraps &mdash; designed to match the Queen Mary's aesthetic. Choose the model that fits your space.</p>
+  <div class="pg-foot"><span>Sm0kBot &mdash; Confidential</span><span>4</span></div>
 </div>
 
-<!-- ===================== SLIDE 5: AI COMPLIANCE ===================== -->
-<div class="section-divider"><span></span></div>
-<div class="slide slide-content" id="compliance">
+<!-- ═══════════ PAGE 5: AI COMPLIANCE ═══════════ -->
+<div class="page">
   <h2>AI-Powered Compliance</h2>
-  <p class="subtitle">Identivend AV3000 &mdash; the most advanced age verification in vending</p>
-
-  <div class="compliance-flow">
-    <div class="flow-step">
-      <div class="step-num">Step 1</div>
-      <div class="step-title">3D Facial Scan</div>
-      <div class="step-desc">AI analyzes facial geometry to estimate age using deep learning models</div>
-    </div>
-    <div class="flow-arrow">&rarr;</div>
-    <div class="flow-step">
-      <div class="step-num">Step 2</div>
-      <div class="step-title">ID Verification</div>
-      <div class="step-desc">Scans government-issued ID, validates authenticity and matches to face</div>
-    </div>
-    <div class="flow-arrow">&rarr;</div>
-    <div class="flow-step">
-      <div class="step-num">Step 3</div>
-      <div class="step-title">Purchase Approved</div>
-      <div class="step-desc">21+ verified in ~30 seconds. Transaction proceeds via cashless payment</div>
-    </div>
+  <div class="sub">Identivend AV3000 &mdash; the most advanced age verification in vending</div>
+  <div class="flow">
+    <div class="fs"><div class="sn">Step 1</div><div class="st2">3D Facial Scan</div><div class="sd">AI analyzes facial geometry to estimate age using deep learning</div></div>
+    <div class="fa">&rarr;</div>
+    <div class="fs"><div class="sn">Step 2</div><div class="st2">ID Verification</div><div class="sd">Scans government-issued ID, validates authenticity and matches to face</div></div>
+    <div class="fa">&rarr;</div>
+    <div class="fs"><div class="sn">Step 3</div><div class="st2">Purchase Approved</div><div class="sd">21+ verified in ~30 seconds. Transaction proceeds via cashless payment</div></div>
   </div>
-
-  <div class="two-col" style="margin-top:30px">
-    <div class="card gold-border">
-      <h3 style="margin-bottom:16px">Compliance Guarantee</h3>
-      <ul class="feature-list">
+  <div class="row" style="margin-top:16px">
+    <div class="card gold">
+      <h3 style="margin-bottom:8px">Compliance Guarantee</h3>
+      <ul class="fl">
         <li>Meets and exceeds California 21+ tobacco regulations</li>
         <li>Every transaction logged with full audit trail</li>
-        <li>Dual-factor verification: AI facial analysis + physical ID</li>
+        <li>Dual-factor: AI facial analysis + physical ID</li>
         <li>Cannot be fooled by fake IDs &mdash; scans for security features</li>
         <li>Zero human error &mdash; no tired cashier, no skipped checks</li>
       </ul>
     </div>
     <div class="card">
-      <h3 style="margin-bottom:16px">What This Means for the Queen Mary</h3>
-      <ul class="feature-list">
+      <h3 style="margin-bottom:8px">What This Means for the Queen Mary</h3>
+      <ul class="fl">
         <li>Zero compliance liability for the venue</li>
         <li>Sm0kBot carries all regulatory responsibility</li>
         <li>Full insurance coverage included</li>
-        <li>Monthly compliance reports available on request</li>
-        <li>Peace of mind for a venue with a world-class reputation</li>
+        <li>Monthly compliance reports on request</li>
+        <li>Peace of mind for a world-class reputation</li>
       </ul>
     </div>
   </div>
-
-  <div class="slide-footer">
-    <span>Sm0kBot &mdash; Confidential</span>
-    <span>5</span>
-  </div>
+  <div class="pg-foot"><span>Sm0kBot &mdash; Confidential</span><span>5</span></div>
 </div>
 
-<!-- ===================== SLIDE 6: PRODUCTS ===================== -->
-<div class="section-divider"><span></span></div>
-<div class="slide slide-content">
+<!-- ═══════════ PAGE 6: PRODUCTS ═══════════ -->
+<div class="page">
   <h2>Product Selection</h2>
-  <p class="subtitle">Premium products curated for the Queen Mary's discerning clientele</p>
-
-  <div class="three-col" style="margin-bottom:40px">
-    <div class="card gold-border" style="text-align:center">
-      <div style="font-size:42px;margin-bottom:12px">&#x1F3C6;</div>
+  <div class="sub">Premium products curated for the Queen Mary's discerning clientele</div>
+  <div class="row-3" style="margin-bottom:16px">
+    <div class="card gold" style="text-align:center">
+      <div style="font-size:26px;margin-bottom:8px">&#x1F3C6;</div>
       <h4>Premium Cigars</h4>
-      <p style="color:#ccc;font-size:14px;margin-top:8px;line-height:1.5">
-        Our flagship offering. Hand-selected premium cigars curated for the Observation Bar deck &mdash; a natural pairing with the Queen Mary's world-class cocktail program. The centerpiece of every Sm0kBot.
-      </p>
+      <p style="color:#ccc">Our flagship offering. Hand-selected premium cigars curated for the Observation Bar &mdash; a natural pairing with the Queen Mary's cocktail program.</p>
     </div>
     <div class="card" style="text-align:center">
-      <div style="font-size:42px;margin-bottom:12px">&#x1F6AC;</div>
-      <h4>Additional Tobacco Products</h4>
-      <p style="color:#999;font-size:14px;margin-top:8px;line-height:1.5">
-        Beyond cigars, we also stock a curated selection of other tobacco products to serve the full range of guest preferences.
-      </p>
+      <div style="font-size:26px;margin-bottom:8px">&#x1F6AC;</div>
+      <h4>Additional Tobacco</h4>
+      <p>Beyond cigars, a curated selection of other tobacco products for the full range of guest preferences.</p>
     </div>
     <div class="card" style="text-align:center">
-      <div style="font-size:42px;margin-bottom:12px">&#x26A1;</div>
+      <div style="font-size:26px;margin-bottom:8px">&#x26A1;</div>
       <h4>Modern Alternatives</h4>
-      <p style="color:#999;font-size:14px;margin-top:8px;line-height:1.5">
-        ZYN nicotine pouches, chewing tobacco, lighters, rolling papers &mdash; full selection for every preference.
-      </p>
+      <p>ZYN nicotine pouches, chewing tobacco, lighters, rolling papers &mdash; full selection for every preference.</p>
     </div>
   </div>
-
-  <div class="card gold-border" style="text-align:center;padding:24px">
-    <p style="color:#ccc;font-size:16px;line-height:1.7">
-      Product mix is <strong style="color:#e8b923">fully customizable</strong> based on what sells best at the Queen Mary.
-      We monitor inventory in real time and adjust selections based on actual purchasing data.
-      Seasonal adjustments for events like Dark Harbor or holiday cruises are included.
-    </p>
+  <div class="card gold" style="text-align:center;padding:14px 20px">
+    <p style="color:#ccc;font-size:11px;line-height:1.5">Product mix is <strong style="color:#e8b923">fully customizable</strong> based on what sells best at the Queen Mary. We monitor inventory in real time and adjust based on purchasing data. Seasonal adjustments for events like Dark Harbor are included.</p>
   </div>
-
-  <div class="slide-footer">
-    <span>Sm0kBot &mdash; Confidential</span>
-    <span>6</span>
-  </div>
+  <div class="pg-foot"><span>Sm0kBot &mdash; Confidential</span><span>6</span></div>
 </div>
 
-<!-- ===================== SLIDE 7: ZERO-COST MODEL ===================== -->
-<div class="section-divider"><span></span></div>
-<div class="slide slide-content" id="model">
+<!-- ═══════════ PAGE 7: ZERO-COST MODEL ═══════════ -->
+<div class="page">
   <h2>The Zero-Cost Model</h2>
-  <p class="subtitle">Everything handled. Nothing owed. A true amenity for the Queen Mary.</p>
-
-  <div style="max-width:700px;margin:0 auto">
-    <div class="benefit-row">
-      <div class="benefit-icon">&#x1F527;</div>
-      <div class="benefit-text">
-        <h4>Installation &mdash; On Us</h4>
-        <p>Professional installation with zero disruption to operations. We handle electrical, placement, and setup.</p>
+  <div class="sub">Everything handled. Nothing owed. A true amenity for the Queen Mary.</div>
+  <div style="max-width:780px;margin:0 auto">
+    <div class="row" style="gap:40px">
+      <div>
+        <div class="br"><div class="bi">&#x1F527;</div><div class="bt"><h4>Installation &mdash; On Us</h4><p>Professional install with zero disruption. We handle electrical, placement, and setup.</p></div></div>
+        <div class="br"><div class="bi">&#x1F4E6;</div><div class="bt"><h4>Stocking &amp; Inventory &mdash; On Us</h4><p>We maintain inventory, restock regularly, and ensure products are always fresh.</p></div></div>
+        <div class="br"><div class="bi">&#x1F6E0;</div><div class="bt"><h4>Maintenance &amp; Repairs &mdash; On Us</h4><p>Any issue, any time. Machines always operational for your guests.</p></div></div>
       </div>
-    </div>
-    <div class="benefit-row">
-      <div class="benefit-icon">&#x1F4E6;</div>
-      <div class="benefit-text">
-        <h4>Stocking &amp; Inventory &mdash; On Us</h4>
-        <p>We maintain inventory, restock regularly, and ensure products are always fresh and available.</p>
-      </div>
-    </div>
-    <div class="benefit-row">
-      <div class="benefit-icon">&#x1F6E0;</div>
-      <div class="benefit-text">
-        <h4>Maintenance &amp; Repairs &mdash; On Us</h4>
-        <p>Any technical issue, any time. We maintain the machines so they're always operational for your guests.</p>
-      </div>
-    </div>
-    <div class="benefit-row">
-      <div class="benefit-icon">&#x1F4CB;</div>
-      <div class="benefit-text">
-        <h4>Compliance &amp; Licensing &mdash; On Us</h4>
-        <p>All tobacco licensing, regulatory compliance, and age verification responsibility rests with Sm0kBot.</p>
-      </div>
-    </div>
-    <div class="benefit-row">
-      <div class="benefit-icon">&#x1F6E1;</div>
-      <div class="benefit-text">
-        <h4>Insurance &mdash; On Us</h4>
-        <p>Full commercial liability insurance covering the machines, products, and all related operations.</p>
-      </div>
-    </div>
-    <div class="benefit-row">
-      <div class="benefit-icon">&#x1F3A8;</div>
-      <div class="benefit-text">
-        <h4>Custom Design &mdash; On Us</h4>
-        <p>Professional vinyl wraps designed to blend seamlessly with the Queen Mary's historic art deco interior.</p>
+      <div>
+        <div class="br"><div class="bi">&#x1F4CB;</div><div class="bt"><h4>Compliance &amp; Licensing &mdash; On Us</h4><p>All tobacco licensing and age verification responsibility rests with Sm0kBot.</p></div></div>
+        <div class="br"><div class="bi">&#x1F6E1;</div><div class="bt"><h4>Insurance &mdash; On Us</h4><p>Full commercial liability covering machines, products, and operations.</p></div></div>
+        <div class="br"><div class="bi">&#x1F3A8;</div><div class="bt"><h4>Custom Design &mdash; On Us</h4><p>Vinyl wraps designed to blend with the Queen Mary's historic art deco interior.</p></div></div>
       </div>
     </div>
   </div>
-
-  <div class="slide-footer">
-    <span>Sm0kBot &mdash; Confidential</span>
-    <span>7</span>
-  </div>
+  <div class="pg-foot"><span>Sm0kBot &mdash; Confidential</span><span>7</span></div>
 </div>
 
-<!-- ===================== SLIDE 8: REVENUE IMPACT ===================== -->
-<div class="section-divider"><span></span></div>
-<div class="slide slide-content">
+<!-- ═══════════ PAGE 8: REVENUE IMPACT ═══════════ -->
+<div class="page">
   <h2>Revenue Impact</h2>
-  <p class="subtitle">Keeping patrons on board means keeping their wallets on board</p>
-
-  <div class="two-col">
+  <div class="sub">Keeping patrons on board means keeping their wallets on board</div>
+  <div class="row">
     <div>
       <h3>The Problem Today</h3>
-      <div class="card" style="margin-top:16px;background:rgba(200,50,50,0.05);border-color:#441111">
-        <p style="color:#ccc;font-size:15px;line-height:1.8">
+      <div class="card" style="margin-top:8px;background:rgba(200,50,50,0.05);border-color:#441111">
+        <p style="color:#ccc;font-size:11px;line-height:1.6">
           A guest at the Observation Bar wants a premium cigar.<br>
           They leave the ship &rarr; drive to a smoke shop &rarr; may not come back.<br><br>
-          <strong style="color:#ff6b6b">Lost:</strong> 1&ndash;2 more rounds of drinks, dinner, gift shop, possible hotel extension.<br><br>
+          <strong style="color:#ff6b6b">Lost:</strong> 1&ndash;2 more rounds, dinner, gift shop, hotel extension.<br><br>
           Multiply by <strong style="color:#ff6b6b">dozens of departures daily</strong> across hotel guests, bar patrons, and event attendees.
         </p>
       </div>
     </div>
     <div>
       <h3>With Sm0kBot</h3>
-      <div class="card" style="margin-top:16px;background:rgba(232,185,35,0.03);border-color:#2a2a1a">
-        <p style="color:#ccc;font-size:15px;line-height:1.8">
+      <div class="card" style="margin-top:8px;background:rgba(232,185,35,0.03);border-color:#2a2a1a">
+        <p style="color:#ccc;font-size:11px;line-height:1.6">
           The same guest walks 30 feet to a Sm0kBot.<br>
           Verified in 30 seconds &rarr; premium cigar in hand &rarr; back at the bar.<br><br>
-          <strong style="color:#e8b923">Retained:</strong> The next round, dinner reservation, gift shop visit, the full evening's spend.<br><br>
+          <strong style="color:#e8b923">Retained:</strong> The next round, dinner, gift shop, the full evening's spend.<br><br>
           Amenity access <strong style="color:#e8b923">retains ~10% more per-patron spend</strong> by eliminating departure triggers.
         </p>
       </div>
     </div>
   </div>
-
-  <div style="text-align:center;margin-top:30px">
-    <div class="card gold-border" style="display:inline-block;padding:20px 40px">
-      <p style="color:#e8b923;font-size:18px;font-weight:600">
-        The Queen Mary makes nothing from guests who leave. Sm0kBot keeps them aboard.
-      </p>
+  <div style="text-align:center;margin-top:16px">
+    <div class="card gold" style="display:inline-block;padding:12px 28px">
+      <p style="color:#e8b923;font-size:14px;font-weight:600">The Queen Mary makes nothing from guests who leave. Sm0kBot keeps them aboard.</p>
     </div>
   </div>
-
-  <div class="slide-footer">
-    <span>Sm0kBot &mdash; Confidential</span>
-    <span>8</span>
-  </div>
+  <div class="pg-foot"><span>Sm0kBot &mdash; Confidential</span><span>8</span></div>
 </div>
 
-<!-- ===================== SLIDE 9: PLACEMENT ===================== -->
-<div class="section-divider"><span></span></div>
-<div class="slide slide-content">
+<!-- ═══════════ PAGE 9: PLACEMENTS ═══════════ -->
+<div class="page">
   <h2>Suggested Placements</h2>
-  <p class="subtitle">Strategic locations to maximize visibility, convenience, and sales</p>
-
-  <div class="two-col">
+  <div class="sub">Strategic locations to maximize visibility, convenience, and sales</div>
+  <div class="row">
     <div>
       <h3>Primary Locations</h3>
-      <div class="card" style="margin-top:16px">
-        <ul class="feature-list">
+      <div class="card" style="margin-top:8px">
+        <ul class="fl">
           <li><strong>Hotel Lobby / Check-in Area</strong> &mdash; First touchpoint for every guest. High visibility, 24/7 traffic.</li>
           <li><strong>Near the Observation Bar</strong> &mdash; Natural pairing. Cocktails + premium cigars = elevated experience.</li>
           <li><strong>Event Corridors</strong> &mdash; Capture demand during Dark Harbor, corporate events, weddings, and galas.</li>
@@ -1033,145 +460,96 @@
     </div>
     <div>
       <h3>Secondary Options</h3>
-      <div class="card" style="margin-top:16px">
-        <ul class="feature-list">
+      <div class="card" style="margin-top:8px">
+        <ul class="fl">
           <li><strong>Near Sir Winston's</strong> &mdash; Upscale dining guests are prime cigar buyers.</li>
           <li><strong>Outdoor Deck Access Points</strong> &mdash; Catch smokers where they're already headed.</li>
           <li><strong>Gift Shop Adjacent</strong> &mdash; Add tobacco to the shopping experience.</li>
         </ul>
       </div>
-      <p style="color:#888;font-size:13px;margin-top:16px;line-height:1.6">
-        We recommend placing the machine in the highest-traffic 21+ area to maximize visibility and sales. Expansion to additional locations can follow based on performance data.
-      </p>
+      <p style="color:#666;font-size:10px;margin-top:10px;line-height:1.5">We recommend placing the machine in the highest-traffic 21+ area. Expansion to additional locations can follow based on performance data.</p>
     </div>
   </div>
-
-  <div class="slide-footer">
-    <span>Sm0kBot &mdash; Confidential</span>
-    <span>9</span>
-  </div>
+  <div class="pg-foot"><span>Sm0kBot &mdash; Confidential</span><span>9</span></div>
 </div>
 
-<!-- ===================== SLIDE 10: EVENT SERVICES ===================== -->
-<div class="section-divider"><span></span></div>
-<div class="slide slide-content">
+<!-- ═══════════ PAGE 10: EVENT SERVICES ═══════════ -->
+<div class="page">
   <h2>Event &amp; Concierge Services</h2>
-  <p class="subtitle">Beyond the machine &mdash; a full-service cigar experience for your guests</p>
-
-  <div class="three-col" style="margin-bottom:40px">
-    <div class="card gold-border" style="text-align:center">
-      <div style="font-size:42px;margin-bottom:12px">&#x1F9D1;&#x200D;&#x1F373;</div>
+  <div class="sub">Beyond the machine &mdash; a full-service cigar experience for your guests</div>
+  <div class="row-3">
+    <div class="card gold" style="text-align:center">
+      <div style="font-size:26px;margin-bottom:8px">&#x1F9D1;&#x200D;&#x1F373;</div>
       <h4>Cigar Tenders</h4>
-      <p style="color:#ccc;font-size:14px;margin-top:8px;line-height:1.5">
-        Professional cigar service staff available for special events, corporate galas, weddings, and private parties. Expert pairing recommendations and tableside service.
-      </p>
-      <p style="color:#e8b923;font-size:13px;margin-top:12px;font-weight:500">Available upon request &bull; Pricing negotiable</p>
+      <p style="color:#ccc">Professional cigar service staff for special events, galas, weddings, and private parties. Expert pairing recommendations and tableside service.</p>
+      <p style="color:#e8b923;font-size:9px;margin-top:8px;font-weight:500">Available upon request &bull; Pricing negotiable</p>
     </div>
-    <div class="card gold-border" style="text-align:center">
-      <div style="font-size:42px;margin-bottom:12px">&#x1F3AD;</div>
+    <div class="card gold" style="text-align:center">
+      <div style="font-size:26px;margin-bottom:8px">&#x1F3AD;</div>
       <h4>Live Cigar Rollers</h4>
-      <p style="color:#ccc;font-size:14px;margin-top:8px;line-height:1.5">
-        Bring the art of cigar making to your event. Live rolling demonstrations create unforgettable guest experiences and elevate any occasion aboard the Queen Mary.
-      </p>
-      <p style="color:#e8b923;font-size:13px;margin-top:12px;font-weight:500">Available upon request &bull; Pricing negotiable</p>
+      <p style="color:#ccc">Bring the art of cigar making to your event. Live rolling demonstrations create unforgettable guest experiences aboard the Queen Mary.</p>
+      <p style="color:#e8b923;font-size:9px;margin-top:8px;font-weight:500">Available upon request &bull; Pricing negotiable</p>
     </div>
-    <div class="card gold-border" style="text-align:center">
-      <div style="font-size:42px;margin-bottom:12px">&#x1F389;</div>
+    <div class="card gold" style="text-align:center">
+      <div style="font-size:26px;margin-bottom:8px">&#x1F389;</div>
       <h4>Monthly Promotions</h4>
-      <p style="color:#ccc;font-size:14px;margin-top:8px;line-height:1.5">
-        Sm0kBot-hosted promotional events featuring featured cigar brands carried in the machine. Tastings, brand activations, and community engagement &mdash; driving foot traffic monthly.
-      </p>
-      <p style="color:#e8b923;font-size:13px;margin-top:12px;font-weight:500">Included &bull; Monthly programming</p>
+      <p style="color:#ccc">Sm0kBot-hosted events featuring cigar brands from the machine. Tastings, brand activations, and community engagement driving foot traffic.</p>
+      <p style="color:#e8b923;font-size:9px;margin-top:8px;font-weight:500">Included &bull; Monthly programming</p>
     </div>
   </div>
-
-  <div class="slide-footer">
-    <span>Sm0kBot &mdash; Confidential</span>
-    <span>10</span>
-  </div>
+  <div class="pg-foot"><span>Sm0kBot &mdash; Confidential</span><span>10</span></div>
 </div>
 
-<!-- ===================== SLIDE 11: ABOUT MIKE ===================== -->
-<div class="section-divider"><span></span></div>
-<div class="slide slide-content">
+<!-- ═══════════ PAGE 11: ABOUT MIKE ═══════════ -->
+<div class="page">
   <h2>About the Operator</h2>
-  <p class="subtitle">Two decades in cigars &mdash; from the lounge to the launchpad</p>
-
-  <div class="two-col">
+  <div class="sub">Two decades in cigars &mdash; from the lounge to the launchpad</div>
+  <div class="row">
     <div>
       <h3>Mike Gonzalez</h3>
-      <p style="color:#ccc;font-size:15px;line-height:1.8;margin-bottom:20px">
-        Mike Gonzalez brings over <strong style="color:#e8b923">20 years</strong> of personal cigar experience and more than a decade of professional industry expertise to Sm0kBot. A lifelong cigar enthusiast since 2003, Mike transitioned into the business side in 2013 and has since built an impressive track record in the premium cigar space.
+      <p style="color:#ccc;font-size:11.5px;line-height:1.6;margin-bottom:14px">
+        Mike Gonzalez brings over <strong style="color:#e8b923">20 years</strong> of personal cigar experience and more than a decade of professional industry expertise to Sm0kBot. A lifelong cigar enthusiast since 2003, Mike transitioned into the business side in 2013 and has since built an impressive track record.
       </p>
-      <ul class="feature-list">
+      <ul class="fl">
         <li>Created and launched his own cigar line</li>
-        <li>Successfully opened and operated at three different cigar lounges</li>
+        <li>Successfully opened and operated at three cigar lounges</li>
         <li>Deep relationships with premium cigar brands and distributors</li>
-        <li>Known in the cigar community as <strong style="color:#e8b923">Hollywood Mike G</strong></li>
+        <li>Known in the cigar community as Hollywood Mike G</li>
       </ul>
     </div>
     <div>
       <h3>Industry Presence</h3>
-      <div class="card" style="margin-top:16px">
-        <div style="margin-bottom:16px">
-          <p style="color:#e8b923;font-size:14px;font-weight:600;margin:0">20K+ social media followers</p>
-        </div>
-        <p style="color:#999;font-size:14px;line-height:1.6">
-          Active social media presence across Instagram, X, and other platforms &mdash; documenting the cigar lifestyle, industry events, and brand partnerships. A built-in promotional channel for the Queen Mary partnership.
-        </p>
+      <div class="card" style="margin-top:8px">
+        <p style="color:#e8b923;font-size:13px;font-weight:600;margin-bottom:10px">20K+ social media followers</p>
+        <p style="color:#aaa;font-size:11px;line-height:1.5">Active social media presence documenting the cigar lifestyle, industry events, and brand partnerships. A built-in promotional channel for the Queen Mary partnership.</p>
       </div>
     </div>
   </div>
-
-  <div class="slide-footer">
-    <span>Sm0kBot &mdash; Confidential</span>
-    <span>11</span>
-  </div>
+  <div class="pg-foot"><span>Sm0kBot &mdash; Confidential</span><span>11</span></div>
 </div>
 
-<!-- ===================== SLIDE 12: CTA ===================== -->
-<div class="section-divider"><span></span></div>
-<div class="slide slide-content slide-cta" id="contact">
-  <div class="cta-headline">Let's Bring Sm0kBot<br>to the Queen Mary</div>
-  <p class="cta-sub">
+<!-- ═══════════ PAGE 12: CTA ═══════════ -->
+<div class="page" style="text-align:center">
+  <div style="font-family:'Playfair Display',serif;font-size:32px;color:#e8b923;margin-bottom:10px">Let's Bring Sm0kBot<br>to the Queen Mary</div>
+  <p style="font-size:13px;color:#ccc;max-width:500px;margin:0 auto 28px;line-height:1.6">
     A zero-cost, zero-risk amenity that enhances the guest experience,
     retains on-board spending, and delivers full regulatory compliance &mdash; all handled for you.
   </p>
-
-  <div class="next-steps-row" style="display:flex;justify-content:center;gap:30px;margin-bottom:40px">
-    <div class="flow-step" style="width:180px">
-      <div class="step-num">Step 1</div>
-      <div class="step-title">Sign Agreement</div>
-      <div class="step-desc">2-year exclusive partnership with simple, clear terms</div>
-    </div>
-    <div class="flow-arrow" style="align-self:center">&rarr;</div>
-    <div class="flow-step" style="width:180px">
-      <div class="step-num">Step 2</div>
-      <div class="step-title">Site Walk</div>
-      <div class="step-desc">We visit and identify optimal placement locations</div>
-    </div>
-    <div class="flow-arrow" style="align-self:center">&rarr;</div>
-    <div class="flow-step" style="width:180px">
-      <div class="step-num">Step 3</div>
-      <div class="step-title">Go Live</div>
-      <div class="step-desc">Custom-wrapped machines installed and operational</div>
-    </div>
+  <div class="flow" style="margin-bottom:28px">
+    <div class="fs" style="width:150px"><div class="sn">Step 1</div><div class="st2">Sign Agreement</div><div class="sd">2-year exclusive partnership</div></div>
+    <div class="fa">&rarr;</div>
+    <div class="fs" style="width:150px"><div class="sn">Step 2</div><div class="st2">Site Walk</div><div class="sd">Identify optimal placement</div></div>
+    <div class="fa">&rarr;</div>
+    <div class="fs" style="width:150px"><div class="sn">Step 3</div><div class="st2">Go Live</div><div class="sd">Custom machine installed</div></div>
   </div>
-
-  <div class="contact-block">
-    <div class="contact-name">Mike Gonzalez</div>
-    <div class="contact-title">Sm0kBot &mdash; AI Smoke Shop</div>
-    <div class="contact-detail">&#x1F4DE; (310) 999-1902</div>
-    <div class="contact-detail">&#x1F4CD; 6285 East Spring Street #343, Long Beach, CA 90808</div>
+  <div class="cb">
+    <div class="cn">Mike Gonzalez</div>
+    <div class="ct">Sm0kBot &mdash; AI Smoke Shop</div>
+    <div class="cd">&#x1F4DE; (310) 999-1902</div>
+    <div class="cd">&#x1F4CD; 6285 East Spring Street #343, Long Beach, CA 90808</div>
   </div>
-
-  <div class="slide-footer">
-    <span>Sm0kBot &mdash; Confidential</span>
-    <span>12</span>
-  </div>
+  <div class="pg-foot"><span>Sm0kBot &mdash; Confidential</span><span>12</span></div>
 </div>
-
-<div style="height:60px"></div>
 
 </body>
 </html>
