@@ -11,83 +11,117 @@
 
   @media print {
     @page {
-      size: letter;
-      margin: 0.4in;
+      size: landscape;
+      margin: 0;
     }
 
     body {
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
-      background: #0a0a0a !important;
+      background: #0d1117 !important;
+      color: #d4d4d4 !important;
     }
 
     .print-bar, .nav-top, .section-divider { display: none !important; }
 
-    /* Each slide = one page */
+    /* === CORE: Each slide = one clean landscape page === */
     .slide {
       page-break-after: always;
       page-break-inside: avoid;
+      break-inside: avoid;
       min-height: 0;
-      padding: 40px 50px;
-      margin: 0 auto;
+      height: 100vh;
       max-width: 100%;
+      padding: 60px 80px;
+      margin: 0 auto;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: none !important;
+      border-radius: 0 !important;
     }
     .slide:last-of-type { page-break-after: avoid; }
 
-    /* Prevent cards, grids, and flow sections from splitting */
-    .card, .machine-card, .benefit-row, .flow-step, .highlight-box {
-      page-break-inside: avoid;
-      break-inside: avoid;
-    }
-    .two-col, .three-col, .compliance-flow, .spec-grid {
-      page-break-inside: avoid;
-      break-inside: avoid;
-    }
-    .stats-row {
+    /* === NEVER split these elements across pages === */
+    .card, .machine-card, .benefit-row, .flow-step, .highlight-box,
+    .two-col, .three-col, .compliance-flow, .spec-grid, .stats-row,
+    .sig-block, .contact-block {
       page-break-inside: avoid;
       break-inside: avoid;
     }
 
-    /* Tighten spacing for print */
-    .slide-content h2 { font-size: 28px; margin-bottom: 6px; }
-    .slide-content .subtitle { margin-bottom: 24px; font-size: 14px; }
-    .slide-content h3 { font-size: 17px; margin-bottom: 8px; }
-    .card { padding: 20px; }
-    .machine-card { padding: 24px 20px; }
-    .feature-list li { padding: 5px 0; padding-left: 24px; font-size: 13px; }
-    .two-col { gap: 24px; }
-    .three-col { gap: 18px; }
-    .benefit-row { padding: 10px 0; gap: 14px; }
-    .benefit-icon { width: 36px; height: 36px; font-size: 18px; }
+    /* Headings never orphaned from their content */
+    h2, h3, h4 {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    /* Paragraph orphan/widow control */
+    p { orphans: 3; widows: 3; }
+
+    /* === TYPOGRAPHY: Luxury print sizing === */
+    .slide-content h2 { font-size: 30px; margin-bottom: 6px; font-weight: 700; letter-spacing: 0.5px; }
+    .slide-content .subtitle { margin-bottom: 28px; font-size: 14px; color: #999; letter-spacing: 0.3px; }
+    .slide-content h3 { font-size: 17px; margin-bottom: 10px; }
+    .feature-list li { padding: 5px 0; padding-left: 24px; font-size: 12.5px; line-height: 1.6; color: #d4d4d4; }
+    .card p, .benefit-text p { color: #b0b0b0; }
+
+    /* === SPACING: Generous gutters, luxury whitespace === */
+    .card { padding: 22px; border-radius: 10px; }
+    .machine-card { padding: 28px 24px; }
+    .two-col { gap: 36px; }
+    .three-col { gap: 24px; }
+    .benefit-row { padding: 10px 0; gap: 16px; }
+    .benefit-icon { width: 36px; height: 36px; font-size: 18px; border-radius: 8px; }
     .benefit-text h4 { font-size: 14px; }
-    .benefit-text p { font-size: 12px; }
-    .stat .number { font-size: 36px; }
-    .stat .label { font-size: 11px; }
-    .spec-grid { gap: 8px; }
-    .spec-item { padding: 8px 12px; }
-    .spec-item .spec-value { font-size: 13px; }
-    .machine-img { max-width: 200px; }
-    .compliance-flow { gap: 12px; margin: 20px 0; }
-    .flow-step { padding: 16px 14px; width: 170px; }
+    .benefit-text p { font-size: 12px; line-height: 1.5; }
+
+    /* === STATS === */
+    .stat .number { font-size: 38px; }
+    .stat .label { font-size: 10px; letter-spacing: 1.5px; }
+
+    /* === MACHINE SPECS: Image prominent === */
+    .machine-img { max-width: 220px; margin-bottom: 14px; }
+    .spec-grid { gap: 8px; margin-top: 14px; }
+    .spec-item { padding: 8px 12px; border-radius: 6px; }
+    .spec-item .spec-label { font-size: 9px; letter-spacing: 1.2px; }
+    .spec-item .spec-value { font-size: 12.5px; }
+    .machine-card h3 { font-size: 22px; }
+    .machine-card .machine-type { font-size: 11px; letter-spacing: 2.5px; }
+    .rec-badge { font-size: 9px !important; padding: 3px 16px !important; }
+
+    /* === COMPLIANCE FLOW === */
+    .compliance-flow { gap: 14px; margin: 24px 0; }
+    .flow-step { padding: 18px 16px; width: 180px; }
+    .flow-step .step-num { font-size: 10px; }
     .flow-step .step-title { font-size: 14px; }
-    .flow-step .step-desc { font-size: 11px; }
-    .next-steps-row .flow-step { width: 160px; }
+    .flow-step .step-desc { font-size: 10.5px; }
+    .flow-arrow { font-size: 20px; }
 
-    /* Title slide tighter */
-    .slide-title { min-height: 0 !important; padding: 50px 50px; }
-    .slide-title h1 { font-size: 44px; }
-    .slide-title .venue-name { font-size: 30px; }
-    .slide-title .tagline { font-size: 18px; margin-bottom: 24px; }
-    .slide-title img { width: 280px !important; }
+    /* === TITLE SLIDE === */
+    .slide-title {
+      min-height: 0 !important;
+      padding: 60px 80px;
+      background: linear-gradient(135deg, #0d1117 0%, #1a1a2e 50%, #0d1117 100%) !important;
+    }
+    .slide-title h1 { font-size: 48px; }
+    .slide-title .venue-name { font-size: 32px; }
+    .slide-title .tagline { font-size: 18px; margin-bottom: 28px; }
+    .slide-title img { width: 300px !important; }
+    .slide-title .brand-badge { font-size: 11px; padding: 6px 24px; }
+    .slide-title .prepared-for { font-size: 12px; }
 
-    /* CTA slide */
-    .cta-headline { font-size: 32px !important; }
+    /* === CTA SLIDE === */
+    .cta-headline { font-size: 34px !important; }
     .cta-sub { font-size: 15px; margin-bottom: 30px !important; }
-    .contact-block { padding: 20px 36px; }
+    .contact-block { padding: 24px 40px; }
+    .contact-block .contact-name { font-size: 20px; }
+    .next-steps-row { gap: 20px !important; }
+    .next-steps-row .flow-step { width: 170px; }
 
-    /* Footer spacing */
-    .slide-footer { margin-top: 16px; padding-top: 10px; }
+    /* === FOOTER === */
+    .slide-footer { margin-top: auto; padding-top: 12px; font-size: 10px; }
   }
 
   body {
