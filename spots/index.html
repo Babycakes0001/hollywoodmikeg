@@ -16,11 +16,12 @@
   p { font-size:14px; color:#9a9a94; line-height:1.8; margin-bottom:10px; }
   strong { color:#f0ede8; font-weight:700; }
 
-  .label { font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#39ff14; margin-bottom:6px; }
-  .tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#39ff14; border:1px solid #39ff14; padding:3px 12px; margin-bottom:16px; }
+  .mono { font-family:'SF Mono','Fira Code','Consolas',monospace; }
+  .label { font-family:'SF Mono','Fira Code','Consolas',monospace; font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#39ff14; margin-bottom:6px; }
+  .tag { font-family:'SF Mono','Fira Code','Consolas',monospace; display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#39ff14; border:1px solid #39ff14; padding:3px 12px; margin-bottom:16px; }
 
   /* WP NAV BAR */
-  .wp-nav{position:sticky;top:0;z-index:9999;background:#0a0a0a;border-bottom:1px solid #2a3a2a;padding:10px 20px;display:flex;justify-content:center;gap:8px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .wp-nav{position:sticky;top:0;z-index:9999;background:#0a0a0a;border-bottom:1px solid #2a3a2a;padding:10px 20px;display:flex;justify-content:center;gap:8px;font-family:'SF Mono','Fira Code','Consolas',monospace;}
   .wp-nav a{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#39ff14;border:1px solid #2a3a2a;padding:6px 16px;border-radius:3px;text-decoration:none;transition:all 0.2s;}
   .wp-nav a:hover{border-color:#39ff14;background:#111a11;}
   .wp-nav a.active{background:#39ff14;color:#0a0a0a;border-color:#39ff14;}
@@ -81,6 +82,7 @@
   }
   .spot-logline {
     padding:10px 28px;
+    font-family:'SF Mono','Fira Code','Consolas',monospace;
     font-size:10px;
     font-weight:700;
     letter-spacing:0.15em;
@@ -106,14 +108,15 @@
   }
   .beat:last-child { margin-bottom:0; }
   .beat-time {
-    font-family:'Courier New',monospace;
+    font-family:'SF Mono','Fira Code','Consolas',monospace;
     font-size:11px;
     color:#39ff14;
     letter-spacing:0.05em;
     margin-bottom:4px;
   }
   .beat-direction {
-    font-size:13px;
+    font-family:'SF Mono','Fira Code','Consolas',monospace;
+    font-size:11px;
     font-style:italic;
     color:#555;
     margin-bottom:5px;
@@ -147,6 +150,7 @@
     color:#444;
     font-family:Georgia,serif;
   }
+  .page-footer { font-family:'SF Mono','Fira Code','Consolas',monospace; }
   .page-footer span { color:#39ff14; }
 </style>
 </head>
