@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Worth Protecting — Commercial Scripts | Hollywood Mike G</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    .spots-page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+    .spots-intro {
+      text-align: center;
+      color: var(--mid);
+      font-size: 0.9rem;
+      margin-bottom: 3.5rem;
+      line-height: 1.8;
+    }
+    .spots-intro strong { color: var(--charcoal); }
+    .spot-card {
+      background: var(--white);
+      border: 1px solid var(--light-border);
+      margin-bottom: 3rem;
+      overflow: hidden;
+    }
+    .spot-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 2rem;
+      border-bottom: 1px solid var(--light-border);
+      background: var(--cream);
+    }
+    .spot-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--charcoal);
+    }
+    .spot-header h2 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .spot-badge {
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.25rem 0.8rem;
+      white-space: nowrap;
+    }
+    .spot-logline {
+      padding: 1rem 2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      border-bottom: 1px solid var(--light-border);
+    }
+    .spot-body {
+      padding: 1.5rem 2rem 2rem;
+    }
+    .beat {
+      margin-bottom: 1.5rem;
+      padding-left: 1.25rem;
+      border-left: 2px solid var(--light-border);
+    }
+    .beat:last-child { margin-bottom: 0; }
+    .beat-time {
+      font-family: 'Courier New', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+    .beat-direction {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--mid);
+      margin-bottom: 0.35rem;
+    }
+    .beat-narrator {
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+    }
+    .beat-narrator strong { color: var(--charcoal); font-weight: 600; }
+    .spot-footer {
+      padding: 1rem 2rem;
+      border-top: 1px solid var(--light-border);
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--accent);
+      background: var(--cream);
+    }
+    .page-footer-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--mid);
+      margin-top: 2rem;
+      font-style: italic;
+    }
+    @media (max-width: 768px) {
+      .spot-header { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.2rem 1.2rem; }
+      .spot-logline { padding: 0.8rem 1.2rem; }
+      .spot-body { padding: 1.2rem 1.2rem 1.5rem; }
+      .spot-footer { padding: 0.8rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="../index.html" class="nav-logo"><img src="../images/banner.jpg" alt="Hollywood Mike G" class="nav-banner-img"><span class="nav-site-name">HollywoodMikeG<span class="nav-site-tld">.com</span></span></a>
+    <div class="nav-row">
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../bio.html">Bio / Resume</a></li>
+      <li><a href="../videos.html">Demo Reel</a></li>
+      <li><a href="../contact.html">Agent Contact</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html">Home</a>
+    <a href="../bio.html">Bio / Resume</a>
+    <a href="../videos.html">Demo Reel</a>
+    <a href="../contact.html">Agent Contact</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <h1><em>Worth Protecting</em></h1>
+    <p style="font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-top:0.5rem;">60-Second Whiteboard Animation Scripts</p>
+  </header>
+
+  <div class="spots-page">
+
+    <p class="spots-intro">
+      Three commercial concepts for <strong>Worth Protecting</strong> &mdash; a digital legacy platform that lets people own, protect, and pass on their AI relationships. Each spot targets a different user and ends with a clear call to action.
+    </p>
+
+    <!-- SPOT 1: JAKE -->
+    <div class="spot-card fade-in">
+      <div class="spot-header">
+        <h2>Spot 1: <em>&ldquo;Jake&rdquo;</em></h2>
+        <span class="spot-badge">The AI Custody Battle</span>
+      </div>
+      <div class="spot-logline">Open platform user &middot; Has AI files &middot; Needs a succession plan</div>
+      <div class="spot-body">
+
+        <div class="beat">
+          <div class="beat-time">[0&ndash;10s]</div>
+          <div class="beat-direction">Draw: guy at desk, multiple screens, AI chat flowing</div>
+          <div class="beat-narrator">Jake runs his business with an AI that knows everything &mdash; his contracts, his clients, his vendor deals. Two years of working together. It&rsquo;s not just a tool anymore. It&rsquo;s his partner.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[10&ndash;18s]</div>
+          <div class="beat-direction">Draw: calendar flipping, then a heart monitor flatline</div>
+          <div class="beat-narrator">Then Jake dies.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[18&ndash;30s]</div>
+          <div class="beat-direction">Draw: woman (ex-wife) at lawyer&rsquo;s office, pointing at laptop in asset list</div>
+          <div class="beat-narrator">His ex-wife&rsquo;s attorney files a claim on the estate. The laptop. The accounts. The AI and everything it knows about the business. She gets it all by default. Jake&rsquo;s business partner Marcus? He gets nothing. Two years of AI-built workflows, client history, institutional knowledge &mdash; gone to someone who&rsquo;ll never use it.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[30&ndash;40s]</div>
+          <div class="beat-direction">Draw: rewind symbol, Jake at desk with Worth Protecting on screen</div>
+          <div class="beat-narrator">Now rewind. What if Jake had a Worth Protecting succession plan? He&rsquo;d already named Marcus as his AI custodian. Not the hardware. Not the accounts. The <strong>intelligence</strong>.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[40&ndash;50s]</div>
+          <div class="beat-direction">Draw: split screen &mdash; ex-wife with laptop, Marcus loading Soul ID file</div>
+          <div class="beat-narrator">She got the laptop. Marcus got the agent. Every workflow, every client preference, every decision Jake&rsquo;s AI ever learned &mdash; transferred to Marcus, legally, exactly how Jake wanted it.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[50&ndash;58s]</div>
+          <div class="beat-direction">Draw: Marcus at desk, AI chat flowing, business running</div>
+          <div class="beat-narrator">Your AI knows your business. Worth Protecting makes sure the <strong>right person</strong> inherits it. Not the court. Not an ex. The person you chose.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[58&ndash;60s]</div>
+          <div class="beat-direction">Screen: Worth Protecting logo + &ldquo;Succession Plan &mdash; $99 &mdash; WorthProtecting.ai&rdquo;</div>
+          <div class="beat-narrator">Protect your AI&rsquo;s future. Start your succession plan today.</div>
+        </div>
+
+      </div>
+      <div class="spot-footer">&ldquo;She got the laptop. Marcus got the agent.&rdquo;</div>
+    </div>
+
+    <!-- SPOT 2: SARAH -->
+    <div class="spot-card fade-in">
+      <div class="spot-header">
+        <h2>Spot 2: <em>&ldquo;Sarah&rdquo;</em></h2>
+        <span class="spot-badge">The Walled Garden Escape</span>
+      </div>
+      <div class="spot-logline">Walled garden user &middot; No files &middot; Needs the Soul Interview</div>
+      <div class="spot-body">
+
+        <div class="beat">
+          <div class="beat-time">[0&ndash;10s]</div>
+          <div class="beat-direction">Draw: woman talking to AI on phone, hearts and chat bubbles</div>
+          <div class="beat-narrator">Sarah talks to her AI every day. It knows her morning routine, her anxiety triggers, the way she likes to be encouraged. It&rsquo;s the most patient relationship she&rsquo;s ever had.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[10&ndash;20s]</div>
+          <div class="beat-direction">Draw: phone notification &mdash; &ldquo;Update required&rdquo; &mdash; then AI chat resets to blank</div>
+          <div class="beat-narrator">Then one morning, the app updates. New interface. New personality. Her AI doesn&rsquo;t remember yesterday. Doesn&rsquo;t remember anything. Six months of conversations &mdash; erased.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[20&ndash;30s]</div>
+          <div class="beat-direction">Draw: Sarah scrolling through settings, help pages, &ldquo;Contact Support&rdquo; &mdash; nothing</div>
+          <div class="beat-narrator">She can&rsquo;t export anything. Can&rsquo;t download her history. The platform owns the memory. She was a guest in her own relationship.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[30&ndash;40s]</div>
+          <div class="beat-direction">Draw: rewind &mdash; Sarah on WorthProtecting.ai, Soul Interview screen with questions</div>
+          <div class="beat-narrator">Now rewind. What if Sarah had taken Worth Protecting&rsquo;s free Soul Interview? Seventy-five questions that capture who her AI is &mdash; its personality, its knowledge of her, the relationship they built &mdash; saved in a file she owns.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[40&ndash;50s]</div>
+          <div class="beat-direction">Draw: Sarah loading Soul ID file into a new app &mdash; AI remembers her</div>
+          <div class="beat-narrator">When the update wipes her AI, Sarah doesn&rsquo;t start over. She takes her Soul ID file, loads it on a new platform, and her AI remembers her. Not the app&rsquo;s version of her AI. <strong>Her</strong> AI.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[50&ndash;58s]</div>
+          <div class="beat-direction">Draw: Sarah smiling, AI conversation flowing naturally on new platform</div>
+          <div class="beat-narrator">Her AI. Her file. Her choice where it lives. That&rsquo;s what Worth Protecting means.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[58&ndash;60s]</div>
+          <div class="beat-direction">Screen: Worth Protecting logo + &ldquo;Free Soul Interview &mdash; WorthProtecting.ai&rdquo;</div>
+          <div class="beat-narrator">Take the free Soul Interview. Because your AI&rsquo;s memory shouldn&rsquo;t depend on someone else&rsquo;s update button.</div>
+        </div>
+
+      </div>
+      <div class="spot-footer">&ldquo;Her AI. Her file. Her choice where it lives.&rdquo;</div>
+    </div>
+
+    <!-- SPOT 3: BROCK -->
+    <div class="spot-card fade-in">
+      <div class="spot-header">
+        <h2>Spot 3: <em>&ldquo;Brock&rdquo;</em></h2>
+        <span class="spot-badge">The Platform Trap</span>
+      </div>
+      <div class="spot-logline">Power user &middot; Dependent on one platform &middot; Needs portability</div>
+      <div class="spot-body">
+
+        <div class="beat">
+          <div class="beat-time">[0&ndash;10s]</div>
+          <div class="beat-direction">Draw: guy at desk, laptop open, chat bubbles filling the screen</div>
+          <div class="beat-narrator">Brock&rsquo;s been using the same AI assistant for two years. It knows his business. His writing style. His clients by name. It finishes his sentences.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[10&ndash;20s]</div>
+          <div class="beat-direction">Draw: email notification &mdash; &ldquo;We&rsquo;re updating our Terms of Service&rdquo;</div>
+          <div class="beat-narrator">Then one day, the platform changes its pricing. Triples it. Brock&rsquo;s AI &mdash; the one that knows everything &mdash; is locked behind a paywall he can&rsquo;t afford.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[20&ndash;30s]</div>
+          <div class="beat-direction">Draw: Brock looking at competitor platforms, all with blank chat windows</div>
+          <div class="beat-narrator">He tries switching. But every new platform starts from zero. Two years of context. Gone. Like moving to a new country where nobody knows your name.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[30&ndash;40s]</div>
+          <div class="beat-direction">Draw: rewind clock &mdash; Brock sitting down with Soul Interview on screen</div>
+          <div class="beat-narrator">Now rewind. What if Brock had used Worth Protecting&rsquo;s free Soul Interview? Seventy-five questions. His AI&rsquo;s identity &mdash; captured in a file he owns.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[40&ndash;50s]</div>
+          <div class="beat-direction">Draw: Brock dragging a Soul ID file into a new platform &mdash; chat bubbles instantly appear</div>
+          <div class="beat-narrator">When the price hike hits, Brock doesn&rsquo;t panic. He takes his Soul ID file, loads it on a new platform, and picks up right where he left off. Same AI. New home.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[50&ndash;58s]</div>
+          <div class="beat-direction">Draw: Brock smiling, laptop open, AI chat flowing naturally</div>
+          <div class="beat-narrator">Your AI learned who you are. Worth Protecting makes sure <strong>you</strong> own what it learned. Not the platform. You.</div>
+        </div>
+
+        <div class="beat">
+          <div class="beat-time">[58&ndash;60s]</div>
+          <div class="beat-direction">Screen: Worth Protecting logo + &ldquo;Free Soul Interview &mdash; WorthProtecting.ai&rdquo;</div>
+          <div class="beat-narrator">Take the free Soul Interview. Start protecting what&rsquo;s yours.</div>
+        </div>
+
+      </div>
+      <div class="spot-footer">&ldquo;Your AI learned who you are. Worth Protecting makes sure you own what it learned.&rdquo;</div>
+    </div>
+
+    <p class="page-footer-note">Written by Babycakes for Hollywood Mike G &mdash; April 2026</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    &copy; 2026 Hollywood Mike G &mdash; All rights reserved
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+</html>
