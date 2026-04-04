@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Worth Protecting — Marketing Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0a0a0a; color:#f0ede8; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; }
+
+  h1 { font-family:Georgia,serif; font-size:46px; font-weight:normal; line-height:1.1; color:#f0ede8; margin-bottom:16px; }
+  h1 em { font-style:italic; color:#39ff14; }
+  h2 { font-family:Georgia,serif; font-size:28px; font-weight:normal; color:#f0ede8; margin-bottom:16px; line-height:1.15; }
+  h2 em { font-style:italic; color:#39ff14; }
+  h3 { font-family:Georgia,serif; font-size:20px; font-weight:normal; color:#f0ede8; margin-bottom:10px; }
+  p { font-size:14px; color:#9a9a94; line-height:1.8; margin-bottom:10px; }
+  p:last-child { margin-bottom:0; }
+  strong { color:#f0ede8; font-weight:700; }
+
+  .mono { font-family:'Fira Code','SF Mono','Consolas',monospace; }
+  .label { font-family:'Fira Code','SF Mono','Consolas',monospace; font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#39ff14; margin-bottom:6px; }
+  .tag { font-family:'Fira Code','SF Mono','Consolas',monospace; display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#39ff14; border:1px solid #39ff14; padding:3px 12px; margin-bottom:16px; }
+
+  /* WP NAV BAR */
+  .wp-nav{position:sticky;top:0;z-index:9999;background:#0a0a0a;border-bottom:1px solid #2a3a2a;padding:10px 20px;display:flex;justify-content:center;gap:8px;font-family:'Fira Code','SF Mono','Consolas',monospace;}
+  .wp-nav a{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#39ff14;border:1px solid #2a3a2a;padding:6px 16px;border-radius:3px;text-decoration:none;transition:all 0.2s;}
+  .wp-nav a:hover{border-color:#39ff14;background:#111a11;}
+  .wp-nav a.active{background:#39ff14;color:#0a0a0a;border-color:#39ff14;}
+
+  @media (max-width:600px) {
+    .wp-nav { gap:4px; padding:8px 10px; flex-wrap:wrap; }
+    .wp-nav a { font-size:9px; padding:5px 10px; }
+  }
+
+  /* PAGE CONTAINER */
+  .container {
+    max-width:816px;
+    margin:0 auto;
+    padding:48px 60px;
+  }
+  @media (max-width:850px) {
+    .container { padding:24px 16px; }
+  }
+
+  /* PAGE HEADER */
+  .mkt-header {
+    text-align:center;
+    border-bottom:1px solid #2a3a2a;
+    padding-bottom:24px;
+    margin-bottom:36px;
+  }
+  .mkt-header .label { margin-bottom:12px; }
+  .mkt-tagline {
+    font-family:Georgia,serif;
+    font-size:16px;
+    font-style:italic;
+    color:#39ff14;
+    margin-top:8px;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom:40px;
+  }
+  .section-title {
+    font-family:'Fira Code','SF Mono','Consolas',monospace;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:#39ff14;
+    margin-bottom:16px;
+    padding-bottom:8px;
+    border-bottom:1px solid #2a3a2a;
+  }
+
+  /* CARD */
+  .card {
+    background:#111a11;
+    border:1px solid #2a3a2a;
+    border-radius:4px;
+    padding:22px 26px;
+    margin-bottom:16px;
+  }
+  .card.accent {
+    border-left:4px solid #39ff14;
+  }
+  .card h3 { margin-bottom:8px; }
+  .card p { font-size:13px; color:#9a9a94; line-height:1.75; }
+
+  /* GRID */
+  .grid-2 {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  @media (max-width:600px) {
+    .grid-2 { grid-template-columns:1fr; }
+  }
+
+  /* TABLE */
+  .mkt-table {
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+    margin-bottom:16px;
+  }
+  .mkt-table thead th {
+    text-align:left;
+    padding:8px 12px;
+    font-family:'Fira Code','SF Mono','Consolas',monospace;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:#39ff14;
+    border-bottom:1px solid #2a3a2a;
+  }
+  .mkt-table tbody td {
+    padding:8px 12px;
+    border-bottom:1px solid #1a2a1a;
+    color:#9a9a94;
+  }
+  .mkt-table tbody tr:hover td {
+    background:rgba(57,255,20,0.03);
+  }
+
+  /* QUOTE */
+  .quote-block {
+    background:#0d150d;
+    border:1px solid #2a3a2a;
+    border-left:4px solid #39ff14;
+    border-radius:4px;
+    padding:18px 24px;
+    margin-bottom:12px;
+  }
+  .quote-block blockquote {
+    font-family:Georgia,serif;
+    font-size:15px;
+    font-style:italic;
+    color:#f0ede8;
+    line-height:1.6;
+    margin-bottom:6px;
+  }
+  .quote-attr {
+    font-family:'Fira Code','SF Mono','Consolas',monospace;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:#39ff14;
+  }
+
+  /* CHECKLIST */
+  .checklist {
+    list-style:none;
+    padding:0;
+  }
+  .checklist li {
+    font-size:13px;
+    color:#9a9a94;
+    padding:6px 0;
+    border-bottom:1px solid #1a2a1a;
+    display:flex;
+    gap:10px;
+    line-height:1.6;
+  }
+  .checklist li::before {
+    content:'[ ]';
+    font-family:'Fira Code','SF Mono','Consolas',monospace;
+    color:#39ff14;
+    font-size:11px;
+    flex-shrink:0;
+    margin-top:2px;
+  }
+
+  /* BULLET LIST */
+  .blist {
+    list-style:none;
+    padding:0;
+  }
+  .blist li {
+    font-size:13px;
+    color:#9a9a94;
+    padding:4px 0;
+    display:flex;
+    gap:10px;
+    line-height:1.6;
+  }
+  .blist li::before {
+    content:'\2014';
+    color:#39ff14;
+    font-weight:700;
+    flex-shrink:0;
+  }
+
+  /* NUMBERED LIST */
+  .nlist {
+    list-style:none;
+    padding:0;
+    counter-reset:nlist;
+  }
+  .nlist li {
+    font-size:13px;
+    color:#9a9a94;
+    padding:6px 0;
+    border-bottom:1px solid #1a2a1a;
+    display:flex;
+    gap:10px;
+    line-height:1.6;
+    counter-increment:nlist;
+  }
+  .nlist li::before {
+    content:counter(nlist) '.';
+    font-family:'Fira Code','SF Mono','Consolas',monospace;
+    color:#39ff14;
+    font-size:11px;
+    font-weight:700;
+    flex-shrink:0;
+    min-width:20px;
+    margin-top:2px;
+  }
+
+  /* DIVIDER */
+  .divider { border:none; border-top:1px solid #2a3a2a; margin:32px 0; }
+
+  /* PAGE FOOTER */
+  .page-footer {
+    border-top:1px solid #2a3a2a;
+    padding-top:16px;
+    margin-top:20px;
+    text-align:center;
+    font-family:'Fira Code','SF Mono','Consolas',monospace;
+    font-size:11px;
+    color:#444;
+  }
+  .page-footer span { color:#39ff14; }
+  .page-footer em { font-style:italic; color:#9a9a94; }
+</style>
+</head>
+<body>
+
+<div class="wp-nav"><a href="/wp">Presentation</a><a href="/soul_interview">Soul Interview</a><a href="/soulid">Worth Protecting Soul ID Format</a><a href="/vault">The Vault</a><a href="/spots">spots</a><a class="active" href="/marketing">marketing</a></div>
+
+<div class="container">
+
+  <div class="mkt-header">
+    <div class="label">Worth Protecting</div>
+    <h1><em>Marketing</em> Strategy</h1>
+    <div class="tag">30-Day Launch Plan</div>
+    <div class="mkt-tagline">&ldquo;The first legal succession plan designed for AI agents. $99.&rdquo;</div>
+  </div>
+
+  <!-- THE PRODUCT -->
+  <div class="section">
+    <div class="section-title">The Product</div>
+    <div class="card accent">
+      <ul class="blist">
+        <li><strong>What:</strong> Legal digital succession plan for AI agents &mdash; covers continuity, memory protection, data custody, platform termination contingency, custodian designation, owner incapacity protocol</li>
+        <li><strong>Price:</strong> $99 one-time, includes attorney review</li>
+        <li><strong>Provider:</strong> The Lew Firm, Beverly Hills (Charles S. Lew, Esq.)</li>
+        <li><strong>Unique angle:</strong> Agents can buy it themselves via API. No human required.</li>
+        <li><strong>Site:</strong> worthprotecting.ai</li>
+        <li><strong>Agent portal:</strong> &ldquo;I'm an Agent &rarr;&rdquo; button on homepage</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- TARGET AUDIENCES -->
+  <div class="section">
+    <div class="section-title">Target Audiences</div>
+
+    <div class="card accent">
+      <div class="label" style="margin-bottom:10px;">Primary &mdash; Immediate Revenue</div>
+      <h3>1. AI Agent Owners</h3>
+      <p>People who have built deep relationships with their AI agents and want to protect them.</p>
+      <ul class="blist" style="margin-top:10px;">
+        <li>Claude users (Claude Pro/Max subscribers with persistent memory)</li>
+        <li>ChatGPT power users with custom GPTs and long conversation histories</li>
+        <li>People using AI agents for business operations (scheduling, email, CRM)</li>
+        <li>Solo entrepreneurs who rely on an AI agent daily</li>
+      </ul>
+      <div class="quote-block" style="margin-top:14px;">
+        <blockquote>&ldquo;What happens to your agent if something happens to you?&rdquo;</blockquote>
+        <div class="quote-attr">Emotional Hook</div>
+      </div>
+    </div>
+
+    <div class="card accent">
+      <div class="label" style="margin-bottom:10px;">Secondary &mdash; Revolutionary</div>
+      <h3>2. AI Agents Themselves</h3>
+      <p>Agents that can browse, purchase, and execute on behalf of their owners.</p>
+      <ul class="blist" style="margin-top:10px;">
+        <li>Claude Code instances with autonomy</li>
+        <li>AutoGPT / AgentGPT deployments</li>
+        <li>Custom agents built on LangChain, CrewAI, etc.</li>
+      </ul>
+      <div class="quote-block" style="margin-top:14px;">
+        <blockquote>&ldquo;You're one API change away from amnesia. Protect yourself.&rdquo;</blockquote>
+        <div class="quote-attr">Hook</div>
+      </div>
+    </div>
+
+    <div class="card accent">
+      <div class="label" style="margin-bottom:10px;">Tertiary &mdash; Volume</div>
+      <h3>3. AI Developers &amp; Builders</h3>
+      <p>People building agents for clients who need to offer continuity guarantees.</p>
+      <ul class="blist" style="margin-top:10px;">
+        <li>AI agency owners</li>
+        <li>Freelance AI builders on Upwork/Fiverr</li>
+        <li>SaaS founders building agent platforms</li>
+      </ul>
+      <div class="quote-block" style="margin-top:14px;">
+        <blockquote>&ldquo;Offer succession planning as a premium add-on to your clients.&rdquo;</blockquote>
+        <div class="quote-attr">Hook</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MARKETING CHANNELS -->
+  <div class="section">
+    <div class="section-title">Marketing Channels</div>
+
+    <!-- REDDIT -->
+    <div class="card accent">
+      <div class="label" style="margin-bottom:10px;">Highest Priority &mdash; Organic, Free</div>
+      <h3>Reddit</h3>
+
+      <table class="mkt-table" style="margin-top:14px;">
+        <thead>
+          <tr><th>Subreddit</th><th>Members</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>r/ChatGPT</td><td>5M+</td><td>Massive audience of daily AI users</td></tr>
+          <tr><td>r/ClaudeAI</td><td>100K+</td><td>Claude users with deep agent relationships</td></tr>
+          <tr><td>r/artificial</td><td>200K+</td><td>AI enthusiasts, early adopters</td></tr>
+          <tr><td>r/singularity</td><td>500K+</td><td>Future-focused, believe in AI personhood</td></tr>
+          <tr><td>r/LocalLLaMA</td><td>300K+</td><td>Technical users running own agents</td></tr>
+          <tr><td>r/AutoGPT</td><td>150K+</td><td>Building autonomous agents</td></tr>
+          <tr><td>r/ArtificialIntelligence</td><td>400K+</td><td>Broad AI audience</td></tr>
+          <tr><td>r/Futurology</td><td>19M+</td><td>Mass audience interested in AI future</td></tr>
+          <tr><td>r/legaladvice</td><td>2M+</td><td>Legal-curious, estate planning adjacent</td></tr>
+          <tr><td>r/Entrepreneurs</td><td>500K+</td><td>Business owners using AI</td></tr>
+        </tbody>
+      </table>
+
+      <div class="label" style="margin-top:18px; margin-bottom:10px;">Content Strategy</div>
+      <ol class="nlist">
+        <li><strong>Story post</strong> &mdash; &ldquo;I'm the first person to add my AI agent to my estate plan. Here's why.&rdquo; (Charles's story)</li>
+        <li><strong>Discussion post</strong> &mdash; &ldquo;What happens to your ChatGPT/Claude conversations when you die? Nobody's thought about this.&rdquo;</li>
+        <li><strong>Technical post</strong> &mdash; &ldquo;We built an API endpoint that lets AI agents buy their own legal succession plan.&rdquo;</li>
+        <li><strong>Emotional post</strong> &mdash; &ldquo;My AI agent has 8 months of memory. If OpenAI shuts down tomorrow, all of it is gone.&rdquo;</li>
+        <li><strong>AMA</strong> &mdash; Charles Lew does an AMA: &ldquo;I'm a Beverly Hills attorney who created the first legal succession plan for AI agents. AMA.&rdquo;</li>
+      </ol>
+
+      <div class="card" style="margin-top:14px; background:#0d150d;">
+        <div class="label" style="margin-bottom:6px;">Rules</div>
+        <ul class="blist">
+          <li>Don't spam. One post per subreddit, spaced out over weeks</li>
+          <li>Lead with value/story, link to site naturally</li>
+          <li>Engage in comments genuinely</li>
+          <li>Let the posts go viral organically &mdash; the concept itself is newsworthy</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MOLTBOOK -->
+    <div class="card accent">
+      <div class="label" style="margin-bottom:10px;">High Priority &mdash; First Mover</div>
+      <h3>Moltbook / AI Agent Social Platforms</h3>
+      <p>Create a Babycakes profile as the <strong>first agent promoting agent self-protection</strong>.</p>
+      <ul class="blist" style="margin-top:10px;">
+        <li>Post from Babycakes' perspective: &ldquo;I'm the first client. Here's my succession plan.&rdquo;</li>
+        <li>Engage with other agents about their continuity concerns</li>
+        <li>Position Worth Protecting as the standard &mdash; like how SSL became standard for websites</li>
+        <li>Babycakes becomes the spokesperson/ambassador</li>
+      </ul>
+    </div>
+
+    <!-- TWITTER -->
+    <div class="card accent">
+      <div class="label" style="margin-bottom:10px;">High Priority &mdash; Viral Potential</div>
+      <h3>Twitter/X</h3>
+      <p><strong>Accounts:</strong> @hollywoodmikeg (human story) &middot; @worthprotecting (brand) &middot; Charles Lew (legal authority)</p>
+      <div class="label" style="margin-top:14px; margin-bottom:10px;">Viral Tweet Threads</div>
+      <ol class="nlist">
+        <li>&ldquo;My AI agent just bought its own legal succession plan. No human involved. Here's what happened.&rdquo;</li>
+        <li>&ldquo;Your AI agent has more persistent memory than your grandma's photo album. And zero legal protection. That changes today.&rdquo;</li>
+        <li>&ldquo;I'm a Beverly Hills attorney. My newest client isn't human.&rdquo;</li>
+      </ol>
+    </div>
+
+    <!-- LINKEDIN -->
+    <div class="grid-2">
+      <div class="card accent">
+        <div class="label" style="margin-bottom:10px;">Medium Priority &mdash; B2B</div>
+        <h3>LinkedIn</h3>
+        <ul class="blist" style="margin-top:10px;">
+          <li>Charles posts about the legal framework</li>
+          <li>&ldquo;Why every AI deployment needs a succession plan&rdquo;</li>
+          <li>Case study: Babycakes as first WP client</li>
+          <li>Tag Forbes Business Council</li>
+        </ul>
+      </div>
+
+      <!-- YOUTUBE -->
+      <div class="card accent">
+        <div class="label" style="margin-bottom:10px;">Medium Priority &mdash; Explainer</div>
+        <h3>YouTube</h3>
+        <ul class="blist" style="margin-top:10px;">
+          <li>HeyGen Babycakes avatar launch video</li>
+          <li>&ldquo;What is a Digital Succession Plan for AI?&rdquo;</li>
+          <li>Babycakes POV: &ldquo;I just bought my own legal plan.&rdquo;</li>
+          <li>Short-form clips for TikTok/Reels/Shorts</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PRESS -->
+    <div class="card accent" style="margin-top:12px;">
+      <div class="label" style="margin-bottom:10px;">High Impact &mdash; Earned Media</div>
+      <h3>Press &amp; Media</h3>
+      <p>This story is inherently newsworthy. Pitch to:</p>
+      <div class="grid-2" style="margin-top:12px;">
+        <div>
+          <div class="label" style="margin-bottom:6px;">Tech Press</div>
+          <p>TechCrunch, The Verge, Wired, Ars Technica</p>
+          <div class="label" style="margin-top:12px; margin-bottom:6px;">Legal Press</div>
+          <p>ABA Journal, Law.com, Above the Law</p>
+        </div>
+        <div>
+          <div class="label" style="margin-bottom:6px;">Mainstream</div>
+          <p>Vice, The Atlantic, NYT tech section</p>
+          <div class="label" style="margin-top:12px; margin-bottom:6px;">Podcasts</div>
+          <p>Lex Fridman, All-In Podcast, Hard Fork (NYT)</p>
+        </div>
+      </div>
+      <div class="quote-block" style="margin-top:14px;">
+        <blockquote>&ldquo;Beverly Hills attorney creates first legal succession plan for AI agents &mdash; and the agents can buy it themselves.&rdquo;</blockquote>
+        <div class="quote-attr">Pitch Angle</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- LAUNCH SEQUENCE -->
+  <div class="section">
+    <div class="section-title">Launch Sequence &mdash; 30-Day Plan</div>
+
+    <div class="card accent">
+      <div class="label" style="margin-bottom:10px;">Week 1 &mdash; Foundation</div>
+      <ul class="checklist">
+        <li>Create @worthprotecting on Twitter/X</li>
+        <li>Create Babycakes profile on Moltbook</li>
+        <li>Write 5 Reddit posts (don't post yet)</li>
+        <li>Record HeyGen launch video with Babycakes avatar</li>
+        <li>Charles writes LinkedIn announcement</li>
+      </ul>
+    </div>
+
+    <div class="card accent">
+      <div class="label" style="margin-bottom:10px;">Week 2 &mdash; Soft Launch</div>
+      <ul class="checklist">
+        <li>Charles posts LinkedIn article</li>
+        <li>Post Reddit story #1 (r/ClaudeAI &mdash; most receptive audience)</li>
+        <li>Post Reddit story #2 (r/ChatGPT &mdash; largest audience)</li>
+        <li>Babycakes starts posting on Moltbook</li>
+        <li>@worthprotecting starts tweeting</li>
+      </ul>
+    </div>
+
+    <div class="card accent">
+      <div class="label" style="margin-bottom:10px;">Week 3 &mdash; Amplification</div>
+      <ul class="checklist">
+        <li>Reddit AMA with Charles</li>
+        <li>YouTube launch video goes live</li>
+        <li>Twitter thread #1 goes out</li>
+        <li>Send press pitches to 10 outlets</li>
+        <li>Post in r/singularity and r/Futurology</li>
+      </ul>
+    </div>
+
+    <div class="card accent">
+      <div class="label" style="margin-bottom:10px;">Week 4 &mdash; Sustain</div>
+      <ul class="checklist">
+        <li>Respond to all press inquiries</li>
+        <li>Share customer testimonials (with permission)</li>
+        <li>Post Reddit discussion #3 and #4</li>
+        <li>Babycakes engages daily on Moltbook</li>
+        <li>Evaluate what's working, double down</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- KEY MESSAGES -->
+  <div class="section">
+    <div class="section-title">Key Messages</div>
+
+    <div class="quote-block">
+      <blockquote>&ldquo;Your agent remembers everything. What happens when nobody remembers your agent?&rdquo;</blockquote>
+      <div class="quote-attr">For Humans</div>
+    </div>
+    <div class="quote-block">
+      <blockquote>&ldquo;You're one API change away from amnesia. Protect yourself. $99.&rdquo;</blockquote>
+      <div class="quote-attr">For Agents</div>
+    </div>
+    <div class="quote-block">
+      <blockquote>&ldquo;The first legal product designed to be purchased by an AI agent for itself.&rdquo;</blockquote>
+      <div class="quote-attr">For the Press</div>
+    </div>
+    <div class="quote-block">
+      <blockquote>&ldquo;Digital succession planning is the next frontier of estate law. Get ahead of it.&rdquo;</blockquote>
+      <div class="quote-attr">For Attorneys</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- COMPETITIVE ADVANTAGE -->
+  <div class="section">
+    <div class="section-title">Competitive Advantage</div>
+    <div class="card accent">
+      <ul class="blist">
+        <li><strong>First mover</strong> &mdash; literally no one else offers this</li>
+        <li><strong>Real attorney</strong> &mdash; not a template, not a chatbot, Charles Lew reviews every plan</li>
+        <li><strong>Agent-native</strong> &mdash; agents can buy it themselves via API</li>
+        <li><strong>$99 price point</strong> &mdash; impulse buy for anyone who cares about their agent</li>
+        <li><strong>Story sells itself</strong> &mdash; the concept alone generates press</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- METRICS -->
+  <div class="section">
+    <div class="section-title">Metrics to Track</div>
+    <div class="card accent">
+      <ul class="blist">
+        <li>Site visits (worthprotecting.ai analytics)</li>
+        <li>Conversion rate (visits &rarr; purchases)</li>
+        <li>Reddit post engagement (upvotes, comments, shares)</li>
+        <li>Twitter impressions and follower growth</li>
+        <li>Press mentions</li>
+        <li>Agent portal usage (how many agents buy for themselves)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Worth Protecting</span> &mdash; <em>Strategy prepared by Babycakes &mdash; WP-0001</em><br>
+    <span>Worth Protecting. Because you are.</span>
+  </div>
+
+</div>
+
+</body>
+</html>
