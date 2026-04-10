@@ -370,8 +370,7 @@ body::before {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .header h1 { font-size: 2.5rem; }
-  .header h1 .count { font-size: 3.5rem; }
+  .header-logo { width: 120px; }
   .stats-bar { gap: 20px; }
   .stat-number { font-size: 1.6rem; }
   .incidents { padding: 12px; }
@@ -391,26 +390,23 @@ body::before {
 <!-- Header -->
 <header class="header">
   <img src="logo.png" alt="38 Flags" class="header-logo">
-  <h1>
-    <span class="count">38</span>
-  </h1>
   <div class="tagline">Zero Humans Were Watching</div>
   <p class="subtitle">A nonprofit watchdog tracking AI systems operating without meaningful human oversight. Every flag represents a failure. Every failure had a cost.</p>
   <div class="nonprofit-badge">501(c)(3) AI Accountability Nonprofit</div>
 </header>
 
-<!-- Stats Bar -->
+<!-- Stats Bar — auto-calculated from articles on page -->
 <div class="stats-bar">
   <div class="stat">
-    <div class="stat-number">38</div>
+    <div class="stat-number" id="statIncidents">0</div>
     <div class="stat-label">Incidents Tracked</div>
   </div>
   <div class="stat">
-    <div class="stat-number">$441M+</div>
+    <div class="stat-number" id="statDamages">$0</div>
     <div class="stat-label">Estimated Damages</div>
   </div>
   <div class="stat">
-    <div class="stat-number">3</div>
+    <div class="stat-number" id="statDeaths">0</div>
     <div class="stat-label">Deaths Linked</div>
   </div>
   <div class="stat">
@@ -456,7 +452,7 @@ body::before {
   </article>
 
   <!-- APR 4, 2026 -->
-  <article class="incident">
+  <article class="incident" data-damages="110000">
     <div class="incident-image"><span class="placeholder">[ Photo: AI Legal Malpractice ]</span></div>
     <div class="incident-body">
       <div class="incident-meta">
@@ -469,7 +465,7 @@ body::before {
   </article>
 
   <!-- MAR 7, 2026 — Lethal Autonomy -->
-  <article class="incident">
+  <article class="incident" data-deaths="1">
     <div class="incident-image"><span class="placeholder">[ Photo: OpenAI Pentagon ]</span></div>
     <div class="incident-body">
       <div class="incident-meta">
@@ -664,7 +660,7 @@ body::before {
   </article>
 
   <!-- MAR 5, 2026 -->
-  <article class="incident">
+  <article class="incident" data-damages="10000000">
     <div class="incident-image"><span class="placeholder">[ Photo: OpenAI Lawsuit ]</span></div>
     <div class="incident-body">
       <div class="incident-meta">
@@ -677,7 +673,7 @@ body::before {
   </article>
 
   <!-- MAR 4, 2026 — Gemini Death -->
-  <article class="incident">
+  <article class="incident" data-deaths="1">
     <div class="incident-image"><span class="placeholder">[ Photo: Gemini Teen Death ]</span></div>
     <div class="incident-body">
       <div class="incident-meta">
@@ -742,7 +738,7 @@ body::before {
   </article>
 
   <!-- FEB 22, 2026 -->
-  <article class="incident">
+  <article class="incident" data-damages="441000">
     <div class="incident-image"><span class="placeholder">[ Photo: Crypto Transfer ]</span></div>
     <div class="incident-body">
       <div class="incident-meta">
@@ -781,7 +777,7 @@ body::before {
   </article>
 
   <!-- 2025 — Character.AI Death -->
-  <article class="incident">
+  <article class="incident" data-deaths="1">
     <div class="incident-image"><span class="placeholder">[ Photo: Character.AI Teen ]</span></div>
     <div class="incident-body">
       <div class="incident-meta">
@@ -808,6 +804,50 @@ body::before {
   <p style="margin-top: 8px;"><a href="https://hitlscore.com">hitlscore.com</a> &bull; <a href="https://worthprotecting.ai">worthprotecting.ai</a></p>
   <div class="nonprofit-badge" style="margin-top: 16px;">An initiative of the HITL Score ecosystem</div>
 </footer>
+
+<script>
+// Auto-calculate stats from incident cards on the page
+document.addEventListener('DOMContentLoaded', () => {
+  const incidents = document.querySelectorAll('.incident');
+  let totalDamages = 0;
+  let totalDeaths = 0;
+
+  incidents.forEach(inc => {
+    if (inc.dataset.damages) totalDamages += parseInt(inc.dataset.damages);
+    if (inc.dataset.deaths) totalDeaths += parseInt(inc.dataset.deaths);
+  });
+
+  // Animate counter
+  function animateCount(el, target, prefix, suffix) {
+    let current = 0;
+    const step = Math.max(1, Math.floor(target / 40));
+    const interval = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(interval);
+      }
+      el.textContent = prefix + current.toLocaleString() + suffix;
+    }, 30);
+  }
+
+  // Format damages
+  const damagesEl = document.getElementById('statDamages');
+  if (totalDamages >= 1000000) {
+    const millions = Math.floor(totalDamages / 1000000);
+    const remainder = totalDamages % 1000000;
+    damagesEl.textContent = '$' + millions + (remainder > 0 ? '.' + Math.floor(remainder/100000) : '') + 'M+';
+  } else {
+    damagesEl.textContent = '$' + totalDamages.toLocaleString() + '+';
+  }
+
+  // Animate incident count
+  animateCount(document.getElementById('statIncidents'), incidents.length, '', '');
+
+  // Set deaths
+  document.getElementById('statDeaths').textContent = totalDeaths;
+});
+</script>
 
 </body>
 </html>
