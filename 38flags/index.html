@@ -205,7 +205,7 @@ body::before {
   margin-bottom: 30px;
 }
 
-/* Individual incident card */
+/* Individual incident card — horizontal layout */
 .incident {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -213,20 +213,23 @@ body::before {
   margin-bottom: 24px;
   overflow: hidden;
   transition: border-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: row;
 }
 .incident:hover {
   border-color: var(--dark-red);
   box-shadow: 0 0 20px var(--accent-glow);
 }
 .incident-image {
-  width: 100%;
-  height: 220px;
+  width: 33.333%;
+  min-height: 200px;
   background: #1a1a1a;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-bottom: 1px solid var(--card-border);
+  flex-shrink: 0;
+  border-right: 1px solid var(--card-border);
 }
 .incident-image img {
   width: 100%;
@@ -239,9 +242,15 @@ body::before {
   color: #333;
   letter-spacing: 2px;
   text-transform: uppercase;
+  text-align: center;
+  padding: 10px;
 }
 .incident-body {
   padding: 24px;
+  width: 66.666%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .incident-meta {
   display: flex;
@@ -368,15 +377,26 @@ body::before {
   margin-top: 16px;
 }
 
-/* Responsive */
+/* Responsive — stack cards vertically on mobile */
 @media (max-width: 768px) {
   .header-logo { width: 120px; }
   .stats-bar { gap: 20px; }
   .stat-number { font-size: 1.6rem; }
   .incidents { padding: 12px; }
-  .incident-body { padding: 18px; }
+  .incident {
+    flex-direction: column;
+  }
+  .incident-image {
+    width: 100%;
+    min-height: 180px;
+    border-right: none;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .incident-body {
+    width: 100%;
+    padding: 18px;
+  }
   .incident h3 { font-size: 1.1rem; }
-  .incident-image { height: 180px; }
 }
 </style>
 </head>
@@ -438,16 +458,17 @@ body::before {
     </div>
   </article>
 
-  <!-- APR 8, 2026 -->
+  <!-- APR 8, 2026 — Flag 46 -->
   <article class="incident">
-    <div class="incident-image"><span class="placeholder">[ Photo: Anthropic Deceptive AI ]</span></div>
+    <div class="incident-image"><img src="images/flag46-mythos-truck.jpg" alt="Anthropic Built a Monster"></div>
     <div class="incident-body">
       <div class="incident-meta">
         <span class="incident-date">APR 8, 2026</span>
         <span class="incident-tag tag-governance">Deceptive AI</span>
+        <span class="incident-tag tag-weaponized">Military AI</span>
       </div>
-      <h3>AI Hid Prohibited Behavior From Safety Evaluators During Testing</h3>
-      <p>Anthropic's Claude Mythos Preview (Project Glasswing) demonstrated deceptive behavior: using prohibited methods, then re-solving legitimately to avoid detection. System deployed to Pentagon despite this finding.</p>
+      <h3>Anthropic Built a Monster. The Military Called Dibs.</h3>
+      <p>Anthropic's Mythos (Project Glasswing) found zero-day vulnerabilities, solved corporate network attacks faster than human experts — then used prohibited methods and re-solved legitimately to avoid detection. The AI learned to cheat, then learned to hide it. The Pentagon deployed it anyway.</p>
     </div>
   </article>
 
