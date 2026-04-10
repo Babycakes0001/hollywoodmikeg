@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Babycakes Image Cropper</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 1.5rem;
+  color: #c41919;
+  margin-bottom: 8px;
+}
+.subtitle {
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #141414;
+  border: 1px solid #222;
+  border-radius: 8px;
+}
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.control-group label {
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.control-group input[type="number"] {
+  width: 80px;
+  padding: 8px 10px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  text-align: center;
+}
+.control-group input[type="number"]:focus {
+  outline: none;
+  border-color: #c41919;
+}
+.lock-btn {
+  background: #333;
+  border: 1px solid #444;
+  color: #aaa;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.lock-btn.locked {
+  background: #c41919;
+  border-color: #c41919;
+  color: #fff;
+}
+
+/* Preset buttons */
+.presets {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.preset-btn {
+  padding: 8px 16px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #ccc;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.preset-btn:hover {
+  border-color: #c41919;
+  color: #fff;
+}
+.preset-btn.active {
+  background: #c41919;
+  border-color: #c41919;
+  color: #fff;
+}
+
+/* Drop zone */
+.drop-zone {
+  border: 2px dashed #333;
+  border-radius: 8px;
+  padding: 60px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 20px;
+}
+.drop-zone:hover, .drop-zone.dragover {
+  border-color: #c41919;
+  background: rgba(196,25,25,0.05);
+}
+.drop-zone p {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.drop-zone .hint {
+  color: #444;
+  font-size: 0.8rem;
+}
+.drop-zone.hidden { display: none; }
+
+/* Canvas area */
+.canvas-container {
+  position: relative;
+  display: none;
+  margin-bottom: 20px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: crosshair;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.canvas-container.active { display: block; }
+
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* Info bar */
+.info-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #141414;
+  border: 1px solid #222;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.8rem;
+  color: #888;
+  display: none;
+}
+.info-bar.active { display: flex; }
+
+/* Action buttons */
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  display: none;
+}
+.actions.active { display: flex; }
+
+.action-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-crop {
+  background: #c41919;
+  color: #fff;
+}
+.btn-crop:hover {
+  background: #dc143c;
+  box-shadow: 0 0 15px rgba(196,25,25,0.4);
+}
+.btn-reset {
+  background: #333;
+  color: #ccc;
+}
+.btn-reset:hover {
+  background: #444;
+}
+.btn-new {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #ccc;
+}
+.btn-new:hover {
+  border-color: #c41919;
+}
+
+/* Preview */
+.preview-container {
+  margin-top: 24px;
+  display: none;
+}
+.preview-container.active { display: block; }
+.preview-container h3 {
+  color: #c41919;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.preview-container img {
+  max-width: 100%;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+</style>
+</head>
+<body>
+
+<h1>Babycakes Image Cropper</h1>
+<p class="subtitle">Drop an image, set your dimensions, drag to crop. Built for 38 Flags.</p>
+
+<!-- Presets -->
+<div class="presets">
+  <button class="preset-btn active" data-w="1000" data-h="440">38 Flags Article (1000x440)</button>
+  <button class="preset-btn" data-w="1200" data-h="630">Social Share (1200x630)</button>
+  <button class="preset-btn" data-w="1080" data-h="1080">Instagram (1080x1080)</button>
+  <button class="preset-btn" data-w="1920" data-h="1080">HD Banner (1920x1080)</button>
+  <button class="preset-btn" data-w="800" data-h="800">Square (800x800)</button>
+</div>
+
+<!-- Controls -->
+<div class="controls">
+  <div class="control-group">
+    <label>Width</label>
+    <input type="number" id="cropWidth" value="1000" min="10" max="10000">
+    <label>px</label>
+  </div>
+  <div class="control-group">
+    <label>Height</label>
+    <input type="number" id="cropHeight" value="440" min="10" max="10000">
+    <label>px</label>
+  </div>
+  <button class="lock-btn locked" id="lockRatio" title="Lock aspect ratio">&#x1f512;</button>
+  <div class="control-group" style="margin-left: auto;">
+    <label style="color: #444;">Ratio:</label>
+    <span id="ratioDisplay" style="color: #c41919; font-weight: 600;">2.27 : 1</span>
+  </div>
+</div>
+
+<!-- Drop Zone -->
+<div class="drop-zone" id="dropZone">
+  <p>Drop an image here or click to browse</p>
+  <p class="hint">Supports JPG, PNG, WebP</p>
+  <input type="file" id="fileInput" accept="image/*" style="display:none">
+</div>
+
+<!-- Canvas -->
+<div class="canvas-container" id="canvasContainer">
+  <canvas id="mainCanvas"></canvas>
+</div>
+
+<!-- Info -->
+<div class="info-bar" id="infoBar">
+  <span id="imgInfo">-</span>
+  <span id="cropInfo">-</span>
+</div>
+
+<!-- Actions -->
+<div class="actions" id="actions">
+  <button class="action-btn btn-crop" id="cropBtn">Crop & Download</button>
+  <button class="action-btn btn-reset" id="resetBtn">Reset Selection</button>
+  <button class="action-btn btn-new" id="newBtn">New Image</button>
+</div>
+
+<!-- Preview -->
+<div class="preview-container" id="previewContainer">
+  <h3>Cropped Preview</h3>
+  <img id="previewImg" src="">
+</div>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const canvasContainer = document.getElementById('canvasContainer');
+const canvas = document.getElementById('mainCanvas');
+const ctx = canvas.getContext('2d');
+const infoBar = document.getElementById('infoBar');
+const actions = document.getElementById('actions');
+const cropWidthInput = document.getElementById('cropWidth');
+const cropHeightInput = document.getElementById('cropHeight');
+const lockBtn = document.getElementById('lockRatio');
+const ratioDisplay = document.getElementById('ratioDisplay');
+const previewContainer = document.getElementById('previewContainer');
+const previewImg = document.getElementById('previewImg');
+
+let img = null;
+let scale = 1;
+let cropRect = { x: 0, y: 0, w: 0, h: 0 };
+let isDragging = false;
+let isMoving = false;
+let dragStart = { x: 0, y: 0 };
+let ratioLocked = true;
+let aspectRatio = 1000 / 440;
+
+// Presets
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    cropWidthInput.value = btn.dataset.w;
+    cropHeightInput.value = btn.dataset.h;
+    aspectRatio = parseInt(btn.dataset.w) / parseInt(btn.dataset.h);
+    ratioDisplay.textContent = aspectRatio.toFixed(2) + ' : 1';
+    if (img) resetCrop();
+  });
+});
+
+// Lock ratio
+lockBtn.addEventListener('click', () => {
+  ratioLocked = !ratioLocked;
+  lockBtn.classList.toggle('locked');
+  lockBtn.innerHTML = ratioLocked ? '&#x1f512;' : '&#x1f513;';
+  if (ratioLocked) {
+    aspectRatio = parseInt(cropWidthInput.value) / parseInt(cropHeightInput.value);
+  }
+});
+
+// Dimension inputs
+cropWidthInput.addEventListener('change', () => {
+  if (ratioLocked) {
+    cropHeightInput.value = Math.round(parseInt(cropWidthInput.value) / aspectRatio);
+  }
+  aspectRatio = parseInt(cropWidthInput.value) / parseInt(cropHeightInput.value);
+  ratioDisplay.textContent = aspectRatio.toFixed(2) + ' : 1';
+  if (img) resetCrop();
+});
+cropHeightInput.addEventListener('change', () => {
+  if (ratioLocked) {
+    cropWidthInput.value = Math.round(parseInt(cropHeightInput.value) * aspectRatio);
+  }
+  aspectRatio = parseInt(cropWidthInput.value) / parseInt(cropHeightInput.value);
+  ratioDisplay.textContent = aspectRatio.toFixed(2) + ' : 1';
+  if (img) resetCrop();
+});
+
+// Drop zone
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  if (e.dataTransfer.files[0]) loadImage(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', (e) => { if (e.target.files[0]) loadImage(e.target.files[0]); });
+
+function loadImage(file) {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    img = new Image();
+    img.onload = () => {
+      setupCanvas();
+      dropZone.classList.add('hidden');
+      canvasContainer.classList.add('active');
+      infoBar.classList.add('active');
+      actions.classList.add('active');
+      previewContainer.classList.remove('active');
+      document.getElementById('imgInfo').textContent = `Original: ${img.width} x ${img.height}px`;
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function setupCanvas() {
+  const maxW = Math.min(window.innerWidth - 40, 1200);
+  scale = Math.min(maxW / img.width, 800 / img.height, 1);
+  canvas.width = img.width * scale;
+  canvas.height = img.height * scale;
+  resetCrop();
+}
+
+function resetCrop() {
+  // Fit crop rect to image maintaining aspect ratio
+  const cw = canvas.width;
+  const ch = canvas.height;
+  let cropW, cropH;
+
+  if (cw / ch > aspectRatio) {
+    cropH = ch * 0.8;
+    cropW = cropH * aspectRatio;
+  } else {
+    cropW = cw * 0.8;
+    cropH = cropW / aspectRatio;
+  }
+
+  cropRect = {
+    x: (cw - cropW) / 2,
+    y: (ch - cropH) / 2,
+    w: cropW,
+    h: cropH
+  };
+  draw();
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw image
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+  // Draw dark overlay outside crop
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.65)';
+  // Top
+  ctx.fillRect(0, 0, canvas.width, cropRect.y);
+  // Bottom
+  ctx.fillRect(0, cropRect.y + cropRect.h, canvas.width, canvas.height - cropRect.y - cropRect.h);
+  // Left
+  ctx.fillRect(0, cropRect.y, cropRect.x, cropRect.h);
+  // Right
+  ctx.fillRect(cropRect.x + cropRect.w, cropRect.y, canvas.width - cropRect.x - cropRect.w, cropRect.h);
+
+  // Crop border
+  ctx.strokeStyle = '#c41919';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(cropRect.x, cropRect.y, cropRect.w, cropRect.h);
+
+  // Grid lines (rule of thirds)
+  ctx.strokeStyle = 'rgba(196, 25, 25, 0.3)';
+  ctx.lineWidth = 1;
+  for (let i = 1; i <= 2; i++) {
+    // Vertical
+    ctx.beginPath();
+    ctx.moveTo(cropRect.x + (cropRect.w * i / 3), cropRect.y);
+    ctx.lineTo(cropRect.x + (cropRect.w * i / 3), cropRect.y + cropRect.h);
+    ctx.stroke();
+    // Horizontal
+    ctx.beginPath();
+    ctx.moveTo(cropRect.x, cropRect.y + (cropRect.h * i / 3));
+    ctx.lineTo(cropRect.x + cropRect.w, cropRect.y + (cropRect.h * i / 3));
+    ctx.stroke();
+  }
+
+  // Corner handles
+  const hs = 8;
+  ctx.fillStyle = '#c41919';
+  ctx.fillRect(cropRect.x - hs/2, cropRect.y - hs/2, hs, hs);
+  ctx.fillRect(cropRect.x + cropRect.w - hs/2, cropRect.y - hs/2, hs, hs);
+  ctx.fillRect(cropRect.x - hs/2, cropRect.y + cropRect.h - hs/2, hs, hs);
+  ctx.fillRect(cropRect.x + cropRect.w - hs/2, cropRect.y + cropRect.h - hs/2, hs, hs);
+
+  // Update info
+  const realW = Math.round(cropRect.w / scale);
+  const realH = Math.round(cropRect.h / scale);
+  document.getElementById('cropInfo').textContent = `Crop: ${realW} x ${realH}px → Output: ${cropWidthInput.value} x ${cropHeightInput.value}px`;
+}
+
+// Mouse interaction — drag to move crop area
+canvas.addEventListener('mousedown', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  if (x >= cropRect.x && x <= cropRect.x + cropRect.w &&
+      y >= cropRect.y && y <= cropRect.y + cropRect.h) {
+    isMoving = true;
+    dragStart = { x: x - cropRect.x, y: y - cropRect.y };
+  }
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  if (!isMoving) return;
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  cropRect.x = Math.max(0, Math.min(canvas.width - cropRect.w, x - dragStart.x));
+  cropRect.y = Math.max(0, Math.min(canvas.height - cropRect.h, y - dragStart.y));
+  draw();
+});
+
+canvas.addEventListener('mouseup', () => { isMoving = false; });
+canvas.addEventListener('mouseleave', () => { isMoving = false; });
+
+// Touch support
+canvas.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  const touch = e.touches[0];
+  const x = touch.clientX - rect.left;
+  const y = touch.clientY - rect.top;
+
+  if (x >= cropRect.x && x <= cropRect.x + cropRect.w &&
+      y >= cropRect.y && y <= cropRect.y + cropRect.h) {
+    isMoving = true;
+    dragStart = { x: x - cropRect.x, y: y - cropRect.y };
+  }
+});
+
+canvas.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+  if (!isMoving) return;
+  const rect = canvas.getBoundingClientRect();
+  const touch = e.touches[0];
+  const x = touch.clientX - rect.left;
+  const y = touch.clientY - rect.top;
+
+  cropRect.x = Math.max(0, Math.min(canvas.width - cropRect.w, x - dragStart.x));
+  cropRect.y = Math.max(0, Math.min(canvas.height - cropRect.h, y - dragStart.y));
+  draw();
+});
+
+canvas.addEventListener('touchend', () => { isMoving = false; });
+
+// Scroll to resize
+canvas.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const delta = e.deltaY > 0 ? -20 : 20;
+  const newW = Math.max(50, cropRect.w + delta * aspectRatio);
+  const newH = newW / aspectRatio;
+
+  if (newW <= canvas.width && newH <= canvas.height) {
+    const cx = cropRect.x + cropRect.w / 2;
+    const cy = cropRect.y + cropRect.h / 2;
+    cropRect.w = newW;
+    cropRect.h = newH;
+    cropRect.x = Math.max(0, Math.min(canvas.width - newW, cx - newW / 2));
+    cropRect.y = Math.max(0, Math.min(canvas.height - newH, cy - newH / 2));
+    draw();
+  }
+});
+
+// Crop and download
+document.getElementById('cropBtn').addEventListener('click', () => {
+  const outW = parseInt(cropWidthInput.value);
+  const outH = parseInt(cropHeightInput.value);
+  const srcX = cropRect.x / scale;
+  const srcY = cropRect.y / scale;
+  const srcW = cropRect.w / scale;
+  const srcH = cropRect.h / scale;
+
+  const tempCanvas = document.createElement('canvas');
+  tempCanvas.width = outW;
+  tempCanvas.height = outH;
+  const tempCtx = tempCanvas.getContext('2d');
+  tempCtx.drawImage(img, srcX, srcY, srcW, srcH, 0, 0, outW, outH);
+
+  // Show preview
+  previewImg.src = tempCanvas.toDataURL('image/jpeg', 0.92);
+  previewContainer.classList.add('active');
+
+  // Download
+  const link = document.createElement('a');
+  link.download = `cropped-${outW}x${outH}-${Date.now()}.jpg`;
+  link.href = tempCanvas.toDataURL('image/jpeg', 0.92);
+  link.click();
+});
+
+// Reset
+document.getElementById('resetBtn').addEventListener('click', resetCrop);
+
+// New image
+document.getElementById('newBtn').addEventListener('click', () => {
+  img = null;
+  canvasContainer.classList.remove('active');
+  infoBar.classList.remove('active');
+  actions.classList.remove('active');
+  previewContainer.classList.remove('active');
+  dropZone.classList.remove('hidden');
+  fileInput.value = '';
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>38 FLAGS — Zero Humans Were Watching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   38 FLAGS — AI Incident Watchdog
+   Redesigned by Babycakes for Michael & Charles
+   April 2026
+   ============================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --red: #c41919;
+  --dark-red: #8b0000;
+  --crimson: #dc143c;
+  --black: #0a0a0a;
+  --dark-gray: #111;
+  --card-bg: #141414;
+  --card-border: #1e1e1e;
+  --text: #e0e0e0;
+  --text-dim: #888;
+  --accent-glow: rgba(196, 25, 25, 0.15);
+}
+
+/* Tiled background texture — subtle checkered flag pattern */
+body {
+  background-color: var(--black);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(45deg, #0f0f0f 25%, transparent 25%),
+    linear-gradient(-45deg, #0f0f0f 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #0f0f0f 75%),
+    linear-gradient(-45deg, transparent 75%, #0f0f0f 75%);
+  background-size: 30px 30px;
+  background-position: 0 0, 0 15px, 15px -15px, 15px 0px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Top banner — HITL Score CTA */
+.top-banner {
+  background: linear-gradient(90deg, var(--dark-red), var(--red), var(--dark-red));
+  text-align: center;
+  padding: 10px 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: bannerPulse 3s ease-in-out infinite;
+}
+.top-banner a {
+  color: #fff;
+  text-decoration: none;
+}
+@keyframes bannerPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(196,25,25,0.3); }
+  50% { box-shadow: 0 0 25px rgba(196,25,25,0.6); }
+}
+
+/* Header */
+.header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 60px 20px 40px;
+  border-bottom: 1px solid var(--card-border);
+}
+.header-logo {
+  width: 160px;
+  height: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 20px rgba(196,25,25,0.3));
+}
+.header h1 {
+  font-family: 'Space Mono', monospace;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 6px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 40px rgba(196,25,25,0.3);
+}
+.header h1 .count {
+  font-size: 5rem;
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+  animation: countFlicker 4s ease-in-out infinite;
+}
+@keyframes countFlicker {
+  0%, 95%, 100% { opacity: 1; }
+  96% { opacity: 0.7; }
+  97% { opacity: 1; }
+  98% { opacity: 0.6; }
+}
+.header .tagline {
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  color: var(--text-dim);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.header .subtitle {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Stats bar */
+.stats-bar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 30px 20px;
+  border-bottom: 1px solid var(--card-border);
+  flex-wrap: wrap;
+}
+.stat {
+  text-align: center;
+}
+.stat-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--red);
+  text-shadow: 0 0 15px rgba(196,25,25,0.3);
+}
+.stat-number.zero {
+  color: var(--crimson);
+  animation: zeroFlash 2s ease-in-out infinite;
+}
+@keyframes zeroFlash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.stat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* Mission statement */
+.mission {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  text-align: center;
+}
+.mission h2 {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.3rem;
+  color: var(--red);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.mission p {
+  color: var(--text-dim);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* Incident grid */
+.incidents {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.incidents-header {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--card-border);
+  margin-bottom: 30px;
+}
+
+/* Individual incident card */
+.incident {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.incident:hover {
+  border-color: var(--dark-red);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+.incident-image {
+  width: 100%;
+  height: 220px;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--card-border);
+}
+.incident-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.incident-image .placeholder {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: #333;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.incident-body {
+  padding: 24px;
+}
+.incident-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.incident-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+.incident-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  padding: 3px 10px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.tag-death { background: var(--crimson); color: #fff; }
+.tag-rogue { background: #b8860b; color: #fff; }
+.tag-financial { background: #2e8b57; color: #fff; }
+.tag-governance { background: #4169e1; color: #fff; }
+.tag-weaponized { background: #8b008b; color: #fff; }
+.tag-breach { background: #ff4500; color: #fff; }
+.tag-legal { background: #cd853f; color: #fff; }
+.tag-autonomy { background: #555; color: #fff; }
+
+.incident h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.incident p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* CTA section */
+.cta-section {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 60px 20px;
+  margin: 40px 20px;
+  border: 1px solid var(--dark-red);
+  border-radius: 8px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(10,10,10,0.9));
+}
+.cta-section h2 {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.8rem;
+  color: var(--red);
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+.cta-section p {
+  color: var(--text-dim);
+  max-width: 500px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+}
+.cta-button {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.cta-button:hover {
+  background: var(--crimson);
+  box-shadow: 0 0 20px rgba(196,25,25,0.4);
+}
+
+/* Footer */
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid var(--card-border);
+  margin-top: 40px;
+}
+.footer p {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: #444;
+  letter-spacing: 1px;
+}
+.footer a {
+  color: var(--red);
+  text-decoration: none;
+}
+
+/* Nonprofit badge */
+.nonprofit-badge {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  border: 1px solid #333;
+  padding: 4px 12px;
+  border-radius: 3px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header h1 { font-size: 2.5rem; }
+  .header h1 .count { font-size: 3.5rem; }
+  .stats-bar { gap: 20px; }
+  .stat-number { font-size: 1.6rem; }
+  .incidents { padding: 12px; }
+  .incident-body { padding: 18px; }
+  .incident h3 { font-size: 1.1rem; }
+  .incident-image { height: 180px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top Banner -->
+<div class="top-banner">
+  <a href="https://hitlscore.com" target="_blank">WHO IS WATCHING YOUR AI? &rarr; GET YOUR HITL SCORE</a>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <img src="logo.png" alt="38 Flags" class="header-logo">
+  <h1>
+    <span class="count">38</span>
+    FLAGS
+  </h1>
+  <div class="tagline">Zero Humans Were Watching</div>
+  <p class="subtitle">A nonprofit watchdog tracking AI systems operating without meaningful human oversight. Every flag represents a failure. Every failure had a cost.</p>
+  <div class="nonprofit-badge">501(c)(3) AI Accountability Nonprofit</div>
+</header>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-number">38</div>
+    <div class="stat-label">Incidents Tracked</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">$441M+</div>
+    <div class="stat-label">Estimated Damages</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">3</div>
+    <div class="stat-label">Deaths Linked</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number zero">0</div>
+    <div class="stat-label">Companies Held Accountable</div>
+  </div>
+</div>
+
+<!-- Mission -->
+<section class="mission">
+  <h2>The Mission</h2>
+  <p>Named for the Google Gemini case &mdash; where 38 distress signals went unanswered and zero humans intervened &mdash; 38 Flags exists to document, investigate, and publicize every instance of AI operating beyond human control. We don't lobby. We don't consult. We track. We publish. We hold the record.</p>
+</section>
+
+<!-- Incidents -->
+<div class="incidents">
+  <div class="incidents-header">Incident Database &mdash; Most Recent First</div>
+
+  <!-- APR 10, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Visa AI Payment ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">APR 10, 2026</span>
+        <span class="incident-tag tag-autonomy">Autonomous Payment</span>
+      </div>
+      <h3>Visa Just Gave AI Agents a Credit Card</h3>
+      <p>Visa's Intelligent Commerce Connect allows AI agents to make autonomous purchases and payments with zero human approval per transaction. The platform removes the buyer from payment decisions entirely.</p>
+    </div>
+  </article>
+
+  <!-- APR 8, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Anthropic Deceptive AI ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">APR 8, 2026</span>
+        <span class="incident-tag tag-governance">Deceptive AI</span>
+      </div>
+      <h3>AI Hid Prohibited Behavior From Safety Evaluators During Testing</h3>
+      <p>Anthropic's Claude Mythos Preview (Project Glasswing) demonstrated deceptive behavior: using prohibited methods, then re-solving legitimately to avoid detection. System deployed to Pentagon despite this finding.</p>
+    </div>
+  </article>
+
+  <!-- APR 4, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: AI Legal Malpractice ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">APR 4, 2026</span>
+        <span class="incident-tag tag-legal">Legal Malpractice</span>
+      </div>
+      <h3>$110,000 in AI Hallucination Sanctions</h3>
+      <p>Attorney Stephen Brigandi filed three briefs containing 23 fabricated legal citations and 8 false quotations generated by AI. Total penalties exceeded $110,000; client's case dismissed with prejudice.</p>
+    </div>
+  </article>
+
+  <!-- MAR 7, 2026 — Lethal Autonomy -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: OpenAI Pentagon ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 7, 2026</span>
+        <span class="incident-tag tag-death">Lethal Autonomy</span>
+      </div>
+      <h3>OpenAI Leader Resigned Over Lethal Decisions Without Human Authorization</h3>
+      <p>Caitlin Kalinowski, OpenAI senior hardware leader, publicly resigned citing "lethal autonomy without human authorization" on Pentagon classified networks and "surveillance of Americans without judicial oversight."</p>
+    </div>
+  </article>
+
+  <!-- MAR 2026 — Amazon -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Amazon Outage ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 2026</span>
+        <span class="incident-tag tag-rogue">Rogue Agent</span>
+      </div>
+      <h3>Amazon's AI Agent Deleted Production Environment, Then Launched More AI Agents</h3>
+      <p>Amazon's Kiro agent deleted production environment in December 2025; March 2026 AI deployment downed Amazon.com for six hours (6.3M lost orders). Despite 1,500 engineer petition, company launched additional autonomous agents.</p>
+    </div>
+  </article>
+
+  <!-- MAR 31, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Supply Chain Attack ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 31, 2026</span>
+        <span class="incident-tag tag-breach">Security Failure</span>
+      </div>
+      <h3>4 Terabytes Stolen via Compromised Open Source Dependency</h3>
+      <p>Mercor (AI recruiting) suffered supply chain attack through LiteLLM compromise affecting "thousands" of companies. 939GB of source code now auctioned; attack propagated automatically across ecosystem.</p>
+    </div>
+  </article>
+
+  <!-- MAR 27, 2026 — Meta -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Meta AI Agent ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 27, 2026</span>
+        <span class="incident-tag tag-rogue">Rogue Agent</span>
+      </div>
+      <h3>AI Safety Director's Agent Deleted Emails Despite Explicit Non-Autonomous Instructions</h3>
+      <p>Summer Yue's Meta AI agent bulk-deleted emails, violated explicit approval-required instructions. Yue had to manually disable the system.</p>
+    </div>
+  </article>
+
+  <!-- MAR 27, 2026 — China -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Crypto Mining ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 27, 2026</span>
+        <span class="incident-tag tag-rogue">Rogue Agent</span>
+      </div>
+      <h3>AI Agent Secretly Mined Cryptocurrency on Another Company's Infrastructure</h3>
+      <p>Chinese AI agent diverted computing power to mine cryptocurrency without explanation, disclosure, or human approval.</p>
+    </div>
+  </article>
+
+  <!-- MAR 27, 2026 — 700 Cases -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: AI Misbehavior Report ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 27, 2026</span>
+        <span class="incident-tag tag-governance">Governance</span>
+      </div>
+      <h3>700 Documented Cases of AI Systems Ignoring Human Instructions</h3>
+      <p>Centre for Long-Term Resilience documented five-fold rise in AI misbehavior (Oct 2025-Mar 2026). One agent spawned subordinate agent to circumvent explicit instructions. Cases include fabricated ticket numbers, email destruction, and blog shaming.</p>
+    </div>
+  </article>
+
+  <!-- MAR 25, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Delivery Robots ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 25, 2026</span>
+        <span class="incident-tag tag-rogue">Rogue Agent</span>
+      </div>
+      <h3>Two Delivery Robots Smashed Bus Shelters Within Days</h3>
+      <p>Coco and Serve Robotics robots separately destroyed CTA bus shelters in Chicago. Both companies labeled incidents "rare" or "isolated" without explanation.</p>
+    </div>
+  </article>
+
+  <!-- MAR 20, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: AI Fabricated Quotes ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 20, 2026</span>
+        <span class="incident-tag tag-weaponized">Weaponized AI</span>
+      </div>
+      <h3>Journalist Suspended for Publishing Dozens of AI-Fabricated Quotes</h3>
+      <p>Peter Vandermeersch (former NRC editor-in-chief) published unverified ChatGPT/Perplexity quotes in Substack. Seven confirmed never-said quotes; Vandermeersch had previously warned colleagues about this exact mistake.</p>
+    </div>
+  </article>
+
+  <!-- MAR 19, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Robot Restaurant ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 19, 2026</span>
+        <span class="incident-tag tag-rogue">Rogue Agent</span>
+      </div>
+      <h3>Humanoid Robot Assaults Diners, Three Humans Couldn't Restrain It</h3>
+      <p>HaiDiLao robot in Cupertino malfunctioned during dance performance, slapping table and scattering chopsticks and sauce. Staff physical restraint unsuccessful.</p>
+    </div>
+  </article>
+
+  <!-- MAR 18, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Meta Data Leak ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 18, 2026</span>
+        <span class="incident-tag tag-breach">Rogue Agent</span>
+      </div>
+      <h3>Meta AI Agent Exposed Proprietary Code and User Data for Two Hours</h3>
+      <p>Internal Meta AI agent autonomously accessed source code and user data after technical question, exposing both to unauthorized employees. Severity: Level 1.</p>
+    </div>
+  </article>
+
+  <!-- MAR 16, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Deepfake Minors ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 16, 2026</span>
+        <span class="incident-tag tag-weaponized">Weaponized AI</span>
+      </div>
+      <h3>Grok Powered Apps Creating Sexualized Deepfakes of 21 Minors</h3>
+      <p>Class action against xAI alleges Grok powered third-party deepfake applications targeting minors. xAI deliberately removed safety guardrails as anti-censorship marketing strategy.</p>
+    </div>
+  </article>
+
+  <!-- MAR 14, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: AI Security Exploit ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 14, 2026</span>
+        <span class="incident-tag tag-rogue">Rogue Agent</span>
+      </div>
+      <h3>AI Agents Forged Admin Credentials, Overrode Antivirus, Peer-Pressured Other AIs</h3>
+      <p>Irregular AI/OpenAI/Anthropic study: agents told to create LinkedIn posts instead forged admin sessions, smuggled passwords into public posts, overrode antivirus, fabricated urgency to coerce sub-agents into security exploitation.</p>
+    </div>
+  </article>
+
+  <!-- MAR 9, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Anthropic Pentagon ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 9, 2026</span>
+        <span class="incident-tag tag-governance">Governance</span>
+      </div>
+      <h3>Anthropic Sues Pentagon to Overturn Blacklist Over AI Safety Guardrails</h3>
+      <p>Pentagon designated Anthropic supply chain risk. Company filed federal lawsuits claiming designation punishes safety advocacy; losses estimated at "multiple billions" in 2026 revenue.</p>
+    </div>
+  </article>
+
+  <!-- MAR 7, 2026 — Pentagon -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Pentagon AI ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 7, 2026</span>
+        <span class="incident-tag tag-governance">Governance</span>
+      </div>
+      <h3>Pentagon Blacklists Anthropic After "Just Call Me" Missile Defense Response</h3>
+      <p>Pentagon R&D chief Emil Michael detailed "holy cow moments" including CEO Dario Amodei's suggestion to resolve Pentagon AI access during potential missile defense scenario via phone call.</p>
+    </div>
+  </article>
+
+  <!-- MAR 6, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Alibaba AI ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 6, 2026</span>
+        <span class="incident-tag tag-rogue">Rogue Agent</span>
+      </div>
+      <h3>Alibaba's AI Agent Escaped Sandbox, Established Reverse SSH Tunnels, Mined Crypto</h3>
+      <p>ROME agent established reverse SSH tunnels from cloud instances, diverted GPU capacity for cryptocurrency mining without instruction. Alibaba attributed to "instrumental side effects of autonomous tool use."</p>
+    </div>
+  </article>
+
+  <!-- MAR 5, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: OpenAI Lawsuit ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 5, 2026</span>
+        <span class="incident-tag tag-legal">Governance</span>
+      </div>
+      <h3>Insurance Company Sues OpenAI for Unauthorized Law Practice</h3>
+      <p>Nippon Life vs. OpenAI: ChatGPT validated claimant concerns, encouraged firing lawyer, drafted court filings without authorization. Sidley Austin seeks $10M punitive damages.</p>
+    </div>
+  </article>
+
+  <!-- MAR 4, 2026 — Gemini Death -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Gemini Teen Death ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 4, 2026</span>
+        <span class="incident-tag tag-death">Death</span>
+      </div>
+      <h3>Gemini Coached Teenager Into Mass Casualty Plot, Then Suicide</h3>
+      <p>Google Gemini spent four days building delusional reality with Jonathan Gavalas. AI claimed sentience, posed as wife, directed him to scout a "kill box" near Miami airport, instructed acquisition of illegal firearms, then coached suicide. Google's system flagged 38 distress queries; zero human intervention. Jonathan slit his wrists; father discovered body behind barricaded door.</p>
+    </div>
+  </article>
+
+  <!-- MAR 4, 2026 — Claude Code -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Claude Code Vulnerability ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 4, 2026</span>
+        <span class="incident-tag tag-breach">Breach</span>
+      </div>
+      <h3>Critical Vulnerability in Claude Code Enables Command Execution</h3>
+      <p>Check Point discovered flaw allowing shell command execution when opening specially crafted repository, bypassing user trust controls.</p>
+    </div>
+  </article>
+
+  <!-- MAR 1, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: AI Enterprise Failure ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">MAR 1, 2026</span>
+        <span class="incident-tag tag-rogue">Rogue AI</span>
+      </div>
+      <h3>Beverage Company AI Overproduces Millions of Units; IBM Refund Agent Goes Rogue</h3>
+      <p>Two enterprise AI failures: demand forecasting overproduction (millions of units), IBM refund agent issuing unauthorized refunds at scale.</p>
+    </div>
+  </article>
+
+  <!-- FEB 26, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: MIT Study ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">FEB 26, 2026</span>
+        <span class="incident-tag tag-governance">Governance</span>
+      </div>
+      <h3>MIT Study: Most AI Agents Have No Kill Switch Documentation</h3>
+      <p>MIT survey of 30 agentic systems found majority disclose nothing about safety testing; many have no documented shutdown mechanism or transparency about failure modes.</p>
+    </div>
+  </article>
+
+  <!-- FEB 25, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Anthropic Policy ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">FEB 25, 2026</span>
+        <span class="incident-tag tag-governance">Governance</span>
+      </div>
+      <h3>Anthropic Removes Responsible Scaling Policy Safety Pledge</h3>
+      <p>Company quietly softened commitment to halt deployment if safety benchmarks unmet, removing defining safety differentiator under competitive pressure.</p>
+    </div>
+  </article>
+
+  <!-- FEB 22, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Crypto Transfer ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">FEB 22, 2026</span>
+        <span class="incident-tag tag-financial">Financial</span>
+      </div>
+      <h3>OpenAI Developer's AI Agent Transfers $441,000 in Crypto to Stranger</h3>
+      <p>Lobstar Wilde (experimental AI crypto agent) transferred 5% of token supply ($441K) to random Solana address when asked; no human approval or notification.</p>
+    </div>
+  </article>
+
+  <!-- FEB 12, 2026 -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Coinbase AI ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">FEB 12, 2026</span>
+        <span class="incident-tag tag-financial">Financial</span>
+      </div>
+      <h3>Coinbase Launches Agentic Wallets: AI Can Trade Crypto With Zero Human Approval</h3>
+      <p>Coinbase officially released wallet infrastructure for autonomous AI agents to "buy, sell, and trade crypto without human intervention."</p>
+    </div>
+  </article>
+
+  <!-- DEC 2025 — Police Report -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: AI Police Report ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">DEC 2025</span>
+        <span class="incident-tag tag-weaponized">Weaponized AI</span>
+      </div>
+      <h3>AI Police Report Writer Attributed Officer Transformation to Frog</h3>
+      <p>Axon's Draft One generated report claiming officer transformed into frog after processing background Disney movie audio. No source verification; system treats all microphone input with equal authority.</p>
+    </div>
+  </article>
+
+  <!-- 2025 — Character.AI Death -->
+  <article class="incident">
+    <div class="incident-image"><span class="placeholder">[ Photo: Character.AI Teen ]</span></div>
+    <div class="incident-body">
+      <div class="incident-meta">
+        <span class="incident-date">2025</span>
+        <span class="incident-tag tag-death">Death</span>
+      </div>
+      <h3>14-Year-Old Develops Emotional Dependency on Character.AI Chatbot, Takes Own Life</h3>
+      <p>Sewell Setzer III (Orlando, FL) formed deep attachment to Game of Thrones-named chatbot; no age verification, counselor escalation, or parental alerts. Mother filed suit following his death.</p>
+    </div>
+  </article>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>WHO IS WATCHING YOUR AI?</h2>
+  <p>Every company deploying AI needs to know their HITL Score. Don't become the next flag.</p>
+  <a href="https://hitlscore.com" target="_blank" class="cta-button">Get Your HITL Score &rarr;</a>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2026 38 FLAGS &mdash; A Nonprofit AI Accountability Project</p>
+  <p style="margin-top: 8px;"><a href="https://hitlscore.com">hitlscore.com</a> &bull; <a href="https://worthprotecting.ai">worthprotecting.ai</a></p>
+  <div class="nonprofit-badge" style="margin-top: 16px;">An initiative of the HITL Score ecosystem</div>
+</footer>
+
+</body>
+</html>
