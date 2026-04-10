@@ -82,7 +82,7 @@ body::before {
   border-bottom: 1px solid var(--card-border);
 }
 .header-logo {
-  width: 160px;
+  width: 192px;
   height: auto;
   margin-bottom: 20px;
   filter: drop-shadow(0 0 20px rgba(196,25,25,0.3));
@@ -111,11 +111,13 @@ body::before {
 }
 .header .tagline {
   font-family: 'Space Mono', monospace;
-  font-size: 1rem;
-  color: var(--text-dim);
-  letter-spacing: 4px;
+  font-size: 2rem;
+  color: var(--red);
+  font-weight: 700;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  text-shadow: 0 0 30px rgba(196,25,25,0.4);
 }
 .header .subtitle {
   font-size: 0.95rem;
@@ -379,7 +381,8 @@ body::before {
 
 /* Responsive — stack cards vertically on mobile */
 @media (max-width: 768px) {
-  .header-logo { width: 120px; }
+  .header-logo { width: 144px; }
+  .header .tagline { font-size: 1.2rem; letter-spacing: 3px; }
   .stats-bar { gap: 20px; }
   .stat-number { font-size: 1.6rem; }
   .incidents { padding: 12px; }
