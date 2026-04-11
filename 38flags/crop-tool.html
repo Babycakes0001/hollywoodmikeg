@@ -279,6 +279,12 @@ canvas {
   <span id="cropInfo">-</span>
 </div>
 
+<!-- Resize buttons (mobile friendly) -->
+<div id="resizeBtns" style="display:none;text-align:center;margin-bottom:12px;">
+  <button onclick="resizeCrop(-20)" style="background:#c41919;color:#fff;border:none;padding:12px 24px;font-size:1.2rem;border-radius:4px;margin:0 8px;cursor:pointer;font-weight:bold;">&#8722; Smaller</button>
+  <button onclick="resizeCrop(20)" style="background:#c41919;color:#fff;border:none;padding:12px 24px;font-size:1.2rem;border-radius:4px;margin:0 8px;cursor:pointer;font-weight:bold;">&#43; Bigger</button>
+</div>
+
 <!-- Actions -->
 <div class="actions" id="actions">
   <button class="action-btn btn-crop" id="cropBtn">Crop & Download</button>
@@ -378,6 +384,7 @@ function loadImage(file) {
       canvasContainer.classList.add('active');
       infoBar.classList.add('active');
       actions.classList.add('active');
+      document.getElementById('resizeBtns').style.display = 'block';
       previewContainer.classList.remove('active');
       document.getElementById('imgInfo').textContent = `Original: ${img.width} x ${img.height}px`;
     };
@@ -496,9 +503,39 @@ canvas.addEventListener('mousemove', (e) => {
 canvas.addEventListener('mouseup', () => { isMoving = false; });
 canvas.addEventListener('mouseleave', () => { isMoving = false; });
 
-// Touch support
+// Touch support — single finger drag, two finger pinch to resize
+let lastPinchDist = 0;
+let isPinching = false;
+
+function getTouchDist(touches) {
+  const dx = touches[0].clientX - touches[1].clientX;
+  const dy = touches[0].clientY - touches[1].clientY;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+function resizeCrop(delta) {
+  const newW = Math.max(50, cropRect.w + delta * (aspectRatio >= 1 ? 1 : aspectRatio));
+  const newH = newW / aspectRatio;
+  if (newW <= canvas.width && newH <= canvas.height && newW > 50 && newH > 50) {
+    const cx = cropRect.x + cropRect.w / 2;
+    const cy = cropRect.y + cropRect.h / 2;
+    cropRect.w = newW;
+    cropRect.h = newH;
+    cropRect.x = Math.max(0, Math.min(canvas.width - newW, cx - newW / 2));
+    cropRect.y = Math.max(0, Math.min(canvas.height - newH, cy - newH / 2));
+    draw();
+  }
+}
+
 canvas.addEventListener('touchstart', (e) => {
   e.preventDefault();
+  if (e.touches.length === 2) {
+    isPinching = true;
+    isMoving = false;
+    lastPinchDist = getTouchDist(e.touches);
+    return;
+  }
+  isPinching = false;
   const rect = canvas.getBoundingClientRect();
   const touch = e.touches[0];
   const x = touch.clientX - rect.left;
@@ -513,6 +550,15 @@ canvas.addEventListener('touchstart', (e) => {
 
 canvas.addEventListener('touchmove', (e) => {
   e.preventDefault();
+  if (isPinching && e.touches.length === 2) {
+    const dist = getTouchDist(e.touches);
+    const diff = dist - lastPinchDist;
+    if (Math.abs(diff) > 3) {
+      resizeCrop(diff * 0.5);
+      lastPinchDist = dist;
+    }
+    return;
+  }
   if (!isMoving) return;
   const rect = canvas.getBoundingClientRect();
   const touch = e.touches[0];
@@ -524,7 +570,7 @@ canvas.addEventListener('touchmove', (e) => {
   draw();
 });
 
-canvas.addEventListener('touchend', () => { isMoving = false; });
+canvas.addEventListener('touchend', () => { isMoving = false; isPinching = false; });
 
 // Scroll to resize
 canvas.addEventListener('wheel', (e) => {
