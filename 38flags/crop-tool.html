@@ -372,18 +372,18 @@ canvas {
 <div class="controls">
   <div class="control-group">
     <label>Width</label>
-    <input type="number" id="cropWidth" value="1000" min="10" max="10000">
+    <input type="number" id="cropWidth" value="600" min="10" max="10000">
     <label>px</label>
   </div>
   <div class="control-group">
     <label>Height</label>
-    <input type="number" id="cropHeight" value="440" min="10" max="10000">
+    <input type="number" id="cropHeight" value="400" min="10" max="10000">
     <label>px</label>
   </div>
   <button class="lock-btn locked" id="lockRatio" title="Lock aspect ratio">&#x1f512;</button>
   <div class="control-group" style="margin-left: auto;">
     <label style="color: #444;">Ratio:</label>
-    <span id="ratioDisplay" style="color: #c41919; font-weight: 600;">2.27 : 1</span>
+    <span id="ratioDisplay" style="color: #c41919; font-weight: 600;">1.50 : 1</span>
   </div>
 </div>
 
@@ -416,7 +416,7 @@ canvas {
   <button class="action-btn btn-crop" id="cropBtn">Crop & Download</button>
   <button class="action-btn btn-reset" id="resetBtn">Reset Selection</button>
   <button class="action-btn btn-new" id="newBtn">New Image</button>
-  <button class="action-btn btn-crop" id="directUploadBtn" style="background:#117ACA;">Upload Without Cropping</button>
+  <button class="action-btn btn-crop" id="cropUploadBtn" style="background:#117ACA;font-size:1.1rem;">Crop & Upload to GitHub</button>
 </div>
 
 <!-- Preview -->
@@ -473,7 +473,7 @@ let isDragging = false;
 let isMoving = false;
 let dragStart = { x: 0, y: 0 };
 let ratioLocked = true;
-let aspectRatio = 1000 / 440;
+let aspectRatio = 600 / 400;
 
 // Presets
 document.querySelectorAll('.preset-btn').forEach(btn => {
@@ -788,18 +788,31 @@ document.getElementById('newBtn').addEventListener('click', () => {
   fileInput.value = '';
 });
 
-// Direct upload (no crop)
-document.getElementById('directUploadBtn').addEventListener('click', () => {
+// One-tap Crop & Upload
+document.getElementById('cropUploadBtn').addEventListener('click', async () => {
   if (!img) return;
+  const outW = parseInt(cropWidthInput.value);
+  const outH = parseInt(cropHeightInput.value);
+  const srcX = cropRect.x / scale;
+  const srcY = cropRect.y / scale;
+  const srcW = cropRect.w / scale;
+  const srcH = cropRect.h / scale;
+
   const tempCanvas = document.createElement('canvas');
-  tempCanvas.width = img.width;
-  tempCanvas.height = img.height;
+  tempCanvas.width = outW;
+  tempCanvas.height = outH;
   const tempCtx = tempCanvas.getContext('2d');
-  tempCtx.drawImage(img, 0, 0);
+  tempCtx.drawImage(img, srcX, srcY, srcW, srcH, 0, 0, outW, outH);
+
   lastCroppedDataUrl = tempCanvas.toDataURL('image/jpeg', 0.92);
   previewImg.src = lastCroppedDataUrl;
   previewContainer.classList.add('active');
   showUploadSection();
+
+  // Auto-upload immediately if token exists
+  if (getToken()) {
+    await uploadToGitHub();
+  }
 });
 
 // ===== GITHUB UPLOADER =====
