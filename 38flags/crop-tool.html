@@ -226,6 +226,132 @@ canvas {
   border: 1px solid #333;
   border-radius: 4px;
 }
+
+/* Upload section */
+.upload-section {
+  margin-top: 20px;
+  padding: 20px;
+  background: #141414;
+  border: 1px solid #222;
+  border-radius: 8px;
+  display: none;
+}
+.upload-section.active { display: block; }
+.upload-section h3 {
+  color: #c41919;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.upload-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.upload-row label {
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 60px;
+}
+.upload-row input[type="text"], .upload-row select {
+  flex: 1;
+  min-width: 150px;
+  padding: 10px 12px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+.upload-row input:focus, .upload-row select:focus {
+  outline: none;
+  border-color: #c41919;
+}
+.btn-upload {
+  padding: 14px 28px;
+  background: #117ACA;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  margin-top: 8px;
+}
+.btn-upload:hover {
+  background: #1590e8;
+  box-shadow: 0 0 15px rgba(17,122,202,0.4);
+}
+.btn-upload:disabled {
+  background: #333;
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.upload-status {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  display: none;
+}
+.upload-status.success {
+  display: block;
+  background: rgba(0,200,80,0.1);
+  border: 1px solid rgba(0,200,80,0.3);
+  color: #00c850;
+}
+.upload-status.error {
+  display: block;
+  background: rgba(196,25,25,0.1);
+  border: 1px solid rgba(196,25,25,0.3);
+  color: #c41919;
+}
+.upload-status.uploading {
+  display: block;
+  background: rgba(17,122,202,0.1);
+  border: 1px solid rgba(17,122,202,0.3);
+  color: #117ACA;
+}
+.token-setup {
+  padding: 16px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+.token-setup input {
+  width: 100%;
+  padding: 10px 12px;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  margin: 8px 0;
+  font-family: monospace;
+}
+.token-setup .hint {
+  font-size: 0.75rem;
+  color: #555;
+}
+.btn-save-token {
+  padding: 8px 16px;
+  background: #c41919;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-top: 4px;
+}
 </style>
 </head>
 <body>
@@ -290,12 +416,39 @@ canvas {
   <button class="action-btn btn-crop" id="cropBtn">Crop & Download</button>
   <button class="action-btn btn-reset" id="resetBtn">Reset Selection</button>
   <button class="action-btn btn-new" id="newBtn">New Image</button>
+  <button class="action-btn btn-crop" id="directUploadBtn" style="background:#117ACA;">Upload Without Cropping</button>
 </div>
 
 <!-- Preview -->
 <div class="preview-container" id="previewContainer">
   <h3>Cropped Preview</h3>
   <img id="previewImg" src="">
+</div>
+
+<!-- Upload to GitHub -->
+<div class="upload-section" id="uploadSection">
+  <h3>Upload to Babycakes Repo</h3>
+  <div id="tokenSetup" class="token-setup" style="display:none;">
+    <label style="color:#888;font-size:0.8rem;">GitHub Token (saved locally, never leaves your phone)</label>
+    <input type="password" id="tokenInput" placeholder="Paste your GitHub token here">
+    <p class="hint">One-time setup. Stored in your browser only.</p>
+    <button class="btn-save-token" onclick="saveToken()">Save Token</button>
+  </div>
+  <div class="upload-row">
+    <label>Folder</label>
+    <select id="uploadFolder">
+      <option value="38flags/images/">38 Flags Images</option>
+      <option value="babycakes/images/">Babycakes Images</option>
+      <option value="wp/images/">Worth Protecting Images</option>
+      <option value="images/">Site Root Images</option>
+    </select>
+  </div>
+  <div class="upload-row">
+    <label>Filename</label>
+    <input type="text" id="uploadFilename" placeholder="my-image.jpg">
+  </div>
+  <button class="btn-upload" id="uploadBtn" onclick="uploadToGitHub()">Upload to GitHub</button>
+  <div class="upload-status" id="uploadStatus"></div>
 </div>
 
 <script>
@@ -606,13 +759,17 @@ document.getElementById('cropBtn').addEventListener('click', () => {
   tempCtx.drawImage(img, srcX, srcY, srcW, srcH, 0, 0, outW, outH);
 
   // Show preview
-  previewImg.src = tempCanvas.toDataURL('image/jpeg', 0.92);
+  lastCroppedDataUrl = tempCanvas.toDataURL('image/jpeg', 0.92);
+  previewImg.src = lastCroppedDataUrl;
   previewContainer.classList.add('active');
+
+  // Show upload section
+  showUploadSection();
 
   // Download
   const link = document.createElement('a');
   link.download = `cropped-${outW}x${outH}-${Date.now()}.jpg`;
-  link.href = tempCanvas.toDataURL('image/jpeg', 0.92);
+  link.href = lastCroppedDataUrl;
   link.click();
 });
 
@@ -626,9 +783,152 @@ document.getElementById('newBtn').addEventListener('click', () => {
   infoBar.classList.remove('active');
   actions.classList.remove('active');
   previewContainer.classList.remove('active');
+  document.getElementById('uploadSection').classList.remove('active');
   dropZone.classList.remove('hidden');
   fileInput.value = '';
 });
+
+// Direct upload (no crop)
+document.getElementById('directUploadBtn').addEventListener('click', () => {
+  if (!img) return;
+  const tempCanvas = document.createElement('canvas');
+  tempCanvas.width = img.width;
+  tempCanvas.height = img.height;
+  const tempCtx = tempCanvas.getContext('2d');
+  tempCtx.drawImage(img, 0, 0);
+  lastCroppedDataUrl = tempCanvas.toDataURL('image/jpeg', 0.92);
+  previewImg.src = lastCroppedDataUrl;
+  previewContainer.classList.add('active');
+  showUploadSection();
+});
+
+// ===== GITHUB UPLOADER =====
+const REPO_OWNER = 'Babycakes0001';
+const REPO_NAME = 'hollywoodmikeg';
+const BRANCH = 'master';
+
+let lastCroppedDataUrl = null;
+
+function getToken() {
+  return localStorage.getItem('babycakes_gh_token');
+}
+
+function saveToken() {
+  const token = document.getElementById('tokenInput').value.trim();
+  if (token) {
+    localStorage.setItem('babycakes_gh_token', token);
+    document.getElementById('tokenSetup').style.display = 'none';
+    showUploadStatus('Token saved! You\'re good to go.', 'success');
+  }
+}
+
+function showUploadStatus(msg, type) {
+  const el = document.getElementById('uploadStatus');
+  el.textContent = msg;
+  el.className = 'upload-status ' + type;
+}
+
+function showUploadSection() {
+  const section = document.getElementById('uploadSection');
+  section.classList.add('active');
+  // Check if token exists
+  if (!getToken()) {
+    document.getElementById('tokenSetup').style.display = 'block';
+  } else {
+    document.getElementById('tokenSetup').style.display = 'none';
+  }
+  // Auto-generate filename
+  const ts = new Date().toISOString().slice(0,10).replace(/-/g,'');
+  document.getElementById('uploadFilename').value = `image-${ts}-${Date.now().toString(36)}.jpg`;
+}
+
+async function uploadToGitHub() {
+  const token = getToken();
+  if (!token) {
+    document.getElementById('tokenSetup').style.display = 'block';
+    showUploadStatus('Please enter your GitHub token first.', 'error');
+    return;
+  }
+
+  if (!lastCroppedDataUrl) {
+    showUploadStatus('Crop an image first before uploading.', 'error');
+    return;
+  }
+
+  const folder = document.getElementById('uploadFolder').value;
+  let filename = document.getElementById('uploadFilename').value.trim();
+  if (!filename) {
+    showUploadStatus('Please enter a filename.', 'error');
+    return;
+  }
+  // Ensure .jpg extension
+  if (!filename.match(/\.(jpg|jpeg|png|webp)$/i)) {
+    filename += '.jpg';
+  }
+
+  const path = folder + filename;
+  const btn = document.getElementById('uploadBtn');
+  btn.disabled = true;
+  btn.textContent = 'Uploading...';
+  showUploadStatus('Pushing to GitHub...', 'uploading');
+
+  try {
+    // Extract base64 data from data URL
+    const base64Data = lastCroppedDataUrl.split(',')[1];
+
+    // Check if file already exists (to get its SHA for overwrite)
+    let sha = null;
+    try {
+      const checkResp = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}?ref=${BRANCH}`, {
+        headers: { 'Authorization': `token ${token}` }
+      });
+      if (checkResp.ok) {
+        const existing = await checkResp.json();
+        sha = existing.sha;
+      }
+    } catch(e) {}
+
+    // Upload via GitHub Contents API
+    const body = {
+      message: `Upload ${filename} via Babycakes Cropper`,
+      content: base64Data,
+      branch: BRANCH
+    };
+    if (sha) body.sha = sha;
+
+    const resp = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+
+    if (resp.ok) {
+      const result = await resp.json();
+      const liveUrl = `https://hollywoodmikeg.com/${path}`;
+      showUploadStatus(`Uploaded! Live at: ${liveUrl}`, 'success');
+      document.getElementById('uploadStatus').innerHTML =
+        `Uploaded! Live at: <a href="${liveUrl}" target="_blank" style="color:#00c850;text-decoration:underline;">${liveUrl}</a>` +
+        `<br><span style="color:#888;font-size:0.75rem;">GitHub Pages may take 1-2 minutes to update.</span>`;
+    } else {
+      const err = await resp.json();
+      if (resp.status === 401) {
+        localStorage.removeItem('babycakes_gh_token');
+        document.getElementById('tokenSetup').style.display = 'block';
+        showUploadStatus('Token expired or invalid. Please enter a new one.', 'error');
+      } else {
+        showUploadStatus(`Upload failed: ${err.message || resp.statusText}`, 'error');
+      }
+    }
+  } catch(e) {
+    showUploadStatus(`Network error: ${e.message}`, 'error');
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Upload to GitHub';
+}
 </script>
 
 </body>
