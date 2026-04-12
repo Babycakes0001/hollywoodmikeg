@@ -82,7 +82,7 @@ body::before {
   border-bottom: 1px solid var(--card-border);
 }
 .header-logo {
-  width: 192px;
+  width: 384px;
   height: auto;
   margin-bottom: 20px;
   filter: drop-shadow(0 0 20px rgba(196,25,25,0.3));
@@ -221,6 +221,7 @@ body::before {
 .incident:hover {
   border-color: var(--dark-red);
   box-shadow: 0 0 20px var(--accent-glow);
+  border-left: 3px solid var(--red);
 }
 .incident-image {
   width: 33.333%;
@@ -394,9 +395,90 @@ body::before {
   margin-top: 16px;
 }
 
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--red);
+  box-shadow: 0 0 10px rgba(196,25,25,0.6);
+  z-index: 200;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* BREAKING label */
+.breaking-label {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: #fff;
+  background: var(--crimson);
+  padding: 2px 8px;
+  border-radius: 2px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  animation: breakingPulse 1.5s ease-in-out infinite;
+}
+@keyframes breakingPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Modal overlay */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: #0a0a0a;
+  border: 2px solid var(--red);
+  border-radius: 8px;
+  padding: 40px;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(196,25,25,0.3);
+  position: relative;
+}
+.modal-box h2 {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.4rem;
+  color: var(--red);
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+.modal-box p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.5rem;
+  color: #555;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: 'Space Mono', monospace;
+  transition: color 0.2s;
+}
+.modal-close:hover { color: var(--red); }
+
 /* Responsive — stack cards vertically on mobile */
 @media (max-width: 768px) {
-  .header-logo { width: 144px; }
+  .header-logo { width: 240px; }
   .header .tagline { font-size: 1.2rem; letter-spacing: 3px; }
   .stats-bar { gap: 20px; }
   .stat-number { font-size: 1.6rem; }
@@ -420,19 +502,21 @@ body::before {
 </head>
 <body>
 
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <!-- Top Banner -->
 <div class="top-banner">
-  <a href="https://hitlscore.com" target="_blank">WHO IS WATCHING YOUR AI? &rarr; GET YOUR HITL SCORE</a>
+  <a href="https://hitlscore.com" target="_blank"><strong>WHO IS WATCHING THE MACHINES? &rarr; HITL SCORE</strong><br><span style="font-size:10px;font-weight:400;letter-spacing:1px;opacity:0.85;">EVERYONE MANDATES HUMAN OVERSIGHT. NOBODY MEASURES IT. WE DO.</span></a>
 </div>
 
 <!-- Header -->
 <header class="header">
   <img src="logo.png" alt="38 Flags" class="header-logo">
   <div class="tagline">Zero Humans Were Watching</div>
-  <p class="subtitle">A nonprofit watchdog tracking AI systems operating without meaningful human oversight. Every flag represents a failure. Every failure had a cost.</p>
-  <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px;flex-wrap:wrap;">
-    <div class="nonprofit-badge" style="margin-top:0;">501(c)(3) AI Accountability Nonprofit</div>
-    <a href="https://httpswww38flagscom.creator-spring.com/" target="_blank" style="display:inline-block;font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--red);letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid var(--red);padding:4px 12px;border-radius:3px;transition:all 0.3s;" onmouseover="this.style.background='var(--red)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--red)'">Who's Watching Who? &mdash; Merch &rarr;</a>
+  <p class="subtitle">A daily record of AI systems operating without meaningful human oversight. These are not hypotheticals. These already happened.</p>
+  <div style="text-align:center;margin-top:24px;">
+    <a href="https://httpswww38flagscom.creator-spring.com/" target="_blank" style="display:inline-block;font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--red);letter-spacing:3px;text-transform:uppercase;text-decoration:none;border:1px solid var(--red);padding:12px 32px;border-radius:4px;transition:all 0.3s;" onmouseover="this.style.background='var(--red)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--red)'">WHO'S WATCHING WHO? &mdash; MERCH &#x1F534;</a>
   </div>
 </header>
 
@@ -472,6 +556,7 @@ body::before {
     <div class="incident-body">
       <div class="incident-meta">
         <span class="incident-date">APR 10, 2026</span>
+        <span class="breaking-label">Breaking</span>
         <span class="incident-tag tag-autonomy">Autonomous Payment</span>
       </div>
       <h3>Visa Just Gave AI Agents a Credit Card. No Human Required to Approve the Purchase.</h3>
@@ -951,22 +1036,39 @@ body::before {
 
 </div>
 
-<!-- CTA -->
+<!-- CTA — HITL Score -->
 <div class="cta-section">
-  <h2>WHO IS WATCHING YOUR AI?</h2>
-  <p>Every company deploying AI needs to know their HITL Score. Don't become the next flag.</p>
-  <a href="https://hitlscore.com" target="_blank" class="cta-button">Get Your HITL Score &rarr;</a>
+  <h2 style="font-size:2rem;font-weight:900;">38 Flags. Zero Humans.</h2>
+  <p style="font-size:1.1rem;max-width:600px;">Every story on this page has one thing in common: no meaningful human oversight.<br>HITL Score is the first system that actually measures it.</p>
+  <a href="https://hitlscore.com" target="_blank" class="cta-button" style="font-size:1rem;padding:18px 48px;">GET YOUR HITL SCORE &rarr;</a>
+</div>
+
+<!-- CTA — Merch Store -->
+<div class="cta-section">
+  <h2 style="font-size:2rem;font-weight:900;color:#fff;">WHO'S WATCHING WHO?</h2>
+  <p style="font-size:1.1rem;">The official 38 FLAGS merch. Black tees. Black hoodies. Red eye.</p>
+  <a href="https://httpswww38flagscom.creator-spring.com/" target="_blank" class="cta-button" style="font-size:1rem;padding:18px 48px;">SHOP MERCH &rarr;</a>
 </div>
 
 <!-- Footer -->
 <footer class="footer">
   <p>&copy; 2026 38 FLAGS &mdash; A Nonprofit AI Accountability Project</p>
   <p style="margin-top: 8px;"><a href="https://hitlscore.com">hitlscore.com</a> &bull; <a href="https://worthprotecting.ai">worthprotecting.ai</a></p>
-  <div class="nonprofit-badge" style="margin-top: 16px;">An initiative of the HITL Score ecosystem</div>
 </footer>
 
+<!-- Modal Popup -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <h2>WHO IS WATCHING YOUR AI?</h2>
+    <p>Every story on this site had warning signs. Flags. Alerts. Red lines.</p>
+    <p>Nobody was measuring whether a human was actually in the loop.</p>
+    <p style="color:var(--red);font-weight:700;margin-bottom:20px;">HITL Score does.</p>
+    <a href="https://hitlscore.com" target="_blank" class="cta-button" style="font-size:1rem;padding:18px 48px;">GET YOUR SCORE &rarr;</a>
+  </div>
+</div>
+
 <script>
-// Auto-calculate stats from incident cards on the page
 document.addEventListener('DOMContentLoaded', () => {
   const incidents = document.querySelectorAll('.incident');
   let totalDamages = 0;
@@ -977,35 +1079,52 @@ document.addEventListener('DOMContentLoaded', () => {
     if (inc.dataset.deaths) totalDeaths += parseInt(inc.dataset.deaths);
   });
 
-  // Animate counter
-  function animateCount(el, target, prefix, suffix) {
-    let current = 0;
-    const step = Math.max(1, Math.floor(target / 40));
-    const interval = setInterval(() => {
-      current += step;
-      if (current >= target) {
-        current = target;
-        clearInterval(interval);
-      }
+  // Smooth counter animation using requestAnimationFrame
+  function animateCount(el, target, prefix, suffix, duration) {
+    const start = performance.now();
+    duration = duration || 2000;
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
       el.textContent = prefix + current.toLocaleString() + suffix;
-    }, 30);
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
   }
 
-  // Format damages
+  // Animate incident count
+  animateCount(document.getElementById('statIncidents'), incidents.length, '', '', 2000);
+
+  // Animate damages
   const damagesEl = document.getElementById('statDamages');
   if (totalDamages >= 1000000) {
     const millions = Math.floor(totalDamages / 1000000);
     const remainder = totalDamages % 1000000;
-    damagesEl.textContent = '$' + millions + (remainder > 0 ? '.' + Math.floor(remainder/100000) : '') + 'M+';
+    const suffix = (remainder > 0 ? '.' + Math.floor(remainder/100000) : '') + 'M+';
+    animateCount(damagesEl, millions, '$', suffix, 2000);
   } else {
-    damagesEl.textContent = '$' + totalDamages.toLocaleString() + '+';
+    animateCount(damagesEl, totalDamages, '$', '+', 2000);
   }
 
-  // Animate incident count
-  animateCount(document.getElementById('statIncidents'), incidents.length, '', '');
+  // Animate deaths
+  animateCount(document.getElementById('statDeaths'), totalDeaths, '', '', 2000);
 
-  // Set deaths
-  document.getElementById('statDeaths').textContent = totalDeaths;
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = (scrollTop / scrollHeight) * 100;
+    document.getElementById('scrollProgress').style.width = progress + '%';
+  });
+
+  // Modal popup after 30 seconds
+  const modal = document.getElementById('modalOverlay');
+  const closeBtn = document.getElementById('modalClose');
+  setTimeout(() => { modal.classList.add('active'); }, 30000);
+  closeBtn.addEventListener('click', () => { modal.classList.remove('active'); });
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
 });
 </script>
 
