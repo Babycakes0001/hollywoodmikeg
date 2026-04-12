@@ -133,36 +133,60 @@ body::before {
   z-index: 1;
   display: flex;
   justify-content: center;
-  gap: 40px;
-  padding: 30px 20px;
+  gap: 20px;
+  padding: 40px 20px;
   border-bottom: 1px solid var(--card-border);
   flex-wrap: wrap;
 }
 .stat {
   text-align: center;
+  background: linear-gradient(145deg, #141414, #0d0d0d);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 24px 28px;
+  min-width: 160px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.stat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
+  opacity: 0.6;
+}
+.stat:hover {
+  border-color: var(--dark-red);
+  box-shadow: 0 0 25px rgba(196,25,25,0.15);
+  transform: translateY(-2px);
 }
 .stat-number {
   font-family: 'Space Mono', monospace;
-  font-size: 2.2rem;
+  font-size: 2.8rem;
   font-weight: 700;
   color: var(--red);
-  text-shadow: 0 0 15px rgba(196,25,25,0.3);
+  text-shadow: 0 0 20px rgba(196,25,25,0.4);
+  line-height: 1;
 }
 .stat-number.zero {
   color: var(--crimson);
   animation: zeroFlash 2s ease-in-out infinite;
 }
 @keyframes zeroFlash {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(220,20,60,0.4); }
+  50% { opacity: 0.5; text-shadow: 0 0 40px rgba(220,20,60,0.8); }
 }
 .stat-label {
   font-family: 'Space Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--text-dim);
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-top: 4px;
+  margin-top: 10px;
 }
 
 /* Mission statement */
@@ -480,8 +504,9 @@ body::before {
 @media (max-width: 768px) {
   .header-logo { width: 240px; }
   .header .tagline { font-size: 1.2rem; letter-spacing: 3px; }
-  .stats-bar { gap: 20px; }
-  .stat-number { font-size: 1.6rem; }
+  .stats-bar { gap: 12px; }
+  .stat { min-width: 140px; padding: 18px 16px; }
+  .stat-number { font-size: 2rem; }
   .incidents { padding: 12px; }
   .incident {
     flex-direction: column;
@@ -520,7 +545,7 @@ body::before {
   </div>
 </header>
 
-<!-- Stats Bar — auto-calculated from articles on page -->
+<!-- Stats Bar -->
 <div class="stats-bar">
   <div class="stat">
     <div class="stat-number" id="statIncidents">0</div>
@@ -535,7 +560,7 @@ body::before {
     <div class="stat-label">Deaths Linked</div>
   </div>
   <div class="stat">
-    <div class="stat-number zero">0</div>
+    <div class="stat-number zero" id="statAccountable">0</div>
     <div class="stat-label">Companies Held Accountable</div>
   </div>
 </div>
@@ -1070,22 +1095,15 @@ body::before {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const incidents = document.querySelectorAll('.incident');
-  let totalDamages = 0;
-  let totalDeaths = 0;
 
-  incidents.forEach(inc => {
-    if (inc.dataset.damages) totalDamages += parseInt(inc.dataset.damages);
-    if (inc.dataset.deaths) totalDeaths += parseInt(inc.dataset.deaths);
-  });
-
-  // Smooth counter animation using requestAnimationFrame
+  // Smooth counter animation — all start at 0, count up
   function animateCount(el, target, prefix, suffix, duration) {
     const start = performance.now();
-    duration = duration || 2000;
+    duration = duration || 2500;
     function tick(now) {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic for dramatic slowdown at the end
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(eased * target);
       el.textContent = prefix + current.toLocaleString() + suffix;
@@ -1094,22 +1112,23 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(tick);
   }
 
-  // Animate incident count
-  animateCount(document.getElementById('statIncidents'), incidents.length, '', '', 2000);
-
-  // Animate damages
-  const damagesEl = document.getElementById('statDamages');
-  if (totalDamages >= 1000000) {
-    const millions = Math.floor(totalDamages / 1000000);
-    const remainder = totalDamages % 1000000;
-    const suffix = (remainder > 0 ? '.' + Math.floor(remainder/100000) : '') + 'M+';
-    animateCount(damagesEl, millions, '$', suffix, 2000);
-  } else {
-    animateCount(damagesEl, totalDamages, '$', '+', 2000);
-  }
-
-  // Animate deaths
-  animateCount(document.getElementById('statDeaths'), totalDeaths, '', '', 2000);
+  // Intersection Observer — only animate when stats bar scrolls into view
+  const statsBar = document.querySelector('.stats-bar');
+  let hasAnimated = false;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasAnimated) {
+        hasAnimated = true;
+        // Hardcoded to match 38flags.com — update when Charles approves our build
+        animateCount(document.getElementById('statIncidents'), 47, '', '', 2500);
+        animateCount(document.getElementById('statDamages'), 441, '$', 'M+', 2500);
+        animateCount(document.getElementById('statDeaths'), 3, '', '', 2000);
+        // Zero stays zero but still "animates" for the flash effect
+        document.getElementById('statAccountable').textContent = '0';
+      }
+    });
+  }, { threshold: 0.3 });
+  observer.observe(statsBar);
 
   // Scroll progress bar
   window.addEventListener('scroll', () => {
