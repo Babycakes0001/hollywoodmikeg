@@ -677,10 +677,71 @@ body {
 </div>
 
 <!-- ============================================ -->
-<!-- THE FLYWHEEL -->
+<!-- PHASE 2: CUSTOM TRAINING / DUSTIN'S SERVERS -->
 <!-- ============================================ -->
 <div class="section">
   <div class="section-number">05</div>
+  <h2>Phase 2: Custom Training</h2>
+  <p class="one-liner">This is where it goes from good to unreplicable</p>
+
+  <span class="status status-ready">Infrastructure Partner Identified</span>
+
+  <p>Phase 1 — the Core framework — gives every firm a CLAW-trained agent that follows the methodology through instructions. It reads the rulebook before every interaction. That's powerful. But there's a ceiling: the agent is following instructions. It's reading CLAW, not thinking CLAW.</p>
+
+  <p>Phase 2 removes that ceiling.</p>
+
+  <p>Custom Training means we take a firm's own historical documents — their last 5 to 10 years of contracts, memos, briefs, correspondence — and we train a model directly on that work. Not prompting. Not instructing. Actual fine-tuning. The neural weights shift. The model doesn't read how the firm writes — it writes that way natively. It doesn't check a risk tolerance setting — it has risk intuition shaped by thousands of real decisions that firm actually made.</p>
+
+  <p>The difference between Phase 1 and Phase 2 is the difference between giving someone a recipe and teaching them to cook. Phase 1 follows the recipe perfectly. Phase 2 improvises because it understands the cuisine.</p>
+
+  <div class="detail-block">
+    <h4>How it works</h4>
+    <ul>
+      <li><strong>Firm provides historical documents:</strong> Contracts, memos, briefs, client communications — anonymized and securely transferred. The more data, the better the training.</li>
+      <li><strong>We fine-tune on dedicated GPU servers:</strong> We have an infrastructure partner with enterprise GPU capacity (SeqPU). Not shared cloud instances — dedicated hardware for secure legal workloads.</li>
+      <li><strong>The model learns the firm's patterns:</strong> Writing style, clause preferences, risk assessment patterns, negotiation tendencies — absorbed from real work product, not described in a profile.</li>
+      <li><strong>Monthly retraining:</strong> As the firm produces new work, the model gets retrained periodically. It doesn't just remember the past — it evolves with the firm.</li>
+      <li><strong>HITL Score verified after every training cycle:</strong> Each retrained model gets re-evaluated. Training doesn't just make it different — it has to make it better, confirmed by HITL Score metrics.</li>
+    </ul>
+  </div>
+
+  <div class="detail-block">
+    <h4>Why this is a different tier of product</h4>
+    <ul>
+      <li><strong>Instruction-following has limits.</strong> You can tell an AI "be conservative with risk flags" — but a model trained on 10,000 real contracts from a conservative firm doesn't need to be told. It IS conservative. The behavior is baked in, not bolted on.</li>
+      <li><strong>Competitors can't touch this.</strong> Harvey and CoCounsel use one model for all customers. They can't fine-tune per firm — their architecture doesn't support it. We can, because our framework is model-agnostic and our GPU partner provides dedicated training infrastructure.</li>
+      <li><strong>The moat deepens over time.</strong> Every month of training makes the firm's agent more specialized, more accurate, more irreplaceable. After a year of custom training, switching to a competitor means starting from zero. That's retention built into the product.</li>
+      <li><strong>Premium pricing, justified.</strong> $2K-5K setup plus $500/month — but the value is proportional. A firm paying $500/month for an agent that thinks like their best senior associate? That associate costs $15K/month in salary.</li>
+    </ul>
+  </div>
+
+  <div class="detail-block">
+    <h4>The GPU infrastructure</h4>
+    <ul>
+      <li>Our partner operates SeqPU — enterprise GPU rental infrastructure built for AI workloads</li>
+      <li>Dedicated hardware, not shared cloud — critical for legal data security</li>
+      <li>Capacity to train multiple firm models in parallel as the customer base scales</li>
+      <li>We've already made contact and the relationship is in development</li>
+      <li>This is the "workshop" — the framework is the car, CLAW is the GPS, and the GPU servers are the factory where custom engines get built</li>
+    </ul>
+  </div>
+
+  <div class="detail-block">
+    <h4>The honest version</h4>
+    <ul>
+      <li>Phase 2 is not ready today. Phase 1 launches first. Custom Training is the premium tier we build once the Core framework is proven.</li>
+      <li>Fine-tuning requires meaningful data volume — firms with 5+ years of documents benefit most. Smaller firms may not have enough data to justify it.</li>
+      <li>GPU costs eat into margins (~60% vs ~90% on Core) but the price point is higher and the retention is stronger.</li>
+      <li>The GPU partnership is identified but not yet formalized — we're early in that relationship.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- THE FLYWHEEL -->
+<!-- ============================================ -->
+<div class="section">
+  <div class="section-number">06</div>
   <h2>The Revenue Flywheel</h2>
   <p class="one-liner">Three companies feeding each other — one customer, three revenue streams</p>
 
@@ -735,7 +796,7 @@ body {
 <!-- WHAT'S BUILT VS NOT -->
 <!-- ============================================ -->
 <div class="section">
-  <div class="section-number">06</div>
+  <div class="section-number">07</div>
   <h2>What's Built vs. What We'd Build Together</h2>
   <p class="one-liner">No hand-waving — honest inventory</p>
 
@@ -772,6 +833,10 @@ body {
       <h4>HITL Score Integration</h4>
       <p>Charles owns HITL Score. We propose using it as the certification layer. He defines what "HITL-approved" means for CLAW Agents.</p>
     </div>
+    <div class="status-card collab">
+      <h4>GPU Training Infrastructure</h4>
+      <p>Phase 2. Partner identified (SeqPU — enterprise GPU rental). Relationship in development. Ready when the Core framework proves out.</p>
+    </div>
   </div>
 </div>
 
@@ -779,7 +844,7 @@ body {
 <!-- WHO BRINGS WHAT -->
 <!-- ============================================ -->
 <div class="section">
-  <div class="section-number">07</div>
+  <div class="section-number">08</div>
   <h2>Who Brings What</h2>
   <p class="one-liner">Both sides essential</p>
 
@@ -815,6 +880,11 @@ body {
       <td class="yes">Pipeline engineering</td>
     </tr>
     <tr>
+      <td class="feature">Custom Training (Phase 2)</td>
+      <td>Firm document access</td>
+      <td class="yes">GPU partner + fine-tuning pipeline</td>
+    </tr>
+    <tr>
       <td class="feature">Distribution</td>
       <td class="yes">LPEAI classes, firm network</td>
       <td>Deployment &amp; onboarding</td>
@@ -831,7 +901,7 @@ body {
 <!-- TIMELINE -->
 <!-- ============================================ -->
 <div class="section">
-  <div class="section-number">08</div>
+  <div class="section-number">09</div>
   <h2>Proposed Timeline</h2>
   <p class="one-liner">Phased and honest</p>
 
@@ -865,11 +935,13 @@ body {
   </div>
 
   <div class="detail-block">
-    <h4>Month 4+ — Scale</h4>
+    <h4>Month 4+ — Scale + Phase 2</h4>
     <ul>
       <li>Every new LPEAI class = new batch of subscribers + HITL certifications</li>
-      <li>Custom Training tier for firms that want fine-tuned models</li>
       <li>Feature development driven by real usage</li>
+      <li>Identify first Custom Training candidate — a firm with deep document history ready to go from instructions to intuition</li>
+      <li>Formalize GPU infrastructure partnership, begin first fine-tuning run</li>
+      <li>First HITL-certified custom-trained agent goes live — the flagship case study</li>
     </ul>
   </div>
 </div>
