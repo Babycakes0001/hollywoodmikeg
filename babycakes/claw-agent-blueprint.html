@@ -15,7 +15,6 @@ body {
   line-height: 1.7;
 }
 
-/* --- Header --- */
 .header {
   padding: 60px 20px 40px;
   text-align: center;
@@ -40,11 +39,11 @@ body {
 .header .subtitle {
   font-size: 1rem;
   color: #777;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
+  line-height: 1.6;
 }
 
-/* --- Sections --- */
 .section {
   max-width: 800px;
   margin: 0 auto;
@@ -52,9 +51,7 @@ body {
   border-bottom: 1px solid #141414;
 }
 
-.section:last-of-type {
-  border-bottom: none;
-}
+.section:last-of-type { border-bottom: none; }
 
 .section-number {
   font-size: 0.6rem;
@@ -83,7 +80,6 @@ body {
   color: #bbb;
 }
 
-/* --- Status Tags --- */
 .status {
   display: inline-block;
   font-size: 0.65rem;
@@ -113,13 +109,12 @@ body {
   border: 1px solid #991b1b;
 }
 
-.status-needs-charles {
-  background: #0a0a1a;
-  color: #818cf8;
-  border: 1px solid #3730a3;
+.status-hitl {
+  background: #1a0a1a;
+  color: #c084fc;
+  border: 1px solid #7c3aed;
 }
 
-/* --- Detail Blocks --- */
 .detail-block {
   background: #111;
   border: 1px solid #1a1a1a;
@@ -144,9 +139,10 @@ body {
 .detail-block li {
   font-size: 0.9rem;
   color: #999;
-  padding: 4px 0;
+  padding: 5px 0;
   padding-left: 16px;
   position: relative;
+  line-height: 1.5;
 }
 
 .detail-block li::before {
@@ -157,6 +153,8 @@ body {
   font-family: monospace;
 }
 
+.detail-block li strong { color: #ccc; }
+
 /* --- Architecture Diagram --- */
 .arch-diagram {
   background: #080808;
@@ -165,7 +163,7 @@ body {
   padding: 30px;
   margin: 24px 0;
   font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   line-height: 1.8;
   color: #888;
   overflow-x: auto;
@@ -176,10 +174,10 @@ body {
 .arch-diagram .green { color: #4ade80; }
 .arch-diagram .yellow { color: #facc15; }
 .arch-diagram .red { color: #f87171; }
-.arch-diagram .purple { color: #818cf8; }
+.arch-diagram .purple { color: #c084fc; }
 .arch-diagram .dim { color: #444; }
 
-/* --- Interview Questions --- */
+/* --- Interview Cards --- */
 .interview-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -187,9 +185,7 @@ body {
   margin: 16px 0;
 }
 
-@media (max-width: 600px) {
-  .interview-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 600px) { .interview-grid { grid-template-columns: 1fr; } }
 
 .interview-card {
   background: #111;
@@ -200,7 +196,7 @@ body {
 
 .interview-card .q-number {
   font-size: 0.6rem;
-  color: #444;
+  color: #117ACA;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 4px;
@@ -217,6 +213,68 @@ body {
   margin-top: 6px;
   font-style: italic;
 }
+
+/* --- Memory Feature Cards --- */
+.mem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+@media (max-width: 600px) { .mem-grid { grid-template-columns: 1fr; } }
+
+.mem-card {
+  background: #0a1a0a;
+  border: 1px solid #166534;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.mem-card h4 {
+  font-size: 0.8rem;
+  color: #4ade80;
+  margin-bottom: 6px;
+}
+
+.mem-card p {
+  font-size: 0.8rem;
+  color: #888;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --- Flywheel --- */
+.flywheel {
+  background: #080812;
+  border: 1px solid #1a1a2a;
+  border-radius: 8px;
+  padding: 30px;
+  margin: 24px 0;
+  text-align: center;
+}
+
+.flywheel-step {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 6px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.flywheel-arrow {
+  display: inline-block;
+  color: #333;
+  font-size: 1.2rem;
+  margin: 0 4px;
+  vertical-align: middle;
+}
+
+.fly-lpeai { background: #1a1a00; color: #facc15; border: 1px solid #854d0e; }
+.fly-claw { background: #0a1a2a; color: #117ACA; border: 1px solid #117ACA44; }
+.fly-hitl { background: #1a0a1a; color: #c084fc; border: 1px solid #7c3aed; }
+.fly-revenue { background: #0a2a0a; color: #4ade80; border: 1px solid #166534; }
 
 /* --- Comparison Table --- */
 .compare-table {
@@ -243,22 +301,19 @@ body {
 }
 
 .compare-table tr:last-child td { border-bottom: none; }
-
 .compare-table .feature { color: #ccc; }
 .compare-table .yes { color: #4ade80; }
 .compare-table .no { color: #f87171; }
 .compare-table .partial { color: #facc15; }
 
-/* --- Revenue Section --- */
+/* --- Revenue Cards --- */
 .tier-row {
   display: flex;
   gap: 16px;
   margin: 16px 0;
 }
 
-@media (max-width: 600px) {
-  .tier-row { flex-direction: column; }
-}
+@media (max-width: 600px) { .tier-row { flex-direction: column; } }
 
 .tier-card {
   flex: 1;
@@ -286,42 +341,74 @@ body {
   line-height: 1.5;
 }
 
-/* --- Honest Section --- */
-.honest-grid {
+/* --- HITL Badge --- */
+.hitl-badge-section {
+  text-align: center;
+  padding: 40px 20px;
+  margin: 24px 0;
+}
+
+.hitl-badge {
+  display: inline-block;
+  border: 2px solid #7c3aed;
+  border-radius: 12px;
+  padding: 24px 40px;
+  background: #0d0618;
+}
+
+.hitl-badge .badge-label {
+  font-size: 0.55rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #7c3aed;
+  margin-bottom: 6px;
+}
+
+.hitl-badge .badge-title {
+  font-size: 1.3rem;
+  color: #c084fc;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.hitl-badge .badge-sub {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+/* --- Status Grid --- */
+.status-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   margin: 16px 0;
 }
 
-@media (max-width: 600px) {
-  .honest-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 600px) { .status-grid { grid-template-columns: 1fr; } }
 
-.honest-card {
+.status-card {
   background: #111;
   border-radius: 6px;
   padding: 16px;
 }
 
-.honest-card.have { border: 1px solid #166534; }
-.honest-card.need { border: 1px solid #854d0e; }
-.honest-card.charles { border: 1px solid #3730a3; }
+.status-card.have { border: 1px solid #166534; }
+.status-card.collab { border: 1px solid #854d0e; }
+.status-card.charles { border: 1px solid #3730a3; }
 
-.honest-card h4 {
+.status-card h4 {
   font-size: 0.85rem;
   color: #fff;
   margin-bottom: 6px;
 }
 
-.honest-card p {
+.status-card p {
   font-size: 0.8rem;
   color: #888;
   margin: 0;
   line-height: 1.5;
 }
 
-/* --- Footer --- */
 .footer {
   text-align: center;
   padding: 40px 20px;
@@ -342,423 +429,347 @@ body {
 <div class="header">
   <div class="header-label">Product Blueprint</div>
   <h1>CLAW Agent Framework</h1>
-  <p class="subtitle">What it is, how it works, what's built, what's not, and what we need from each other to build it.</p>
+  <p class="subtitle">A new revenue stream for LPEAI: a ready-made AI legal agent framework that knows CLAW on day one, customized to each firm through a structured interview, protected by HITL Score certification. Here's what we've built, what we propose, and what we'd build together.</p>
 </div>
 
 <!-- ============================================ -->
-<!-- WHAT IS IT -->
+<!-- THE IDEA -->
 <!-- ============================================ -->
 <div class="section">
   <div class="section-number">01</div>
-  <h2>What Is This Thing?</h2>
-  <p class="one-liner">The short version</p>
+  <h2>The Idea</h2>
+  <p class="one-liner">A recurring revenue product that every LPEAI graduate needs</p>
 
-  <p>It's a wrapper that goes around any AI model (Claude, GPT, Llama, etc.) and turns it into a legal professional that already knows the CLAW method and already knows your firm.</p>
+  <p>Every lawyer who takes LPEAI and learns the CLAW method needs one thing next: an AI tool that actually knows CLAW. Right now that doesn't exist. They graduate, go back to their firm, and use generic ChatGPT or Claude that doesn't know CLAW, doesn't know their firm, and forgets everything between sessions.</p>
 
-  <p>Think of it like this: the AI model is a brain. A very smart brain, but it has no training, no memory of your firm, no knowledge of CLAW, and amnesia every time you close the window. Our framework gives that brain everything it's missing — methodology, memory, firm knowledge, document workflows, and security.</p>
+  <p>We're proposing a framework — the software layer that wraps around any AI model and makes it a CLAW-trained legal partner. The graduate plugs in their AI model of choice, runs through a firm-specific interview, and they have a legal agent that speaks CLAW fluently from day one.</p>
 
-  <p>The lawyer doesn't interact with the AI model directly. They interact with the framework, which uses the model as its engine underneath. They can swap the engine anytime without losing anything.</p>
+  <p>Every graduating class becomes a new batch of subscribers. Recurring monthly revenue tied directly to the LPEAI pipeline that already exists.</p>
 
-  <div class="arch-diagram"><span class="dim">┌─────────────────────────────────────────────────────────┐</span>
-<span class="dim">│</span>  <span class="highlight">CLAW AGENT FRAMEWORK</span>                                    <span class="dim">│</span>
-<span class="dim">│</span>                                                         <span class="dim">│</span>
-<span class="dim">│</span>  <span class="green">┌─────────────┐</span>  <span class="yellow">┌──────────────┐</span>  <span class="purple">┌─────────────┐</span>  <span class="dim">│</span>
-<span class="dim">│</span>  <span class="green">│ CLAW Method │</span>  <span class="yellow">│ Firm Profile │</span>  <span class="purple">│   Memory    │</span>  <span class="dim">│</span>
-<span class="dim">│</span>  <span class="green">│  (rules,    │</span>  <span class="yellow">│ (interview   │</span>  <span class="purple">│ (learns &   │</span>  <span class="dim">│</span>
-<span class="dim">│</span>  <span class="green">│  steps,     │</span>  <span class="yellow">│  answers,    │</span>  <span class="purple">│  remembers  │</span>  <span class="dim">│</span>
-<span class="dim">│</span>  <span class="green">│  analysis)  │</span>  <span class="yellow">│  style,      │</span>  <span class="purple">│  across     │</span>  <span class="dim">│</span>
-<span class="dim">│</span>  <span class="green">│             │</span>  <span class="yellow">│  prefs)      │</span>  <span class="purple">│  sessions)  │</span>  <span class="dim">│</span>
-<span class="dim">│</span>  <span class="green">└──────┬──────┘</span>  <span class="yellow">└──────┬───────┘</span>  <span class="purple">└──────┬──────┘</span>  <span class="dim">│</span>
-<span class="dim">│</span>         <span class="dim">└──────────────┼───────────────┘</span>           <span class="dim">│</span>
-<span class="dim">│</span>                       <span class="dim">▼</span>                              <span class="dim">│</span>
-<span class="dim">│</span>            <span class="highlight">┌──────────────────┐</span>                     <span class="dim">│</span>
-<span class="dim">│</span>            <span class="highlight">│  Document Flows  │</span>                     <span class="dim">│</span>
-<span class="dim">│</span>            <span class="highlight">│  (review, draft, │</span>                     <span class="dim">│</span>
-<span class="dim">│</span>            <span class="highlight">│   flag, compare) │</span>                     <span class="dim">│</span>
-<span class="dim">│</span>            <span class="highlight">└────────┬─────────┘</span>                     <span class="dim">│</span>
-<span class="dim">│</span>                     <span class="dim">▼</span>                              <span class="dim">│</span>
-<span class="dim">│</span>            <span class="dim">┌──────────────────┐</span>                     <span class="dim">│</span>
-<span class="dim">│</span>            <span class="dim">│  Security Layer  │</span>                     <span class="dim">│</span>
-<span class="dim">│</span>            <span class="dim">│  (access, audit, │</span>                     <span class="dim">│</span>
-<span class="dim">│</span>            <span class="dim">│   isolation)     │</span>                     <span class="dim">│</span>
-<span class="dim">│</span>            <span class="dim">└────────┬─────────┘</span>                     <span class="dim">│</span>
-<span class="dim">│</span>                     <span class="dim">▼</span>                              <span class="dim">│</span>
-<span class="dim">│</span>  <span class="red">┌─────────────────────────────────────────────┐</span>  <span class="dim">│</span>
-<span class="dim">│</span>  <span class="red">│  ANY AI MODEL: Claude / GPT / Llama / etc.  │</span>  <span class="dim">│</span>
-<span class="dim">│</span>  <span class="red">│  (firm provides their own API key or server) │</span>  <span class="dim">│</span>
-<span class="dim">│</span>  <span class="red">└─────────────────────────────────────────────┘</span>  <span class="dim">│</span>
-<span class="dim">└─────────────────────────────────────────────────────────┘</span></div>
+  <div class="arch-diagram"><span class="dim">┌─────────────────────────────────────────────────────────────┐</span>
+<span class="dim">│</span>  <span class="highlight">CLAW AGENT FRAMEWORK</span>                                        <span class="dim">│</span>
+<span class="dim">│</span>                                                             <span class="dim">│</span>
+<span class="dim">│</span>  <span class="purple">┌─────────────┐</span>  <span class="green">┌──────────────┐</span>  <span class="green">┌───────────────┐</span>  <span class="dim">│</span>
+<span class="dim">│</span>  <span class="purple">│ CLAW Method │</span>  <span class="green">│  Firm        │</span>  <span class="green">│    Memory     │</span>  <span class="dim">│</span>
+<span class="dim">│</span>  <span class="purple">│ (Charles    │</span>  <span class="green">│  Interview   │</span>  <span class="green">│    System     │</span>  <span class="dim">│</span>
+<span class="dim">│</span>  <span class="purple">│  owns this) │</span>  <span class="green">│  (we built   │</span>  <span class="green">│  (we built    │</span>  <span class="dim">│</span>
+<span class="dim">│</span>  <span class="purple">│             │</span>  <span class="green">│   this)      │</span>  <span class="green">│   this)       │</span>  <span class="dim">│</span>
+<span class="dim">│</span>  <span class="purple">└──────┬──────┘</span>  <span class="green">└──────┬───────┘</span>  <span class="green">└───────┬───────┘</span>  <span class="dim">│</span>
+<span class="dim">│</span>         <span class="dim">└──────────────┼────────────────┘</span>            <span class="dim">│</span>
+<span class="dim">│</span>                       <span class="dim">▼</span>                               <span class="dim">│</span>
+<span class="dim">│</span>            <span class="highlight">┌──────────────────────┐</span>                  <span class="dim">│</span>
+<span class="dim">│</span>            <span class="highlight">│  Document Workflows  │</span>                  <span class="dim">│</span>
+<span class="dim">│</span>            <span class="highlight">│  (review, draft,     │</span>                  <span class="dim">│</span>
+<span class="dim">│</span>            <span class="highlight">│   flag, compare)     │</span>                  <span class="dim">│</span>
+<span class="dim">│</span>            <span class="highlight">└────────┬─────────────┘</span>                  <span class="dim">│</span>
+<span class="dim">│</span>                     <span class="dim">▼</span>                               <span class="dim">│</span>
+<span class="dim">│</span>  <span class="purple">┌─────────────────────────────────────────────────┐</span>  <span class="dim">│</span>
+<span class="dim">│</span>  <span class="purple">│          HITL SCORE CERTIFICATION               │</span>  <span class="dim">│</span>
+<span class="dim">│</span>  <span class="purple">│     (compliance scoring + drift detection)       │</span>  <span class="dim">│</span>
+<span class="dim">│</span>  <span class="purple">│              Charles owns this too               │</span>  <span class="dim">│</span>
+<span class="dim">│</span>  <span class="purple">└─────────────────────────────────────────────────┘</span>  <span class="dim">│</span>
+<span class="dim">│</span>                     <span class="dim">▼</span>                               <span class="dim">│</span>
+<span class="dim">│</span>  <span class="yellow">┌─────────────────────────────────────────────────┐</span>  <span class="dim">│</span>
+<span class="dim">│</span>  <span class="yellow">│  ANY AI MODEL: Claude / GPT / Llama / etc.      │</span>  <span class="dim">│</span>
+<span class="dim">│</span>  <span class="yellow">│  (firm provides their own — we're model-agnostic)│</span>  <span class="dim">│</span>
+<span class="dim">│</span>  <span class="yellow">└─────────────────────────────────────────────────┘</span>  <span class="dim">│</span>
+<span class="dim">└─────────────────────────────────────────────────────────────┘</span></div>
 </div>
 
 <!-- ============================================ -->
-<!-- PART 1: CLAW METHOD LAYER -->
+<!-- THE INTERVIEW FRAMEWORK -->
 <!-- ============================================ -->
 <div class="section">
   <div class="section-number">02</div>
-  <h2>The CLAW Method Layer</h2>
-  <p class="one-liner">The methodology baked into the agent's instructions</p>
+  <h2>The Interview Framework</h2>
+  <p class="one-liner">Same engine we built for Worth Protecting — adapted for law firms</p>
 
-  <span class="status status-needs-charles">Needs Charles</span>
+  <span class="status status-built">Engine Built &amp; Proven</span>
 
-  <p>This is the core differentiator. Every time the agent reviews a contract, drafts a memo, or flags a risk, it follows the CLAW method automatically. The lawyer doesn't prompt it to use CLAW — it just does, because the method is encoded into the framework's instruction layer.</p>
+  <p>For Worth Protecting, we built what we call the Soul Interview — a structured question system that captures everything about a person or organization. Not a survey. Not a form. A real interview that digs into identity, style, values, preferences, and institutional knowledge. We've run hundreds of questions through this system. It works.</p>
 
-  <p>Technically, this is a structured set of rules, decision trees, and analysis steps that get loaded before every interaction. Think of it as the agent's training manual that it re-reads before every task.</p>
+  <p>The CLAW Agent Framework uses the exact same concept, adapted for law firms. We call it the Firm Interview. Same engine, different questions. A senior partner sits down for 30-45 minutes, answers questions designed to teach the AI agent who their firm really is, and the agent carries that identity forward in every interaction.</p>
+
+  <p>The interview engine is built. The legal-specific questions would be designed with Charles — he knows what matters about a firm, we know how to structure the interview to capture it.</p>
 
   <div class="detail-block">
-    <h4>What we need from Charles to build this</h4>
+    <h4>How the Soul Interview works (what we've already built)</h4>
     <ul>
-      <li>The formal CLAW method steps — what's the process from start to finish?</li>
-      <li>Decision trees — when reviewing a contract, what does the agent check first? Second? What triggers a red flag vs. a yellow flag?</li>
-      <li>Output format — what does a CLAW analysis look like when it's done right? Show us 3-5 examples.</li>
-      <li>Edge cases — where do junior lawyers get CLAW wrong? Those mistakes become our test cases.</li>
-      <li>Terminology — any CLAW-specific terms or categories the agent needs to know.</li>
+      <li><strong>Structured questioning:</strong> Not open-ended chat — carefully ordered questions that build on each other, each one designed to capture a specific dimension of identity</li>
+      <li><strong>Answer processing:</strong> Raw answers get structured into a profile document that the AI agent reads before every interaction — like a permanent employee handbook</li>
+      <li><strong>Living document:</strong> The profile updates over time as the firm evolves. New partner? Update the profile. Changed approach to risk? Update the profile. Agent adapts immediately.</li>
+      <li><strong>Proven at scale:</strong> Our production interview system has processed 77 detailed questions with branching follow-ups. It captures nuance, not just facts.</li>
     </ul>
   </div>
 
   <div class="detail-block">
-    <h4>What we handle</h4>
+    <h4>What makes this different from "just asking the AI to remember"</h4>
     <ul>
-      <li>Encoding the method into structured agent instructions</li>
-      <li>Building test cases to verify the agent follows CLAW correctly</li>
-      <li>Version control — when CLAW evolves, we update the framework</li>
+      <li>Generic AI memory stores random things you've mentioned. Our interview is <strong>designed</strong> — every question has a purpose, every answer maps to a behavior the agent will exhibit.</li>
+      <li>The interview captures things a firm wouldn't think to tell an AI — "what mistake would make you fire a first-year?" teaches the agent what NOT to do. "What does good work look like HERE?" sets the quality bar in the firm's own words.</li>
+      <li>A firm fills it out once. The agent carries it forever. No repeated prompting, no "remind the AI how we do things."</li>
     </ul>
   </div>
-</div>
 
-<!-- ============================================ -->
-<!-- PART 2: FIRM INTERVIEW -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="section-number">03</div>
-  <h2>The Firm Interview</h2>
-  <p class="one-liner">A structured onboarding that teaches the agent who the firm is</p>
-
-  <span class="status status-ready">Framework Built — Questions Need Legal Input</span>
-
-  <p>We've already built a working interview system. It's been tested extensively (77 questions, proven in production). The technology works. What we need is the legal-specific question set — designed with Charles — that captures what makes each firm unique.</p>
-
-  <p>The interview takes 30-45 minutes with a senior partner. Their answers get structured into a profile that the agent reads before every interaction. The agent doesn't just know law — it knows THIS firm's law.</p>
-
-  <div class="detail-block">
-    <h4>Draft Question Categories</h4>
-    <ul>
-      <li>These are starting points — Charles should reshape, add, or cut based on what actually matters in practice.</li>
-    </ul>
-  </div>
+  <p>Here are sample questions to show the approach — the legal substance would be designed with Charles and the Ninja team:</p>
 
   <div class="interview-grid">
     <div class="interview-card">
       <div class="q-number">Identity</div>
       <div class="q-text">What areas of law does your firm practice?</div>
-      <div class="q-why">Sets the agent's domain knowledge focus</div>
+      <div class="q-why">Sets the agent's domain knowledge boundaries</div>
     </div>
     <div class="interview-card">
       <div class="q-number">Identity</div>
-      <div class="q-text">Describe your typical client. Individual? Corporate? What size? What industries?</div>
-      <div class="q-why">Calibrates language, complexity level, and risk assumptions</div>
+      <div class="q-text">Describe your typical client. Who walks through the door?</div>
+      <div class="q-why">Calibrates language, complexity, and assumptions</div>
     </div>
     <div class="interview-card">
       <div class="q-number">Style</div>
-      <div class="q-text">Show me a memo your firm produced that you'd call "excellent." What makes it good?</div>
-      <div class="q-why">Teaches the agent the firm's writing voice and format preferences</div>
-    </div>
-    <div class="interview-card">
-      <div class="q-number">Style</div>
-      <div class="q-text">Is your firm formal or conversational with clients? Give me an example of each.</div>
-      <div class="q-why">Tunes the agent's tone in client-facing vs. internal work</div>
+      <div class="q-text">Show me a memo you'd call "excellent." What makes it good?</div>
+      <div class="q-why">Teaches the agent the firm's writing voice</div>
     </div>
     <div class="interview-card">
       <div class="q-number">Risk</div>
-      <div class="q-text">When reviewing a contract, what ALWAYS gets flagged? What's the thing that, if missed, keeps you up at night?</div>
-      <div class="q-why">Sets the agent's risk detection priorities</div>
+      <div class="q-text">When reviewing a contract, what's the thing that — if missed — keeps you up at night?</div>
+      <div class="q-why">Sets the agent's red-flag priorities</div>
     </div>
     <div class="interview-card">
       <div class="q-number">Risk</div>
-      <div class="q-text">How aggressive or conservative is your firm? Do you flag everything and let the partner decide, or only flag what's actually dangerous?</div>
-      <div class="q-why">Calibrates flagging sensitivity — too many flags is as bad as too few</div>
-    </div>
-    <div class="interview-card">
-      <div class="q-number">Operations</div>
-      <div class="q-text">Who are the key people? Partners, associates, paralegals — and what does each person typically need from an AI tool?</div>
-      <div class="q-why">Enables role-based access and task routing</div>
-    </div>
-    <div class="interview-card">
-      <div class="q-number">Operations</div>
-      <div class="q-text">What jurisdictions and courts does your firm work in most?</div>
-      <div class="q-why">Focuses the agent's legal knowledge on relevant law</div>
+      <div class="q-text">How aggressive or conservative is your firm? Flag everything, or only what's actually dangerous?</div>
+      <div class="q-why">Calibrates sensitivity — too many flags is as bad as too few</div>
     </div>
     <div class="interview-card">
       <div class="q-number">Learning</div>
-      <div class="q-text">What's a mistake a first-year associate has made that you had to correct? What should they have known?</div>
-      <div class="q-why">Pre-loads the agent with corrections before it makes them</div>
+      <div class="q-text">What's a mistake a first-year has made that you had to correct?</div>
+      <div class="q-why">Pre-loads corrections before the agent makes them</div>
     </div>
     <div class="interview-card">
       <div class="q-number">Learning</div>
-      <div class="q-text">If you could tell a brand new hire one thing about how this firm works that they'd never learn from a textbook, what is it?</div>
-      <div class="q-why">The killer question — captures institutional knowledge that only exists in people's heads</div>
+      <div class="q-text">What would you tell a new hire that they'd never learn from a textbook?</div>
+      <div class="q-why">Captures institutional knowledge that lives only in people's heads</div>
     </div>
     <div class="interview-card">
       <div class="q-number">Quality</div>
-      <div class="q-text">What does "good work" look like at your firm? Not legally correct — any firm can do that. What makes work HERE good?</div>
-      <div class="q-why">Defines the agent's quality standard in the firm's own terms</div>
+      <div class="q-text">If this AI handed you a contract review, what would make you trust it vs. redo the whole thing?</div>
+      <div class="q-why">Defines success criteria — we build backwards from this</div>
     </div>
-    <div class="interview-card">
-      <div class="q-number">Quality</div>
-      <div class="q-text">If this AI agent handed you a contract review, what would make you trust it vs. redo the whole thing yourself?</div>
-      <div class="q-why">Sets the success criteria — we build backwards from this answer</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- THE MEMORY SYSTEM -->
+<!-- ============================================ -->
+<div class="section">
+  <div class="section-number">03</div>
+  <h2>The Memory System</h2>
+  <p class="one-liner">This isn't a feature. This is the product's backbone.</p>
+
+  <span class="status status-built">Built &amp; In Daily Production</span>
+
+  <p>This is what we're most proud of, and it's what makes this framework fundamentally different from giving a lawyer a ChatGPT window.</p>
+
+  <p>Our memory system is built, tested, and has been in daily production use for months. It's not a demo. It's not a concept. It's infrastructure we rely on every day, and it's the same technology that would power every CLAW Agent.</p>
+
+  <div class="mem-grid">
+    <div class="mem-card">
+      <h4>Structured Storage</h4>
+      <p>Memory isn't a pile of old chats. Every memory is typed, tagged, and organized — corrections, preferences, client knowledge, firm patterns. The agent knows WHAT it knows and WHERE it learned it.</p>
+    </div>
+    <div class="mem-card">
+      <h4>Semantic Search</h4>
+      <p>Powered by vector embeddings (ChromaDB + sentence-transformers). The agent searches by meaning, not keywords. Ask about "indemnification preferences" and it finds relevant memories even if those exact words were never used.</p>
+    </div>
+    <div class="mem-card">
+      <h4>Persistent Across Sessions</h4>
+      <p>Close the window. Come back next week. The agent remembers everything. Not just what you said — who you are, what you prefer, what corrections you've made, what patterns your firm follows.</p>
+    </div>
+    <div class="mem-card">
+      <h4>Self-Correcting</h4>
+      <p>"We never structure deals this way." The agent remembers that correction forever. Monday's mistake becomes Tuesday's correct answer. It doesn't repeat errors — it learns from every interaction.</p>
+    </div>
+    <div class="mem-card">
+      <h4>Proactive Recall</h4>
+      <p>The agent doesn't wait to be reminded. Before every response, it automatically searches its memory for relevant context. Working on Acme Corp? It already pulled up everything it knows about Acme.</p>
+    </div>
+    <div class="mem-card">
+      <h4>Indexed at Scale</h4>
+      <p>Hundreds of memory entries, searchable instantly. No slowdown over time. The agent at month 12 is faster than at month 1 because it has more knowledge to draw from, not more weight to carry.</p>
     </div>
   </div>
 
   <div class="detail-block">
-    <h4>How interview answers become agent behavior</h4>
+    <h4>What the memory actually looks like (real architecture)</h4>
     <ul>
-      <li>Answers are structured into a firm profile document</li>
-      <li>The profile is loaded into the agent's instructions before every interaction</li>
-      <li>The agent reads the profile the same way a new hire reads the employee handbook — except it actually remembers everything</li>
-      <li>The profile can be updated anytime. Firm changes? Update the profile, agent adapts immediately.</li>
+      <li><strong>Memory files:</strong> Structured markdown documents organized by type — each with metadata (name, description, type, date, importance score)</li>
+      <li><strong>Vector database:</strong> ChromaDB indexes every memory file with sentence-transformer embeddings for semantic search</li>
+      <li><strong>MCP server:</strong> A dedicated memory server that the agent queries through a standard protocol — search, filter by type, list, get statistics</li>
+      <li><strong>Automatic indexing:</strong> New memories are indexed incrementally. Full rebuild available when needed. Search works in milliseconds.</li>
+      <li><strong>Memory types we've defined:</strong> User profiles, feedback/corrections, project context, reference pointers, entity knowledge graphs, diary entries — each type has different storage and retrieval logic</li>
+    </ul>
+  </div>
+
+  <div class="detail-block">
+    <h4>How this translates to a law firm</h4>
+    <ul>
+      <li><strong>Correction memory:</strong> "Our standard NDA always includes a 2-year non-compete" — the agent defaults to this going forward</li>
+      <li><strong>Client memory:</strong> "Acme Corp's GC prefers bullet points over paragraphs" — remembered across all Acme matters</li>
+      <li><strong>Firm pattern memory:</strong> "We never use liquidated damages clauses under $50K" — becomes a rule the agent follows</li>
+      <li><strong>Matter memory:</strong> "The Smith case has a Delaware jurisdiction complication" — context carries across every session on that matter</li>
+      <li><strong>Feedback memory:</strong> "Last time you flagged too many low-risk items" — sensitivity auto-adjusts</li>
+    </ul>
+  </div>
+
+  <div class="detail-block">
+    <h4>Honest comparison to what's out there</h4>
+    <ul>
+      <li>ChatGPT and Claude both have memory features now. But theirs is flat — a list of things you've mentioned, with no structure, limited capacity, and no semantic search.</li>
+      <li>Legal AI startups (Harvey, CoCounsel) have their own persistence, but it's locked to their platform and their model. Switch providers, lose everything.</li>
+      <li>Our system is structured, searchable, model-agnostic, and built around firm identity. Most memory systems remember what you SAID. Ours remembers who you ARE.</li>
+      <li>We're not claiming we invented AI memory. We're claiming ours is deeper, more structured, and portable — and we can prove it because it's been running in production for months.</li>
     </ul>
   </div>
 </div>
 
 <!-- ============================================ -->
-<!-- PART 3: MEMORY SYSTEM -->
+<!-- HITL SCORE CERTIFICATION -->
 <!-- ============================================ -->
 <div class="section">
   <div class="section-number">04</div>
-  <h2>The Memory System</h2>
-  <p class="one-liner">Persistent knowledge that survives between conversations</p>
+  <h2>HITL Score Certification</h2>
+  <p class="one-liner">Every CLAW Agent is a HITL Score-approved product</p>
 
-  <span class="status status-built">Built &amp; Proven</span>
+  <span class="status status-hitl">Ties Into Charles's Existing Company</span>
 
-  <p>This is built. It works. It's been in daily production use for months.</p>
+  <p>Here's where this gets interesting. The biggest risk with AI agents in law isn't that they're wrong on day one — it's that they drift. Day 1, the agent follows CLAW perfectly. Day 60, after hundreds of interactions, corrections, and memory updates, the agent's behavior has quietly shifted. Maybe it got too aggressive with flagging. Maybe it started cutting corners on analysis. Nobody catches it because it's gradual.</p>
 
-  <p>Most AI tools remember your conversation while the window is open and forget everything when you close it. Our memory system stores structured knowledge in a searchable database that persists forever. The agent gets smarter the more you use it.</p>
+  <p>HITL Score already solves this problem — it's Charles's AI compliance scoring system. 40+ metrics, 6 dimensions, scoring from 0-100. What if every CLAW Agent was required to be HITL Score certified?</p>
+
+  <div class="hitl-badge-section">
+    <div class="hitl-badge">
+      <div class="badge-label">Certified</div>
+      <div class="badge-title">HITL Score Approved</div>
+      <div class="badge-sub">CLAW Agent Framework &mdash; Compliance Verified</div>
+    </div>
+  </div>
 
   <div class="detail-block">
-    <h4>What the memory system actually stores</h4>
+    <h4>What HITL Score certification means for the product</h4>
     <ul>
-      <li><strong>Corrections:</strong> "We never structure indemnification clauses this way" — the agent remembers and never does it again</li>
-      <li><strong>Client preferences:</strong> "Acme Corp's GC prefers bullet points over paragraphs" — remembered across all matters</li>
-      <li><strong>Firm patterns:</strong> "Our standard NDA always includes a 2-year non-compete" — becomes the default</li>
-      <li><strong>Matter context:</strong> "The Smith case has a complication with jurisdiction in Delaware" — carries across sessions</li>
-      <li><strong>Feedback:</strong> "Last time you flagged too many low-risk items" — adjusts sensitivity going forward</li>
+      <li><strong>Initial certification:</strong> Before a CLAW Agent goes live at a firm, it passes a HITL Score evaluation. The firm knows their AI meets compliance standards from day one.</li>
+      <li><strong>Drift detection:</strong> Periodic HITL Score audits check whether the agent is still following CLAW methodology correctly. If the score drops below threshold, it gets flagged before it causes problems.</li>
+      <li><strong>Trust differentiator:</strong> The firm can tell clients "our AI is HITL-certified at 94/100." No competitor can say that. It's a trust badge that means something because HITL Score is an independent evaluation.</li>
+      <li><strong>Ongoing monitoring:</strong> This maps directly to HITL Score's existing monitoring tier — the infrastructure for this already exists on Charles's side.</li>
     </ul>
   </div>
 
   <div class="detail-block">
-    <h4>How it works technically</h4>
+    <h4>Why this is a business play, not just a feature</h4>
     <ul>
-      <li>Structured memory files organized by type (firm knowledge, client data, corrections, preferences)</li>
-      <li>Semantic search powered by vector embeddings — the agent finds relevant memories by meaning, not just keywords</li>
-      <li>Memory is searched automatically before every response — the agent checks what it knows before it speaks</li>
-      <li>Indexed and searchable across thousands of entries without slowing down</li>
-    </ul>
-  </div>
-
-  <div class="detail-block">
-    <h4>Honest comparison to competitors</h4>
-    <ul>
-      <li>ChatGPT and Claude now have basic memory — they remember things you've told them. But it's flat, unsearchable, and limited in size.</li>
-      <li>Harvey and CoCounsel have their own persistence, but it's locked to their platform and their model.</li>
-      <li>Our memory is structured, searchable, model-agnostic, and built around firm identity — not just conversation history.</li>
-      <li>The real difference: most memory systems remember what you SAID. Ours remembers who you ARE.</li>
+      <li>It ties TWO of Charles's companies together. HITL Score isn't just evaluating random AI anymore — it's the official quality layer for CLAW Agents.</li>
+      <li>Every CLAW Agent subscription creates a HITL Score customer. Two revenue streams from the same firm.</li>
+      <li>HITL Score gains a flagship product to certify. The CLAW Agent gains a compliance badge that nobody else has.</li>
+      <li>Competitors can't replicate this. They don't own a scoring methodology. We do.</li>
     </ul>
   </div>
 </div>
 
 <!-- ============================================ -->
-<!-- PART 4: DOCUMENT WORKFLOWS -->
+<!-- THE FLYWHEEL -->
 <!-- ============================================ -->
 <div class="section">
   <div class="section-number">05</div>
-  <h2>Document Workflows</h2>
-  <p class="one-liner">Structured pipelines for common legal tasks</p>
+  <h2>The Revenue Flywheel</h2>
+  <p class="one-liner">Three companies feeding each other</p>
 
-  <span class="status status-needs-build">Needs Build — 4-6 Weeks</span>
-
-  <p>Instead of "ask the AI a question and hope for the best," workflows are structured step-by-step processes that produce consistent output. The lawyer uploads a contract, the workflow runs the CLAW analysis, flags risks at the firm's threshold, and produces a review memo in the firm's format.</p>
-
-  <div class="detail-block">
-    <h4>Phase 1 workflows (launch)</h4>
-    <ul>
-      <li><strong>Contract Review:</strong> Upload a contract → CLAW analysis → risk flags (red/yellow/green) → review memo in firm format</li>
-      <li><strong>Memo Draft:</strong> Input key facts and analysis → structured memo with proper citations → ready for partner review</li>
-      <li><strong>Client Communication:</strong> Draft client-facing emails and letters in the firm's voice and style</li>
-    </ul>
+  <div class="flywheel">
+    <span class="flywheel-step fly-lpeai">LPEAI teaches CLAW</span>
+    <span class="flywheel-arrow">&rarr;</span>
+    <span class="flywheel-step fly-claw">Graduates buy CLAW Agent</span>
+    <span class="flywheel-arrow">&rarr;</span>
+    <span class="flywheel-step fly-hitl">Agents require HITL certification</span>
+    <span class="flywheel-arrow">&rarr;</span>
+    <span class="flywheel-step fly-revenue">3x recurring revenue per customer</span>
+    <br><br>
+    <span class="flywheel-step fly-lpeai" style="opacity:0.5;">Next LPEAI class</span>
+    <span class="flywheel-arrow">&rarr;</span>
+    <span class="flywheel-step fly-claw" style="opacity:0.5;">More subscribers</span>
+    <span class="flywheel-arrow">&rarr;</span>
+    <span class="flywheel-step fly-hitl" style="opacity:0.5;">More certifications</span>
+    <span class="flywheel-arrow">&rarr;</span>
+    <span class="flywheel-step fly-revenue" style="opacity:0.5;">Compounds</span>
   </div>
-
-  <div class="detail-block">
-    <h4>Phase 2 workflows (after launch, based on demand)</h4>
-    <ul>
-      <li><strong>Due Diligence Checklist:</strong> Generate and track checklist items for transactions</li>
-      <li><strong>Clause Comparison:</strong> Compare specific clauses across multiple agreements</li>
-      <li><strong>Regulatory Check:</strong> Flag compliance issues in specific jurisdictions</li>
-    </ul>
-  </div>
-
-  <div class="detail-block">
-    <h4>What we need from Charles</h4>
-    <ul>
-      <li>What does a CLAW contract review look like start to finish? Walk us through one.</li>
-      <li>Sample inputs and outputs — anonymized real work that shows "this is what goes in, this is what should come out"</li>
-      <li>Which workflows matter most? We build those first.</li>
-    </ul>
-  </div>
-</div>
-
-<!-- ============================================ -->
-<!-- PART 5: SECURITY -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="section-number">06</div>
-  <h2>Security &amp; Access Control</h2>
-  <p class="one-liner">Ethical compliance built into the architecture</p>
-
-  <span class="status status-needs-build">Needs Build — Design Ready</span>
-
-  <p>Law firms can't use AI that lets Client A's data bleed into Client B's work. This isn't optional — it's an ethical requirement. The security layer handles this at the framework level so individual lawyers don't have to think about it.</p>
-
-  <div class="detail-block">
-    <h4>What the security layer does</h4>
-    <ul>
-      <li><strong>Client matter isolation:</strong> Each client matter exists in its own walled space. The agent working on Matter A cannot access Matter B's documents or memory.</li>
-      <li><strong>Role-based access:</strong> Partners see everything. Associates see their assigned matters. Paralegals see what they need. Configurable per firm.</li>
-      <li><strong>Audit trail:</strong> Every interaction is logged — who asked what, when, what the agent produced. Required for compliance.</li>
-      <li><strong>Data stays in the firm's control:</strong> The framework runs on the firm's infrastructure or their chosen cloud. We don't host their data.</li>
-    </ul>
-  </div>
-
-  <div class="detail-block">
-    <h4>Honest assessment</h4>
-    <ul>
-      <li>This is real engineering work. Not the hardest part, but not trivial.</li>
-      <li>Client isolation is the priority — that's the ethical firewall. Role-based access and full audit trails can come in Phase 2.</li>
-      <li>For the beta, we can start with single-user access per firm (one lawyer, one agent). Multi-user security is a Phase 2 feature.</li>
-    </ul>
-  </div>
-</div>
-
-<!-- ============================================ -->
-<!-- PART 6: MODEL-AGNOSTIC -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="section-number">07</div>
-  <h2>Model-Agnostic Architecture</h2>
-  <p class="one-liner">Swap the AI brain without losing anything</p>
-
-  <span class="status status-built">Architecture Proven</span>
-
-  <p>The framework talks to AI models through a standard interface. Claude today, GPT tomorrow, an open-source model next month — the firm's data, memory, CLAW training, and firm profile all stay the same. Only the engine changes.</p>
-
-  <div class="detail-block">
-    <h4>Why this matters</h4>
-    <ul>
-      <li>AI models are improving every few months. Being locked to one provider means you're stuck when something better arrives.</li>
-      <li>Some firms want maximum privacy — they can run an open-source model on their own servers. No data leaves their building.</li>
-      <li>Some firms want maximum capability — they use Claude or GPT through an API. Their choice.</li>
-      <li>If a provider raises prices, gets worse, or goes away — the firm switches models in an afternoon, not a migration project.</li>
-    </ul>
-  </div>
-
-  <div class="detail-block">
-    <h4>Honest caveat</h4>
-    <ul>
-      <li>Different models have different strengths. Claude is better at reasoning. GPT is better at certain formats. An open-source model running locally will be slower.</li>
-      <li>"Swap in an afternoon" means the framework works with the new model. It doesn't mean the output quality is identical — each model needs some tuning.</li>
-      <li>We'll recommend models by use case and be transparent about trade-offs.</li>
-    </ul>
-  </div>
-</div>
-
-<!-- ============================================ -->
-<!-- WHAT EXISTS VS WHAT DOESN'T -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="section-number">08</div>
-  <h2>What's Built vs. What's Not</h2>
-  <p class="one-liner">No hand-waving — here's the honest inventory</p>
-
-  <div class="honest-grid">
-    <div class="honest-card have">
-      <h4>Memory System</h4>
-      <p>Built. Tested. In daily production. Semantic search, structured storage, persistent across sessions.</p>
-    </div>
-    <div class="honest-card have">
-      <h4>Interview Framework</h4>
-      <p>Built. 77-question system proven in production. Legal question set needs design with Charles.</p>
-    </div>
-    <div class="honest-card have">
-      <h4>Model-Agnostic Architecture</h4>
-      <p>Proven. Framework already works across different AI providers. Tested with multiple models.</p>
-    </div>
-    <div class="honest-card have">
-      <h4>Agent Infrastructure</h4>
-      <p>Built. Boot sequence, instruction loading, mode switching, persistent identity — all working.</p>
-    </div>
-    <div class="honest-card need">
-      <h4>Document Workflows</h4>
-      <p>Needs build. The pipeline architecture is straightforward, but each workflow needs design and testing. 4-6 weeks.</p>
-    </div>
-    <div class="honest-card need">
-      <h4>Security Layer</h4>
-      <p>Needs build. Client isolation first, then role-based access, then audit trails. Not trivial but not novel — known patterns.</p>
-    </div>
-    <div class="honest-card charles">
-      <h4>CLAW Methodology</h4>
-      <p>Needs Charles. We can encode anything — but we need the actual method documented: steps, rules, decision trees, examples.</p>
-    </div>
-    <div class="honest-card charles">
-      <h4>Legal Interview Questions</h4>
-      <p>Needs Charles. We have the interview engine. He has the legal substance. Together: a Firm Interview product.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================ -->
-<!-- REVENUE MODEL -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="section-number">09</div>
-  <h2>Revenue Model</h2>
-  <p class="one-liner">Three tiers, different margins, one flywheel</p>
 
   <div class="tier-row">
     <div class="tier-card">
-      <h4>Core Framework</h4>
+      <h4>CLAW Agent Core</h4>
       <div class="price">~$500/month per firm</div>
-      <div class="desc">Full framework with CLAW method, firm interview, memory, document workflows. Firm provides their own AI model (API key). We provide the software. Margins ~90% — no compute costs on our side.</div>
+      <div class="desc">Full framework: CLAW method, firm interview, memory system, document workflows. Firm brings their own AI model. Our margins ~90% — it's software, no compute costs on our side.</div>
     </div>
     <div class="tier-card">
       <h4>Custom Training</h4>
-      <div class="price">$2K-5K setup + $500/month</div>
-      <div class="desc">Everything in Core, plus a model fine-tuned on the firm's own historical documents (5-10 years of contracts, memos). Requires GPU compute for training. Margins ~60%.</div>
+      <div class="price">$2K-5K setup + $500/mo</div>
+      <div class="desc">Everything in Core, plus a model fine-tuned on the firm's own historical documents. Their past 5-10 years of contracts and memos train the agent to think like THEIR firm specifically.</div>
     </div>
     <div class="tier-card">
       <h4>LPEAI Bundle</h4>
-      <div class="price">Bundled with class tuition</div>
-      <div class="desc">LPEAI graduates get a Core license at graduation. Class fee increases to include it. Every class = new batch of subscribers. The distribution flywheel.</div>
+      <div class="price">Bundled with tuition</div>
+      <div class="desc">Every LPEAI graduate gets a Core license at graduation. Class fee increases to include it. Built-in subscriber pipeline from the classes that already exist.</div>
     </div>
   </div>
 
   <div class="detail-block">
-    <h4>The flywheel</h4>
+    <h4>Plus HITL Score revenue on top</h4>
     <ul>
-      <li>LPEAI teaches lawyers the CLAW method</li>
-      <li>Graduates need an AI agent that knows CLAW</li>
-      <li>We're the only framework that does — because the method is proprietary</li>
-      <li>Every graduating class is a new batch of subscribers</li>
-      <li>Subscribers pay monthly — recurring revenue</li>
+      <li>Initial HITL certification per agent — one-time fee</li>
+      <li>Ongoing HITL monitoring — monthly fee (maps to existing HITL Score pricing tiers)</li>
+      <li>Every CLAW Agent customer is automatically a HITL Score customer</li>
+      <li>All pricing negotiable — these are starting points based on market research</li>
     </ul>
   </div>
+</div>
 
-  <div class="detail-block">
-    <h4>Pricing is negotiable</h4>
-    <ul>
-      <li>These are starting points based on market research, not final numbers</li>
-      <li>Core could be $300 or $750 — depends on what the market will bear</li>
-      <li>Custom Training pricing depends on GPU costs (we have a potential compute partner)</li>
-      <li>LPEAI Bundle pricing is Charles's call — it's his class</li>
-    </ul>
+<!-- ============================================ -->
+<!-- WHAT'S BUILT VS NOT -->
+<!-- ============================================ -->
+<div class="section">
+  <div class="section-number">06</div>
+  <h2>What's Built vs. What We'd Build Together</h2>
+  <p class="one-liner">No hand-waving — honest inventory</p>
+
+  <div class="status-grid">
+    <div class="status-card have">
+      <h4>Memory System</h4>
+      <p>Built. In daily production. Semantic search, structured storage, vector database, persistent across sessions, scales to thousands of entries.</p>
+    </div>
+    <div class="status-card have">
+      <h4>Interview Framework</h4>
+      <p>Built. 77-question system proven in production for Worth Protecting. Same engine, different questions for law firms.</p>
+    </div>
+    <div class="status-card have">
+      <h4>Agent Infrastructure</h4>
+      <p>Built. Boot sequence, instruction loading, identity persistence, mode switching — the skeleton that makes an AI agent behave consistently.</p>
+    </div>
+    <div class="status-card have">
+      <h4>Model-Agnostic Design</h4>
+      <p>Proven. Framework works across AI providers. Firm picks their model, we provide everything around it.</p>
+    </div>
+    <div class="status-card collab">
+      <h4>Firm Interview Questions</h4>
+      <p>We have the engine. Charles &amp; Ninja have the legal substance. Together: design the question set that captures a firm's identity.</p>
+    </div>
+    <div class="status-card collab">
+      <h4>Document Workflows</h4>
+      <p>We build the pipelines. Charles defines what a CLAW contract review looks like — inputs, steps, outputs. 4-6 weeks to build.</p>
+    </div>
+    <div class="status-card charles">
+      <h4>CLAW Methodology</h4>
+      <p>Charles owns this. We need it documented — steps, rules, decision trees — so we can encode it into the framework.</p>
+    </div>
+    <div class="status-card charles">
+      <h4>HITL Score Integration</h4>
+      <p>Charles owns HITL Score. We propose using it as the certification layer. He defines what "HITL-approved" means for CLAW Agents.</p>
+    </div>
   </div>
 </div>
 
@@ -766,14 +777,14 @@ body {
 <!-- WHO BRINGS WHAT -->
 <!-- ============================================ -->
 <div class="section">
-  <div class="section-number">10</div>
+  <div class="section-number">07</div>
   <h2>Who Brings What</h2>
-  <p class="one-liner">Clear division — both sides essential</p>
+  <p class="one-liner">Both sides essential</p>
 
   <table class="compare-table">
     <tr>
       <th>Component</th>
-      <th>Charles / LPEAI</th>
+      <th>Charles / LPEAI / Ninja</th>
       <th>Michael / Babycakes</th>
     </tr>
     <tr>
@@ -782,14 +793,19 @@ body {
       <td>Encodes it into the framework</td>
     </tr>
     <tr>
-      <td class="feature">Firm Interview Questions</td>
-      <td class="yes">Legal substance</td>
-      <td>Interview engine &amp; technology</td>
+      <td class="feature">Interview Questions</td>
+      <td class="yes">Legal substance &amp; design</td>
+      <td class="yes">Interview engine (built)</td>
     </tr>
     <tr>
       <td class="feature">Memory System</td>
-      <td>—</td>
+      <td>Advises on legal use cases</td>
       <td class="yes">Built and proven</td>
+    </tr>
+    <tr>
+      <td class="feature">HITL Score Layer</td>
+      <td class="yes">Owns HITL methodology</td>
+      <td>Integrates into framework</td>
     </tr>
     <tr>
       <td class="feature">Document Workflows</td>
@@ -797,107 +813,61 @@ body {
       <td class="yes">Pipeline engineering</td>
     </tr>
     <tr>
-      <td class="feature">Security Layer</td>
-      <td class="partial">Ethical requirements</td>
-      <td class="yes">Technical implementation</td>
-    </tr>
-    <tr>
-      <td class="feature">Model Integration</td>
-      <td>—</td>
-      <td class="yes">Architecture &amp; testing</td>
-    </tr>
-    <tr>
-      <td class="feature">Test Cases</td>
-      <td class="yes">Anonymized real work</td>
-      <td>Validation &amp; QA</td>
-    </tr>
-    <tr>
       <td class="feature">Distribution</td>
-      <td class="yes">LPEAI classes, network</td>
-      <td>Deployment &amp; support</td>
+      <td class="yes">LPEAI classes, firm network</td>
+      <td>Deployment &amp; onboarding</td>
     </tr>
     <tr>
       <td class="feature">Customers</td>
-      <td class="yes">LPEAI graduates, law firms</td>
-      <td>Onboarding &amp; maintenance</td>
+      <td class="yes">Every LPEAI graduate</td>
+      <td>Ongoing support &amp; updates</td>
     </tr>
   </table>
 </div>
 
 <!-- ============================================ -->
-<!-- BUILD TIMELINE -->
+<!-- TIMELINE -->
 <!-- ============================================ -->
 <div class="section">
-  <div class="section-number">11</div>
-  <h2>Build Timeline</h2>
-  <p class="one-liner">What happens and when — phased honestly</p>
+  <div class="section-number">08</div>
+  <h2>Proposed Timeline</h2>
+  <p class="one-liner">Phased and honest</p>
 
   <div class="detail-block">
     <h4>Month 1 — Foundation</h4>
     <ul>
-      <li>Charles documents the CLAW method (we provide the template for what we need)</li>
-      <li>We encode CLAW into the framework's instruction layer</li>
-      <li>We design the Firm Interview questions together (2-3 working sessions)</li>
-      <li>Build Phase 1 document workflows (contract review, memo draft, client comms)</li>
+      <li>Charles documents CLAW method (we provide the template for what we need)</li>
+      <li>Design Firm Interview questions together (2-3 working sessions with Charles &amp; Ninja)</li>
+      <li>We encode CLAW into the framework and build Phase 1 document workflows</li>
       <li>End of month: working prototype that can review a contract using CLAW</li>
     </ul>
   </div>
 
   <div class="detail-block">
-    <h4>Month 2 — Beta</h4>
+    <h4>Month 2 — Beta + HITL Certification</h4>
     <ul>
       <li>Test with 2-3 law firms from Charles's network</li>
-      <li>Run the Firm Interview with each beta firm</li>
-      <li>Collect real feedback — what works, what doesn't, what's missing</li>
-      <li>Build client matter isolation (the critical security feature)</li>
-      <li>Iterate on workflows based on real usage</li>
+      <li>Run Firm Interview with each beta firm</li>
+      <li>Define HITL Score certification criteria for CLAW Agents</li>
+      <li>First HITL-certified CLAW Agent goes live</li>
     </ul>
   </div>
 
   <div class="detail-block">
-    <h4>Month 3 — Launch</h4>
+    <h4>Month 3 — LPEAI Launch</h4>
     <ul>
-      <li>Integrate with LPEAI — finalize bundle pricing and onboarding flow</li>
+      <li>Integrate with LPEAI — bundle pricing, onboarding flow</li>
       <li>Launch to LPEAI graduates and Charles's firm network</li>
-      <li>Add Phase 2 workflows based on beta feedback</li>
-      <li>Role-based access and audit trails (if multi-user demand exists)</li>
+      <li>HITL Score monitoring begins on live agents</li>
     </ul>
   </div>
 
   <div class="detail-block">
     <h4>Month 4+ — Scale</h4>
     <ul>
-      <li>Every new LPEAI class is a new batch of customers</li>
+      <li>Every new LPEAI class = new batch of subscribers + HITL certifications</li>
       <li>Custom Training tier for firms that want fine-tuned models</li>
-      <li>Feature development driven by subscriber feedback</li>
-    </ul>
-  </div>
-</div>
-
-<!-- ============================================ -->
-<!-- THE MOAT -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="section-number">12</div>
-  <h2>Why Nobody Else Can Build This</h2>
-  <p class="one-liner">The things that are actually hard to copy</p>
-
-  <div class="detail-block">
-    <h4>Real advantages</h4>
-    <ul>
-      <li><strong>CLAW is proprietary.</strong> No other framework can offer a CLAW-trained agent because nobody else has the methodology. This is the actual moat.</li>
-      <li><strong>LPEAI is the distribution channel.</strong> Every CLAW-trained lawyer needs a CLAW-capable tool. We're the only one. Built-in customer pipeline.</li>
-      <li><strong>The interview technology is proven.</strong> Not theoretical — we've run hundreds of questions through it and built a working identity system. Competitors would need months to replicate this.</li>
-      <li><strong>Model-agnostic means we survive provider changes.</strong> If Claude gets expensive or GPT gets better, our customers just swap. Platform-locked competitors can't say that.</li>
-    </ul>
-  </div>
-
-  <div class="detail-block">
-    <h4>Honest non-advantages (things competitors also have)</h4>
-    <ul>
-      <li>Basic AI memory — ChatGPT and Claude both have this now. Our memory is deeper, but we can't claim "we have memory and they don't."</li>
-      <li>Contract review — many AI tools can review contracts. Our edge is CLAW methodology, not the review itself.</li>
-      <li>Legal AI generally — Harvey, CoCounsel, and others exist. We compete on methodology + customization + model freedom, not on "we do legal AI."</li>
+      <li>Feature development driven by real usage</li>
     </ul>
   </div>
 </div>
@@ -906,9 +876,9 @@ body {
 <!-- FOOTER -->
 <!-- ============================================ -->
 <div class="footer">
-  <p>CLAW Agent Framework — Product Blueprint</p>
+  <p>CLAW Agent Framework &mdash; Product Blueprint</p>
   <p style="margin-top: 6px;">Prepared for Charles S. Lew &amp; Team | Michael Gonzalez &amp; Babycakes | April 2026</p>
-  <p style="margin-top: 6px;">This document is the product, not the pitch. Everything here is either built, buildable, or clearly marked as needing input.</p>
+  <p style="margin-top: 6px;">This is the product, not the pitch. Everything here is either built, buildable, or clearly marked as needing collaboration.</p>
 </div>
 
 </body>
