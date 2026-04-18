@@ -5,7 +5,7 @@
 <title>Worth Protecting — Hero Mockup</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica&display=swap" rel="stylesheet">
 <style>
   :root {
     --parchment: #f4ead5;
@@ -71,6 +71,52 @@
     padding: 48px 64px 120px;
   }
 
+  /* Corner denomination numerals — banknote-style */
+  .corner-mark {
+    position: absolute;
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    font-size: 44px;
+    color: var(--currency-deep);
+    line-height: 1;
+    opacity: 0;
+    animation: fadeIn 1.4s ease-out 0.4s forwards;
+    text-shadow:
+      1px 0 0 var(--currency),
+      2px 1px 0 rgba(20,61,34,0.35),
+      -1px -1px 0 rgba(45,122,71,0.3);
+    pointer-events: none;
+  }
+  .corner-mark.tl { top: 24px; left: 20px; }
+  .corner-mark.tr { top: 24px; right: 20px; }
+  .corner-mark.bl { bottom: 24px; left: 20px; }
+  .corner-mark.br { bottom: 24px; right: 20px; }
+  .corner-mark .orn {
+    display: block;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    color: var(--currency);
+    margin-top: 2px;
+    text-shadow: none;
+    opacity: 0.75;
+  }
+
+  /* Micro-text band — currency fine print */
+  .micro-band {
+    text-align: center;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    color: var(--sepia);
+    margin: 8px 0 32px;
+    opacity: 0;
+    animation: fadeIn 1.4s ease-out 3.4s forwards;
+    text-transform: uppercase;
+  }
+  .micro-band .sep { margin: 0 12px; color: var(--currency); }
+
   /* Letterhead */
   .letterhead {
     display: flex;
@@ -86,7 +132,13 @@
     animation: fadeIn 1.2s ease-out 0.2s forwards;
   }
 
-  .letterhead .mark { color: var(--currency-deep); font-weight: 600; }
+  .letterhead .mark {
+    font-family: 'Cinzel', 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 0.22em;
+    color: var(--currency-deep);
+  }
 
   .brand-lockup { display: flex; align-items: center; gap: 14px; }
   .crest { width: 38px; height: auto; display: block; }
@@ -231,8 +283,9 @@
     top: 140px;
     right: 80px;
     transform: rotate(-8deg);
-    font-family: 'IM Fell English SC', serif;
-    font-size: 12px;
+    font-family: 'Cinzel', 'IM Fell English SC', serif;
+    font-size: 11px;
+    font-weight: 600;
     letter-spacing: 0.3em;
     color: var(--currency-deep);
     border: 2px double var(--currency-deep);
@@ -242,7 +295,14 @@
     z-index: 11;
   }
 
-  .certified-stamp .big { display: block; font-size: 22px; font-weight: 700; margin: 4px 0; }
+  .certified-stamp .big {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 22px;
+    margin: 4px 0;
+    letter-spacing: 0.18em;
+  }
   .certified-stamp .small { font-size: 9px; letter-spacing: 0.25em; opacity: 0.8; }
 
   /* Chain-of-ovals divider — replaces deckle between hero and pillars */
@@ -273,11 +333,17 @@
   .pillar:nth-child(3) { animation-delay: 3.0s; }
 
   .pillar .num {
-    font-family: 'IM Fell DW Pica', serif;
-    font-size: 48px;
+    font-family: 'Cinzel Decorative', 'IM Fell DW Pica', serif;
+    font-weight: 700;
+    font-size: 56px;
     color: var(--currency-deep);
     line-height: 1;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    text-shadow:
+      1px 0 0 var(--currency),
+      2px 1px 0 rgba(20,61,34,0.4),
+      -1px -1px 0 rgba(45,122,71,0.35);
+    letter-spacing: 0.02em;
   }
 
   .pillar h3 {
@@ -387,6 +453,12 @@
 </svg>
 
 <div class="page">
+
+  <!-- Corner denomination marks — banknote style -->
+  <div class="corner-mark tl">I<span class="orn">SOUL</span></div>
+  <div class="corner-mark tr">I<span class="orn">ID</span></div>
+  <div class="corner-mark bl">I<span class="orn">VAULT</span></div>
+  <div class="corner-mark br">I<span class="orn">0001</span></div>
 
   <div class="letterhead">
     <span class="brand-lockup">
@@ -536,6 +608,11 @@
   <svg class="guilloche bottom" viewBox="0 0 1000 52" preserveAspectRatio="none">
     <rect width="1000" height="52" fill="url(#guilloche)"/>
   </svg>
+
+  <!-- Micro-text legend — banknote fine print -->
+  <div class="micro-band">
+    THIS INSTRUMENT BINDS THE UNDERSIGNED<span class="sep">·</span>DRAFTED BY COUNSEL<span class="sep">·</span>WITNESSED UNDER OATH<span class="sep">·</span>TRANSFERABLE ONLY BY THE SOUL OF RECORD
+  </div>
 
   <div class="signature">
     <span class="line"></span>
