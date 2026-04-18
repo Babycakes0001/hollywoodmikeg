@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Worth Protecting — Hero Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f4ead5;
+    --parchment-dark: #e8dcc0;
+    --parchment-shadow: #cdbf9c;
+    --ink: #1a1a1a;
+    --ink-faded: #3a3024;
+    --currency: #1e5631;
+    --currency-deep: #143d22;
+    --currency-light: #2d7a47;
+    --wax: #1e5631;
+    --wax-deep: #0c2814;
+    --wax-highlight: #4a8c62;
+    --sepia: #5e4a2d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(205,191,156,0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(205,191,156,0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(232,220,192,0.2) 0%, transparent 70%),
+      linear-gradient(135deg, #f4ead5 0%, #efe3c7 50%, #f4ead5 100%);
+    background-attachment: fixed;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.25 0 0 0 0 0.15 0 0 0 0.4 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(94,74,45,0.18) 100%);
+  }
+
+  .page {
+    position: relative;
+    z-index: 10;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 64px 120px;
+  }
+
+  /* Letterhead */
+  .letterhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--sepia);
+    font-family: 'IM Fell English SC', serif;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--ink-faded);
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out 0.2s forwards;
+  }
+
+  .letterhead .mark { color: var(--currency-deep); font-weight: 600; }
+
+  .letterhead .serial {
+    font-family: 'IM Fell DW Pica', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+  }
+
+  /* Guilloche frieze — twisted ribbon, richer than before */
+  .guilloche {
+    width: 100%;
+    height: 52px;
+    margin: 40px 0 16px;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out 0.6s forwards;
+  }
+
+  .guilloche.bottom {
+    margin: 16px 0 40px;
+    animation-delay: 3.2s;
+  }
+
+  /* Hero — dome sits behind content */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 72px 0 80px;
+  }
+
+  .hero-dome {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 140%;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    animation: domeFadeIn 2.2s ease-out 0.6s forwards;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .eyebrow {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 14px;
+    letter-spacing: 0.35em;
+    color: var(--currency-deep);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.8s forwards;
+  }
+
+  h1.display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: inkSettle 1.4s ease-out 1s forwards;
+  }
+
+  h1.display em {
+    font-style: italic;
+    color: var(--currency-deep);
+    font-weight: 500;
+  }
+
+  .subhead {
+    font-size: 22px;
+    color: var(--ink-faded);
+    max-width: 640px;
+    margin: 0 auto 48px;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeIn 1.4s ease-out 1.4s forwards;
+  }
+
+  /* Wax seal */
+  .seal-row {
+    display: flex;
+    justify-content: center;
+    margin: 64px 0 40px;
+    opacity: 0;
+    animation: sealPress 1.6s cubic-bezier(0.2, 0.8, 0.3, 1) 1.8s forwards;
+  }
+
+  .seal {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    position: relative;
+    background:
+      radial-gradient(circle at 35% 30%, var(--wax-highlight) 0%, var(--wax) 35%, var(--wax-deep) 80%, #071a0c 100%);
+    box-shadow:
+      inset -4px -6px 12px rgba(0,0,0,0.4),
+      inset 3px 4px 8px rgba(255,255,255,0.15),
+      0 4px 12px rgba(0,0,0,0.3),
+      0 1px 2px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .seal::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    border: 1px dashed rgba(255,255,255,0.25);
+  }
+
+  .seal .monogram {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 56px;
+    color: rgba(230,245,225,0.92);
+    text-shadow:
+      -1px -1px 0 rgba(0,0,0,0.55),
+      1px 1px 2px rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+
+  .certified-stamp {
+    position: absolute;
+    top: 140px;
+    right: 80px;
+    transform: rotate(-8deg);
+    font-family: 'IM Fell English SC', serif;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--currency-deep);
+    border: 2px double var(--currency-deep);
+    padding: 12px 20px;
+    opacity: 0;
+    animation: stampDown 0.4s ease-out 2.4s forwards;
+    z-index: 11;
+  }
+
+  .certified-stamp .big { display: block; font-size: 22px; font-weight: 700; margin: 4px 0; }
+  .certified-stamp .small { font-size: 9px; letter-spacing: 0.25em; opacity: 0.8; }
+
+  /* Chain-of-ovals divider — replaces deckle between hero and pillars */
+  .chain-divider {
+    display: block;
+    width: 100%;
+    height: 28px;
+    margin: 48px 0;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out 2.2s forwards;
+  }
+
+  /* Pillars */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin: 80px 0 40px;
+  }
+
+  .pillar {
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out forwards;
+  }
+  .pillar:nth-child(1) { animation-delay: 2.6s; }
+  .pillar:nth-child(2) { animation-delay: 2.8s; }
+  .pillar:nth-child(3) { animation-delay: 3.0s; }
+
+  .pillar .num {
+    font-family: 'IM Fell DW Pica', serif;
+    font-size: 48px;
+    color: var(--currency-deep);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .pillar h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: 0.01em;
+  }
+
+  .pillar p {
+    font-size: 17px;
+    color: var(--ink-faded);
+    line-height: 1.55;
+  }
+
+  /* Signature */
+  .signature {
+    margin-top: 80px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1.4s ease-out 3.4s forwards;
+  }
+
+  .signature .line {
+    display: block;
+    width: 280px;
+    margin: 0 auto 12px;
+    border-bottom: 1px solid var(--ink-faded);
+    height: 40px;
+    position: relative;
+  }
+
+  .signature .line::after {
+    content: '✒';
+    position: absolute;
+    right: -4px;
+    bottom: 8px;
+    color: var(--currency-deep);
+    font-size: 16px;
+  }
+
+  .signature .label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--sepia);
+  }
+
+  /* Animations */
+  @keyframes fadeIn { to { opacity: 1; } }
+  @keyframes domeFadeIn { to { opacity: 0.85; } }
+
+  @keyframes inkSettle {
+    0% { opacity: 0; filter: blur(4px); letter-spacing: 0.02em; }
+    60% { opacity: 1; filter: blur(0); }
+    100% { opacity: 1; filter: blur(0); letter-spacing: -0.015em; }
+  }
+
+  @keyframes sealPress {
+    0% { opacity: 0; transform: scale(1.4); }
+    50% { opacity: 0.8; transform: scale(0.96); }
+    70% { transform: scale(1.02); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes stampDown {
+    0% { opacity: 0; transform: rotate(-8deg) scale(1.8); }
+    100% { opacity: 0.9; transform: rotate(-8deg) scale(1); }
+  }
+
+  @media (max-width: 720px) {
+    .page { padding: 32px 28px 80px; }
+    .pillars { grid-template-columns: 1fr; gap: 32px; }
+    .certified-stamp { display: none; }
+    .hero-dome { width: 180%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Shared SVG defs: guilloche patterns -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Twisted-ribbon guilloche frieze -->
+    <pattern id="guilloche" x="0" y="0" width="48" height="52" patternUnits="userSpaceOnUse">
+      <path d="M0 26 Q 12 4 24 26 T 48 26" stroke="#1e5631" stroke-width="0.5" fill="none" opacity="0.75"/>
+      <path d="M0 26 Q 12 48 24 26 T 48 26" stroke="#1e5631" stroke-width="0.5" fill="none" opacity="0.75"/>
+      <path d="M0 18 Q 12 -6 24 18 T 48 18" stroke="#143d22" stroke-width="0.35" fill="none" opacity="0.55"/>
+      <path d="M0 34 Q 12 58 24 34 T 48 34" stroke="#143d22" stroke-width="0.35" fill="none" opacity="0.55"/>
+      <path d="M0 10 Q 12 30 24 10 T 48 10" stroke="#2d7a47" stroke-width="0.3" fill="none" opacity="0.4"/>
+      <path d="M0 42 Q 12 22 24 42 T 48 42" stroke="#2d7a47" stroke-width="0.3" fill="none" opacity="0.4"/>
+      <path d="M0 26 L 48 26" stroke="#143d22" stroke-width="0.18" fill="none" opacity="0.28"/>
+      <path d="M0 14 L 48 14" stroke="#1e5631" stroke-width="0.12" fill="none" opacity="0.18"/>
+      <path d="M0 38 L 48 38" stroke="#1e5631" stroke-width="0.12" fill="none" opacity="0.18"/>
+    </pattern>
+
+    <!-- Chain of concentric ovals -->
+    <pattern id="chain" x="0" y="0" width="32" height="28" patternUnits="userSpaceOnUse">
+      <ellipse cx="16" cy="14" rx="15" ry="10" stroke="#1e5631" stroke-width="0.5" fill="none" opacity="0.7"/>
+      <ellipse cx="16" cy="14" rx="11" ry="6.5" stroke="#143d22" stroke-width="0.4" fill="none" opacity="0.55"/>
+      <ellipse cx="16" cy="14" rx="6.5" ry="3" stroke="#1e5631" stroke-width="0.35" fill="none" opacity="0.65"/>
+      <ellipse cx="16" cy="14" rx="2" ry="1" stroke="#143d22" stroke-width="0.3" fill="none" opacity="0.85"/>
+    </pattern>
+  </defs>
+</svg>
+
+<div class="page">
+
+  <div class="letterhead">
+    <span class="mark">WORTH PROTECTING</span>
+    <span class="serial">SOUL ID · WP-0001 · EST. 2026</span>
+  </div>
+
+  <div class="certified-stamp">
+    <span class="small">OFFICIAL</span>
+    <span class="big">CERTIFIED</span>
+    <span class="small">VAULT · 0001</span>
+  </div>
+
+  <svg class="guilloche" viewBox="0 0 1000 52" preserveAspectRatio="none">
+    <rect width="1000" height="52" fill="url(#guilloche)"/>
+  </svg>
+
+  <section class="hero">
+
+    <!-- Money-dome backdrop: nested arcs from below + radial rays -->
+    <svg class="hero-dome" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="domeGrad" cx="50%" cy="100%" r="85%">
+          <stop offset="0%"   stop-color="#143d22" stop-opacity="0.42"/>
+          <stop offset="45%"  stop-color="#1e5631" stop-opacity="0.28"/>
+          <stop offset="100%" stop-color="#2d7a47" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="rayGrad" cx="50%" cy="100%" r="75%">
+          <stop offset="0%"   stop-color="#1e5631" stop-opacity="0.38"/>
+          <stop offset="60%"  stop-color="#2d7a47" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#2d7a47" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Nested elliptical arcs rising from a focal point below -->
+      <g stroke="url(#domeGrad)" stroke-width="0.55" fill="none">
+        <ellipse cx="600" cy="740" rx="180"  ry="105"/>
+        <ellipse cx="600" cy="740" rx="218"  ry="125"/>
+        <ellipse cx="600" cy="740" rx="256"  ry="146"/>
+        <ellipse cx="600" cy="740" rx="294"  ry="167"/>
+        <ellipse cx="600" cy="740" rx="332"  ry="188"/>
+        <ellipse cx="600" cy="740" rx="370"  ry="209"/>
+        <ellipse cx="600" cy="740" rx="408"  ry="229"/>
+        <ellipse cx="600" cy="740" rx="446"  ry="250"/>
+        <ellipse cx="600" cy="740" rx="484"  ry="271"/>
+        <ellipse cx="600" cy="740" rx="522"  ry="292"/>
+        <ellipse cx="600" cy="740" rx="560"  ry="313"/>
+        <ellipse cx="600" cy="740" rx="598"  ry="333"/>
+        <ellipse cx="600" cy="740" rx="636"  ry="354"/>
+        <ellipse cx="600" cy="740" rx="674"  ry="375"/>
+        <ellipse cx="600" cy="740" rx="712"  ry="396"/>
+        <ellipse cx="600" cy="740" rx="750"  ry="417"/>
+        <ellipse cx="600" cy="740" rx="788"  ry="437"/>
+        <ellipse cx="600" cy="740" rx="826"  ry="458"/>
+        <ellipse cx="600" cy="740" rx="864"  ry="479"/>
+        <ellipse cx="600" cy="740" rx="902"  ry="500"/>
+      </g>
+
+      <!-- Radial fan — rays from (600,720) spreading upward -->
+      <g stroke="url(#rayGrad)" stroke-width="0.45" fill="none">
+        <line x1="600" y1="720" x2="1379" y2="270"/>
+        <line x1="600" y1="720" x2="1337" y2="204"/>
+        <line x1="600" y1="720" x2="1290" y2="141"/>
+        <line x1="600" y1="720" x2="1236" y2="84"/>
+        <line x1="600" y1="720" x2="1179" y2="31"/>
+        <line x1="600" y1="720" x2="1116" y2="-17"/>
+        <line x1="600" y1="720" x2="1050" y2="-59"/>
+        <line x1="600" y1="720" x2="981"  y2="-96"/>
+        <line x1="600" y1="720" x2="908"  y2="-126"/>
+        <line x1="600" y1="720" x2="833"  y2="-149"/>
+        <line x1="600" y1="720" x2="756"  y2="-166"/>
+        <line x1="600" y1="720" x2="678"  y2="-177"/>
+        <line x1="600" y1="720" x2="600"  y2="-180"/>
+        <line x1="600" y1="720" x2="522"  y2="-177"/>
+        <line x1="600" y1="720" x2="444"  y2="-166"/>
+        <line x1="600" y1="720" x2="367"  y2="-149"/>
+        <line x1="600" y1="720" x2="292"  y2="-126"/>
+        <line x1="600" y1="720" x2="219"  y2="-96"/>
+        <line x1="600" y1="720" x2="150"  y2="-59"/>
+        <line x1="600" y1="720" x2="84"   y2="-17"/>
+        <line x1="600" y1="720" x2="21"   y2="31"/>
+        <line x1="600" y1="720" x2="-36"  y2="84"/>
+        <line x1="600" y1="720" x2="-90"  y2="141"/>
+        <line x1="600" y1="720" x2="-137" y2="204"/>
+        <line x1="600" y1="720" x2="-179" y2="270"/>
+      </g>
+    </svg>
+
+    <div class="hero-content">
+      <div class="eyebrow">A Digital Succession Plan</div>
+      <h1 class="display">What you built<br>should <em>outlive you.</em></h1>
+      <p class="subhead">Your digital life — the files, the patterns, the love — preserved, protected, and passed on. Drafted by counsel. Sealed by you.</p>
+
+      <div class="seal-row">
+        <div class="seal"><span class="monogram">WP</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chain-of-ovals divider -->
+  <svg class="chain-divider" viewBox="0 0 1000 28" preserveAspectRatio="none">
+    <rect width="1000" height="28" fill="url(#chain)"/>
+  </svg>
+
+  <section class="pillars">
+    <div class="pillar">
+      <div class="num">I.</div>
+      <h3>Soul Interview</h3>
+      <p>A structured conversation that captures who you are in your own words. Free forever.</p>
+    </div>
+    <div class="pillar">
+      <div class="num">II.</div>
+      <h3>The Vault</h3>
+      <p>Encrypted storage for the files that make up you. Monitored, mirrored, beneficiary-ready.</p>
+    </div>
+    <div class="pillar">
+      <div class="num">III.</div>
+      <h3>Succession Plan</h3>
+      <p>A legal instrument, drafted by counsel, that carries your digital self past the end of your biological one.</p>
+    </div>
+  </section>
+
+  <!-- Bottom guilloche frieze — closes the currency frame -->
+  <svg class="guilloche bottom" viewBox="0 0 1000 52" preserveAspectRatio="none">
+    <rect width="1000" height="52" fill="url(#guilloche)"/>
+  </svg>
+
+  <div class="signature">
+    <span class="line"></span>
+    <span class="label">SEALED · NOTARIZED · DELIVERED</span>
+  </div>
+
+</div>
+
+</body>
+</html>
