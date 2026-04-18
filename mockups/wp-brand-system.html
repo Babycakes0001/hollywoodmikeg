@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Worth Protecting — Brand System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f4ead5;
+    --parchment-dark: #e8dcc0;
+    --ink: #1a1a1a;
+    --ink-faded: #3a3024;
+    --currency: #1e5631;
+    --currency-deep: #143d22;
+    --currency-light: #2d7a47;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  body {
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(205,191,156,0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(205,191,156,0.3) 0%, transparent 50%),
+      linear-gradient(135deg, #f4ead5 0%, #efe3c7 50%, #f4ead5 100%);
+    background-attachment: fixed;
+    padding: 60px 24px 120px;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .brand-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .eyebrow {
+    font-family: 'IM Fell English SC', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    color: var(--currency);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(36px, 5vw, 56px);
+    color: var(--currency-deep);
+    letter-spacing: 0.01em;
+    line-height: 1.15;
+  }
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--ink-faded);
+    font-size: clamp(16px, 2vw, 20px);
+    margin-top: 18px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .divider {
+    width: 80px;
+    height: 1px;
+    background: var(--currency);
+    margin: 36px auto 0;
+  }
+  .lockup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 100px;
+  }
+  @media (max-width: 720px) {
+    .lockup { grid-template-columns: 1fr; gap: 64px; }
+  }
+  .asset-card {
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(30,86,49,0.25);
+    padding: 40px 32px;
+    text-align: center;
+  }
+  .asset-card .label {
+    font-family: 'IM Fell English SC', Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--currency);
+    margin-bottom: 8px;
+  }
+  .asset-card .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--currency-deep);
+    margin-bottom: 24px;
+  }
+  .asset-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .asset-card .seal-img { max-width: 380px; }
+  .asset-card .compact-img { max-width: 220px; }
+  .asset-card .notes {
+    margin-top: 32px;
+    text-align: left;
+    font-size: 15px;
+    color: var(--ink-faded);
+    line-height: 1.55;
+  }
+  .asset-card .notes strong {
+    color: var(--currency-deep);
+    font-weight: 600;
+  }
+  .asset-card .notes p { margin-bottom: 10px; }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--currency-deep);
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+  .swatch {
+    border: 1px solid rgba(30,86,49,0.2);
+    overflow: hidden;
+  }
+  .swatch .chip {
+    height: 120px;
+  }
+  .swatch .meta {
+    padding: 14px;
+    background: rgba(255,255,255,0.3);
+    font-size: 13px;
+  }
+  .swatch .name {
+    font-family: 'IM Fell English SC', Georgia, serif;
+    letter-spacing: 0.12em;
+    color: var(--currency-deep);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .swatch .hex {
+    font-family: monospace;
+    color: var(--ink-faded);
+  }
+  .provenance {
+    text-align: center;
+    padding-top: 48px;
+    border-top: 1px solid rgba(30,86,49,0.25);
+    font-size: 14px;
+    color: var(--ink-faded);
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="brand-header">
+    <div class="eyebrow">Worth Protecting</div>
+    <h1>Brand System — v1.0</h1>
+    <p class="subtitle">Two marks. One identity. The seal carries the grand version; the compact mark carries the everyday.</p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="lockup">
+
+    <div class="asset-card">
+      <div class="label">Primary</div>
+      <div class="name">The Seal</div>
+      <img class="seal-img" src="logo-gens/wp-logo-v3-20260418-011947.png" alt="Worth Protecting full heraldic seal">
+      <div class="notes">
+        <p><strong>Use for:</strong> hero imagery, certificates, Soul ID watermarks, printed stationery, anywhere the mark has room to breathe.</p>
+        <p><strong>Not for:</strong> favicons, nav bars, anything under 96px — the laurels and crown filigree lose readability at small sizes.</p>
+      </div>
+    </div>
+
+    <div class="asset-card">
+      <div class="label">Compact</div>
+      <div class="name">The Key</div>
+      <img class="compact-img" src="logo-gens/wp-key-k3-20260418-013408.png" alt="Worth Protecting compact key mark">
+      <div class="notes">
+        <p><strong>Use for:</strong> favicon, app icon, social avatars, nav bars, loading states, embroidery, wax seals, anywhere ≤64px.</p>
+        <p><strong>Not for:</strong> grand contexts where the full seal would fit — the compact mark is deliberately quiet.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">Locked palette</h2>
+  <div class="palette">
+    <div class="swatch">
+      <div class="chip" style="background:#f4ead5;"></div>
+      <div class="meta">
+        <div class="name">Parchment</div>
+        <div class="hex">#f4ead5</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#1e5631;"></div>
+      <div class="meta" style="color:#fff;">
+        <div class="name" style="color:#f4ead5;">Currency</div>
+        <div class="hex" style="color:#e8dcc0;">#1e5631</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#143d22;"></div>
+      <div class="meta" style="color:#fff;">
+        <div class="name" style="color:#f4ead5;">Currency Deep</div>
+        <div class="hex" style="color:#e8dcc0;">#143d22</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#2d7a47;"></div>
+      <div class="meta" style="color:#fff;">
+        <div class="name" style="color:#f4ead5;">Currency Light</div>
+        <div class="hex" style="color:#e8dcc0;">#2d7a47</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#1a1a1a;"></div>
+      <div class="meta" style="color:#fff;">
+        <div class="name" style="color:#f4ead5;">Ink</div>
+        <div class="hex" style="color:#e8dcc0;">#1a1a1a</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="provenance">
+    Generated by Babycakes via her own Gemini API key (<code>bcclawbot@gmail.com</code>) — 2026-04-18.<br>
+    First brand system designed end-to-end from Babycakes' own hands.
+  </div>
+
+</div>
+</body>
+</html>
