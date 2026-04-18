@@ -3,19 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Worth Protecting — Brand System</title>
+<title>Worth Protecting — Brand System v1.0</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,900&display=swap" rel="stylesheet">
 <style>
   :root {
     --parchment: #f4ead5;
     --parchment-dark: #e8dcc0;
+    --parchment-shadow: #cdbf9c;
     --ink: #1a1a1a;
     --ink-faded: #3a3024;
     --currency: #1e5631;
     --currency-deep: #143d22;
     --currency-light: #2d7a47;
+    --sepia: #5e4a2d;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
@@ -23,7 +25,7 @@
     color: var(--ink);
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.65;
     min-height: 100vh;
   }
   body {
@@ -32,219 +34,660 @@
       radial-gradient(ellipse at 80% 90%, rgba(205,191,156,0.3) 0%, transparent 50%),
       linear-gradient(135deg, #f4ead5 0%, #efe3c7 50%, #f4ead5 100%);
     background-attachment: fixed;
-    padding: 60px 24px 120px;
+    padding: 64px 24px 160px;
   }
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .brand-header {
-    text-align: center;
-    margin-bottom: 80px;
-  }
+  .container { max-width: 1120px; margin: 0 auto; }
+
+  /* ---------- Header ---------- */
+  .brand-header { text-align: center; margin-bottom: 96px; }
   .eyebrow {
     font-family: 'IM Fell English SC', Georgia, serif;
-    font-size: 14px;
-    letter-spacing: 0.22em;
-    color: var(--currency);
-    text-transform: uppercase;
-    margin-bottom: 14px;
+    font-size: 14px; letter-spacing: 0.24em;
+    color: var(--currency); text-transform: uppercase;
+    margin-bottom: 16px;
   }
-  h1 {
+  h1.page-title {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    font-size: clamp(36px, 5vw, 56px);
-    color: var(--currency-deep);
-    letter-spacing: 0.01em;
-    line-height: 1.15;
+    font-weight: 600; font-size: clamp(40px, 5.5vw, 60px);
+    color: var(--currency-deep); letter-spacing: 0.01em; line-height: 1.1;
   }
   .subtitle {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--ink-faded);
+    font-style: italic; color: var(--ink-faded);
     font-size: clamp(16px, 2vw, 20px);
-    margin-top: 18px;
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 20px; max-width: 660px; margin-left: auto; margin-right: auto;
   }
-  .divider {
-    width: 80px;
-    height: 1px;
-    background: var(--currency);
-    margin: 36px auto 0;
+  .rule { width: 80px; height: 1px; background: var(--currency); margin: 36px auto 0; }
+
+  /* ---------- Section scaffold ---------- */
+  section { margin-bottom: 96px; }
+  .section-label {
+    font-family: 'IM Fell English SC', Georgia, serif;
+    font-size: 12px; letter-spacing: 0.22em;
+    color: var(--currency); text-transform: uppercase;
+    text-align: center; margin-bottom: 10px;
   }
+  h2.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600; font-size: clamp(28px, 3.5vw, 36px);
+    color: var(--currency-deep); text-align: center; margin-bottom: 40px;
+  }
+
+  /* ---------- Divider ornaments ---------- */
+  .divider-ornament {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; margin: 32px auto 40px; max-width: 720px;
+  }
+  .divider-ornament .line {
+    flex: 1; height: 1px; background: var(--currency-deep); opacity: 0.4;
+  }
+  .divider-ornament .diamond {
+    width: 8px; height: 8px; background: var(--currency-deep);
+    transform: rotate(45deg);
+  }
+  .divider-ornament .glyph {
+    font-family: 'Cinzel Decorative', serif; font-size: 20px;
+    color: var(--currency-deep);
+  }
+
+  /* ---------- Logo lockup ---------- */
   .lockup {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: start;
-    margin-bottom: 100px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; align-items: start;
   }
-  @media (max-width: 720px) {
-    .lockup { grid-template-columns: 1fr; gap: 64px; }
+  @media (max-width: 760px) {
+    .lockup { grid-template-columns: 1fr; gap: 48px; }
   }
   .asset-card {
     background: rgba(255,255,255,0.25);
     border: 1px solid rgba(30,86,49,0.25);
-    padding: 40px 32px;
-    text-align: center;
+    padding: 40px 32px; text-align: center;
   }
   .asset-card .label {
     font-family: 'IM Fell English SC', Georgia, serif;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--currency);
-    margin-bottom: 8px;
+    font-size: 12px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--currency); margin-bottom: 6px;
   }
   .asset-card .name {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    font-size: 22px;
-    color: var(--currency-deep);
-    margin-bottom: 24px;
+    font-weight: 600; font-size: 22px;
+    color: var(--currency-deep); margin-bottom: 24px;
   }
-  .asset-card img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-  .asset-card .seal-img { max-width: 380px; }
-  .asset-card .compact-img { max-width: 220px; }
+  .asset-card img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+  .asset-card .seal-img { max-width: 340px; }
+  .asset-card .compact-img { max-width: 200px; }
   .asset-card .notes {
-    margin-top: 32px;
-    text-align: left;
-    font-size: 15px;
-    color: var(--ink-faded);
-    line-height: 1.55;
+    margin-top: 28px; text-align: left;
+    font-size: 15px; color: var(--ink-faded); line-height: 1.55;
   }
-  .asset-card .notes strong {
-    color: var(--currency-deep);
-    font-weight: 600;
-  }
+  .asset-card .notes strong { color: var(--currency-deep); font-weight: 600; }
   .asset-card .notes p { margin-bottom: 10px; }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    font-size: 28px;
-    color: var(--currency-deep);
-    text-align: center;
-    margin-bottom: 32px;
+
+  /* ---------- Typography specimens ---------- */
+  .type-grid {
+    display: grid; grid-template-columns: 180px 1fr; gap: 28px 40px;
+    align-items: baseline;
   }
-  .palette {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 24px;
-    margin-bottom: 80px;
+  @media (max-width: 720px) {
+    .type-grid { grid-template-columns: 1fr; gap: 8px 0; }
+    .type-grid .type-meta { margin-top: 24px; }
   }
-  .swatch {
-    border: 1px solid rgba(30,86,49,0.2);
-    overflow: hidden;
-  }
-  .swatch .chip {
-    height: 120px;
-  }
-  .swatch .meta {
-    padding: 14px;
-    background: rgba(255,255,255,0.3);
-    font-size: 13px;
-  }
-  .swatch .name {
+  .type-meta {
     font-family: 'IM Fell English SC', Georgia, serif;
-    letter-spacing: 0.12em;
-    color: var(--currency-deep);
-    text-transform: uppercase;
-    margin-bottom: 4px;
+    font-size: 11px; letter-spacing: 0.18em;
+    color: var(--currency); text-transform: uppercase;
+    padding-top: 12px;
   }
-  .swatch .hex {
-    font-family: monospace;
-    color: var(--ink-faded);
+  .type-meta .role { color: var(--currency-deep); font-size: 13px; margin-bottom: 4px; }
+  .type-meta .font { color: var(--ink-faded); font-family: 'Cormorant Garamond', serif;
+    font-style: italic; letter-spacing: 0.04em; text-transform: none; font-size: 13px; }
+
+  .type-sample { padding-bottom: 28px; border-bottom: 1px solid rgba(30,86,49,0.18); }
+  .type-grid > :nth-last-child(-n+2) { border-bottom: none; padding-bottom: 0; }
+
+  .type-h1 {
+    font-family: 'Playfair Display', serif; font-weight: 900;
+    font-size: clamp(42px, 5vw, 60px);
+    color: var(--currency-deep); line-height: 1.05;
+    text-shadow:
+      0.018em 0.018em 0 rgba(20,61,34,0.55),
+      0.028em 0.028em 0 rgba(20,61,34,0.35),
+      0.04em  0.04em  0 rgba(20,61,34,0.18);
   }
+  .type-h1 em { color: var(--currency); font-style: italic; }
+  .type-h2 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 600;
+    font-size: clamp(28px, 3vw, 36px); color: var(--currency-deep); line-height: 1.2;
+  }
+  .type-h3 {
+    font-family: 'Cinzel', serif; font-weight: 700;
+    font-size: 20px; letter-spacing: 0.06em;
+    color: var(--currency-deep); text-transform: uppercase;
+  }
+  .type-eyebrow {
+    font-family: 'IM Fell English SC', serif; font-size: 13px;
+    letter-spacing: 0.24em; color: var(--currency); text-transform: uppercase;
+  }
+  .type-lead {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 22px; color: var(--ink-faded); line-height: 1.5;
+  }
+  .type-body {
+    font-family: 'Cormorant Garamond', serif; font-size: 18px;
+    color: var(--ink); line-height: 1.65;
+  }
+  .type-caption {
+    font-family: 'IM Fell DW Pica', serif; font-style: italic;
+    font-size: 14px; color: var(--sepia); line-height: 1.5;
+  }
+  .type-numerals {
+    font-family: 'Cinzel Decorative', serif; font-weight: 900;
+    font-size: 48px; color: var(--currency-deep); letter-spacing: 0.04em;
+    text-shadow: 1px 0 0 var(--currency), 2px 1px 0 rgba(20,61,34,0.35);
+  }
+  .type-micro {
+    font-family: 'IM Fell English SC', serif; font-size: 10px;
+    letter-spacing: 0.32em; color: var(--sepia); text-transform: uppercase;
+  }
+
+  /* ---------- Palette swatches ---------- */
+  .palette {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 18px;
+  }
+  .swatch { border: 1px solid rgba(30,86,49,0.22); overflow: hidden; }
+  .swatch .chip { height: 110px; }
+  .swatch .meta { padding: 14px; background: rgba(255,255,255,0.3); font-size: 13px; }
+  .swatch .name {
+    font-family: 'IM Fell English SC', serif; letter-spacing: 0.12em;
+    color: var(--currency-deep); text-transform: uppercase; margin-bottom: 4px;
+  }
+  .swatch .hex { font-family: monospace; color: var(--ink-faded); }
+
+  /* ---------- Border library ---------- */
+  .border-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+  }
+  .border-card {
+    padding: 24px; background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(30,86,49,0.2);
+  }
+  .border-card .border-name {
+    font-family: 'IM Fell English SC', serif; font-size: 11px;
+    letter-spacing: 0.2em; color: var(--currency);
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .border-card .border-use {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 14px; color: var(--ink-faded); margin-bottom: 18px;
+  }
+  .border-sample {
+    background: var(--parchment); height: 140px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .border-sample .inner {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    color: var(--currency-deep); font-size: 15px;
+  }
+
+  /* Border variant: multi-line frame */
+  .border-multiline {
+    border: 3px solid var(--currency-deep);
+    box-shadow:
+      inset 0 0 0 2px rgba(244,234,213,0.5),
+      inset 0 0 0 3.5px var(--currency),
+      inset 0 0 0 9px rgba(244,234,213,0),
+      inset 0 0 0 10.5px var(--currency),
+      inset 0 0 0 12px rgba(244,234,213,0),
+      inset 0 0 0 14px var(--currency-deep);
+  }
+  /* Border variant: double rule */
+  .border-double { border: 3px double var(--currency-deep); }
+  /* Border variant: thin-thick */
+  .border-thick-thin {
+    border: 2px solid var(--currency-deep);
+    box-shadow: inset 0 0 0 6px rgba(244,234,213,1), inset 0 0 0 7px var(--currency);
+  }
+  /* Border variant: dashed sepia */
+  .border-dashed { border: 2px dashed var(--sepia); }
+  /* Border variant: guilloche top/bottom */
+  .border-guilloche { border-top: 1px solid var(--currency-deep); border-bottom: 1px solid var(--currency-deep); position: relative; }
+  .border-guilloche svg { position: absolute; left: 0; right: 0; width: 100%; height: 24px; }
+  .border-guilloche svg.top { top: -2px; }
+  .border-guilloche svg.bottom { bottom: -2px; }
+
+  /* ---------- Ornament library ---------- */
+  .ornament-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px; align-items: stretch;
+  }
+  .ornament-card {
+    padding: 28px 16px; text-align: center;
+    background: rgba(255,255,255,0.22);
+    border: 1px solid rgba(30,86,49,0.2);
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  }
+  .ornament-card svg, .ornament-card .symbol {
+    margin: 0 auto 16px; display: block;
+  }
+  .ornament-card .ornament-name {
+    font-family: 'IM Fell English SC', serif; font-size: 11px;
+    letter-spacing: 0.2em; color: var(--currency);
+    text-transform: uppercase; margin-top: auto;
+  }
+
+  /* ---------- Section break / page break conventions ---------- */
+  .pagebreak-sample {
+    background: rgba(255,255,255,0.22);
+    border: 1px solid rgba(30,86,49,0.2);
+    padding: 48px 32px; text-align: center; margin-bottom: 32px;
+  }
+  .pagebreak-sample .content {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    color: var(--ink-faded); font-size: 15px;
+  }
+
+  /* Letterpress engraved initial (drop cap) */
+  .dropcap-sample {
+    font-family: 'Cormorant Garamond', serif; font-size: 18px;
+    color: var(--ink); line-height: 1.7; text-align: left;
+    max-width: 640px; margin: 0 auto;
+  }
+  .dropcap-sample::first-letter {
+    font-family: 'Cinzel Decorative', serif; font-weight: 900;
+    font-size: 5.2em; line-height: 0.9; float: left;
+    color: var(--currency-deep); padding: 0.08em 0.1em 0 0;
+    text-shadow: 1px 0 0 var(--currency), 2px 1px 0 rgba(20,61,34,0.3);
+  }
+
+  /* ---------- Provenance ---------- */
   .provenance {
-    text-align: center;
-    padding-top: 48px;
+    text-align: center; padding-top: 48px;
     border-top: 1px solid rgba(30,86,49,0.25);
-    font-size: 14px;
-    color: var(--ink-faded);
-    font-style: italic;
+    font-size: 14px; color: var(--ink-faded); font-style: italic;
+  }
+  .provenance code {
+    font-family: 'IM Fell DW Pica', monospace; font-size: 13px;
+    color: var(--currency-deep); font-style: normal;
   }
 </style>
 </head>
 <body>
+
+<!-- Shared SVG defs: guilloche patterns lifted from the hero mockup -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="guilloche" x="0" y="0" width="48" height="52" patternUnits="userSpaceOnUse">
+      <path d="M0 26 Q 12 4 24 26 T 48 26" stroke="#1e5631" stroke-width="0.5" fill="none" opacity="0.75"/>
+      <path d="M0 26 Q 12 48 24 26 T 48 26" stroke="#1e5631" stroke-width="0.5" fill="none" opacity="0.75"/>
+      <path d="M0 18 Q 12 -6 24 18 T 48 18" stroke="#143d22" stroke-width="0.35" fill="none" opacity="0.55"/>
+      <path d="M0 34 Q 12 58 24 34 T 48 34" stroke="#143d22" stroke-width="0.35" fill="none" opacity="0.55"/>
+    </pattern>
+    <pattern id="chain" x="0" y="0" width="32" height="28" patternUnits="userSpaceOnUse">
+      <ellipse cx="16" cy="14" rx="15" ry="10" stroke="#1e5631" stroke-width="0.5" fill="none" opacity="0.7"/>
+      <ellipse cx="16" cy="14" rx="11" ry="6.5" stroke="#143d22" stroke-width="0.4" fill="none" opacity="0.55"/>
+      <ellipse cx="16" cy="14" rx="6.5" ry="3" stroke="#1e5631" stroke-width="0.35" fill="none" opacity="0.65"/>
+      <ellipse cx="16" cy="14" rx="2" ry="1" stroke="#143d22" stroke-width="0.3" fill="none" opacity="0.85"/>
+    </pattern>
+  </defs>
+</svg>
+
 <div class="container">
 
-  <div class="brand-header">
+  <!-- ======================= HEADER ======================= -->
+  <header class="brand-header">
     <div class="eyebrow">Worth Protecting</div>
-    <h1>Brand System — v1.0</h1>
-    <p class="subtitle">Two marks. One identity. The seal carries the grand version; the compact mark carries the everyday.</p>
-    <div class="divider"></div>
-  </div>
+    <h1 class="page-title">Brand System — v1.0</h1>
+    <p class="subtitle">Two marks. One identity. A locked palette, a typographic hierarchy, a border and ornament library — everything the brand uses, in one place.</p>
+    <div class="rule"></div>
+  </header>
 
-  <div class="lockup">
+  <!-- ======================= LOGOS ======================= -->
+  <section>
+    <div class="section-label">01 — Marks</div>
+    <h2 class="section-title">The two-tier logo system</h2>
 
-    <div class="asset-card">
-      <div class="label">Primary</div>
-      <div class="name">The Seal</div>
-      <img class="seal-img" src="logo-gens/wp-logo-v3-20260418-011947.png" alt="Worth Protecting full heraldic seal">
-      <div class="notes">
-        <p><strong>Use for:</strong> hero imagery, certificates, Soul ID watermarks, printed stationery, anywhere the mark has room to breathe.</p>
-        <p><strong>Not for:</strong> favicons, nav bars, anything under 96px — the laurels and crown filigree lose readability at small sizes.</p>
+    <div class="lockup">
+      <div class="asset-card">
+        <div class="label">Primary</div>
+        <div class="name">The Seal</div>
+        <img class="seal-img" src="logo-gens/wp-logo-v3-20260418-011947.png" alt="Worth Protecting full heraldic seal">
+        <div class="notes">
+          <p><strong>Use for:</strong> hero imagery, certificates, Soul ID watermarks, printed stationery — anywhere the mark has room to breathe.</p>
+          <p><strong>Not for:</strong> favicons, nav bars, anything under 96px — laurels and crown filigree lose readability at small sizes.</p>
+        </div>
       </div>
+
+      <div class="asset-card">
+        <div class="label">Compact</div>
+        <div class="name">The Key</div>
+        <img class="compact-img" src="logo-gens/wp-key-k3-20260418-013408.png" alt="Worth Protecting compact key mark">
+        <div class="notes">
+          <p><strong>Use for:</strong> favicon, app icon, social avatars, nav bars, loading states, embroidery, wax seals — anywhere ≤64px.</p>
+          <p><strong>Not for:</strong> grand contexts where the full seal would fit — the compact mark is deliberately quiet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-ornament"><span class="line"></span><span class="diamond"></span><span class="glyph">❧</span><span class="diamond"></span><span class="line"></span></div>
+
+  <!-- ======================= PALETTE ======================= -->
+  <section>
+    <div class="section-label">02 — Palette</div>
+    <h2 class="section-title">Locked colors</h2>
+    <div class="palette">
+      <div class="swatch">
+        <div class="chip" style="background:#f4ead5;"></div>
+        <div class="meta"><div class="name">Parchment</div><div class="hex">#f4ead5</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#e8dcc0;"></div>
+        <div class="meta"><div class="name">Parchment Dark</div><div class="hex">#e8dcc0</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#1e5631;"></div>
+        <div class="meta" style="color:#fff;"><div class="name" style="color:#f4ead5;">Currency</div><div class="hex" style="color:#e8dcc0;">#1e5631</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#143d22;"></div>
+        <div class="meta" style="color:#fff;"><div class="name" style="color:#f4ead5;">Currency Deep</div><div class="hex" style="color:#e8dcc0;">#143d22</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#2d7a47;"></div>
+        <div class="meta" style="color:#fff;"><div class="name" style="color:#f4ead5;">Currency Light</div><div class="hex" style="color:#e8dcc0;">#2d7a47</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#1a1a1a;"></div>
+        <div class="meta" style="color:#fff;"><div class="name" style="color:#f4ead5;">Ink</div><div class="hex" style="color:#e8dcc0;">#1a1a1a</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#5e4a2d;"></div>
+        <div class="meta" style="color:#fff;"><div class="name" style="color:#f4ead5;">Sepia</div><div class="hex" style="color:#e8dcc0;">#5e4a2d</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-ornament"><span class="line"></span><span class="diamond"></span><span class="glyph">❧</span><span class="diamond"></span><span class="line"></span></div>
+
+  <!-- ======================= TYPOGRAPHY ======================= -->
+  <section>
+    <div class="section-label">03 — Typography</div>
+    <h2 class="section-title">Type hierarchy</h2>
+
+    <div class="type-grid">
+      <div class="type-meta">
+        <div class="role">H1 · Display</div>
+        <div class="font">Playfair Display 900 + engraved stack</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-h1">Worth <em>Protecting</em></div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">H2 · Section title</div>
+        <div class="font">Cormorant Garamond 600</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-h2">The two-tier logo system</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">H3 · Pillar heading</div>
+        <div class="font">Cinzel 700 caps</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-h3">Guardianship</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">Eyebrow · Label</div>
+        <div class="font">IM Fell English SC, tracked</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-eyebrow">Est. Two Thousand Twenty-Six</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">Lead · Subtitle</div>
+        <div class="font">Cormorant Garamond italic</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-lead">The first estate plan written for a life that now includes a digital soul.</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">Body · Regular text</div>
+        <div class="font">Cormorant Garamond 400, 18px</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-body">When you die, your soul doesn't just live on in the people who loved you — it lives on in the models, the archives, the agents, the interview tapes, the emails, the voice recordings. Worth Protecting ensures that legacy is guarded, not lost.</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">Caption · Footnote</div>
+        <div class="font">IM Fell DW Pica italic</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-caption">Fig. 1 — The heart-topped key charge, a modern reduction of the heraldic "steward's key" crossed with the heraldic heart of sincerity.</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">Numerals · Currency-style</div>
+        <div class="font">Cinzel Decorative 900</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-numerals">01 &nbsp; 99 &nbsp; 499</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">Micro · Fine print</div>
+        <div class="font">IM Fell English SC, tiny</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-micro">Certified · Guarded · Delivered — This Instrument Is Legal Tender For All Legacies, Public and Private</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-ornament"><span class="line"></span><span class="diamond"></span><span class="glyph">❧</span><span class="diamond"></span><span class="line"></span></div>
+
+  <!-- ======================= BORDERS ======================= -->
+  <section>
+    <div class="section-label">04 — Borders</div>
+    <h2 class="section-title">Frame treatments</h2>
+
+    <div class="border-grid">
+
+      <div class="border-card">
+        <div class="border-name">Multi-line Frame</div>
+        <div class="border-use">Document edges, certificates, hero page frame</div>
+        <div class="border-sample border-multiline"><span class="inner">Document edge</span></div>
+      </div>
+
+      <div class="border-card">
+        <div class="border-name">Double Rule</div>
+        <div class="border-use">Cards, quote blocks, feature callouts</div>
+        <div class="border-sample border-double"><span class="inner">Quote block</span></div>
+      </div>
+
+      <div class="border-card">
+        <div class="border-name">Thick + Thin</div>
+        <div class="border-use">Hero sections, priority content</div>
+        <div class="border-sample border-thick-thin"><span class="inner">Hero frame</span></div>
+      </div>
+
+      <div class="border-card">
+        <div class="border-name">Sepia Dashed</div>
+        <div class="border-use">Secondary notes, annotations</div>
+        <div class="border-sample border-dashed"><span class="inner">Side note</span></div>
+      </div>
+
+      <div class="border-card">
+        <div class="border-name">Guilloche Frieze</div>
+        <div class="border-use">Headers, footers, currency-style bands</div>
+        <div class="border-sample border-guilloche">
+          <svg class="top" viewBox="0 0 1000 52" preserveAspectRatio="none"><rect width="1000" height="52" fill="url(#guilloche)"/></svg>
+          <span class="inner">Currency band</span>
+          <svg class="bottom" viewBox="0 0 1000 52" preserveAspectRatio="none"><rect width="1000" height="52" fill="url(#guilloche)"/></svg>
+        </div>
+      </div>
+
+      <div class="border-card">
+        <div class="border-name">Chain of Ovals</div>
+        <div class="border-use">Decorative accent strips, seals</div>
+        <div class="border-sample" style="padding:0; overflow:hidden;">
+          <svg viewBox="0 0 1000 140" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
+            <rect width="1000" height="140" fill="url(#chain)"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider-ornament"><span class="line"></span><span class="diamond"></span><span class="glyph">❧</span><span class="diamond"></span><span class="line"></span></div>
+
+  <!-- ======================= ORNAMENTS ======================= -->
+  <section>
+    <div class="section-label">05 — Ornaments & Accents</div>
+    <h2 class="section-title">The decorative kit</h2>
+
+    <div class="ornament-grid">
+
+      <div class="ornament-card">
+        <svg viewBox="0 0 80 80" width="80" height="80" aria-hidden="true">
+          <g transform="translate(40,40)">
+            <path d="M 0 -22 L 22 0 L 0 22 L -22 0 Z" fill="none" stroke="#143d22" stroke-width="1.5"/>
+            <path d="M 0 -14 L 14 0 L 0 14 L -14 0 Z" fill="#143d22"/>
+            <path d="M 0 -8 L 8 0 L 0 8 L -8 0 Z" fill="#2d7a47"/>
+            <circle r="2" fill="#f4ead5"/>
+          </g>
+        </svg>
+        <div class="ornament-name">Diamond Rosette</div>
+      </div>
+
+      <div class="ornament-card">
+        <svg viewBox="0 0 80 80" width="80" height="80" aria-hidden="true">
+          <circle cx="40" cy="40" r="28" fill="#143d22"/>
+          <circle cx="40" cy="40" r="22" fill="none" stroke="#2d7a47" stroke-width="0.8"/>
+          <text x="40" y="46" text-anchor="middle" font-family="Cinzel" font-size="12" font-weight="700" fill="#f4ead5" letter-spacing="0.1em">W · P</text>
+        </svg>
+        <div class="ornament-name">Wax Seal</div>
+      </div>
+
+      <div class="ornament-card">
+        <svg viewBox="0 0 60 100" width="60" height="100" aria-hidden="true">
+          <!-- Laurel branch -->
+          <path d="M 30 100 Q 28 70 32 40 Q 34 20 30 4" stroke="#143d22" stroke-width="1.2" fill="none"/>
+          <g fill="#1e5631">
+            <ellipse cx="22" cy="85" rx="6" ry="3" transform="rotate(-30 22 85)"/>
+            <ellipse cx="38" cy="78" rx="6" ry="3" transform="rotate(30 38 78)"/>
+            <ellipse cx="21" cy="68" rx="6" ry="3" transform="rotate(-30 21 68)"/>
+            <ellipse cx="39" cy="60" rx="6" ry="3" transform="rotate(30 39 60)"/>
+            <ellipse cx="22" cy="48" rx="5.5" ry="2.8" transform="rotate(-30 22 48)"/>
+            <ellipse cx="38" cy="38" rx="5.5" ry="2.8" transform="rotate(30 38 38)"/>
+            <ellipse cx="24" cy="26" rx="5" ry="2.5" transform="rotate(-30 24 26)"/>
+            <ellipse cx="36" cy="18" rx="5" ry="2.5" transform="rotate(30 36 18)"/>
+          </g>
+          <g fill="#2d7a47">
+            <circle cx="28" cy="76" r="1.2"/>
+            <circle cx="32" cy="54" r="1.2"/>
+            <circle cx="28" cy="32" r="1.2"/>
+          </g>
+        </svg>
+        <div class="ornament-name">Laurel Branch</div>
+      </div>
+
+      <div class="ornament-card">
+        <svg viewBox="0 0 100 40" width="100" height="40" aria-hidden="true">
+          <!-- Ribbon banner -->
+          <path d="M 10 10 L 90 10 L 84 22 L 90 34 L 10 34 L 16 22 Z" fill="#143d22"/>
+          <path d="M 16 14 L 84 14 L 80 22 L 84 30 L 16 30 L 20 22 Z" fill="none" stroke="#f4ead5" stroke-width="0.8"/>
+          <text x="50" y="26" text-anchor="middle" font-family="Cinzel" font-size="9" font-weight="700" fill="#f4ead5" letter-spacing="0.12em">CERTIFIED</text>
+        </svg>
+        <div class="ornament-name">Ribbon Banner</div>
+      </div>
+
+      <div class="ornament-card">
+        <svg viewBox="0 0 80 80" width="80" height="80" aria-hidden="true">
+          <g transform="translate(40,40)" stroke="#143d22" stroke-width="0.8" fill="none">
+            <path d="M 0 -32 L 0 -24 M 23 -23 L 17 -17 M 32 0 L 24 0 M 23 23 L 17 17 M 0 32 L 0 24 M -23 23 L -17 17 M -32 0 L -24 0 M -23 -23 L -17 -17"/>
+            <path d="M 0 -28 L 2 -20 L 0 -12 L -2 -20 Z" fill="#1e5631"/>
+            <path d="M 20 -20 L 14 -16 L 8 -12 L 12 -18 Z" fill="#1e5631"/>
+            <path d="M 28 0 L 20 2 L 12 0 L 20 -2 Z" fill="#1e5631"/>
+            <path d="M 20 20 L 12 18 L 8 12 L 14 16 Z" fill="#1e5631"/>
+            <path d="M 0 28 L -2 20 L 0 12 L 2 20 Z" fill="#1e5631"/>
+            <path d="M -20 20 L -14 16 L -8 12 L -12 18 Z" fill="#1e5631"/>
+            <path d="M -28 0 L -20 -2 L -12 0 L -20 2 Z" fill="#1e5631"/>
+            <path d="M -20 -20 L -12 -18 L -8 -12 L -14 -16 Z" fill="#1e5631"/>
+            <circle r="4" fill="#143d22"/>
+          </g>
+        </svg>
+        <div class="ornament-name">Compass Rose</div>
+      </div>
+
+      <div class="ornament-card">
+        <svg viewBox="0 0 80 80" width="80" height="80" aria-hidden="true">
+          <g transform="translate(40,40)" fill="none" stroke="#143d22" stroke-width="0.8">
+            <path d="M -30 0 Q -20 -14 -10 -6 Q 0 -14 10 -6 Q 20 -14 30 0"/>
+            <path d="M -30 0 Q -20 14 -10 6 Q 0 14 10 6 Q 20 14 30 0"/>
+            <circle cx="-20" cy="0" r="1.5" fill="#2d7a47" stroke="none"/>
+            <circle cx="0" cy="0" r="1.8" fill="#143d22" stroke="none"/>
+            <circle cx="20" cy="0" r="1.5" fill="#2d7a47" stroke="none"/>
+          </g>
+        </svg>
+        <div class="ornament-name">Filigree Flourish</div>
+      </div>
+
+      <div class="ornament-card">
+        <span class="symbol" style="font-family:'Cinzel Decorative',serif;font-size:44px;color:var(--currency-deep);line-height:1;">❧</span>
+        <div class="ornament-name">Fleuron · ❧</div>
+      </div>
+
+      <div class="ornament-card">
+        <span class="symbol" style="font-family:'Cinzel Decorative',serif;font-size:44px;color:var(--currency-deep);line-height:1;">§</span>
+        <div class="ornament-name">Section Mark · §</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider-ornament"><span class="line"></span><span class="diamond"></span><span class="glyph">❧</span><span class="diamond"></span><span class="line"></span></div>
+
+  <!-- ======================= SECTION / PAGE BREAKS ======================= -->
+  <section>
+    <div class="section-label">06 — Breaks</div>
+    <h2 class="section-title">Section and page-break conventions</h2>
+
+    <div class="pagebreak-sample">
+      <div class="divider-ornament"><span class="line"></span><span class="diamond"></span><span class="glyph">❧</span><span class="diamond"></span><span class="line"></span></div>
+      <div class="content">Diamond-flanked fleuron — light section break within a flowing document</div>
     </div>
 
-    <div class="asset-card">
-      <div class="label">Compact</div>
-      <div class="name">The Key</div>
-      <img class="compact-img" src="logo-gens/wp-key-k3-20260418-013408.png" alt="Worth Protecting compact key mark">
-      <div class="notes">
-        <p><strong>Use for:</strong> favicon, app icon, social avatars, nav bars, loading states, embroidery, wax seals, anywhere ≤64px.</p>
-        <p><strong>Not for:</strong> grand contexts where the full seal would fit — the compact mark is deliberately quiet.</p>
-      </div>
+    <div class="pagebreak-sample">
+      <div class="type-eyebrow" style="color:var(--currency-deep);">§ &nbsp; Chapter II &nbsp; §</div>
+      <div class="content" style="margin-top:12px;">Section-mark flanked label — heavy break, new section or chapter</div>
     </div>
 
-  </div>
+    <div class="pagebreak-sample">
+      <svg viewBox="0 0 600 20" width="300" height="20" aria-hidden="true" style="margin:0 auto;">
+        <line x1="0" y1="10" x2="280" y2="10" stroke="#143d22" stroke-width="0.8"/>
+        <polygon points="290,4 296,10 290,16 284,10" fill="#143d22"/>
+        <line x1="320" y1="10" x2="600" y2="10" stroke="#143d22" stroke-width="0.8"/>
+      </svg>
+      <div class="content" style="margin-top:12px;">Arrow-flanked rule — page turn or continuation marker</div>
+    </div>
 
-  <h2 class="section-title">Locked palette</h2>
-  <div class="palette">
-    <div class="swatch">
-      <div class="chip" style="background:#f4ead5;"></div>
-      <div class="meta">
-        <div class="name">Parchment</div>
-        <div class="hex">#f4ead5</div>
+    <div class="pagebreak-sample">
+      <div class="dropcap-sample">
+        <strong>W</strong>hen a document needs the heaviest possible opening — the first page of a section, the opening of a long-form piece, or the prelude to a testament — we use an engraved drop capital. The rest of the paragraph flows around it in body serif, letting the letterform carry the weight alone.
       </div>
     </div>
-    <div class="swatch">
-      <div class="chip" style="background:#1e5631;"></div>
-      <div class="meta" style="color:#fff;">
-        <div class="name" style="color:#f4ead5;">Currency</div>
-        <div class="hex" style="color:#e8dcc0;">#1e5631</div>
-      </div>
-    </div>
-    <div class="swatch">
-      <div class="chip" style="background:#143d22;"></div>
-      <div class="meta" style="color:#fff;">
-        <div class="name" style="color:#f4ead5;">Currency Deep</div>
-        <div class="hex" style="color:#e8dcc0;">#143d22</div>
-      </div>
-    </div>
-    <div class="swatch">
-      <div class="chip" style="background:#2d7a47;"></div>
-      <div class="meta" style="color:#fff;">
-        <div class="name" style="color:#f4ead5;">Currency Light</div>
-        <div class="hex" style="color:#e8dcc0;">#2d7a47</div>
-      </div>
-    </div>
-    <div class="swatch">
-      <div class="chip" style="background:#1a1a1a;"></div>
-      <div class="meta" style="color:#fff;">
-        <div class="name" style="color:#f4ead5;">Ink</div>
-        <div class="hex" style="color:#e8dcc0;">#1a1a1a</div>
-      </div>
-    </div>
-  </div>
+  </section>
 
+  <!-- ======================= PROVENANCE ======================= -->
   <div class="provenance">
     Generated by Babycakes via her own Gemini API key (<code>bcclawbot@gmail.com</code>) — 2026-04-18.<br>
     First brand system designed end-to-end from Babycakes' own hands.
