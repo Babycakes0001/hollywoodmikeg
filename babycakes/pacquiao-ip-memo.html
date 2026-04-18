@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manny Pacquiao &mdash; IP Diligence Memo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #0a0a0a;
+  --ink-card: #101010;
+  --ink-line: #1a1a1a;
+  --ink-soft: #151515;
+  --metal: #ececec;
+  --metal-dim: #c8c8c8;
+  --body: #a8a8a8;
+  --muted: #787878;
+  --faint: #555;
+  --accent: #117ACA;
+  --accent-dim: #0e5a97;
+  --accent-soft: #117ACA22;
+  --stain: #c99a3a;
+  --stain-soft: #c99a3a22;
+  --live: #6fbf73;
+  --live-soft: #6fbf7322;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--body);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: #4ea3e0; }
+
+code {
+  font-family: 'SF Mono', 'Fira Code', Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  background: #0f1520;
+  border: 1px solid #17263a;
+  color: #9bcdf4;
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+
+/* ── HERO ─────────────────────────────────────── */
+.hero {
+  padding: 100px 24px 80px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 800px 400px at 50% 0%, rgba(17, 122, 202, 0.08), transparent 70%),
+    linear-gradient(180deg, #0a1018 0%, var(--ink) 100%);
+  border-bottom: 1px solid #1a2a3a;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #2a3a4a, transparent);
+  width: 240px;
+}
+
+.hero::before { top: 40px; }
+.hero::after { bottom: 40px; }
+
+.hero-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.hero-section {
+  font-size: 0.65rem;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 28px;
+}
+
+.hero .ornament {
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin-bottom: 20px;
+  letter-spacing: 8px;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 500;
+  color: var(--metal);
+  letter-spacing: 0.5px;
+  line-height: 1.05;
+  margin-bottom: 18px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.hero .legal-name {
+  font-size: 0.72rem;
+  letter-spacing: 5px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.hero .tagline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--metal-dim);
+  max-width: 620px;
+  margin: 0 auto 32px;
+  line-height: 1.5;
+}
+
+.hero .meta-strip {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  font-size: 0.68rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--faint);
+  flex-wrap: wrap;
+}
+
+.hero .meta-strip span { color: var(--body); }
+
+/* ── STAT STRIP ────────────────────────────────── */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 36px 24px;
+  border-bottom: 1px solid var(--ink-line);
+  gap: 1px;
+  background: var(--ink-line);
+}
+
+.stat {
+  background: var(--ink);
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.stat .num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.9rem;
+  font-weight: 500;
+  color: var(--metal);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat .num.warn { color: var(--stain); }
+.stat .num.live { color: var(--live); }
+.stat .num.accent { color: var(--accent); }
+
+.stat .label {
+  font-size: 0.62rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── CONTAINER ─────────────────────────────────── */
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── SECTION ───────────────────────────────────── */
+.section {
+  padding: 72px 0 64px;
+  position: relative;
+}
+
+.section + .section { border-top: 1px solid var(--ink-line); }
+
+.section-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--accent);
+  letter-spacing: 4px;
+  margin-bottom: 4px;
+}
+
+.section-label {
+  font-size: 0.65rem;
+  color: var(--metal-dim);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.section h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  color: var(--metal);
+  margin-bottom: 20px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.section h2 em { font-style: italic; color: var(--accent); }
+
+.section h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--metal);
+  margin-top: 28px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.section h3 .num-inline {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--accent);
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+.section p {
+  color: var(--body);
+  margin-bottom: 14px;
+  font-size: 0.96rem;
+  line-height: 1.75;
+}
+
+.section p strong { color: var(--metal); font-weight: 600; }
+.section p em { color: var(--metal-dim); }
+
+/* ── DROP CAP ──────────────────────────────────── */
+.dropcap::first-letter {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 4.2rem;
+  font-weight: 500;
+  float: left;
+  line-height: 0.85;
+  padding-right: 12px;
+  padding-top: 6px;
+  color: var(--accent);
+}
+
+/* ── LIST ──────────────────────────────────────── */
+.section ul, .section ol {
+  color: var(--body);
+  font-size: 0.94rem;
+  padding-left: 24px;
+  margin-bottom: 14px;
+}
+
+.section ul li, .section ol li { margin-bottom: 8px; }
+.section ul li::marker { color: var(--accent); }
+.section ol li::marker { color: var(--accent); font-weight: 600; }
+.section ul li strong, .section ol li strong { color: var(--metal); }
+
+/* ── FILINGS TABLE ─────────────────────────────── */
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 24px;
+  border: 1px solid var(--ink-line);
+  border-radius: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  min-width: 600px;
+}
+
+table th,
+table td {
+  padding: 16px 18px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--ink-line);
+}
+
+table th {
+  color: var(--metal-dim);
+  font-weight: 500;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: var(--ink-soft);
+  border-bottom: 1px solid #242424;
+}
+
+table tr:last-child td { border-bottom: none; }
+
+table td { color: var(--body); }
+table td strong { color: var(--metal); font-weight: 600; }
+
+table td .sub {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--muted);
+  margin-top: 3px;
+  font-style: italic;
+}
+
+/* ── STATUS PILLS ──────────────────────────────── */
+.pill {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 3px;
+  border: 1px solid;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.pill.live { color: var(--live); background: var(--live-soft); border-color: var(--live); }
+.pill.abandoned { color: var(--stain); background: var(--stain-soft); border-color: var(--stain); }
+.pill.pending { color: var(--accent); background: var(--accent-soft); border-color: var(--accent); }
+
+/* ── CALLOUT ───────────────────────────────────── */
+.callout {
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(90deg, rgba(17,122,202,0.07), transparent 80%);
+  padding: 18px 22px;
+  margin: 22px 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.callout p {
+  margin-bottom: 0;
+  color: var(--metal-dim);
+  font-size: 0.94rem;
+}
+
+.callout.warn {
+  border-left-color: var(--stain);
+  background: linear-gradient(90deg, rgba(201,154,58,0.09), transparent 80%);
+}
+
+.callout.warn p { color: #e8c57d; }
+
+.callout.ledger {
+  border-left-color: var(--live);
+  background: linear-gradient(90deg, rgba(111,191,115,0.07), transparent 80%);
+}
+
+.callout.ledger p { color: #c8e0cb; }
+
+/* ── PULL QUOTE ────────────────────────────────── */
+.pullquote {
+  text-align: center;
+  padding: 48px 20px;
+  margin: 20px 0;
+  border-top: 1px solid var(--ink-line);
+  border-bottom: 1px solid var(--ink-line);
+  position: relative;
+}
+
+.pullquote .mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  color: var(--accent);
+  line-height: 0.4;
+  margin-bottom: 10px;
+}
+
+.pullquote blockquote {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+  font-style: italic;
+  color: var(--metal);
+  font-weight: 500;
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.45;
+}
+
+.pullquote blockquote em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* ── IMPL CARDS ────────────────────────────────── */
+.impl-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.impl-card {
+  background: var(--ink-card);
+  border: 1px solid var(--ink-line);
+  border-radius: 6px;
+  padding: 22px 24px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.impl-card:hover {
+  border-color: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.impl-card .num-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+
+.impl-card h3 {
+  font-size: 0.95rem;
+  color: var(--metal);
+  margin: 0 0 10px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.impl-card p {
+  font-size: 0.87rem;
+  color: var(--body);
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* ── ORNAMENT ──────────────────────────────────── */
+.ornament-rule {
+  text-align: center;
+  margin: 40px 0 24px;
+  color: var(--accent);
+  font-size: 1rem;
+  letter-spacing: 12px;
+}
+
+/* ── FOOTER ────────────────────────────────────── */
+.footer-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 22px;
+  line-height: 1.7;
+  border-top: 1px dashed var(--ink-line);
+  padding-top: 18px;
+}
+
+.footer {
+  text-align: center;
+  color: var(--faint);
+  font-size: 0.68rem;
+  letter-spacing: 3px;
+  padding: 40px 20px;
+  text-transform: uppercase;
+  border-top: 1px solid var(--ink-line);
+  margin-top: 40px;
+}
+
+.footer a {
+  color: var(--muted);
+  margin: 0 10px;
+}
+.footer a:hover { color: var(--accent); }
+
+.footer .sig {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--metal-dim);
+  letter-spacing: 1px;
+  text-transform: none;
+  margin-top: 12px;
+}
+
+/* ── SOURCES ───────────────────────────────────── */
+.sources {
+  font-size: 0.86rem;
+  color: var(--muted);
+  padding-left: 22px;
+  columns: 1;
+}
+
+.sources li { margin-bottom: 6px; }
+.sources li::marker { color: var(--accent); }
+
+/* ── RESPONSIVE ────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero { padding: 70px 20px 60px; }
+  .stat-strip { grid-template-columns: 1fr; }
+  .stat { border-bottom: 1px solid var(--ink-line); }
+  .impl-grid { grid-template-columns: 1fr; }
+  .hero .meta-strip { gap: 20px; }
+  .dropcap::first-letter { font-size: 3.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div class="hero-eyebrow">&sect; Diligence Memorandum</div>
+  <div class="hero-section">Intellectual Property</div>
+  <div class="ornament">&middot; &middot; &middot;</div>
+  <h1>Manny <em>Pacquiao</em></h1>
+  <div class="legal-name">Emmanuel Dapidran Pacquiao</div>
+  <p class="tagline">
+    Trademarks, parallel rights, and the gap between his commercial footprint
+    and his federal registration footprint.
+  </p>
+  <div class="meta-strip">
+    <div>Prepared <span>18 April 2026</span></div>
+    <div>Source <span>Public Record</span></div>
+    <div>Scope <span>US &middot; PH &middot; International</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ STAT STRIP ═══════════════════ -->
+<div class="stat-strip">
+  <div class="stat">
+    <div class="num warn">77737664</div>
+    <div class="label">Abandoned USPTO Serial &mdash; 2010</div>
+  </div>
+  <div class="stat">
+    <div class="num accent">&sect; 3344</div>
+    <div class="label">Cal. Civ. Code &mdash; Right of Publicity</div>
+  </div>
+  <div class="stat">
+    <div class="num live">2025</div>
+    <div class="label">MP Promotions US Launch &mdash; Beverly Hills</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ── I. Question ── -->
+  <section class="section">
+    <div class="section-num">&mdash; I &mdash;</div>
+    <div class="section-label">Question Presented</div>
+    <h2>What does Pacquiao actually own, and where is the exposure?</h2>
+    <p>
+      What trademarks, trade names, and parallel IP rights does Manny Pacquiao
+      currently hold or control, and where is the material exposure &mdash; for licensors,
+      enforcers, or prospective counsel?
+    </p>
+  </section>
+
+  <!-- ── II. Short Answer ── -->
+  <section class="section">
+    <div class="section-num">&mdash; II &mdash;</div>
+    <div class="section-label">Short Answer</div>
+    <h2>On paper, his US federal coverage is thinner than his footprint warrants.</h2>
+    <p class="dropcap">
+      Pacquiao's Philippine registrations are the backbone of his enforceable IP. In the
+      United States, the practical protection of his name and likeness today rests
+      primarily on <strong>California's Right of Publicity statute</strong> and
+      <strong>common-law trademark rights</strong> &mdash; not on live USPTO registrations.
+      The flagship federal word mark was abandoned in 2010 and has not visibly been refiled.
+    </p>
+  </section>
+
+  <!-- ── III. Confirmed Filings ── -->
+  <section class="section">
+    <div class="section-num">&mdash; III &mdash;</div>
+    <div class="section-label">Confirmed Public-Record Filings</div>
+    <h2>What's <em>on the record.</em></h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Mark</th>
+            <th>Jurisdiction</th>
+            <th>Owner</th>
+            <th>Serial / Status</th>
+            <th>Classes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>MANNY PACQUIAO</strong>
+              <span class="sub">word mark</span>
+            </td>
+            <td>USPTO <span class="sub">United States</span></td>
+            <td>M.P. Merchandise LLC</td>
+            <td>
+              <code style="background:transparent;border:none;padding:0;color:var(--body);font-size:0.82rem;">77737664</code><br>
+              <span class="pill abandoned" style="margin-top:6px;">Abandoned</span>
+              <span class="sub">2010-11-09 &middot; failure to respond</span>
+            </td>
+            <td>Marketing / merchandising services</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Manny Pacquiao</strong>
+              <span class="sub">word mark</span>
+            </td>
+            <td>IPOPHL <span class="sub">Philippines</span></td>
+            <td>Emmanuel D. Pacquiao <span class="sub">individual</span></td>
+            <td>
+              <span class="pill live">Live</span>
+              <span class="sub">per IPOPHL public case study</span>
+            </td>
+            <td>Multi-class: sporting goods, textiles, clothing, footwear, headgear</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>"Pambansang Kamao"</strong>
+              <span class="sub">National Fist</span>
+            </td>
+            <td>IPOPHL <span class="sub">Philippines</span></td>
+            <td>Pacquiao</td>
+            <td>
+              <span class="pill abandoned">Abandoned</span>
+              <span class="sub">2007 &middot; dropped for Philippine Eagle branding</span>
+            </td>
+            <td>Historical &mdash; N/A</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── IV. Apparent but Unverified ── -->
+  <section class="section">
+    <div class="section-num">&mdash; IV &mdash;</div>
+    <div class="section-label">Apparent &mdash; But Unverified</div>
+    <h2>Filings that likely exist, but aren't yet <em>indexed.</em></h2>
+    <p>
+      The following assets are in commercial use or publicly announced, but are not surfacing
+      in third-party trademark aggregators. Verification requires direct queries to
+      <code>tmsearch.uspto.gov</code>, IPOPHL's database, and the California Secretary of State.
+    </p>
+    <ul>
+      <li>
+        <strong>MP Fist logo</strong> &mdash; 2009 press release stated the logo was registered
+        in both the US and internationally: Philippine flag colors, three stars, shaped from
+        the mold of Pacquiao's right fist. No live USPTO record is currently surfacing.
+      </li>
+      <li>
+        <strong>Manny Pacquiao Promotions (US entity)</strong> &mdash; launched its Beverly
+        Hills office in 2025 under <em>Sean Gibbons (President)</em> and
+        <em>Tony Cohen, J.D. (VP)</em>. Registered address: 9531 Santa Monica Blvd, Suite 1041,
+        Beverly Hills, CA 90210. Concurrent USPTO filings and California SOS formation
+        details are not yet indexed publicly.
+      </li>
+      <li>
+        <strong>Team Pacquiao</strong> &mdash; operates as a gaming and esports content brand
+        via Veloce Media Group. Ownership of the mark (Pacquiao, Veloce, or a joint-venture
+        SPV) is not clear from the public record.
+      </li>
+      <li>
+        <strong>Manny Pacquiao Foundation</strong> &mdash; charitable arm; trademark status
+        not independently confirmed.
+      </li>
+    </ul>
+  </section>
+
+  <!-- ── V. Parallel Rights ── -->
+  <section class="section">
+    <div class="section-num">&mdash; V &mdash;</div>
+    <div class="section-label">Parallel Rights</div>
+    <h2>Protection that doesn't require <em>federal registration.</em></h2>
+
+    <h3><span class="num-inline">i.</span> California Right of Publicity &mdash; Cal. Civ. Code &sect; 3344</h3>
+    <p>
+      Unauthorized commercial use of Pacquiao's name, voice, signature, photograph, or likeness
+      in California triggers statutory damages of the greater of <strong>$750 or actual
+      damages</strong>, plus <strong>defendant's profits</strong>, plus
+      <strong>attorneys' fees</strong> and potential <strong>punitive damages</strong>.
+      California's statute is among the strongest in the country and applies regardless of
+      federal trademark registration. This is the real enforcement tool in California today.
+    </p>
+
+    <h3><span class="num-inline">ii.</span> Common-Law Trademark</h3>
+    <p>
+      Continuous commercial use of "Manny Pacquiao," "MP Promotions," and the fist logo in
+      the United States creates common-law trademark rights in territories of use, enforceable
+      under <strong>Lanham Act &sect; 43(a)</strong>. Weaker than a federal registration
+      &mdash; no nationwide constructive notice, no presumption of validity &mdash; but still
+      a viable cause of action.
+    </p>
+
+    <h3><span class="num-inline">iii.</span> Copyright on Image Assets</h3>
+    <p>
+      Photographs, video, and design assets (including the fist logo treated as an artwork)
+      carry separate copyright protection, typically held by photographers or designers or
+      assigned to promotional entities.
+    </p>
+  </section>
+
+  <!-- ── VI. Gap Analysis ── -->
+  <section class="section">
+    <div class="section-num">&mdash; VI &mdash;</div>
+    <div class="section-label">The Gap Analysis</div>
+    <h2>Why the under-registration <em>matters.</em></h2>
+    <p>
+      The 2009 abandonment of the <strong>MANNY PACQUIAO</strong> USPTO mark (serial 77737664)
+      is material. For roughly fifteen years, Pacquiao's most obvious US word mark has had
+      no federal trademark shield. Opening a US promotional arm in Beverly Hills in 2025
+      without visible concurrent USPTO filings is atypical for a celebrity of this tier.
+    </p>
+    <p>Three possibilities, in order of likelihood:</p>
+    <ol>
+      <li><strong>Filings are pending but not yet indexed</strong> &mdash; USPTO publishing typically lags six to twelve months. Most likely.</li>
+      <li><strong>Filings are held in a separate SPV or licensing entity</strong> that we haven't identified.</li>
+      <li><strong>Pacquiao's US counsel has not yet locked it down</strong> &mdash; rare at this level, but possible.</li>
+    </ol>
+
+    <div class="callout warn">
+      <p>
+        The correct next step is a direct <code>tmsearch.uspto.gov</code> run on all plausible
+        owner strings, plus a California Secretary of State business search for the Beverly Hills
+        entity's exact formation name.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── PULL QUOTE ── -->
+  <div class="container">
+    <div class="pullquote">
+      <div class="mark">&ldquo;</div>
+      <blockquote>
+        The enforceable wall today is California Right of Publicity plus common-law trademark.
+        The Beverly Hills launch is the <em>exact inflection point</em> where an IP portfolio
+        rebuild becomes either a competitive necessity or a meaningful engagement opportunity.
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- ── VII. Strategic Implications ── -->
+  <section class="section">
+    <div class="section-num">&mdash; VII &mdash;</div>
+    <div class="section-label">Strategic Implications</div>
+    <h2>What this means, depending on where you <em>sit.</em></h2>
+
+    <div class="impl-grid">
+      <div class="impl-card">
+        <div class="num-mark">&mdash; i. &mdash;</div>
+        <h3>Licensing &amp; co-branding</h3>
+        <p>
+          Counterparty identification is critical. Different Pacquiao assets (boxing
+          promotion vs. apparel vs. gaming vs. foundation) may sit with different entities.
+          Contracting with the wrong licensor yields no valid license.
+        </p>
+      </div>
+      <div class="impl-card">
+        <div class="num-mark">&mdash; ii. &mdash;</div>
+        <h3>Enforcement against unauthorized use</h3>
+        <p>
+          California Right of Publicity is the primary weapon today, not federal trademark.
+          Venue California is plaintiff-favorable. Common-law TM adds a Lanham Act &sect; 43(a)
+          layer but is geographically limited to actual territories of use.
+        </p>
+      </div>
+      <div class="impl-card">
+        <div class="num-mark">&mdash; iii. &mdash;</div>
+        <h3>IP portfolio rebuild</h3>
+        <p>
+          US word mark refiling, logo registrations, merchandise-class filings, domain audit,
+          social-handle sweeps, entity-chart cleanup. Textbook work after geographic expansion.
+          Celebrities at this tier typically retain dedicated IP counsel for this rebuild.
+        </p>
+      </div>
+      <div class="impl-card">
+        <div class="num-mark">&mdash; iv. &mdash;</div>
+        <h3>Advisory around the US rollout</h3>
+        <p>
+          Trademark filings, licensing framework, sponsorship templates, NIL structuring for
+          MP Promotions' stable of fighters. The Beverly Hills launch is less than six months
+          old. Hot moment, not hypothetical future work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VIII. Open Questions ── -->
+  <section class="section">
+    <div class="section-num">&mdash; VIII &mdash;</div>
+    <div class="section-label">Open Questions</div>
+    <h2>Diligence required to <em>close the picture.</em></h2>
+    <ol>
+      <li>Hand-run <code>tmsearch.uspto.gov</code> on all plausible owner strings &mdash; "Pacquiao," "M.P. Merchandise," "MP Promotions," "Manny Pacquiao Promotions LLC" &mdash; and pull any live or pending filings post-2023.</li>
+      <li>Pull the California Secretary of State record for the Beverly Hills entity. Confirm exact formation name, date, agent for service, officers.</li>
+      <li>Identify Pacquiao's current US IP counsel via the attorney-of-record on any live filings.</li>
+      <li>Confirm whether the "Team Pacquiao" mark sits with Pacquiao, Veloce Media Group, or a joint-venture SPV.</li>
+      <li>Check for post-2020 Madrid Protocol international registrations designating the US &mdash; would cover US territory without a separate USPTO filing.</li>
+    </ol>
+  </section>
+
+  <!-- ── IX. Bottom Line ── -->
+  <section class="section">
+    <div class="section-num">&mdash; IX &mdash;</div>
+    <div class="section-label">Bottom Line</div>
+    <h2>One abandoned flagship. Robust PH. A hot US inflection point.</h2>
+    <div class="callout ledger">
+      <p class="dropcap" style="margin-bottom:0;">
+        Public record shows <strong>one abandoned flagship US word mark</strong>, a
+        <strong>robust Philippine portfolio</strong>, and a <strong>just-launched US promotional
+        entity</strong> whose concurrent trademark filings have not yet surfaced. The enforceable
+        wall today is California Right of Publicity plus common-law trademark. The Beverly
+        Hills launch is the exact inflection point where an IP portfolio rebuild becomes either
+        a <strong>competitive necessity</strong> or a <strong>meaningful engagement opportunity</strong>
+        &mdash; depending on which side of the table one is sitting on.
+      </p>
+    </div>
+    <div class="footer-note">
+      All citations are from public-record sources. The &ldquo;apparent but unverified&rdquo;
+      items reflect the limits of third-party aggregator indexing and do not assert a confirmed
+      absence of filings. A same-day hand-run of the USPTO and California Secretary of State
+      would convert those items from apparent to confirmed.
+    </div>
+  </section>
+
+  <!-- ── Ornament ── -->
+  <div class="ornament-rule">&sect; &middot; &sect;</div>
+
+  <!-- ── Sources ── -->
+  <section class="section" style="padding-top:20px;border-top:none;">
+    <div class="section-label">Sources &amp; Citations</div>
+    <ul class="sources">
+      <li><a href="https://trademark.trademarkia.com/manny-pacquiao-77737664.html" target="_blank" rel="noopener">Trademarkia &mdash; MANNY PACQUIAO, serial 77737664</a></li>
+      <li><a href="https://trademarks.justia.com/777/37/manny-pacquiao-77737664.html" target="_blank" rel="noopener">Justia Trademarks &mdash; same serial</a></li>
+      <li><a href="http://philboxing.com/news/story-29451.html" target="_blank" rel="noopener">PhilBoxing &mdash; MP Fist + Manny Pacquiao trademark launch (2009)</a></li>
+      <li><a href="https://www.ipophil.gov.ph/news/mark-of-a-champion-how-manny-pacquiao-is-earning-millions-from-ip/" target="_blank" rel="noopener">IPOPHL &mdash; Mark of a Champion: Pacquiao IP income</a></li>
+      <li><a href="https://www.philstar.com/headlines/2007/10/12/20360/pacquiao-drops-trademark-lsquofistrsquo-philippine-eagle" target="_blank" rel="noopener">PhilStar &mdash; Pacquiao drops Pambansang Kamao (2007)</a></li>
+      <li><a href="https://www.boxingscene.com/articles/manny-pacquiao-launches-manny-pacquiao-promotions-in-america" target="_blank" rel="noopener">BoxingScene &mdash; MP Promotions US launch (2025)</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/MP_Promotions" target="_blank" rel="noopener">Wikipedia &mdash; MP Promotions</a></li>
+      <li><a href="https://rightofpublicityroadmap.com/state_page/california/" target="_blank" rel="noopener">Rothman's Roadmap &mdash; California Right of Publicity</a></li>
+      <li><a href="https://www.dmlp.org/legal-guide/california-right-publicity-law" target="_blank" rel="noopener">Digital Media Law Project &mdash; Cal. Civ. Code &sect; 3344</a></li>
+      <li><a href="https://holmesweinberg.com/recent-updates-to-californias-right-of-publicity-statute/" target="_blank" rel="noopener">Holmes Weinberg PC &mdash; Updates to California's Right of Publicity Statute</a></li>
+    </ul>
+  </section>
+
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<div class="footer">
+  <a href="/babycakes/">&larr; Command Center</a>
+  &middot;
+  <a href="/babycakes/ninja-pilot.html">Ninja Pilot</a>
+  &middot;
+  <a href="/babycakes/claw-agent-pitch.html">CLAW Agent Pitch</a>
+  <div class="sig">Prepared by Babycakes &middot; Public-Record Diligence &middot; 18 April 2026</div>
+</div>
+
+</body>
+</html>
