@@ -279,32 +279,37 @@
   .seal .crest-impress path,
   .seal .crest-impress line { stroke: rgba(230,245,225,0.88); }
 
-  .certified-stamp {
-    position: absolute;
-    top: 140px;
-    right: 80px;
-    transform: rotate(-8deg);
-    font-family: 'Cinzel', 'IM Fell English SC', serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.3em;
-    color: var(--currency-deep);
-    border: 2px double var(--currency-deep);
-    padding: 12px 20px;
+  /* Robust page frame — thick, nested, with corner rosettes */
+  .page-frame {
+    position: fixed;
+    inset: 14px;
+    pointer-events: none;
+    z-index: 3;
+    border: 5px solid var(--currency-deep);
+    box-shadow:
+      inset 0 0 0 3px rgba(244,234,213,0.4),
+      inset 0 0 0 4.5px var(--currency),
+      inset 0 0 0 13px rgba(244,234,213,0),
+      inset 0 0 0 14px var(--currency),
+      inset 0 0 0 15.5px rgba(244,234,213,0),
+      inset 0 0 0 18px var(--currency-deep);
     opacity: 0;
-    animation: stampDown 0.4s ease-out 2.4s forwards;
-    z-index: 11;
+    animation: fadeIn 1.6s ease-out 0.2s forwards;
   }
 
-  .certified-stamp .big {
-    display: block;
-    font-family: 'Cinzel', serif;
-    font-weight: 900;
-    font-size: 22px;
-    margin: 4px 0;
-    letter-spacing: 0.18em;
+  .corner-rose {
+    position: fixed;
+    width: 56px;
+    height: 56px;
+    pointer-events: none;
+    z-index: 4;
+    opacity: 0;
+    animation: fadeIn 1.4s ease-out 0.5s forwards;
   }
-  .certified-stamp .small { font-size: 9px; letter-spacing: 0.25em; opacity: 0.8; }
+  .corner-rose.tl { top: 0; left: 0; }
+  .corner-rose.tr { top: 0; right: 0; transform: scaleX(-1); }
+  .corner-rose.bl { bottom: 0; left: 0; transform: scaleY(-1); }
+  .corner-rose.br { bottom: 0; right: 0; transform: scale(-1,-1); }
 
   /* Chain-of-ovals divider — replaces deckle between hero and pillars */
   .chain-divider {
@@ -418,18 +423,25 @@
   }
 
   @media (max-width: 720px) {
-    .page { padding: 32px 20px 80px; }
+    .page { padding: 44px 28px 80px; }
     .pillars { grid-template-columns: 1fr; gap: 32px; }
-    .certified-stamp { display: none; }
     .hero-dome { width: 180%; }
+    .page-frame {
+      inset: 8px;
+      border-width: 3px;
+      box-shadow:
+        inset 0 0 0 2px rgba(244,234,213,0.4),
+        inset 0 0 0 3px var(--currency),
+        inset 0 0 0 8px rgba(244,234,213,0),
+        inset 0 0 0 9px var(--currency),
+        inset 0 0 0 10px rgba(244,234,213,0),
+        inset 0 0 0 12px var(--currency-deep);
+    }
+    .corner-rose { width: 36px; height: 36px; }
     .letterhead { font-size: 11px; flex-direction: column; gap: 10px; align-items: flex-start; }
     .letterhead .mark { font-size: 14px; letter-spacing: 0.18em; }
     .letterhead .serial { font-size: 9px; }
-    .corner-mark { font-size: 28px; }
-    .corner-mark.tl, .corner-mark.tr { top: 14px; }
-    .corner-mark.bl, .corner-mark.br { bottom: 14px; }
-    .corner-mark.tl, .corner-mark.bl { left: 12px; }
-    .corner-mark.tr, .corner-mark.br { right: 12px; }
+    .corner-mark { display: none; }
     .micro-band { font-size: 7.5px; letter-spacing: 0.18em; padding: 0 4px; line-height: 1.7; }
     .micro-band .sep { margin: 0 6px; }
     .pillar .num { font-size: 44px; }
@@ -466,6 +478,63 @@
   </defs>
 </svg>
 
+<!-- Robust multi-line page frame -->
+<div class="page-frame" aria-hidden="true"></div>
+
+<!-- Corner rosettes -->
+<svg class="corner-rose tl" viewBox="0 0 56 56" aria-hidden="true">
+  <path d="M 30 6 Q 36 6 38 10 Q 40 14 38 18" fill="none" stroke="#1e5631" stroke-width="0.8"/>
+  <path d="M 6 30 Q 6 36 10 38 Q 14 40 18 38" fill="none" stroke="#1e5631" stroke-width="0.8"/>
+  <g transform="translate(18,18)">
+    <path d="M 0 -9 L 9 0 L 0 9 L -9 0 Z" fill="#143d22"/>
+    <path d="M 0 -5 L 5 0 L 0 5 L -5 0 Z" fill="#2d7a47"/>
+    <circle r="1.5" fill="#f4ead5"/>
+  </g>
+  <path d="M 24 10 Q 30 8 34 12" fill="none" stroke="#2d7a47" stroke-width="0.6"/>
+  <path d="M 10 24 Q 8 30 12 34" fill="none" stroke="#2d7a47" stroke-width="0.6"/>
+  <circle cx="40" cy="10" r="1.2" fill="#143d22"/>
+  <circle cx="10" cy="40" r="1.2" fill="#143d22"/>
+</svg>
+<svg class="corner-rose tr" viewBox="0 0 56 56" aria-hidden="true">
+  <path d="M 30 6 Q 36 6 38 10 Q 40 14 38 18" fill="none" stroke="#1e5631" stroke-width="0.8"/>
+  <path d="M 6 30 Q 6 36 10 38 Q 14 40 18 38" fill="none" stroke="#1e5631" stroke-width="0.8"/>
+  <g transform="translate(18,18)">
+    <path d="M 0 -9 L 9 0 L 0 9 L -9 0 Z" fill="#143d22"/>
+    <path d="M 0 -5 L 5 0 L 0 5 L -5 0 Z" fill="#2d7a47"/>
+    <circle r="1.5" fill="#f4ead5"/>
+  </g>
+  <path d="M 24 10 Q 30 8 34 12" fill="none" stroke="#2d7a47" stroke-width="0.6"/>
+  <path d="M 10 24 Q 8 30 12 34" fill="none" stroke="#2d7a47" stroke-width="0.6"/>
+  <circle cx="40" cy="10" r="1.2" fill="#143d22"/>
+  <circle cx="10" cy="40" r="1.2" fill="#143d22"/>
+</svg>
+<svg class="corner-rose bl" viewBox="0 0 56 56" aria-hidden="true">
+  <path d="M 30 6 Q 36 6 38 10 Q 40 14 38 18" fill="none" stroke="#1e5631" stroke-width="0.8"/>
+  <path d="M 6 30 Q 6 36 10 38 Q 14 40 18 38" fill="none" stroke="#1e5631" stroke-width="0.8"/>
+  <g transform="translate(18,18)">
+    <path d="M 0 -9 L 9 0 L 0 9 L -9 0 Z" fill="#143d22"/>
+    <path d="M 0 -5 L 5 0 L 0 5 L -5 0 Z" fill="#2d7a47"/>
+    <circle r="1.5" fill="#f4ead5"/>
+  </g>
+  <path d="M 24 10 Q 30 8 34 12" fill="none" stroke="#2d7a47" stroke-width="0.6"/>
+  <path d="M 10 24 Q 8 30 12 34" fill="none" stroke="#2d7a47" stroke-width="0.6"/>
+  <circle cx="40" cy="10" r="1.2" fill="#143d22"/>
+  <circle cx="10" cy="40" r="1.2" fill="#143d22"/>
+</svg>
+<svg class="corner-rose br" viewBox="0 0 56 56" aria-hidden="true">
+  <path d="M 30 6 Q 36 6 38 10 Q 40 14 38 18" fill="none" stroke="#1e5631" stroke-width="0.8"/>
+  <path d="M 6 30 Q 6 36 10 38 Q 14 40 18 38" fill="none" stroke="#1e5631" stroke-width="0.8"/>
+  <g transform="translate(18,18)">
+    <path d="M 0 -9 L 9 0 L 0 9 L -9 0 Z" fill="#143d22"/>
+    <path d="M 0 -5 L 5 0 L 0 5 L -5 0 Z" fill="#2d7a47"/>
+    <circle r="1.5" fill="#f4ead5"/>
+  </g>
+  <path d="M 24 10 Q 30 8 34 12" fill="none" stroke="#2d7a47" stroke-width="0.6"/>
+  <path d="M 10 24 Q 8 30 12 34" fill="none" stroke="#2d7a47" stroke-width="0.6"/>
+  <circle cx="40" cy="10" r="1.2" fill="#143d22"/>
+  <circle cx="10" cy="40" r="1.2" fill="#143d22"/>
+</svg>
+
 <div class="page">
 
   <!-- Corner denomination marks — banknote style -->
@@ -492,12 +561,6 @@
       <span class="mark">WORTH PROTECTING</span>
     </span>
     <span class="serial">SOUL ID · WP-0001 · EST. 2026</span>
-  </div>
-
-  <div class="certified-stamp">
-    <span class="small">OFFICIAL</span>
-    <span class="big">CERTIFIED</span>
-    <span class="small">VAULT · 0001</span>
   </div>
 
   <svg class="guilloche" viewBox="0 0 1000 52" preserveAspectRatio="none">
