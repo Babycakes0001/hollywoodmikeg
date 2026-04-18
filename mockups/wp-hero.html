@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Worth Protecting — Hero Mockup</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -417,10 +418,23 @@
   }
 
   @media (max-width: 720px) {
-    .page { padding: 32px 28px 80px; }
+    .page { padding: 32px 20px 80px; }
     .pillars { grid-template-columns: 1fr; gap: 32px; }
     .certified-stamp { display: none; }
     .hero-dome { width: 180%; }
+    .letterhead { font-size: 11px; flex-direction: column; gap: 10px; align-items: flex-start; }
+    .letterhead .mark { font-size: 14px; letter-spacing: 0.18em; }
+    .letterhead .serial { font-size: 9px; }
+    .corner-mark { font-size: 28px; }
+    .corner-mark.tl, .corner-mark.tr { top: 14px; }
+    .corner-mark.bl, .corner-mark.br { bottom: 14px; }
+    .corner-mark.tl, .corner-mark.bl { left: 12px; }
+    .corner-mark.tr, .corner-mark.br { right: 12px; }
+    .micro-band { font-size: 7.5px; letter-spacing: 0.18em; padding: 0 4px; line-height: 1.7; }
+    .micro-band .sep { margin: 0 6px; }
+    .pillar .num { font-size: 44px; }
+    h1.display { font-size: clamp(36px, 9vw, 60px); }
+    .subhead { font-size: 18px; padding: 0 8px; }
   }
 </style>
 </head>
