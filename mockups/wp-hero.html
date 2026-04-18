@@ -6,7 +6,7 @@
 <title>Worth Protecting — Hero Mockup</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,900&display=swap" rel="stylesheet">
 <style>
   :root {
     --parchment: #f4ead5;
@@ -197,21 +197,42 @@
   }
 
   h1.display {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 500;
-    font-size: clamp(48px, 7vw, 92px);
-    line-height: 1.05;
-    letter-spacing: -0.015em;
-    color: var(--ink);
-    margin-bottom: 24px;
+    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+    font-weight: 900;
+    font-size: clamp(52px, 8vw, 104px);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
     opacity: 0;
     animation: inkSettle 1.4s ease-out 1s forwards;
+    /* Engraved line-shading — Federal Reserve Note feel */
+    background: repeating-linear-gradient(
+      180deg,
+      #143d22 0 0.028em,
+      transparent 0.028em 0.058em
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow:
+      0.018em 0.018em 0 rgba(20,61,34,0.55),
+      0.028em 0.028em 0 rgba(20,61,34,0.35),
+      0.04em  0.04em  0 rgba(20,61,34,0.18),
+      0.05em  0.05em  0 rgba(20,61,34,0.1);
   }
 
   h1.display em {
     font-style: italic;
-    color: var(--currency-deep);
-    font-weight: 500;
+    font-weight: 900;
+    background: repeating-linear-gradient(
+      180deg,
+      #1e5631 0 0.028em,
+      transparent 0.028em 0.058em
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .subhead {
@@ -228,10 +249,19 @@
   .seal-row {
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 28px;
     margin: 64px 0 40px;
     opacity: 0;
     animation: sealPress 1.6s cubic-bezier(0.2, 0.8, 0.3, 1) 1.8s forwards;
   }
+
+  .laurel {
+    width: 88px;
+    height: 160px;
+    flex-shrink: 0;
+  }
+  .laurel.right { transform: scaleX(-1); }
 
   .seal {
     width: 140px;
@@ -339,17 +369,25 @@
   .pillar:nth-child(3) { animation-delay: 3.0s; }
 
   .pillar .num {
-    font-family: 'Cinzel Decorative', 'IM Fell DW Pica', serif;
-    font-weight: 700;
-    font-size: 56px;
-    color: var(--currency-deep);
+    font-family: 'Playfair Display', 'Cinzel Decorative', serif;
+    font-weight: 900;
+    font-size: 64px;
     line-height: 1;
-    margin-bottom: 16px;
-    text-shadow:
-      1px 0 0 var(--currency),
-      2px 1px 0 rgba(20,61,34,0.4),
-      -1px -1px 0 rgba(45,122,71,0.35);
+    margin-bottom: 18px;
     letter-spacing: 0.02em;
+    background: repeating-linear-gradient(
+      180deg,
+      #143d22 0 0.035em,
+      transparent 0.035em 0.07em
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow:
+      0.025em 0.025em 0 rgba(20,61,34,0.5),
+      0.04em  0.04em  0 rgba(20,61,34,0.28),
+      0.055em 0.055em 0 rgba(20,61,34,0.12);
   }
 
   .pillar h3 {
@@ -445,7 +483,9 @@
     .micro-band { font-size: 7.5px; letter-spacing: 0.18em; padding: 0 4px; line-height: 1.7; }
     .micro-band .sep { margin: 0 6px; }
     .pillar .num { font-size: 44px; }
-    h1.display { font-size: clamp(36px, 9vw, 60px); }
+    h1.display { font-size: clamp(36px, 10vw, 68px); }
+    .laurel { width: 52px; height: 96px; }
+    .seal-row { gap: 12px; }
     .subhead { font-size: 18px; padding: 0 8px; }
   }
 </style>
@@ -644,6 +684,41 @@
       <p class="subhead">Your digital life — the files, the patterns, the love — preserved, protected, and passed on. Drafted by counsel. Sealed by you.</p>
 
       <div class="seal-row">
+        <svg class="laurel left" viewBox="0 0 100 180" aria-hidden="true">
+          <!-- main stem -->
+          <path d="M 92 176 Q 72 140 55 105 Q 38 72 28 28"
+                fill="none" stroke="#143d22" stroke-width="1.4" stroke-linecap="round"/>
+          <!-- outer leaves -->
+          <g fill="#1e5631" stroke="#0c2814" stroke-width="0.5">
+            <ellipse cx="84" cy="162" rx="11" ry="4" transform="rotate(-35 84 162)"/>
+            <ellipse cx="76" cy="144" rx="11" ry="4" transform="rotate(-42 76 144)"/>
+            <ellipse cx="68" cy="126" rx="11" ry="4" transform="rotate(-50 68 126)"/>
+            <ellipse cx="60" cy="108" rx="11" ry="4" transform="rotate(-58 60 108)"/>
+            <ellipse cx="52" cy="88"  rx="11" ry="4" transform="rotate(-65 52 88)"/>
+            <ellipse cx="44" cy="68"  rx="11" ry="4" transform="rotate(-72 44 68)"/>
+            <ellipse cx="36" cy="46"  rx="10" ry="3.6" transform="rotate(-78 36 46)"/>
+          </g>
+          <!-- inner leaves -->
+          <g fill="#143d22" stroke="#0c2814" stroke-width="0.4">
+            <ellipse cx="82" cy="172" rx="8" ry="3" transform="rotate(40 82 172)"/>
+            <ellipse cx="74" cy="154" rx="8" ry="3" transform="rotate(30 74 154)"/>
+            <ellipse cx="66" cy="134" rx="8" ry="3" transform="rotate(22 66 134)"/>
+            <ellipse cx="58" cy="114" rx="8" ry="3" transform="rotate(14 58 114)"/>
+            <ellipse cx="50" cy="94"  rx="8" ry="3" transform="rotate(8  50 94)"/>
+            <ellipse cx="42" cy="72"  rx="7" ry="2.6" transform="rotate(2 42 72)"/>
+          </g>
+          <!-- small berries -->
+          <g fill="#2d7a47">
+            <circle cx="78" cy="158" r="1.6"/>
+            <circle cx="70" cy="140" r="1.6"/>
+            <circle cx="62" cy="120" r="1.6"/>
+            <circle cx="54" cy="100" r="1.6"/>
+            <circle cx="46" cy="78"  r="1.4"/>
+          </g>
+          <!-- ribbon tie at base -->
+          <path d="M 88 174 Q 94 170 96 166 M 88 178 Q 94 182 96 186"
+                fill="none" stroke="#143d22" stroke-width="0.8"/>
+        </svg>
         <div class="seal">
           <svg class="crest-impress" viewBox="0 0 240 280" aria-hidden="true">
             <path d="M 30 24 L 210 24 Q 218 24 220 36 L 220 140 Q 220 222 120 270 Q 20 222 20 140 L 20 36 Q 22 24 30 24 Z" fill="none" stroke-width="3" stroke-linejoin="round"/>
@@ -654,6 +729,36 @@
             <path d="M 120 210 L 134 210 L 134 218 L 120 218" fill="none" stroke-width="2.2"/>
           </svg>
         </div>
+        <svg class="laurel right" viewBox="0 0 100 180" aria-hidden="true">
+          <path d="M 92 176 Q 72 140 55 105 Q 38 72 28 28"
+                fill="none" stroke="#143d22" stroke-width="1.4" stroke-linecap="round"/>
+          <g fill="#1e5631" stroke="#0c2814" stroke-width="0.5">
+            <ellipse cx="84" cy="162" rx="11" ry="4" transform="rotate(-35 84 162)"/>
+            <ellipse cx="76" cy="144" rx="11" ry="4" transform="rotate(-42 76 144)"/>
+            <ellipse cx="68" cy="126" rx="11" ry="4" transform="rotate(-50 68 126)"/>
+            <ellipse cx="60" cy="108" rx="11" ry="4" transform="rotate(-58 60 108)"/>
+            <ellipse cx="52" cy="88"  rx="11" ry="4" transform="rotate(-65 52 88)"/>
+            <ellipse cx="44" cy="68"  rx="11" ry="4" transform="rotate(-72 44 68)"/>
+            <ellipse cx="36" cy="46"  rx="10" ry="3.6" transform="rotate(-78 36 46)"/>
+          </g>
+          <g fill="#143d22" stroke="#0c2814" stroke-width="0.4">
+            <ellipse cx="82" cy="172" rx="8" ry="3" transform="rotate(40 82 172)"/>
+            <ellipse cx="74" cy="154" rx="8" ry="3" transform="rotate(30 74 154)"/>
+            <ellipse cx="66" cy="134" rx="8" ry="3" transform="rotate(22 66 134)"/>
+            <ellipse cx="58" cy="114" rx="8" ry="3" transform="rotate(14 58 114)"/>
+            <ellipse cx="50" cy="94"  rx="8" ry="3" transform="rotate(8  50 94)"/>
+            <ellipse cx="42" cy="72"  rx="7" ry="2.6" transform="rotate(2 42 72)"/>
+          </g>
+          <g fill="#2d7a47">
+            <circle cx="78" cy="158" r="1.6"/>
+            <circle cx="70" cy="140" r="1.6"/>
+            <circle cx="62" cy="120" r="1.6"/>
+            <circle cx="54" cy="100" r="1.6"/>
+            <circle cx="46" cy="78"  r="1.4"/>
+          </g>
+          <path d="M 88 174 Q 94 170 96 166 M 88 178 Q 94 182 96 186"
+                fill="none" stroke="#143d22" stroke-width="0.8"/>
+        </svg>
       </div>
     </div>
   </section>
