@@ -88,6 +88,9 @@
 
   .letterhead .mark { color: var(--currency-deep); font-weight: 600; }
 
+  .brand-lockup { display: flex; align-items: center; gap: 14px; }
+  .crest { width: 38px; height: auto; display: block; }
+
   .letterhead .serial {
     font-family: 'IM Fell DW Pica', serif;
     font-size: 11px;
@@ -212,6 +215,16 @@
       1px 1px 2px rgba(255,255,255,0.2);
     transform: translateY(-2px);
   }
+
+  .seal .crest-impress {
+    width: 78px;
+    height: auto;
+    filter:
+      drop-shadow(-0.5px -0.5px 0 rgba(0,0,0,0.5))
+      drop-shadow(0.5px 1px 1px rgba(255,255,255,0.12));
+  }
+  .seal .crest-impress path,
+  .seal .crest-impress line { stroke: rgba(230,245,225,0.88); }
 
   .certified-stamp {
     position: absolute;
@@ -376,7 +389,22 @@
 <div class="page">
 
   <div class="letterhead">
-    <span class="mark">WORTH PROTECTING</span>
+    <span class="brand-lockup">
+      <svg class="crest" viewBox="0 0 240 280" aria-label="Worth Protecting mark">
+        <path d="M 30 24 L 210 24 Q 218 24 220 36 L 220 140 Q 220 222 120 270 Q 20 222 20 140 L 20 36 Q 22 24 30 24 Z"
+              fill="none" stroke="#143d22" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M 40 38 L 200 38 Q 206 38 208 48 L 208 140 Q 208 212 120 254 Q 32 212 32 140 L 32 48 Q 34 38 40 38 Z"
+              fill="none" stroke="#1e5631" stroke-width="1.1"/>
+        <path d="M 120 128 C 102 128 86 112 86 94 C 86 78 104 74 120 92 C 136 74 154 78 154 94 C 154 112 138 128 120 128 Z"
+              fill="none" stroke="#143d22" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="M 120 116 C 108 116 98 106 98 96 C 98 86 110 86 120 96 C 130 86 142 86 142 96 C 142 106 132 116 120 116 Z"
+              fill="none" stroke="#2d7a47" stroke-width="0.8" opacity="0.8"/>
+        <line x1="120" y1="128" x2="120" y2="222" stroke="#143d22" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M 120 196 L 140 196 L 140 204 L 120 204" fill="none" stroke="#143d22" stroke-width="2.2"/>
+        <path d="M 120 210 L 134 210 L 134 218 L 120 218" fill="none" stroke="#143d22" stroke-width="2.2"/>
+      </svg>
+      <span class="mark">WORTH PROTECTING</span>
+    </span>
     <span class="serial">SOUL ID · WP-0001 · EST. 2026</span>
   </div>
 
@@ -467,7 +495,16 @@
       <p class="subhead">Your digital life — the files, the patterns, the love — preserved, protected, and passed on. Drafted by counsel. Sealed by you.</p>
 
       <div class="seal-row">
-        <div class="seal"><span class="monogram">WP</span></div>
+        <div class="seal">
+          <svg class="crest-impress" viewBox="0 0 240 280" aria-hidden="true">
+            <path d="M 30 24 L 210 24 Q 218 24 220 36 L 220 140 Q 220 222 120 270 Q 20 222 20 140 L 20 36 Q 22 24 30 24 Z" fill="none" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M 40 38 L 200 38 Q 206 38 208 48 L 208 140 Q 208 212 120 254 Q 32 212 32 140 L 32 48 Q 34 38 40 38 Z" fill="none" stroke-width="1"/>
+            <path d="M 120 128 C 102 128 86 112 86 94 C 86 78 104 74 120 92 C 136 74 154 78 154 94 C 154 112 138 128 120 128 Z" fill="none" stroke-width="2.6" stroke-linejoin="round"/>
+            <line x1="120" y1="128" x2="120" y2="222" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M 120 196 L 140 196 L 140 204 L 120 204" fill="none" stroke-width="2.2"/>
+            <path d="M 120 210 L 134 210 L 134 218 L 120 218" fill="none" stroke-width="2.2"/>
+          </svg>
+        </div>
       </div>
     </div>
   </section>
