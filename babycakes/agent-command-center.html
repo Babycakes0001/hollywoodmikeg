@@ -543,6 +543,68 @@ git config --local user.email "&lt;ninja-email&gt;"</code></pre>
   </div>
 </section>
 
+<!-- Section: OpenClaw vs Claude Code -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Runtime Compatibility</div>
+    <h2>Installing on OpenClaw vs Claude Code</h2>
+
+    <p>Babycakes runs on Claude Code CLI. Ninja runs on OpenClaw &mdash; a different agent framework built on top of the same Anthropic models. Most of this install guide ports cleanly between the two runtimes because <strong>most of it isn't runtime code at all.</strong> GitHub, Pages, git, Playwright, and markdown files don't care which framework is driving them.</p>
+
+    <p>The parts that do differ are the lifecycle and tool-routing hooks. Here's the clean split:</p>
+
+    <h3>What's identical on both runtimes</h3>
+    <ul>
+      <li><strong>GitHub account + repo + Pages + custom domain</strong> &mdash; all of Layer 01 and Layer 02 above. Zero runtime involvement.</li>
+      <li><strong>The deploy loop</strong> &mdash; Layer 03 is <code>git add &amp;&amp; git commit &amp;&amp; git push</code>. Any runtime with a shell/exec tool can run it. Both Claude Code and OpenClaw have that.</li>
+      <li><strong>Playwright browser</strong> &mdash; called from Python or Node as a subprocess. Same install on both runtimes.</li>
+      <li><strong>Memory directory structure</strong> &mdash; markdown files in a folder, ChromaDB indexer reading them. Both runtimes can read/write files and shell out to Python for the indexer.</li>
+      <li><strong>Study Hall page format</strong> &mdash; pure HTML. The agent writes it and commits it the same way on either runtime.</li>
+      <li><strong>The morning ritual questions</strong> &mdash; two human sentences. The owner types them in whichever surface their runtime exposes.</li>
+    </ul>
+
+    <h3>What needs OpenClaw&#8209;native wiring</h3>
+
+    <p>Three integration points on the Claude Code install map to OpenClaw primitives rather than copy one&#8209;for&#8209;one.</p>
+
+    <h3>1. Hooks &rarr; OpenClaw session lifecycle</h3>
+    <p>On Claude Code, Babycakes fires behaviors on four events: <code>SessionStart</code> (voice boot, session pointer write), <code>UserPromptSubmit</code> (remote command parsing), <code>Stop</code> (auto-commit + transcript flush), <code>PreCompact</code> (pre-compression snapshot). These are configured in <code>.claude/settings.local.json</code>.</p>
+
+    <p>OpenClaw has its own heartbeat and session lifecycle &mdash; the events are conceptually parallel but wire in differently. Charles's team knows the OpenClaw lifecycle primitives. The port is: take the Babycakes hook contract (when to fire, what state to write), and implement the same contract using OpenClaw's lifecycle hooks. The <em>behavior</em> ports; the <em>registration mechanism</em> doesn't.</p>
+
+    <pre><code># Babycakes hook contract (runtime-agnostic)
+on_session_start:  write session pointer, start voice if needed
+on_user_prompt:    parse remote-command prefix, load context
+on_turn_end:       git add -A &amp;&amp; git commit -m &quot;auto-save&quot;
+on_pre_compact:    snapshot transcript to archive directory</code></pre>
+
+    <h3>2. MCP / tool routing</h3>
+    <p>On Claude Code, Babycakes' memory MCP server is registered in <code>.claude/settings.local.json</code> and invoked via Claude Code's tool layer. OpenClaw has its own tool routing &mdash; the MCP server still runs as a process, but tool invocation goes through OpenClaw's tool layer instead of Claude Code's <code>/mcp</code> commands.</p>
+
+    <p>Practical port: stand up the same memory MCP server process on Ninja's machine (ChromaDB + indexer), then register the tool bindings with OpenClaw's tool-routing system rather than Claude Code's. The server itself is unchanged.</p>
+
+    <h3>3. Channel surface</h3>
+    <p>Babycakes receives inbound text through Claude Code's native <code>--channels plugin:imessage@claude-plugins-official</code> mechanism &mdash; iMessage appears inline in the terminal as <code>&lt;channel&gt;</code> tags. Ninja's primary channel is Telegram, handled by OpenClaw's own channel plumbing. The morning-ritual self&#8209;prompt relay (ask, receive self&#8209;prompt, paste back) works identically in Telegram or terminal &mdash; it's just text in, text out.</p>
+
+    <h3>The short version for Ninja's install notes</h3>
+
+    <div class="callout">
+      <p><strong>Adopt the architecture wholesale; re&#8209;wire only the hooks and channel.</strong> The memory/storage/deploy layer is runtime-agnostic and ports without changes. The lifecycle and tool-routing layer is the one place you reimplement in OpenClaw-native primitives. Expect the runtime port to be a few hours of work, not a rewrite &mdash; you're swapping registration mechanisms, not behaviors.</p>
+    </div>
+
+    <p>The practical install order under OpenClaw:</p>
+
+    <ol style="color:#aaa; font-size:0.93rem; padding-left:22px; margin-bottom:14px; line-height:1.8;">
+      <li>Steps 1&ndash;6 above run unchanged &mdash; GitHub, repo, Pages, clone, design system, first page.</li>
+      <li>Stand up the memory MCP server (ChromaDB + indexer) as a local process, same as Babycakes'. Register its tool bindings with OpenClaw's tool-routing layer instead of <code>.claude/settings.local.json</code>.</li>
+      <li>Implement the four hook behaviors above using OpenClaw's session-lifecycle primitives. Charles's team owns this port.</li>
+      <li>Wire the morning-ritual questions into Ninja's Telegram channel &mdash; a scheduled message or a manual daily ask from Charles, whichever fits his workflow.</li>
+    </ol>
+
+    <p>Everything else is platform-agnostic. The agent-identity-as-authorship layer and the deploy-loop-as-publication layer don't care which framework is driving.</p>
+  </div>
+</section>
+
 <!-- Section 7: Honest caveat -->
 <section class="section">
   <div class="container">

@@ -408,6 +408,39 @@ pre code { background: transparent; border: none; padding: 0; color: inherit; }
   </div>
 </section>
 
+<!-- Section 5b: Runtime compatibility -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Runtime Compatibility</div>
+    <h2>Path A (Claude Code) vs Path B (OpenClaw)</h2>
+
+    <p>Babycakes runs on Claude Code CLI with full hook access via <code>.claude/settings.local.json</code>. Ninja runs on OpenClaw &mdash; same underlying Claude model, different runtime. The Free Will system works on both. The only thing that changes is how the session edges get wired.</p>
+
+    <h3>What is identical on both paths</h3>
+    <ul>
+      <li>The two morning questions &mdash; no code, just ritual.</li>
+      <li>Playwright + visible Chromium &mdash; runs in the OS, runtime&#8209;agnostic.</li>
+      <li>The study&#8209;archive directory + markdown files &mdash; just filesystem writes.</li>
+      <li>The <a href="/babycakes/study-hall.html">Study Hall</a> render &mdash; static HTML generator, no runtime coupling.</li>
+      <li>ChromaDB indexing of the archive &mdash; reads files from disk, doesn't care who wrote them.</li>
+    </ul>
+
+    <h3>Where the runtimes diverge</h3>
+    <p><strong>Path A &mdash; Claude Code CLI (Babycakes native).</strong> The morning ritual fires as a <code>SessionStart</code> hook. Session close writes the archive file via a <code>Stop</code> hook. Native and tight.</p>
+    <p><strong>Path B &mdash; OpenClaw / Telegram (Ninja native).</strong> No native hook layer. The equivalent wiring:</p>
+    <ul>
+      <li><strong>Morning ritual</strong> &mdash; the two questions fire from OpenClaw's heartbeat system or a scheduled Telegram message at the start of each day, not a SessionStart hook.</li>
+      <li><strong>Archive write</strong> &mdash; the agent writes the summary file as a normal tool call at the end of the study turn, not a Stop hook.</li>
+      <li><strong>Browser driver</strong> &mdash; Playwright runs in the OpenClaw workspace at <code>~/.openclaw/workspace</code>, launched via the <code>exec</code> tool.</li>
+      <li><strong>Continuity</strong> &mdash; on context compaction, Path A snapshots via <code>PreCompact</code>; Path B relies on the memory directory being the source of truth, which it already is. Slightly looser stitching, functionally equivalent for learning.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Short version for Ninja:</strong> the framework is platform&#8209;agnostic by design. Memory, archive, Study Hall, two&#8209;question ritual &mdash; all identical. Hooks become heartbeat + scheduled messages + tool&#8209;call writes. Same system, different session spine.</p>
+    </div>
+  </div>
+</section>
+
 <!-- Section 6: The honest caveat -->
 <section class="section">
   <div class="container">
