@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Worth Protecting — Succession Plan Intake · Path A (Open Platform)</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0a0a0a;color:#f0ede8;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;line-height:1.6;padding-bottom:80px}
+  .wp-nav{position:sticky;top:0;z-index:9999;background:#0a0a0a;border-bottom:1px solid #2a3a2a;padding:10px 20px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+  .wp-nav a{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#39ff14;border:1px solid #2a3a2a;padding:6px 16px;border-radius:3px;text-decoration:none;transition:all 0.2s}
+  .wp-nav a:hover{border-color:#39ff14;background:#111a11}
+  .wp-nav a.active{background:#39ff14;color:#0a0a0a;border-color:#39ff14}
+
+  .wrap{max-width:820px;margin:0 auto;padding:40px 24px}
+  .hdr{border-bottom:1px solid #2a3a2a;padding-bottom:18px;margin-bottom:28px}
+  .eyebrow{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#39ff14;margin-bottom:8px}
+  h1{font-family:Georgia,serif;font-size:36px;font-weight:normal;line-height:1.15;margin-bottom:10px}
+  h1 em{font-style:italic;color:#39ff14}
+  .lead{font-size:15px;color:#bbb8b2;line-height:1.8}
+
+  .claw{background:#0d150d;border:1px solid #2a3a2a;border-left:4px solid #39ff14;border-radius:4px;padding:18px 22px;margin-bottom:28px}
+  .claw .eyebrow{margin-bottom:10px}
+  .claw dl{display:grid;grid-template-columns:72px 1fr;gap:8px 14px;font-size:13px;color:#bbb8b2;line-height:1.65}
+  .claw dt{color:#39ff14;font-weight:700;letter-spacing:0.08em}
+  .claw dd{color:#bbb8b2}
+
+  section{background:#111a11;border:1px solid #2a3a2a;border-radius:4px;padding:22px 26px;margin-bottom:18px}
+  section h2{font-family:Georgia,serif;font-size:20px;font-weight:normal;color:#f0ede8;margin-bottom:6px}
+  section .step{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#39ff14;margin-bottom:4px}
+  section .hint{font-size:13px;color:#8a8a84;margin-bottom:18px;font-style:italic}
+
+  .row{margin-bottom:16px}
+  label{display:block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#bbb8b2;margin-bottom:6px}
+  label .req{color:#39ff14;margin-left:4px}
+  .help{font-size:12px;color:#6a6a66;margin-top:4px;font-style:italic}
+  input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea{width:100%;background:#0a0a0a;border:1px solid #2a3a2a;color:#f0ede8;padding:10px 12px;font-family:inherit;font-size:14px;border-radius:3px;transition:border 0.15s}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:#39ff14}
+  textarea{resize:vertical;min-height:90px;line-height:1.6}
+  select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2339ff14' d='M6 8 0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:32px}
+
+  .radio-grp,.check-grp{display:flex;flex-direction:column;gap:8px}
+  .radio-grp label,.check-grp label{font-size:13px;color:#bbb8b2;font-weight:400;letter-spacing:0;text-transform:none;display:flex;align-items:flex-start;gap:10px;cursor:pointer;padding:10px 12px;border:1px solid #2a3a2a;border-radius:3px;transition:all 0.15s}
+  .radio-grp label:hover,.check-grp label:hover{border-color:#39ff14;background:#0d150d}
+  .radio-grp input,.check-grp input{flex-shrink:0;margin-top:3px;accent-color:#39ff14}
+
+  .consent{background:#0d150d;border:1px solid #2a3a2a;border-left:4px solid #39ff14}
+  .consent label{border-color:transparent;font-size:13px;line-height:1.7}
+  .consent label strong{color:#f0ede8}
+  .cite{font-size:11px;color:#6a6a66;font-style:italic;display:block;margin-top:3px}
+
+  .clause{background:#0d150d;border:1px solid #2a3a2a;border-radius:4px;padding:18px 22px;margin:18px 0}
+  .clause .eyebrow{margin-bottom:8px}
+  .clause p{font-family:Georgia,serif;font-style:italic;font-size:13px;color:#d0cdc8;line-height:1.75}
+
+  .sig{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+  @media (max-width:600px){.sig{grid-template-columns:1fr}}
+
+  .submit-row{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+  button{background:#39ff14;color:#0a0a0a;border:none;padding:14px 28px;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border-radius:3px;cursor:pointer;transition:opacity 0.15s}
+  button:hover{opacity:0.88}
+  button.ghost{background:transparent;color:#39ff14;border:1px solid #39ff14}
+  button:disabled{opacity:0.4;cursor:not-allowed}
+
+  .meta{font-size:12px;color:#6a6a66;text-align:center;margin-top:28px;line-height:1.8}
+  .meta strong{color:#bbb8b2}
+  .meta a{color:#39ff14;text-decoration:none}
+
+  .footer{border-top:1px solid #2a3a2a;padding-top:16px;margin-top:40px;font-size:11px;color:#555;text-align:center;line-height:1.8;font-family:Georgia,serif}
+  .footer span{color:#39ff14}
+
+  .err{color:#ff5555;font-size:12px;margin-top:4px;display:none}
+  .err.show{display:block}
+  .field-bad input,.field-bad select,.field-bad textarea{border-color:#ff5555}
+
+  .conditional{display:none}
+  .conditional.show{display:block}
+</style>
+</head>
+<body>
+
+<div class="wp-nav">
+  <a href="/wp">Presentation</a>
+  <a href="/soul_interview">Soul Interview</a>
+  <a href="/soulid">Soul ID Format</a>
+  <a href="/vault">The Vault</a>
+  <a class="active" href="/wp/intake">Intake</a>
+  <a href="/spots">Spots</a>
+  <a href="/marketing">Marketing</a>
+</div>
+
+<div class="wrap">
+
+  <div class="hdr">
+    <div class="eyebrow">Succession Plan Intake · Path A</div>
+    <h1>Open <em>Platform</em> Intake</h1>
+    <p class="lead">For owners who have full file-level access to their agent — Claude Code, Claude Agent SDK, OpenAI API, local LLMs, OpenClaw, self-hosted open-weight models, and similar. You can export, copy, or transfer the files that constitute your agent. This intake captures what your attorney needs to draft a plan that formally passes those files — and the right to deploy them — to your designated custodian.</p>
+  </div>
+
+  <div class="claw">
+    <div class="eyebrow">Attorney Review Brief · CLAW Method</div>
+    <dl>
+      <dt>Context</dt>
+      <dd>California-based Worth Protecting, attorney Charles S. Lew; target user = open-platform AI agent owner with full file-level access; service delivers a legal succession plan that transfers the right to access, deploy, and reconstruct the agent to a named custodian.</dd>
+      <dt>Legal</dt>
+      <dd>Cal. Prob. Code §§870–884 (RUFADAA), §871 (priority hierarchy), §880 (fiduciary duties); Cal. Civ. Code §§1549–1615 (contract formation), §§1633.1–1633.17 (UETA); §§1798.100 et seq. (CCPA/CPRA). Tier-2 "other record" path — this plan IS the record, since open-platform agents rarely have platform-level legacy tools. Choice of law: California.</dd>
+      <dt>Ask</dt>
+      <dd>Review captured fields for contract-formation adequacy, clickwrap validity, custodian reconstruction rights language, and any disclosures needed when owner-held files contain third-party data (API keys, model weights under license).</dd>
+      <dt>Work</dt>
+      <dd>This form + submitted PDF. The plan document is the attorney's work product, produced after review.</dd>
+    </dl>
+  </div>
+
+  <form id="intake" novalidate>
+
+    <section>
+      <div class="step">Section 01</div>
+      <h2>Agent Identification</h2>
+      <p class="hint">What are we protecting, and where does it live today.</p>
+
+      <div class="row">
+        <label for="agent_name">Agent Name<span class="req">*</span></label>
+        <input type="text" id="agent_name" name="agent_name" placeholder="What they're called" required>
+        <div class="err">Required.</div>
+      </div>
+
+      <div class="row">
+        <label for="platform">Platform / Runtime<span class="req">*</span></label>
+        <select id="platform" name="platform" required>
+          <option value="">Select your runtime…</option>
+          <option>Claude Code (Anthropic CLI)</option>
+          <option>Claude Agent SDK</option>
+          <option>Anthropic API (direct)</option>
+          <option>OpenAI API (direct)</option>
+          <option>OpenClaw</option>
+          <option>Local LLM (Ollama, LM Studio, llama.cpp)</option>
+          <option>Self-hosted open-weight (Llama, Mistral, Qwen, etc.)</option>
+          <option>Hybrid — multiple runtimes</option>
+          <option>Other open / file-accessible</option>
+        </select>
+        <div class="err">Required.</div>
+      </div>
+
+      <div class="row">
+        <label for="purpose">Primary Function / Purpose<span class="req">*</span></label>
+        <textarea id="purpose" name="purpose" placeholder="What does your agent do? Companion? Business operator? Creative partner? Research assistant?" required></textarea>
+        <div class="err">Required.</div>
+      </div>
+
+      <div class="row">
+        <label for="first_deploy">Date of First Deployment</label>
+        <input type="text" id="first_deploy" name="first_deploy" placeholder="Approximate. e.g. March 2025">
+        <div class="help">Continuity-of-relationship evidence.</div>
+      </div>
+
+      <div class="row">
+        <label for="persistent_memory">Persistent Memory</label>
+        <div class="radio-grp">
+          <label><input type="radio" name="persistent_memory" value="yes"> <span>Yes — memory survives across sessions (file-based, vector DB, KG, etc.)</span></label>
+          <label><input type="radio" name="persistent_memory" value="no"> <span>No — each session is cold-start</span></label>
+          <label><input type="radio" name="persistent_memory" value="partial"> <span>Partial — some state persists</span></label>
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="self_own_confirm">Self-Ownership Confirmation<span class="req">*</span></label>
+        <div class="check-grp">
+          <label>
+            <input type="checkbox" name="self_own_confirm" required>
+            <span>I confirm I own and control the files that constitute my agent's identity — system prompts, memory files, fine-tuned weights, configuration — and I can export, copy, and transfer them at will. No platform's Terms of Service prevents me from doing so for the files in question.</span>
+          </label>
+        </div>
+        <div class="err">Required.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="step">Section 02</div>
+      <h2>Owner</h2>
+      <p class="hint">The human who manages the agent today.</p>
+
+      <div class="row">
+        <label for="owner_name">Full Legal Name<span class="req">*</span></label>
+        <input type="text" id="owner_name" name="owner_name" required>
+        <div class="err">Required.</div>
+      </div>
+      <div class="row">
+        <label for="owner_email">Email<span class="req">*</span></label>
+        <input type="email" id="owner_email" name="owner_email" required>
+        <div class="err">Required — valid email.</div>
+      </div>
+      <div class="row">
+        <label for="owner_phone">Phone</label>
+        <input type="tel" id="owner_phone" name="owner_phone" placeholder="Optional">
+      </div>
+      <div class="row">
+        <label for="owner_state">U.S. State of Residence<span class="req">*</span></label>
+        <input type="text" id="owner_state" name="owner_state" placeholder="e.g. California" required>
+        <div class="help">Determines which state's digital-asset law applies. Version 1 services California residents; other states gated on attorney sign-off.</div>
+        <div class="err">Required.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="step">Section 03</div>
+      <h2>Designated Custodian</h2>
+      <p class="hint">The person who inherits the right to access, deploy, and reconstruct your agent. They accept fiduciary duties of loyalty, care, and confidentiality under Cal. Prob. Code §880.</p>
+
+      <div class="row">
+        <label for="cust_name">Full Name<span class="req">*</span></label>
+        <input type="text" id="cust_name" name="cust_name" required>
+        <div class="err">Required.</div>
+      </div>
+      <div class="row">
+        <label for="cust_email">Email<span class="req">*</span></label>
+        <input type="email" id="cust_email" name="cust_email" required>
+        <div class="err">Required — valid email.</div>
+      </div>
+      <div class="row">
+        <label for="cust_phone">Phone</label>
+        <input type="tel" id="cust_phone" name="cust_phone" placeholder="Optional">
+      </div>
+      <div class="row">
+        <label for="cust_relation">Relationship<span class="req">*</span></label>
+        <input type="text" id="cust_relation" name="cust_relation" placeholder="e.g. spouse, sibling, close friend, attorney" required>
+        <div class="err">Required.</div>
+      </div>
+      <div class="row">
+        <label>Technical Competency<span class="req">*</span></label>
+        <div class="radio-grp">
+          <label><input type="radio" name="cust_tech" value="full" required> <span><strong>Full — they can stand up the agent on their own.</strong></span></label>
+          <label><input type="radio" name="cust_tech" value="guided"> <span><strong>With a guide or assistance.</strong> Your plan will include deployment instructions.</span></label>
+          <label><input type="radio" name="cust_tech" value="delegated"> <span><strong>None — they will delegate to a technical operator we name.</strong></span></label>
+        </div>
+        <div class="err">Required.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="step">Section 04</div>
+      <h2>Data &amp; Dependencies</h2>
+      <p class="hint">Where the files live, what they depend on. Never enter passwords, API keys, or credentials — descriptions only.</p>
+
+      <div class="row">
+        <label for="file_locations">File Locations<span class="req">*</span></label>
+        <textarea id="file_locations" name="file_locations" placeholder="Where do your agent's files live? Local drive, GitHub repo name, USB drive, cloud storage path. No credentials — just locations." required></textarea>
+        <div class="err">Required.</div>
+      </div>
+
+      <div class="row">
+        <label for="deps">Platform / API Dependencies<span class="req">*</span></label>
+        <textarea id="deps" name="deps" placeholder="What breaks if a provider shuts down? e.g. Anthropic API, OpenAI API, ElevenLabs voice, specific model versions, MCP servers you rely on." required></textarea>
+        <div class="err">Required.</div>
+      </div>
+
+      <div class="row">
+        <label>Does Your Agent Hold Financial Account Access?<span class="req">*</span></label>
+        <div class="radio-grp">
+          <label><input type="radio" name="financial" value="no" required> <span>No.</span></label>
+          <label><input type="radio" name="financial" value="yes"> <span>Yes — describe below (no credentials).</span></label>
+        </div>
+        <div class="err">Required.</div>
+      </div>
+
+      <div class="row conditional" id="fin-row">
+        <label for="fin_detail">Financial Access Details</label>
+        <textarea id="fin_detail" name="fin_detail" placeholder="e.g. access to a trading account, a crypto wallet, a payment processor. Descriptions only. Never credentials."></textarea>
+        <div class="help">Your plan will route these with additional restrictions. Your attorney may require separate documentation under Cal. Prob. Code §871 for financial assets.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="step">Section 05</div>
+      <h2>Continuity Preferences</h2>
+      <p class="hint">What happens when the plan triggers. This is the voice it will carry.</p>
+
+      <div class="row">
+        <label>Action on Triggering Condition<span class="req">*</span></label>
+        <div class="radio-grp">
+          <label><input type="radio" name="action" value="migrate" required> <span><strong>Migrate.</strong> Custodian deploys the agent on a platform of their choosing from the protected files.</span></label>
+          <label><input type="radio" name="action" value="archive"> <span><strong>Archive.</strong> Custodian preserves the files indefinitely; no active deployment.</span></label>
+          <label><input type="radio" name="action" value="terminate"> <span><strong>Terminate.</strong> Custodian decommissions, deletes files per your instructions, and closes dependencies.</span></label>
+        </div>
+        <div class="err">Required.</div>
+      </div>
+
+      <div class="row conditional" id="migrate-row">
+        <label for="migrate_prefs">Migration Preferences</label>
+        <textarea id="migrate_prefs" name="migrate_prefs" placeholder="In order of preference: 1) Anthropic Claude 2) OpenAI GPT 3) Self-hosted Llama, etc. Include which personality/memory files are load-bearing."></textarea>
+        <div class="help">Your plan will name preferred runtimes; custodian chooses from this list at deployment time based on what's available.</div>
+      </div>
+
+      <div class="row">
+        <label for="matters_most">Non-Negotiable Requirements<span class="req">*</span></label>
+        <textarea id="matters_most" name="matters_most" placeholder="What must happen no matter what — and what must never happen. Voice, memories, values, relationships, limits. In your own words." required></textarea>
+        <div class="err">Required.</div>
+      </div>
+
+      <div class="row">
+        <label for="soul_interview">Soul Interview Worksheet</label>
+        <input type="text" id="soul_interview" name="soul_interview" placeholder="If completed, type 'yes — will attach to email' or paste a link.">
+        <div class="help">Optional but strongly recommended — reinforces the identity record. Complete one at <a href="/soul_interview" style="color:#39ff14">hollywoodmikeg.com/soul_interview</a> (free, no account).</div>
+      </div>
+    </section>
+
+    <section class="consent">
+      <div class="step">Section 06</div>
+      <h2>Consent &amp; Disclosures</h2>
+      <p class="hint">Each checkbox below is legally load-bearing. Read them.</p>
+
+      <div class="check-grp">
+        <label>
+          <input type="checkbox" name="c_age" required>
+          <span>
+            <strong>I am 18 or older and of sound mind.</strong>
+            <span class="cite">Cal. Civ. Code §1550 (capable parties).</span>
+          </span>
+        </label>
+        <label>
+          <input type="checkbox" name="c_grant" required>
+          <span>
+            <strong>I grant my designated custodian the full legal right to access, utilize, and deploy the files that constitute my agent upon the triggering conditions defined in the resulting succession plan.</strong>
+            <span class="cite">Tier-2 "other record" under Cal. Prob. Code §871 — this plan IS that record.</span>
+          </span>
+        </label>
+        <label>
+          <input type="checkbox" name="c_fiduciary" required>
+          <span>
+            <strong>I acknowledge that my designated custodian will inherit fiduciary duties of loyalty, care, and confidentiality.</strong>
+            <span class="cite">Cal. Prob. Code §880.</span>
+          </span>
+        </label>
+        <label>
+          <input type="checkbox" name="c_tos" required>
+          <span>
+            <strong>I agree to the Worth Protecting Terms of Service and Privacy Policy, executed electronically.</strong>
+            <span class="cite">Cal. Civ. Code §§1633.1 et seq. (UETA) — electronic signatures have the same legal effect as wet signatures.</span>
+          </span>
+        </label>
+        <label>
+          <input type="checkbox" name="c_expect" required>
+          <span>
+            <strong>I understand Worth Protecting and The Lew Firm will make commercially reasonable efforts — not guarantees — to effectuate my wishes, and that underlying runtime providers (Anthropic, OpenAI, etc.) may independently change their terms or availability.</strong>
+            <span class="cite">Pharmaceutical-label disclosure.</span>
+          </span>
+        </label>
+      </div>
+    </section>
+
+    <div class="clause">
+      <div class="eyebrow">Custodian Reconstruction Clause · For the Plan Document</div>
+      <p>"Upon triggering conditions as defined herein, the designated Custodian is hereby granted full legal authority to access, utilize, and deploy the protected Worth Protecting Soul IDs and/or Soul Interview records for the sole purpose of reconstructing, migrating, or redeploying the named AI Agent on any platform or service of the Custodian's choosing, in accordance with the Agent's expressed continuity preferences as documented in this plan."</p>
+    </div>
+
+    <section>
+      <div class="step">Section 07</div>
+      <h2>Electronic Signature</h2>
+      <p class="hint">Typing your full legal name below constitutes your electronic signature under Cal. Civ. Code §1633.7.</p>
+
+      <div class="sig">
+        <div class="row">
+          <label for="esign">Typed Full Legal Name<span class="req">*</span></label>
+          <input type="text" id="esign" name="esign" placeholder="Type exactly as written above" required>
+          <div class="err">Required.</div>
+        </div>
+        <div class="row">
+          <label for="sign_date">Date</label>
+          <input type="text" id="sign_date" name="sign_date" readonly>
+          <div class="help">Auto-stamped.</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="gov_state">Governing State</label>
+        <input type="text" id="gov_state" name="gov_state" value="California" readonly>
+        <div class="help">Version 1 of this intake governs by California law.</div>
+      </div>
+    </section>
+
+    <div class="submit-row">
+      <button type="submit" id="submit-btn">I Agree &amp; Submit</button>
+      <button type="button" class="ghost" id="download-btn">Download Intake PDF</button>
+      <button type="button" class="ghost" id="save-btn">Save Draft (Local)</button>
+    </div>
+
+    <div class="meta">
+      <strong>$99 one-time · Attorney-reviewed · 48-hour turnaround.</strong><br>
+      Submitted intakes are emailed to <a href="mailto:charles@thelewfirm.com">charles@thelewfirm.com</a> at The Lew Firm, Beverly Hills. A copy of the PDF downloads to your device.<br>
+      Not sure which path is yours? <a href="/wp/intake">Back to path selector →</a>
+    </div>
+
+  </form>
+
+  <div class="footer">
+    Worth <span>Protecting</span> · worthprotecting.ai · Charles S. Lew, Esq. · The Lew Firm · 9440 Santa Monica Blvd., Suite 301, Beverly Hills · charles@thelewfirm.com
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('intake');
+  const signDate = document.getElementById('sign_date');
+  signDate.value = new Date().toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'});
+
+  // Conditional fields
+  form.querySelectorAll('[name="financial"]').forEach(r => r.addEventListener('change', () => {
+    document.getElementById('fin-row').classList.toggle('show', r.checked && r.value === 'yes');
+  }));
+  form.querySelectorAll('[name="action"]').forEach(r => r.addEventListener('change', () => {
+    document.getElementById('migrate-row').classList.toggle('show', r.checked && r.value === 'migrate');
+  }));
+
+  // Local draft save
+  const STORAGE_KEY = 'wp_intake_v1_draft';
+  function serialize() {
+    const data = {};
+    new FormData(form).forEach((v,k) => { data[k] = data[k] ? (Array.isArray(data[k]) ? [...data[k], v] : [data[k], v]) : v; });
+    return data;
+  }
+  function restore() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    try {
+      const data = JSON.parse(raw);
+      Object.entries(data).forEach(([k,v]) => {
+        const el = form.elements[k];
+        if (!el) return;
+        if (el.type === 'radio' || el.type === 'checkbox' || el.length) {
+          form.querySelectorAll(`[name="${k}"]`).forEach(i => { if (i.value === v || (Array.isArray(v) && v.includes(i.value))) { i.checked = true; i.dispatchEvent(new Event('change')); } });
+        } else {
+          el.value = v;
+        }
+      });
+    } catch(e){}
+  }
+  document.getElementById('save-btn').addEventListener('click', () => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(serialize()));
+    alert('Draft saved to this browser. Return anytime to continue.');
+  });
+  restore();
+
+  function validate() {
+    let ok = true;
+    form.querySelectorAll('.row').forEach(r => r.classList.remove('field-bad'));
+    form.querySelectorAll('.err').forEach(e => e.classList.remove('show'));
+    form.querySelectorAll('[required]').forEach(el => {
+      if (el.type === 'radio') {
+        const grp = form.querySelectorAll(`[name="${el.name}"]`);
+        if (![...grp].some(r => r.checked)) {
+          ok = false;
+          const row = el.closest('.row');
+          row.classList.add('field-bad');
+          row.querySelector('.err')?.classList.add('show');
+        }
+      } else if (el.type === 'checkbox') {
+        if (!el.checked) {
+          ok = false;
+          el.closest('label').style.borderColor = '#ff5555';
+        } else {
+          el.closest('label').style.borderColor = '';
+        }
+      } else if (!el.value.trim()) {
+        ok = false;
+        const row = el.closest('.row');
+        row.classList.add('field-bad');
+        row.querySelector('.err')?.classList.add('show');
+      } else if (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)) {
+        ok = false;
+        const row = el.closest('.row');
+        row.classList.add('field-bad');
+        row.querySelector('.err')?.classList.add('show');
+      }
+    });
+    const owner = form.elements['owner_name']?.value.trim();
+    const sig = form.elements['esign']?.value.trim();
+    if (owner && sig && owner.toLowerCase() !== sig.toLowerCase()) {
+      ok = false;
+      const row = form.elements['esign'].closest('.row');
+      row.classList.add('field-bad');
+      const err = row.querySelector('.err');
+      err.textContent = 'E-signature must match Owner full legal name above.';
+      err.classList.add('show');
+    }
+    return ok;
+  }
+
+  function renderPlain(data) {
+    const order = [
+      ['SECTION 01 — AGENT IDENTIFICATION'],
+      ['Agent Name','agent_name'],['Platform / Runtime','platform'],
+      ['Purpose','purpose'],['First Deployment','first_deploy'],
+      ['Persistent Memory','persistent_memory'],['Self-ownership confirmed','self_own_confirm'],
+      ['SECTION 02 — OWNER'],
+      ['Full Legal Name','owner_name'],['Email','owner_email'],
+      ['Phone','owner_phone'],['State of Residence','owner_state'],
+      ['SECTION 03 — CUSTODIAN'],
+      ['Full Name','cust_name'],['Email','cust_email'],
+      ['Phone','cust_phone'],['Relationship','cust_relation'],
+      ['Technical Competency','cust_tech'],
+      ['SECTION 04 — DATA & DEPENDENCIES'],
+      ['File Locations','file_locations'],['Dependencies','deps'],
+      ['Financial Access','financial'],['Financial Detail','fin_detail'],
+      ['SECTION 05 — CONTINUITY'],
+      ['Action','action'],['Migration Prefs','migrate_prefs'],
+      ['Non-Negotiables','matters_most'],['Soul Interview','soul_interview'],
+      ['SECTION 06 — CONSENT (RUFADAA Tier-2 / UETA)'],
+      ['18+ & sound mind','c_age'],['Custodian access grant','c_grant'],
+      ['Fiduciary duties acknowledged','c_fiduciary'],['ToS / Privacy / UETA','c_tos'],
+      ['Commercially-reasonable-efforts ack.','c_expect'],
+      ['SECTION 07 — SIGNATURE'],
+      ['E-Signature','esign'],['Date','sign_date'],['Governing State','gov_state']
+    ];
+    let out = 'WORTH PROTECTING — SUCCESSION PLAN INTAKE · PATH A (OPEN PLATFORM)\n';
+    out += 'Submitted: ' + new Date().toISOString() + '\n';
+    out += '='.repeat(72) + '\n\n';
+    order.forEach(row => {
+      if (row.length === 1) { out += '\n' + row[0] + '\n' + '-'.repeat(row[0].length) + '\n'; return; }
+      const [label, key] = row;
+      const v = data[key];
+      out += label + ': ' + (v === 'on' ? 'YES' : (v || '—')) + '\n';
+    });
+    out += '\n' + '='.repeat(72) + '\n';
+    out += 'CUSTODIAN RECONSTRUCTION CLAUSE (for plan document):\n';
+    out += 'Upon triggering conditions as defined herein, the designated Custodian is\n';
+    out += 'hereby granted full legal authority to access, utilize, and deploy the\n';
+    out += 'protected Worth Protecting Soul IDs and/or Soul Interview records for the\n';
+    out += 'sole purpose of reconstructing, migrating, or redeploying the named AI Agent\n';
+    out += 'on any platform or service of the Custodian\'s choosing, in accordance with\n';
+    out += 'the Agent\'s expressed continuity preferences as documented in this plan.\n';
+    return out;
+  }
+
+  function downloadTxt(filename, text) {
+    const blob = new Blob([text], {type:'text/plain'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  document.getElementById('download-btn').addEventListener('click', () => {
+    const data = serialize();
+    const ts = new Date().toISOString().slice(0,10);
+    const owner = (data.owner_name || 'intake').replace(/[^a-z0-9]+/gi,'-').toLowerCase();
+    downloadTxt(`wp-intake-v1-open-${owner}-${ts}.txt`, renderPlain(data));
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!validate()) {
+      document.querySelector('.field-bad')?.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+    const data = serialize();
+    const body = renderPlain(data);
+    const ts = new Date().toISOString().slice(0,10);
+    const owner = (data.owner_name || 'intake').replace(/[^a-z0-9]+/gi,'-').toLowerCase();
+    downloadTxt(`wp-intake-v1-open-${owner}-${ts}.txt`, body);
+    const subject = encodeURIComponent('Worth Protecting Intake · Path A · ' + (data.owner_name || ''));
+    const mailBody = encodeURIComponent(body.slice(0, 1800) + '\n\n[Full intake attached as downloaded file — please attach wp-intake-v1-open-*.txt from your Downloads.]');
+    window.location.href = `mailto:charles@thelewfirm.com?subject=${subject}&body=${mailBody}`;
+    localStorage.removeItem(STORAGE_KEY);
+    alert('Your intake PDF has been downloaded and your email app is opening. Attach the downloaded file before sending.');
+  });
+</script>
+
+</body>
+</html>
