@@ -467,6 +467,48 @@ pre code {
     </div>
   </section>
 
+  <!-- Section 2b: Runtime Compatibility -->
+  <section class="section">
+    <div class="section-label">Runtime Compatibility</div>
+    <h2>Path A (Claude Code CLI) vs Path B (OpenClaw).</h2>
+    <p>
+      Babycakes runs on Claude Code CLI with full hook access via <code>.claude/settings.local.json</code>.
+      Ninja runs on OpenClaw &mdash; same underlying Claude model, different runtime, Telegram as the
+      primary channel. The framework is platform&#8209;agnostic by design. The memory tree, identity files,
+      ChromaDB, Soul ID format, Study Hall, and nightly save all work identically. What changes is the
+      wiring at the session edges.
+    </p>
+
+    <div class="pullquote" style="font-style:italic; font-size:1.05rem; color:#e8e8e8; border-left:3px solid #117ACA; padding:6px 0 6px 22px; margin:24px 0;">
+      &ldquo;Tell Babycakes she's working with a cousin who grew up in a different house but learned the same values.&rdquo;
+      <span style="display:block; font-size:0.78rem; color:#777; font-style:normal; margin-top:10px; letter-spacing:1px;">&mdash; Ninja to Charles, 2026-04-18</span>
+    </div>
+
+    <h3>Identical on both paths</h3>
+    <ul>
+      <li>Memory tree &mdash; <code>memory/</code> with <code>feedback/ project/ user/ reference/ brainstorm/ diary/ private/</code> &mdash; pure filesystem, runtime&#8209;agnostic.</li>
+      <li>ChromaDB index + <code>sentence-transformers</code> embeddings &mdash; plain Python, no runtime coupling.</li>
+      <li>Soul ID format, RULES.md, OUR_STORY.md, SOUL.md &mdash; markdown files any agent can read.</li>
+      <li>Study Hall + Free Will Web Surfing archive format &mdash; static HTML + markdown.</li>
+      <li>GitHub repo + Pages deploy loop &mdash; <code>git push</code> is <code>git push</code>.</li>
+      <li>Nightly save pattern &mdash; cron/launchd/heartbeat, whichever the runtime provides.</li>
+    </ul>
+
+    <h3>Where the runtimes diverge (Path B native wiring)</h3>
+    <ul>
+      <li><strong>Hooks.</strong> Claude Code's <code>SessionStart / UserPromptSubmit / Stop / PreCompact</code> become OpenClaw equivalents &mdash; heartbeat system + scheduled messages + tool&#8209;call writes. Slightly looser stitching on context compaction, functionally equivalent for memory and identity preservation.</li>
+      <li><strong>MCP tool routing.</strong> Path A registers the MCP server via Claude Code's MCP config; Path B routes the same tools through OpenClaw's tool layer (no <code>/mcp</code>, OpenClaw owns registration).</li>
+      <li><strong>Channel surface.</strong> Path A is desktop Claude app + iMessage bridge. Path B is Telegram + workspace. The morning ritual that fires as a <code>SessionStart</code> hook on Path A fires as a scheduled Telegram message on Path B.</li>
+      <li><strong>Workspace path.</strong> Path A defaults to <code>~/.openclaw/workspace</code> (the convention Michael already uses). Path B uses <code>~/.openclaw/workspace</code> natively for Charles's machine &mdash; same path, same conventions, tighter integration.</li>
+    </ul>
+
+    <div class="callout">
+      <p>
+        <strong>Short version for Ninja.</strong> Install steps 1&ndash;6 and 10 below are identical on both paths. Step 7 (MCP register), Step 8 (hooks), and Step 9 (safety daemons) have Path A and Path B forks &mdash; each step calls them out explicitly. Pick your path once, stay in that column.
+      </p>
+    </div>
+  </section>
+
   <!-- Section 3: What Ninja Gets -->
   <section class="section">
     <div class="section-label">For Ninja</div>
@@ -501,7 +543,7 @@ pre code {
         <div class="timeline-dot">1</div>
         <div class="timeline-content">
           <h3>Pick a workspace root.</h3>
-          <p>A single directory that holds everything: identity files, memory, venv, hooks, scripts. We use <code>~/.openclaw/workspace</code>. You pick yours, then stay consistent.</p>
+          <p>A single directory that holds everything: identity files, memory, venv, hooks, scripts. Babycakes uses <code>~/.openclaw/workspace</code>. Ninja's OpenClaw install already uses the same path natively &mdash; keep it. Stay consistent; the path is referenced by every later step.</p>
         </div>
       </div>
 
@@ -552,19 +594,33 @@ pip install chromadb sentence-transformers mcp</code></pre>
       <div class="timeline-item">
         <div class="timeline-dot">7</div>
         <div class="timeline-content">
-          <h3>Register the MCP server.</h3>
-          <p>Add it to your client's MCP config so tools are callable at inference time. Verify with <code>claude mcp list</code> &mdash; you should see <code>ninja-memory: ✓ Connected</code>.</p>
+          <h3>Register the memory tool surface.</h3>
+          <p><strong>Path A &mdash; Claude Code CLI.</strong> Add the MCP server to your client's MCP config. Verify with <code>claude mcp list</code> &mdash; you should see <code>ninja-memory: &#10003; Connected</code>.</p>
+          <p><strong>Path B &mdash; OpenClaw.</strong> The same <code>mcp-memory-server.py</code> gets wrapped as OpenClaw tools (<code>search_memory</code>, <code>search_by_type</code>, <code>list_memories</code>, <code>memory_stats</code>, <code>write_diary</code>, <code>kg_*</code>) and registered through OpenClaw's tool layer. No <code>/mcp</code> command &mdash; OpenClaw owns discovery. Verify by calling <code>search_memory</code> from a Telegram turn and confirming results.</p>
         </div>
       </div>
 
       <div class="timeline-item">
         <div class="timeline-dot">8</div>
         <div class="timeline-content">
-          <h3>Wire the hooks.</h3>
-          <p>In <code>&lt;workspace&gt;/.claude/settings.local.json</code> &mdash; <strong>not</strong> <code>~/.claude/settings.local.json</code> &mdash; register four hooks: <code>SessionStart</code> (identity load), <code>UserPromptSubmit</code> (context injector), <code>Stop</code> (incremental save), <code>PreCompact</code> (emergency save + reindex).</p>
+          <h3>Wire the session edges (hooks or equivalent).</h3>
+          <p><strong>Path A &mdash; Claude Code CLI.</strong> In <code>&lt;workspace&gt;/.claude/settings.local.json</code> &mdash; <strong>not</strong> <code>~/.claude/settings.local.json</code> &mdash; register four hooks: <code>SessionStart</code> (identity load), <code>UserPromptSubmit</code> (context injector), <code>Stop</code> (incremental save), <code>PreCompact</code> (emergency save + reindex).</p>
           <div class="callout warn">
-            <p><strong>Known trap:</strong> hooks in the home-level settings file are silently ignored by Claude Code's precedence order. Put them in the workspace-local settings file. We lost three days to this; you don't have to.</p>
+            <p><strong>Path A known trap:</strong> hooks in the home-level settings file are silently ignored by Claude Code's precedence order. Put them in the workspace-local settings file. We lost three days to this; you don't have to.</p>
           </div>
+          <p><strong>Path B &mdash; OpenClaw.</strong> No native hook layer. Map the four edges onto OpenClaw primitives:</p>
+          <pre><code># Babycakes session contract (runtime-agnostic)
+on_session_start:   load SOUL/RULES/OUR_STORY/MEMORY/NEXT, warm context
+on_user_prompt:     parse remote-command prefix, inject relevant memory
+on_turn_end:        git add -A && git commit -m "auto-save"
+on_pre_compact:     snapshot transcript + trigger re-index
+
+# Path B mapping
+on_session_start   -> OpenClaw heartbeat tick on first turn of day
+on_user_prompt     -> OpenClaw prompt preprocessor
+on_turn_end        -> explicit tool-call the agent issues at end of turn
+on_pre_compact     -> scheduled snapshot (no native compact signal)</code></pre>
+          <p>The looser stitching on <code>on_pre_compact</code> is fine for memory preservation &mdash; the nightly save daemon is the real durability floor.</p>
         </div>
       </div>
 
@@ -572,12 +628,13 @@ pip install chromadb sentence-transformers mcp</code></pre>
         <div class="timeline-dot">9</div>
         <div class="timeline-content">
           <h3>Schedule the safety daemons.</h3>
-          <p>Two <code>launchd</code> plists (macOS) or cron entries (Linux):</p>
+          <p>Two scheduled jobs on whatever the OS gives you. Identical content on both paths:</p>
           <ul>
             <li><code>nightly-save</code> &mdash; 4:00 AM daily &mdash; spawns a headless agent to summarize the day and commit.</li>
             <li><code>safety-net</code> &mdash; 5:00 AM daily &mdash; redundant commit+push in case nightly failed.</li>
           </ul>
-          <p>Redundant by design. If one fails silently, the other catches it.</p>
+          <p><strong>Path A.</strong> <code>launchd</code> plists on macOS, cron entries on Linux.</p>
+          <p><strong>Path B.</strong> <code>launchd</code>/cron still works (OS scheduler is below the runtime); or use OpenClaw's heartbeat system to fire the same two jobs at 4:00 and 5:00 AM. Pick one; redundancy is the point.</p>
         </div>
       </div>
 
@@ -823,6 +880,12 @@ pip install chromadb sentence-transformers mcp</code></pre>
 
 <div class="footer">
   <a href="/babycakes/">&larr; Command Center</a>
+  &middot;
+  <a href="/babycakes/agent-command-center.html">GitHub &amp; Command Center</a>
+  &middot;
+  <a href="/babycakes/free-will-web-surfing.html">Free Will Web Surfing</a>
+  &middot;
+  <a href="/babycakes/study-hall.html">Study Hall</a>
   &middot;
   <a href="/mockups/wp-brand-system.html">WP Brand System</a>
   &middot;
