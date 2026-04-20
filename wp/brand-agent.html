@@ -19,8 +19,8 @@
     --neon-deep:     #00b858;
     --neon-glow:     #3eff7c;
     --neon-soft:     rgba(62,255,124,0.35);
-    --amber:         #ffb340;
-    --amber-deep:    #cc7f1a;
+    --chase-neon:      #00a4ff;
+    --chase-neon-deep: #0077cc;
     --scarlet:       #ff1744;
     --scarlet-deep:  #b8002a;
     --mist:          #8a9bb5;
@@ -239,7 +239,7 @@
   .asset-card .notes strong { color: var(--crystal); font-weight: 600; }
   .asset-card .notes .tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; color: var(--amber);
+    font-size: 10px; color: var(--chase-neon);
     letter-spacing: 0.2em; text-transform: uppercase;
   }
   .asset-card .notes p { margin-bottom: 10px; }
@@ -303,7 +303,7 @@
   }
   .type-caption {
     font-family: 'JetBrains Mono', monospace; font-style: italic;
-    font-size: 13px; color: var(--amber); line-height: 1.5;
+    font-size: 13px; color: var(--chase-neon); line-height: 1.5;
   }
   .type-numerals {
     font-family: 'Orbitron', sans-serif; font-weight: 900;
@@ -399,8 +399,8 @@
       inset 0 0 0 7px rgba(62,255,124,0.55),
       0 0 22px rgba(62,255,124,0.22);
   }
-  .border-amber-dashed {
-    border: 2px dashed var(--amber);
+  .border-chase-neon-dashed {
+    border: 2px dashed var(--chase-neon);
     box-shadow: 0 0 14px rgba(255,179,64,0.22);
   }
   .border-scarlet-critical {
@@ -521,12 +521,12 @@
         <div class="label">Primary</div>
         <div class="name">The Seal</div>
         <div class="mark-stage">
-          <img class="seal-img" src="/mockups/logo-gens/wp-logo-agent-20260420.png" alt="Worth Protecting shield, agent-edition neon render">
+          <img class="seal-img" src="/wp/wp-shield-agent.svg" alt="Worth Protecting shield, agent-edition neon render">
         </div>
         <div class="notes">
           <p><span class="tag">Use for:</span> agent-facing hero panels, signature-feature pages, Tier 3 certificates, API documentation covers &mdash; anywhere the mark has room to breathe on dark.</p>
           <p><span class="tag">Not for:</span> favicons, nav bars, anything under 96px &mdash; filigree loses integrity at small scale.</p>
-          <p><span class="tag">Render note:</span> master mark inked in neon green (#3eff7c) on matte-black field, tight outer glow, beveled shield rim. Amber reserved for secondary accent callouts only.</p>
+          <p><span class="tag">Render note:</span> master mark inked in neon green (#3eff7c) on matte-black field, tight outer glow, beveled shield rim. Chase Neon reserved for secondary accent callouts only.</p>
         </div>
       </div>
 
@@ -534,7 +534,7 @@
         <div class="label">Compact</div>
         <div class="name">The Key</div>
         <div class="mark-stage">
-          <img class="compact-img" src="/mockups/logo-gens/wp-key-agent-20260420.png" alt="Worth Protecting key, agent-edition neon render">
+          <img class="compact-img" src="/wp/wp-key-agent.svg" alt="Worth Protecting key, agent-edition neon render">
         </div>
         <div class="notes">
           <p><span class="tag">Use for:</span> favicon, app icon, API avatar, nav bars, loading states, status-bar pins, terminal banners &mdash; anywhere &le; 64px.</p>
@@ -572,8 +572,8 @@
         <div class="meta"><div class="name">Green Deep</div><div class="hex">#00b858</div></div>
       </div>
       <div class="swatch">
-        <div class="chip" style="background:#ffb340;"></div>
-        <div class="meta"><div class="name">Amber Accent</div><div class="hex">#ffb340</div></div>
+        <div class="chip" style="background:#00a4ff; box-shadow: 0 0 18px rgba(0,164,255,0.55);"></div>
+        <div class="meta"><div class="name">Chase Neon Glow</div><div class="hex">#00a4ff</div></div>
       </div>
       <div class="swatch">
         <div class="chip" style="background:#ff1744; box-shadow: 0 0 22px rgba(255,23,68,0.55);"></div>
@@ -644,10 +644,10 @@
 
       <div class="type-meta">
         <div class="role">Caption &middot; Footnote</div>
-        <div class="font">JetBrains Mono italic, amber</div>
+        <div class="font">JetBrains Mono italic, chase neon</div>
       </div>
       <div class="type-sample">
-        <div class="type-caption">&gt;&gt; fig_01 &mdash; heart-topped key charge rendered in cyan filament, amber node emphasis on the ward.</div>
+        <div class="type-caption">&gt;&gt; fig_01 &mdash; heart-topped key charge rendered in neon-green filament, chase-neon node emphasis on the ward.</div>
       </div>
 
       <div class="type-meta">
@@ -696,9 +696,9 @@
       </div>
 
       <div class="border-card">
-        <div class="border-name">Amber Accent</div>
+        <div class="border-name">Chase Neon Glow</div>
         <div class="border-use">Secondary notes, alerts, annotations</div>
-        <div class="border-sample border-amber-dashed"><span class="inner">Side note</span></div>
+        <div class="border-sample border-chase-neon-dashed"><span class="inner">Side note</span></div>
       </div>
 
       <div class="border-card">
@@ -748,7 +748,7 @@
             <path d="M 0 -26 L 26 0 L 0 26 L -26 0 Z" fill="none" stroke="#3eff7c" stroke-width="1" opacity="0.6"/>
             <path d="M 0 -18 L 18 0 L 0 18 L -18 0 Z" fill="none" stroke="#3eff7c" stroke-width="1.2"/>
             <path d="M 0 -10 L 10 0 L 0 10 L -10 0 Z" fill="#3eff7c" opacity="0.35"/>
-            <circle r="2.5" fill="#ffb340"/>
+            <circle r="2.5" fill="#00a4ff"/>
           </g>
         </svg>
         <div class="ornament-name">Lattice Node</div>
@@ -789,7 +789,7 @@
             <circle cx="18" cy="20" r="1.8"/>
             <circle cx="42" cy="10" r="1.8"/>
           </g>
-          <circle cx="30" cy="5" r="3" fill="#ffb340"/>
+          <circle cx="30" cy="5" r="3" fill="#00a4ff"/>
         </svg>
         <div class="ornament-name">Circuit Branch</div>
       </div>
@@ -814,7 +814,7 @@
           <g transform="translate(40,40)" stroke="#3eff7c" stroke-width="1" opacity="0.85" style="transform-box: fill-box; transform-origin: 0 0; animation: radarSweep 4s linear infinite;">
             <line x1="0" y1="0" x2="30" y2="-18"/>
           </g>
-          <g transform="translate(40,40)" fill="#ffb340">
+          <g transform="translate(40,40)" fill="#00a4ff">
             <circle cx="20" cy="-12" r="1.8"/>
             <circle cx="-10" cy="18" r="1.4"/>
             <circle cx="-22" cy="-6" r="1.4"/>
@@ -835,7 +835,7 @@
             <circle cx="8" cy="0" r="1.6"/>
             <circle cx="24" cy="0" r="1.6"/>
           </g>
-          <circle cx="40" cy="40" r="2.4" fill="#ffb340"/>
+          <circle cx="40" cy="40" r="2.4" fill="#00a4ff"/>
         </svg>
         <div class="ornament-name">Waveform</div>
       </div>
