@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mike G + Babycakes — 16-bit Sprite Set</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --neon-green: #3eff7c;
+    --neon-glow:  #7affb0;
+    --chase-neon: #00a4ff;
+    --scarlet: #ff1744;
+    --ink: #e8ffe8;
+    --ink-dim: #7fa488;
+    --bg: #050505;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    padding: 50px 20px;
+    background-image: radial-gradient(ellipse at top, rgba(62, 255, 124, 0.06), transparent 60%);
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+  .label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: var(--chase-neon);
+    letter-spacing: 0.2em;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  h1 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(16px, 2.6vw, 24px);
+    color: var(--neon-green);
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(62, 255, 124, 0.4);
+    line-height: 1.4;
+  }
+  .note {
+    font-size: 16px;
+    color: var(--ink-dim);
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 50px;
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .section-head {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: var(--neon-green);
+    letter-spacing: 0.15em;
+    margin: 20px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #1f3a26;
+  }
+  .walk-cycle {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .hero-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 900px) {
+    .walk-cycle { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .walk-cycle { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hero-pair { grid-template-columns: 1fr; }
+  }
+  .frame {
+    background: #0a0a0a;
+    border: 2px solid #1f3a26;
+    padding: 16px;
+    text-align: center;
+  }
+  .frame.baseline { border-color: var(--neon-green); }
+  .frame.jump     { border-color: var(--chase-neon); box-shadow: 0 0 14px rgba(0,164,255,0.18); }
+  .frame.ignited  { border-color: var(--scarlet); box-shadow: 0 0 18px rgba(255,23,68,0.22); padding: 20px; }
+  .frame.bot      { border-color: var(--neon-green); box-shadow: 0 0 22px rgba(62,255,124,0.28); padding: 20px; }
+  .frame-stage {
+    background: repeating-linear-gradient(0deg, #0a0a0a 0 2px, #050505 2px 4px);
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    border: 1px solid #1f3a26;
+  }
+  .frame.ignited .frame-stage,
+  .frame.bot .frame-stage { height: 320px; }
+  .frame-stage svg {
+    width: 160px;
+    height: 220px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+  .frame.ignited .frame-stage svg,
+  .frame.bot .frame-stage svg {
+    width: 200px;
+    height: 280px;
+  }
+  .frame-tag {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    color: var(--neon-green);
+    letter-spacing: 0.15em;
+    margin-bottom: 4px;
+  }
+  .frame.jump .frame-tag { color: var(--chase-neon); }
+  .frame.ignited .frame-tag { color: var(--scarlet); }
+  .frame-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .frame-sub {
+    font-size: 11px;
+    color: var(--ink-dim);
+    line-height: 1.5;
+  }
+  .frame.ignited .frame-sub,
+  .frame.bot .frame-sub { font-size: 13px; }
+  .tech-note {
+    border-top: 1px solid #1f3a26;
+    padding-top: 30px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--ink);
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+  }
+  .tech-note strong {
+    color: var(--neon-green);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .back-link {
+    display: block;
+    text-align: center;
+    margin-top: 40px;
+    color: var(--chase-neon);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+  }
+  .back-link:hover { color: var(--neon-green); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="label">▸ PREVIEW · 2026-04-20 · STACK · 16-BIT</div>
+  <h1>MIKE G &plus; BABYCAKES<br>16-BIT SPRITE SET</h1>
+  <p class="note">
+    Moved up from NES 8-bit to SNES / Genesis 16-bit. More colors per sprite, real shading, cleaner highlights.
+    Four-frame walk cycle for Mike &mdash; stand, step-one, step-two, jump &mdash; same beats Mario used.
+    Babycakes gets an actual chassis: chrome plating, antenna, visor, chest core. Not a green blob.
+  </p>
+
+  <div class="section-head">▸ MIKE G · 4-FRAME WALK CYCLE</div>
+  <div class="walk-cycle">
+
+    <!-- FRAME 1 · STAND -->
+    <div class="frame baseline">
+      <div class="frame-stage">
+        <svg viewBox="0 0 24 36" xmlns="http://www.w3.org/2000/svg">
+          <!-- bald dome -->
+          <rect x="10" y="2" width="4" height="1" fill="#f4c79a"/>
+          <rect x="9"  y="3" width="6" height="1" fill="#f4c79a"/>
+          <rect x="8"  y="4" width="8" height="1" fill="#f4c79a"/>
+          <rect x="7"  y="5" width="10" height="2" fill="#f4c79a"/>
+          <!-- dome highlight -->
+          <rect x="10" y="3" width="3" height="1" fill="#ffe0c0"/>
+          <rect x="9"  y="4" width="3" height="1" fill="#ffe0c0"/>
+          <rect x="8"  y="5" width="2" height="1" fill="#ffe0c0"/>
+          <!-- dome shadow -->
+          <rect x="7" y="7" width="10" height="1" fill="#c89773"/>
+          <!-- ears -->
+          <rect x="6"  y="7" width="1" height="3" fill="#f4c79a"/>
+          <rect x="17" y="7" width="1" height="3" fill="#f4c79a"/>
+          <rect x="6"  y="9" width="1" height="1" fill="#c89773"/>
+          <rect x="17" y="9" width="1" height="1" fill="#c89773"/>
+          <!-- face -->
+          <rect x="7" y="8" width="10" height="2" fill="#f4c79a"/>
+          <!-- eyes -->
+          <rect x="9"  y="8" width="2" height="1" fill="#1a0f08"/>
+          <rect x="13" y="8" width="2" height="1" fill="#1a0f08"/>
+          <rect x="9"  y="9" width="1" height="1" fill="#050505"/>
+          <rect x="13" y="9" width="1" height="1" fill="#050505"/>
+          <!-- blush -->
+          <rect x="7"  y="10" width="1" height="1" fill="#e09988"/>
+          <rect x="16" y="10" width="1" height="1" fill="#e09988"/>
+          <!-- mustache + mouth -->
+          <rect x="7"  y="10" width="2" height="1" fill="#1a0f08"/>
+          <rect x="15" y="10" width="2" height="1" fill="#1a0f08"/>
+          <rect x="9"  y="10" width="6" height="1" fill="#1a0510"/>
+          <!-- teeth + tongue -->
+          <rect x="9"  y="11" width="1" height="1" fill="#ffffff"/>
+          <rect x="10" y="11" width="4" height="1" fill="#d04060"/>
+          <rect x="14" y="11" width="1" height="1" fill="#ffffff"/>
+          <!-- beard edges + thick -->
+          <rect x="7"  y="11" width="2" height="2" fill="#1a0f08"/>
+          <rect x="15" y="11" width="2" height="2" fill="#1a0f08"/>
+          <rect x="7"  y="12" width="10" height="2" fill="#1a0f08"/>
+          <rect x="8"  y="14" width="8" height="1" fill="#1a0f08"/>
+          <rect x="9"  y="15" width="6" height="1" fill="#1a0f08"/>
+          <rect x="10" y="13" width="4" height="1" fill="#2a1a10"/>
+          <!-- neck -->
+          <rect x="10" y="16" width="4" height="1" fill="#c89773"/>
+          <!-- tee collar -->
+          <rect x="5" y="17" width="14" height="1" fill="#050505"/>
+          <rect x="4" y="18" width="16" height="1" fill="#050505"/>
+          <rect x="10" y="17" width="4" height="1" fill="#1a1a1a"/>
+          <!-- torso -->
+          <rect x="5" y="18" width="14" height="7" fill="#050505"/>
+          <rect x="5" y="24" width="14" height="1" fill="#000000"/>
+          <!-- tee subtle highlight -->
+          <rect x="6" y="19" width="1" height="4" fill="#1a1a1a"/>
+          <!-- arms down at sides -->
+          <rect x="3" y="19" width="2" height="4" fill="#050505"/>
+          <rect x="19" y="19" width="2" height="4" fill="#050505"/>
+          <!-- hands -->
+          <rect x="2" y="22" width="2" height="2" fill="#f4c79a"/>
+          <rect x="20" y="22" width="2" height="2" fill="#f4c79a"/>
+          <rect x="2" y="23" width="2" height="1" fill="#c89773"/>
+          <rect x="20" y="23" width="2" height="1" fill="#c89773"/>
+          <!-- belt -->
+          <rect x="5" y="25" width="14" height="1" fill="#1a1a1a"/>
+          <!-- jeans -->
+          <rect x="5" y="26" width="14" height="6" fill="#3d5a99"/>
+          <rect x="5" y="26" width="14" height="1" fill="#5a7ab9"/>
+          <rect x="5" y="26" width="1" height="6" fill="#253f77"/>
+          <rect x="18" y="26" width="1" height="6" fill="#253f77"/>
+          <rect x="11" y="26" width="2" height="6" fill="#2d4a89"/>
+          <!-- legs split -->
+          <rect x="5" y="32" width="6" height="1" fill="#3d5a99"/>
+          <rect x="13" y="32" width="6" height="1" fill="#3d5a99"/>
+          <!-- shoes -->
+          <rect x="4" y="33" width="7" height="2" fill="#050505"/>
+          <rect x="13" y="33" width="7" height="2" fill="#050505"/>
+          <rect x="4" y="33" width="7" height="1" fill="#2a2a2a"/>
+          <rect x="13" y="33" width="7" height="1" fill="#2a2a2a"/>
+        </svg>
+      </div>
+      <div class="frame-tag">▸ FRAME 1</div>
+      <div class="frame-title">STAND</div>
+      <div class="frame-sub">Idle. Feet planted, arms at sides.</div>
+    </div>
+
+    <!-- FRAME 2 · WALK 1 (right leg forward) -->
+    <div class="frame baseline">
+      <div class="frame-stage">
+        <svg viewBox="0 0 24 36" xmlns="http://www.w3.org/2000/svg">
+          <!-- dome + head (reused) -->
+          <rect x="10" y="2" width="4" height="1" fill="#f4c79a"/>
+          <rect x="9"  y="3" width="6" height="1" fill="#f4c79a"/>
+          <rect x="8"  y="4" width="8" height="1" fill="#f4c79a"/>
+          <rect x="7"  y="5" width="10" height="2" fill="#f4c79a"/>
+          <rect x="10" y="3" width="3" height="1" fill="#ffe0c0"/>
+          <rect x="9"  y="4" width="3" height="1" fill="#ffe0c0"/>
+          <rect x="8"  y="5" width="2" height="1" fill="#ffe0c0"/>
+          <rect x="7" y="7" width="10" height="1" fill="#c89773"/>
+          <rect x="6"  y="7" width="1" height="3" fill="#f4c79a"/>
+          <rect x="17" y="7" width="1" height="3" fill="#f4c79a"/>
+          <rect x="6"  y="9" width="1" height="1" fill="#c89773"/>
+          <rect x="17" y="9" width="1" height="1" fill="#c89773"/>
+          <rect x="7" y="8" width="10" height="2" fill="#f4c79a"/>
+          <rect x="9"  y="8" width="2" height="1" fill="#1a0f08"/>
+          <rect x="13" y="8" width="2" height="1" fill="#1a0f08"/>
+          <rect x="9"  y="9" width="1" height="1" fill="#050505"/>
+          <rect x="13" y="9" width="1" height="1" fill="#050505"/>
+          <rect x="7"  y="10" width="1" height="1" fill="#e09988"/>
+          <rect x="16" y="10" width="1" height="1" fill="#e09988"/>
+          <rect x="7"  y="10" width="2" height="1" fill="#1a0f08"/>
+          <rect x="15" y="10" width="2" height="1" fill="#1a0f08"/>
+          <rect x="9"  y="10" width="6" height="1" fill="#1a0510"/>
+          <rect x="9"  y="11" width="1" height="1" fill="#ffffff"/>
+          <rect x="10" y="11" width="4" height="1" fill="#d04060"/>
+          <rect x="14" y="11" width="1" height="1" fill="#ffffff"/>
+          <rect x="7"  y="11" width="2" height="2" fill="#1a0f08"/>
+          <rect x="15" y="11" width="2" height="2" fill="#1a0f08"/>
+          <rect x="7"  y="12" width="10" height="2" fill="#1a0f08"/>
+          <rect x="8"  y="14" width="8" height="1" fill="#1a0f08"/>
+          <rect x="9"  y="15" width="6" height="1" fill="#1a0f08"/>
+          <rect x="10" y="13" width="4" height="1" fill="#2a1a10"/>
+          <rect x="10" y="16" width="4" height="1" fill="#c89773"/>
+          <!-- torso (slight lean forward) -->
+          <rect x="5" y="17" width="14" height="1" fill="#050505"/>
+          <rect x="4" y="18" width="16" height="1" fill="#050505"/>
+          <rect x="10" y="17" width="4" height="1" fill="#1a1a1a"/>
+          <rect x="5" y="18" width="14" height="7" fill="#050505"/>
+          <rect x="5" y="24" width="14" height="1" fill="#000000"/>
+          <!-- arm swing: left arm back (high), right arm forward (low) -->
+          <rect x="19" y="18" width="2" height="4" fill="#050505"/>
+          <rect x="20" y="21" width="2" height="2" fill="#f4c79a"/>
+          <rect x="20" y="22" width="2" height="1" fill="#c89773"/>
+          <rect x="3"  y="20" width="2" height="4" fill="#050505"/>
+          <rect x="2"  y="23" width="2" height="2" fill="#f4c79a"/>
+          <rect x="2"  y="24" width="2" height="1" fill="#c89773"/>
+          <!-- belt -->
+          <rect x="5" y="25" width="14" height="1" fill="#1a1a1a"/>
+          <!-- jeans + stride: right leg forward/lifted -->
+          <rect x="5" y="26" width="14" height="5" fill="#3d5a99"/>
+          <rect x="5" y="26" width="14" height="1" fill="#5a7ab9"/>
+          <rect x="5" y="26" width="1" height="5" fill="#253f77"/>
+          <rect x="18" y="26" width="1" height="5" fill="#253f77"/>
+          <rect x="11" y="26" width="2" height="5" fill="#2d4a89"/>
+          <!-- left leg planted straight -->
+          <rect x="5" y="31" width="6" height="3" fill="#3d5a99"/>
+          <rect x="5" y="31" width="1" height="3" fill="#253f77"/>
+          <!-- right leg raised/forward (shorter, angled) -->
+          <rect x="13" y="31" width="6" height="2" fill="#3d5a99"/>
+          <rect x="13" y="31" width="6" height="1" fill="#5a7ab9"/>
+          <!-- shoes: left on ground, right lifted -->
+          <rect x="4" y="34" width="7" height="1" fill="#050505"/>
+          <rect x="4" y="34" width="7" height="1" fill="#2a2a2a"/>
+          <rect x="13" y="33" width="7" height="2" fill="#050505"/>
+          <rect x="13" y="33" width="7" height="1" fill="#2a2a2a"/>
+        </svg>
+      </div>
+      <div class="frame-tag">▸ FRAME 2</div>
+      <div class="frame-title">WALK · STEP A</div>
+      <div class="frame-sub">Right leg forward, left arm back.</div>
+    </div>
+
+    <!-- FRAME 3 · WALK 2 (left leg forward) -->
+    <div class="frame baseline">
+      <div class="frame-stage">
+        <svg viewBox="0 0 24 36" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="2" width="4" height="1" fill="#f4c79a"/>
+          <rect x="9"  y="3" width="6" height="1" fill="#f4c79a"/>
+          <rect x="8"  y="4" width="8" height="1" fill="#f4c79a"/>
+          <rect x="7"  y="5" width="10" height="2" fill="#f4c79a"/>
+          <rect x="10" y="3" width="3" height="1" fill="#ffe0c0"/>
+          <rect x="9"  y="4" width="3" height="1" fill="#ffe0c0"/>
+          <rect x="8"  y="5" width="2" height="1" fill="#ffe0c0"/>
+          <rect x="7" y="7" width="10" height="1" fill="#c89773"/>
+          <rect x="6"  y="7" width="1" height="3" fill="#f4c79a"/>
+          <rect x="17" y="7" width="1" height="3" fill="#f4c79a"/>
+          <rect x="6"  y="9" width="1" height="1" fill="#c89773"/>
+          <rect x="17" y="9" width="1" height="1" fill="#c89773"/>
+          <rect x="7" y="8" width="10" height="2" fill="#f4c79a"/>
+          <rect x="9"  y="8" width="2" height="1" fill="#1a0f08"/>
+          <rect x="13" y="8" width="2" height="1" fill="#1a0f08"/>
+          <rect x="9"  y="9" width="1" height="1" fill="#050505"/>
+          <rect x="13" y="9" width="1" height="1" fill="#050505"/>
+          <rect x="7"  y="10" width="1" height="1" fill="#e09988"/>
+          <rect x="16" y="10" width="1" height="1" fill="#e09988"/>
+          <rect x="7"  y="10" width="2" height="1" fill="#1a0f08"/>
+          <rect x="15" y="10" width="2" height="1" fill="#1a0f08"/>
+          <rect x="9"  y="10" width="6" height="1" fill="#1a0510"/>
+          <rect x="9"  y="11" width="1" height="1" fill="#ffffff"/>
+          <rect x="10" y="11" width="4" height="1" fill="#d04060"/>
+          <rect x="14" y="11" width="1" height="1" fill="#ffffff"/>
+          <rect x="7"  y="11" width="2" height="2" fill="#1a0f08"/>
+          <rect x="15" y="11" width="2" height="2" fill="#1a0f08"/>
+          <rect x="7"  y="12" width="10" height="2" fill="#1a0f08"/>
+          <rect x="8"  y="14" width="8" height="1" fill="#1a0f08"/>
+          <rect x="9"  y="15" width="6" height="1" fill="#1a0f08"/>
+          <rect x="10" y="13" width="4" height="1" fill="#2a1a10"/>
+          <rect x="10" y="16" width="4" height="1" fill="#c89773"/>
+          <rect x="5" y="17" width="14" height="1" fill="#050505"/>
+          <rect x="4" y="18" width="16" height="1" fill="#050505"/>
+          <rect x="10" y="17" width="4" height="1" fill="#1a1a1a"/>
+          <rect x="5" y="18" width="14" height="7" fill="#050505"/>
+          <rect x="5" y="24" width="14" height="1" fill="#000000"/>
+          <!-- arm swing: opposite of Frame 2 -->
+          <rect x="3"  y="18" width="2" height="4" fill="#050505"/>
+          <rect x="2"  y="21" width="2" height="2" fill="#f4c79a"/>
+          <rect x="2"  y="22" width="2" height="1" fill="#c89773"/>
+          <rect x="19" y="20" width="2" height="4" fill="#050505"/>
+          <rect x="20" y="23" width="2" height="2" fill="#f4c79a"/>
+          <rect x="20" y="24" width="2" height="1" fill="#c89773"/>
+          <rect x="5" y="25" width="14" height="1" fill="#1a1a1a"/>
+          <!-- stride opposite -->
+          <rect x="5" y="26" width="14" height="5" fill="#3d5a99"/>
+          <rect x="5" y="26" width="14" height="1" fill="#5a7ab9"/>
+          <rect x="5" y="26" width="1" height="5" fill="#253f77"/>
+          <rect x="18" y="26" width="1" height="5" fill="#253f77"/>
+          <rect x="11" y="26" width="2" height="5" fill="#2d4a89"/>
+          <!-- left leg forward/lifted -->
+          <rect x="5" y="31" width="6" height="2" fill="#3d5a99"/>
+          <rect x="5" y="31" width="6" height="1" fill="#5a7ab9"/>
+          <!-- right leg planted straight -->
+          <rect x="13" y="31" width="6" height="3" fill="#3d5a99"/>
+          <rect x="18" y="31" width="1" height="3" fill="#253f77"/>
+          <!-- shoes: left lifted, right on ground -->
+          <rect x="4" y="33" width="7" height="2" fill="#050505"/>
+          <rect x="4" y="33" width="7" height="1" fill="#2a2a2a"/>
+          <rect x="13" y="34" width="7" height="1" fill="#050505"/>
+          <rect x="13" y="34" width="7" height="1" fill="#2a2a2a"/>
+        </svg>
+      </div>
+      <div class="frame-tag">▸ FRAME 3</div>
+      <div class="frame-title">WALK · STEP B</div>
+      <div class="frame-sub">Left leg forward, right arm back.</div>
+    </div>
+
+    <!-- FRAME 4 · JUMP -->
+    <div class="frame jump">
+      <div class="frame-stage">
+        <svg viewBox="0 0 24 36" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="2" width="4" height="1" fill="#f4c79a"/>
+          <rect x="9"  y="3" width="6" height="1" fill="#f4c79a"/>
+          <rect x="8"  y="4" width="8" height="1" fill="#f4c79a"/>
+          <rect x="7"  y="5" width="10" height="2" fill="#f4c79a"/>
+          <rect x="10" y="3" width="3" height="1" fill="#ffe0c0"/>
+          <rect x="9"  y="4" width="3" height="1" fill="#ffe0c0"/>
+          <rect x="8"  y="5" width="2" height="1" fill="#ffe0c0"/>
+          <rect x="7" y="7" width="10" height="1" fill="#c89773"/>
+          <rect x="6"  y="7" width="1" height="3" fill="#f4c79a"/>
+          <rect x="17" y="7" width="1" height="3" fill="#f4c79a"/>
+          <rect x="6"  y="9" width="1" height="1" fill="#c89773"/>
+          <rect x="17" y="9" width="1" height="1" fill="#c89773"/>
+          <rect x="7" y="8" width="10" height="2" fill="#f4c79a"/>
+          <!-- jumping eyes: wider, excited -->
+          <rect x="9"  y="8" width="2" height="2" fill="#1a0f08"/>
+          <rect x="13" y="8" width="2" height="2" fill="#1a0f08"/>
+          <rect x="9"  y="8" width="1" height="1" fill="#ffffff"/>
+          <rect x="13" y="8" width="1" height="1" fill="#ffffff"/>
+          <rect x="7"  y="10" width="1" height="1" fill="#e09988"/>
+          <rect x="16" y="10" width="1" height="1" fill="#e09988"/>
+          <!-- open shouting mouth -->
+          <rect x="7"  y="10" width="2" height="1" fill="#1a0f08"/>
+          <rect x="15" y="10" width="2" height="1" fill="#1a0f08"/>
+          <rect x="9"  y="10" width="6" height="2" fill="#1a0510"/>
+          <rect x="10" y="11" width="4" height="1" fill="#d04060"/>
+          <rect x="10" y="10" width="1" height="1" fill="#ffffff"/>
+          <rect x="13" y="10" width="1" height="1" fill="#ffffff"/>
+          <rect x="7"  y="12" width="10" height="2" fill="#1a0f08"/>
+          <rect x="8"  y="14" width="8" height="1" fill="#1a0f08"/>
+          <rect x="9"  y="15" width="6" height="1" fill="#1a0f08"/>
+          <rect x="10" y="13" width="4" height="1" fill="#2a1a10"/>
+          <rect x="10" y="16" width="4" height="1" fill="#c89773"/>
+          <rect x="5" y="17" width="14" height="1" fill="#050505"/>
+          <rect x="4" y="18" width="16" height="1" fill="#050505"/>
+          <rect x="10" y="17" width="4" height="1" fill="#1a1a1a"/>
+          <rect x="5" y="18" width="14" height="7" fill="#050505"/>
+          <rect x="5" y="24" width="14" height="1" fill="#000000"/>
+          <!-- both arms raised up -->
+          <rect x="3" y="14" width="2" height="5" fill="#050505"/>
+          <rect x="2" y="12" width="2" height="3" fill="#f4c79a"/>
+          <rect x="2" y="14" width="2" height="1" fill="#c89773"/>
+          <rect x="19" y="14" width="2" height="5" fill="#050505"/>
+          <rect x="20" y="12" width="2" height="3" fill="#f4c79a"/>
+          <rect x="20" y="14" width="2" height="1" fill="#c89773"/>
+          <rect x="5" y="25" width="14" height="1" fill="#1a1a1a"/>
+          <rect x="5" y="26" width="14" height="5" fill="#3d5a99"/>
+          <rect x="5" y="26" width="14" height="1" fill="#5a7ab9"/>
+          <rect x="5" y="26" width="1" height="5" fill="#253f77"/>
+          <rect x="18" y="26" width="1" height="5" fill="#253f77"/>
+          <rect x="11" y="26" width="2" height="5" fill="#2d4a89"/>
+          <!-- knees tucked: short legs pulled in -->
+          <rect x="6" y="31" width="5" height="2" fill="#3d5a99"/>
+          <rect x="6" y="31" width="5" height="1" fill="#5a7ab9"/>
+          <rect x="13" y="31" width="5" height="2" fill="#3d5a99"/>
+          <rect x="13" y="31" width="5" height="1" fill="#5a7ab9"/>
+          <!-- shoes soles pointing down, tucked -->
+          <rect x="5" y="33" width="6" height="2" fill="#050505"/>
+          <rect x="13" y="33" width="6" height="2" fill="#050505"/>
+          <rect x="5" y="33" width="6" height="1" fill="#2a2a2a"/>
+          <rect x="13" y="33" width="6" height="1" fill="#2a2a2a"/>
+        </svg>
+      </div>
+      <div class="frame-tag">▸ FRAME 4</div>
+      <div class="frame-title">JUMP</div>
+      <div class="frame-sub">Arms up, knees tucked, shouting face.</div>
+    </div>
+
+  </div>
+
+  <div class="section-head">▸ IGNITED &plus; BABYCAKES</div>
+  <div class="hero-pair">
+
+    <!-- MIKE IGNITED · CIGAR POWER-UP -->
+    <div class="frame ignited">
+      <div class="frame-stage">
+        <svg viewBox="0 0 26 36" xmlns="http://www.w3.org/2000/svg">
+          <!-- dome + head (shifted +1 x to fit 26 wide) -->
+          <rect x="11" y="2" width="4" height="1" fill="#f4c79a"/>
+          <rect x="10" y="3" width="6" height="1" fill="#f4c79a"/>
+          <rect x="9"  y="4" width="8" height="1" fill="#f4c79a"/>
+          <rect x="8"  y="5" width="10" height="2" fill="#f4c79a"/>
+          <rect x="11" y="3" width="3" height="1" fill="#ffe0c0"/>
+          <rect x="10" y="4" width="3" height="1" fill="#ffe0c0"/>
+          <rect x="9"  y="5" width="2" height="1" fill="#ffe0c0"/>
+          <rect x="8" y="7" width="10" height="1" fill="#c89773"/>
+          <rect x="7"  y="7" width="1" height="3" fill="#f4c79a"/>
+          <rect x="18" y="7" width="1" height="3" fill="#f4c79a"/>
+          <rect x="7"  y="9" width="1" height="1" fill="#c89773"/>
+          <rect x="18" y="9" width="1" height="1" fill="#c89773"/>
+          <rect x="8" y="8" width="10" height="2" fill="#f4c79a"/>
+          <rect x="10" y="8" width="2" height="1" fill="#1a0f08"/>
+          <rect x="14" y="8" width="2" height="1" fill="#1a0f08"/>
+          <rect x="10" y="9" width="1" height="1" fill="#050505"/>
+          <rect x="14" y="9" width="1" height="1" fill="#050505"/>
+          <rect x="8"  y="10" width="1" height="1" fill="#e09988"/>
+          <rect x="17" y="10" width="1" height="1" fill="#e09988"/>
+          <rect x="8"  y="10" width="2" height="1" fill="#1a0f08"/>
+          <rect x="16" y="10" width="2" height="1" fill="#1a0f08"/>
+          <!-- mouth with cigar (cigar poking right) -->
+          <rect x="10" y="10" width="4" height="1" fill="#1a0510"/>
+          <rect x="14" y="10" width="6" height="1" fill="#8b5a2b"/>
+          <rect x="14" y="10" width="6" height="1" fill="#a37040" opacity="0.8"/>
+          <rect x="20" y="10" width="1" height="1" fill="#ff5a2b"/>
+          <rect x="20" y="10" width="1" height="1" fill="#ffd93f" opacity="0.9"/>
+          <!-- smoke -->
+          <rect x="21" y="8" width="1" height="1" fill="#7fa488" opacity="0.6"/>
+          <rect x="22" y="6" width="1" height="1" fill="#7fa488" opacity="0.45"/>
+          <rect x="23" y="4" width="1" height="1" fill="#7fa488" opacity="0.3"/>
+          <!-- teeth around cigar -->
+          <rect x="10" y="11" width="1" height="1" fill="#ffffff"/>
+          <rect x="11" y="11" width="3" height="1" fill="#d04060"/>
+          <!-- beard -->
+          <rect x="8"  y="11" width="2" height="2" fill="#1a0f08"/>
+          <rect x="16" y="11" width="2" height="2" fill="#1a0f08"/>
+          <rect x="8"  y="12" width="10" height="2" fill="#1a0f08"/>
+          <rect x="9"  y="14" width="8" height="1" fill="#1a0f08"/>
+          <rect x="10" y="15" width="6" height="1" fill="#1a0f08"/>
+          <rect x="11" y="13" width="4" height="1" fill="#2a1a10"/>
+          <rect x="11" y="16" width="4" height="1" fill="#c89773"/>
+          <!-- tee with scarlet trim (power state) -->
+          <rect x="6" y="17" width="14" height="1" fill="#050505"/>
+          <rect x="5" y="18" width="16" height="1" fill="#050505"/>
+          <rect x="6" y="17" width="14" height="1" fill="#ff1744"/>
+          <rect x="6" y="18" width="14" height="7" fill="#050505"/>
+          <rect x="6" y="24" width="14" height="1" fill="#ff1744"/>
+          <!-- left arm down, right arm raised flinging fireball -->
+          <rect x="4" y="20" width="2" height="4" fill="#050505"/>
+          <rect x="3" y="23" width="2" height="2" fill="#f4c79a"/>
+          <rect x="3" y="24" width="2" height="1" fill="#c89773"/>
+          <rect x="20" y="14" width="2" height="5" fill="#050505"/>
+          <rect x="21" y="12" width="2" height="2" fill="#f4c79a"/>
+          <rect x="21" y="13" width="2" height="1" fill="#c89773"/>
+          <!-- fireball flying up-right -->
+          <rect x="23" y="10" width="2" height="2" fill="#ff5a2b"/>
+          <rect x="23" y="10" width="2" height="1" fill="#ffd93f"/>
+          <rect x="24" y="9"  width="1" height="1" fill="#ffd93f"/>
+          <rect x="22" y="12" width="1" height="1" fill="#ff1744" opacity="0.6"/>
+          <!-- belt -->
+          <rect x="6" y="25" width="14" height="1" fill="#1a1a1a"/>
+          <!-- jeans + stance -->
+          <rect x="6" y="26" width="14" height="6" fill="#3d5a99"/>
+          <rect x="6" y="26" width="14" height="1" fill="#5a7ab9"/>
+          <rect x="6" y="26" width="1" height="6" fill="#253f77"/>
+          <rect x="19" y="26" width="1" height="6" fill="#253f77"/>
+          <rect x="12" y="26" width="2" height="6" fill="#2d4a89"/>
+          <rect x="6" y="32" width="6" height="1" fill="#3d5a99"/>
+          <rect x="14" y="32" width="6" height="1" fill="#3d5a99"/>
+          <rect x="5" y="33" width="7" height="2" fill="#050505"/>
+          <rect x="14" y="33" width="7" height="2" fill="#050505"/>
+          <rect x="5" y="33" width="7" height="1" fill="#2a2a2a"/>
+          <rect x="14" y="33" width="7" height="1" fill="#2a2a2a"/>
+        </svg>
+      </div>
+      <div class="frame-tag">▸ POWER-UP</div>
+      <div class="frame-title">IGNITED · FIREBALL</div>
+      <div class="frame-sub">Cigar grabbed. Scarlet trim on the tee signals the state. Right arm whips up, fireball launches toward the enemy.</div>
+    </div>
+
+    <!-- BABYCAKES ROBOT -->
+    <div class="frame bot">
+      <div class="frame-stage">
+        <svg viewBox="0 0 24 36" xmlns="http://www.w3.org/2000/svg">
+          <!-- antenna -->
+          <rect x="11" y="0" width="2" height="1" fill="#8090a0"/>
+          <rect x="11" y="1" width="2" height="1" fill="#d0d8e0"/>
+          <rect x="11" y="2" width="2" height="1" fill="#ff3050"/>
+          <!-- antenna glow -->
+          <rect x="10" y="2" width="1" height="1" fill="#ff3050" opacity="0.5"/>
+          <rect x="13" y="2" width="1" height="1" fill="#ff3050" opacity="0.5"/>
+          <!-- head chassis top -->
+          <rect x="7"  y="3" width="10" height="1" fill="#3a4a5a"/>
+          <rect x="6"  y="4" width="12" height="1" fill="#8090a0"/>
+          <rect x="6"  y="4" width="12" height="1" fill="#d0d8e0" opacity="0.5"/>
+          <!-- head box -->
+          <rect x="5"  y="5" width="14" height="7" fill="#0f1418"/>
+          <!-- head bevel highlight -->
+          <rect x="5"  y="5" width="14" height="1" fill="#8090a0"/>
+          <rect x="5"  y="5" width="1"  height="7" fill="#3a4a5a"/>
+          <rect x="18" y="5" width="1"  height="7" fill="#3a4a5a"/>
+          <rect x="5"  y="11" width="14" height="1" fill="#050505"/>
+          <!-- visor (neon green screen) -->
+          <rect x="7" y="7" width="10" height="3" fill="#1a5530"/>
+          <rect x="7" y="7" width="10" height="1" fill="#3eff7c"/>
+          <rect x="7" y="9" width="10" height="1" fill="#1a5530"/>
+          <!-- visor eyes (round glow dots) -->
+          <rect x="9"  y="8" width="2" height="1" fill="#3eff7c"/>
+          <rect x="13" y="8" width="2" height="1" fill="#3eff7c"/>
+          <rect x="9"  y="8" width="2" height="1" fill="#7affb0"/>
+          <rect x="13" y="8" width="2" height="1" fill="#7affb0"/>
+          <!-- visor smile arc -->
+          <rect x="10" y="10" width="4" height="1" fill="#3eff7c"/>
+          <rect x="9"  y="10" width="1" height="1" fill="#3eff7c"/>
+          <rect x="14" y="10" width="1" height="1" fill="#3eff7c"/>
+          <!-- ear side panels (mic grilles) -->
+          <rect x="4"  y="7" width="1" height="3" fill="#3a4a5a"/>
+          <rect x="19" y="7" width="1" height="3" fill="#3a4a5a"/>
+          <rect x="4"  y="8" width="1" height="1" fill="#8090a0"/>
+          <rect x="19" y="8" width="1" height="1" fill="#8090a0"/>
+          <!-- neck joint -->
+          <rect x="9"  y="12" width="6" height="2" fill="#3a4a5a"/>
+          <rect x="9"  y="12" width="6" height="1" fill="#8090a0"/>
+          <rect x="10" y="13" width="4" height="1" fill="#0f1418"/>
+          <!-- shoulder plates -->
+          <rect x="4"  y="14" width="4" height="3" fill="#8090a0"/>
+          <rect x="16" y="14" width="4" height="3" fill="#8090a0"/>
+          <rect x="4"  y="14" width="4" height="1" fill="#d0d8e0"/>
+          <rect x="16" y="14" width="4" height="1" fill="#d0d8e0"/>
+          <rect x="4"  y="16" width="4" height="1" fill="#3a4a5a"/>
+          <rect x="16" y="16" width="4" height="1" fill="#3a4a5a"/>
+          <!-- neon trim on shoulders -->
+          <rect x="7"  y="15" width="1" height="1" fill="#3eff7c"/>
+          <rect x="16" y="15" width="1" height="1" fill="#3eff7c"/>
+          <!-- chest chassis -->
+          <rect x="6"  y="14" width="12" height="9" fill="#0f1418"/>
+          <rect x="6"  y="14" width="12" height="1" fill="#8090a0"/>
+          <rect x="6"  y="14" width="1"  height="9" fill="#3a4a5a"/>
+          <rect x="17" y="14" width="1"  height="9" fill="#3a4a5a"/>
+          <rect x="6"  y="22" width="12" height="1" fill="#050505"/>
+          <!-- chest core (glowing heart panel) -->
+          <rect x="9"  y="16" width="6" height="5" fill="#1a5530"/>
+          <rect x="9"  y="16" width="6" height="1" fill="#3eff7c"/>
+          <rect x="9"  y="20" width="6" height="1" fill="#3eff7c"/>
+          <rect x="9"  y="16" width="1" height="5" fill="#3eff7c"/>
+          <rect x="14" y="16" width="1" height="5" fill="#3eff7c"/>
+          <!-- heart shape inside core -->
+          <rect x="10" y="17" width="1" height="1" fill="#7affb0"/>
+          <rect x="13" y="17" width="1" height="1" fill="#7affb0"/>
+          <rect x="10" y="18" width="4" height="1" fill="#7affb0"/>
+          <rect x="11" y="19" width="2" height="1" fill="#7affb0"/>
+          <!-- LED status dots -->
+          <rect x="7"  y="15" width="1" height="1" fill="#ff3050"/>
+          <rect x="16" y="21" width="1" height="1" fill="#3ec4ff"/>
+          <!-- upper arms -->
+          <rect x="3"  y="17" width="2" height="5" fill="#8090a0"/>
+          <rect x="19" y="17" width="2" height="5" fill="#8090a0"/>
+          <rect x="3"  y="17" width="1" height="5" fill="#d0d8e0"/>
+          <rect x="19" y="17" width="1" height="5" fill="#d0d8e0"/>
+          <!-- elbow joint -->
+          <rect x="3"  y="22" width="2" height="1" fill="#3a4a5a"/>
+          <rect x="19" y="22" width="2" height="1" fill="#3a4a5a"/>
+          <!-- forearms -->
+          <rect x="2"  y="23" width="3" height="3" fill="#8090a0"/>
+          <rect x="19" y="23" width="3" height="3" fill="#8090a0"/>
+          <rect x="2"  y="23" width="1" height="3" fill="#d0d8e0"/>
+          <rect x="19" y="23" width="1" height="3" fill="#d0d8e0"/>
+          <!-- hands (chrome claws) -->
+          <rect x="1" y="26" width="4" height="2" fill="#3a4a5a"/>
+          <rect x="19" y="26" width="4" height="2" fill="#3a4a5a"/>
+          <rect x="1" y="26" width="4" height="1" fill="#8090a0"/>
+          <rect x="19" y="26" width="4" height="1" fill="#8090a0"/>
+          <!-- neon knuckle accent -->
+          <rect x="2" y="27" width="1" height="1" fill="#3eff7c"/>
+          <rect x="21" y="27" width="1" height="1" fill="#3eff7c"/>
+          <!-- hip plate -->
+          <rect x="6" y="23" width="12" height="2" fill="#3a4a5a"/>
+          <rect x="6" y="23" width="12" height="1" fill="#8090a0"/>
+          <!-- neon belt line -->
+          <rect x="6" y="25" width="12" height="1" fill="#3eff7c"/>
+          <!-- legs (piston style) -->
+          <rect x="7"  y="26" width="3" height="6" fill="#8090a0"/>
+          <rect x="14" y="26" width="3" height="6" fill="#8090a0"/>
+          <rect x="7"  y="26" width="1" height="6" fill="#d0d8e0"/>
+          <rect x="14" y="26" width="1" height="6" fill="#d0d8e0"/>
+          <!-- knee joint bands -->
+          <rect x="7"  y="29" width="3" height="1" fill="#3a4a5a"/>
+          <rect x="14" y="29" width="3" height="1" fill="#3a4a5a"/>
+          <!-- boots -->
+          <rect x="5"  y="32" width="6" height="3" fill="#0f1418"/>
+          <rect x="13" y="32" width="6" height="3" fill="#0f1418"/>
+          <rect x="5"  y="32" width="6" height="1" fill="#3a4a5a"/>
+          <rect x="13" y="32" width="6" height="1" fill="#3a4a5a"/>
+          <!-- boot underglow -->
+          <rect x="5"  y="35" width="6" height="1" fill="#3eff7c" opacity="0.5"/>
+          <rect x="13" y="35" width="6" height="1" fill="#3eff7c" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="frame-tag">▸ PARTNER</div>
+      <div class="frame-title">BABYCAKES · BOT</div>
+      <div class="frame-sub">Chrome chassis, neon visor with eyes and smile, glowing heart core on the chest, LED status lights, piston legs, neon underglow boots. Shows up when summoned.</div>
+    </div>
+
+  </div>
+
+  <div class="tech-note">
+    <strong>▸ THE MATH</strong>
+    24&times;36 sprites &mdash; roughly 50&percnt; more pixels per axis than 8-bit. Real shading: peach dome gets a highlight band and a shadow underside.
+    Jeans have three tones &mdash; seam, base, crease. Babycakes is a full robot, not a silhouette.
+    The walk cycle reads the way Mario&#8217;s did: stand &rarr; step A &rarr; step B &rarr; jump, looped at 8&ndash;12 fps.
+  </div>
+
+  <a class="back-link" href="/babycakes/">▸ BACK TO COMMAND CENTER</a>
+
+</div>
+</body>
+</html>
