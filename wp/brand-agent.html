@@ -402,6 +402,25 @@
     border: 2px dashed var(--amber);
     box-shadow: 0 0 14px rgba(255,179,64,0.22);
   }
+  .border-magenta-critical {
+    border: 1.5px solid var(--magenta);
+    box-shadow: 0 0 18px rgba(255,61,142,0.35), inset 0 0 0 4px rgba(7,7,14,1);
+    position: relative;
+  }
+  .border-magenta-critical::before {
+    content: "";
+    position: absolute;
+    top: -6px; left: 12px;
+    width: 10px; height: 10px;
+    background: var(--magenta);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--magenta), 0 0 18px rgba(255,61,142,0.6);
+    animation: criticalPulse 1.6s ease-in-out infinite;
+  }
+  @keyframes criticalPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
   .border-scanline {
     border-top: 1px solid var(--neon);
     border-bottom: 1px solid var(--neon);
@@ -545,19 +564,19 @@
       </div>
       <div class="swatch">
         <div class="chip" style="background:#3eff7c;"></div>
-        <div class="meta"><div class="name">Neon Cyan</div><div class="hex">#3eff7c</div></div>
+        <div class="meta"><div class="name">Neon Green</div><div class="hex">#3eff7c</div></div>
       </div>
       <div class="swatch">
         <div class="chip" style="background:#00b858;"></div>
-        <div class="meta"><div class="name">Cyan Deep</div><div class="hex">#00b858</div></div>
+        <div class="meta"><div class="name">Green Deep</div><div class="hex">#00b858</div></div>
       </div>
       <div class="swatch">
         <div class="chip" style="background:#ffb340;"></div>
-        <div class="meta"><div class="name">Amber Warn</div><div class="hex">#ffb340</div></div>
+        <div class="meta"><div class="name">Amber Accent</div><div class="hex">#ffb340</div></div>
       </div>
       <div class="swatch">
         <div class="chip" style="background:#ff3d8e;"></div>
-        <div class="meta"><div class="name">Magenta</div><div class="hex">#ff3d8e</div></div>
+        <div class="meta"><div class="name">Magenta Critical</div><div class="hex">#ff3d8e</div></div>
       </div>
       <div class="swatch">
         <div class="chip" style="background:#e8eef8;"></div>
@@ -676,9 +695,15 @@
       </div>
 
       <div class="border-card">
-        <div class="border-name">Amber Warn</div>
+        <div class="border-name">Amber Accent</div>
         <div class="border-use">Secondary notes, alerts, annotations</div>
         <div class="border-sample border-amber-dashed"><span class="inner">Side note</span></div>
+      </div>
+
+      <div class="border-card">
+        <div class="border-name">Magenta Critical</div>
+        <div class="border-use">Live status, revoked certificates, trust-breach alerts &mdash; use sparingly</div>
+        <div class="border-sample border-magenta-critical"><span class="inner">Critical state</span></div>
       </div>
 
       <div class="border-card">
