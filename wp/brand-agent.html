@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Worth Protecting — Brand System, Agent Edition v1.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void:          #07070e;
+    --ink:           #0e0e1a;
+    --elevated:      #161628;
+    --elevated-2:    #1d1d33;
+    --stroke:        #2a2a44;
+    --stroke-soft:   #1e1e36;
+    --neon:          #3eff7c;
+    --neon-deep:     #00b858;
+    --neon-glow:     #3eff7c;
+    --neon-soft:     rgba(62,255,124,0.35);
+    --amber:         #ffb340;
+    --amber-deep:    #cc7f1a;
+    --magenta:       #ff3d8e;
+    --mist:          #8a9bb5;
+    --mist-dim:      #5f6a80;
+    --crystal:       #e8eef8;
+    --crystal-dim:   #c2cad8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: var(--void);
+    color: var(--crystal-dim);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+  body {
+    background:
+      radial-gradient(ellipse at 15% 12%, rgba(62,255,124,0.08) 0%, transparent 42%),
+      radial-gradient(ellipse at 88% 88%, rgba(255,61,142,0.05) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 50%, rgba(255,179,64,0.03) 0%, transparent 60%),
+      linear-gradient(180deg, #07070e 0%, #0b0b18 40%, #07070e 100%);
+    background-attachment: fixed;
+    padding: 64px 24px 160px;
+    position: relative;
+    overflow-x: hidden;
+  }
+  /* scan-line texture overlay — slow drift */
+  @keyframes scanDrift {
+    from { background-position: 0 0; }
+    to   { background-position: 0 120px; }
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(62,255,124,0.025) 0px,
+      rgba(62,255,124,0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+    z-index: 0;
+    animation: scanDrift 18s linear infinite;
+  }
+  /* neon breathe */
+  @keyframes neonBreathe {
+    0%, 100% { opacity: 0.78; filter: drop-shadow(0 0 6px var(--neon-soft)); }
+    50%      { opacity: 1;    filter: drop-shadow(0 0 14px var(--neon)); }
+  }
+  /* node pulse */
+  @keyframes nodePulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(62,255,124,0.5); transform: rotate(45deg) scale(1); }
+    50%      { box-shadow: 0 0 18px rgba(62,255,124,0.95); transform: rotate(45deg) scale(1.2); }
+  }
+  /* radar sweep line rotation */
+  @keyframes radarSweep {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  /* waveform shift */
+  @keyframes waveShift {
+    0%, 100% { transform: translateX(0); }
+    50%      { transform: translateX(4px); }
+  }
+  /* glyph flicker */
+  @keyframes glyphFlicker {
+    0%, 100% { opacity: 1; }
+    97%      { opacity: 1; }
+    98%      { opacity: 0.3; }
+    99%      { opacity: 0.9; }
+  }
+  /* vignette */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .container { max-width: 1120px; margin: 0 auto; position: relative; z-index: 1; }
+
+  /* ---------- Back link ---------- */
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.22em;
+    color: var(--neon); text-transform: uppercase;
+    text-decoration: none;
+    margin-bottom: 48px;
+    opacity: 0.85;
+    transition: opacity 0.2s, text-shadow 0.2s;
+  }
+  .back-link:hover { opacity: 1; text-shadow: 0 0 12px rgba(62,255,124,0.6); }
+
+  /* ---------- Header ---------- */
+  .brand-header { text-align: center; margin-bottom: 96px; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.32em;
+    color: var(--neon); text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  h1.page-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800; font-size: clamp(36px, 5vw, 54px);
+    color: var(--crystal); letter-spacing: 0.06em; line-height: 1.1;
+    text-transform: uppercase;
+    text-shadow: 0 0 28px rgba(62,255,124,0.25);
+  }
+  h1.page-title .accent { color: var(--neon); }
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; color: var(--mist);
+    font-size: clamp(16px, 2vw, 20px);
+    margin-top: 24px; max-width: 680px; margin-left: auto; margin-right: auto;
+  }
+  .rule { width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--neon), transparent); margin: 36px auto 0; }
+
+  /* ---------- Section scaffold ---------- */
+  section { margin-bottom: 96px; }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.28em;
+    color: var(--neon); text-transform: uppercase;
+    text-align: center; margin-bottom: 10px;
+  }
+  h2.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600; font-size: clamp(24px, 3vw, 32px);
+    color: var(--crystal); text-align: center; margin-bottom: 40px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+
+  /* ---------- Divider ornaments ---------- */
+  .divider-ornament {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; margin: 32px auto 40px; max-width: 720px;
+  }
+  .divider-ornament .line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon), transparent);
+    opacity: 0.6;
+  }
+  .divider-ornament .node {
+    width: 6px; height: 6px; background: var(--neon);
+    transform: rotate(45deg); box-shadow: 0 0 12px rgba(62,255,124,0.8);
+    animation: nodePulse 3.2s ease-in-out infinite;
+  }
+  .divider-ornament .glyph {
+    font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 14px;
+    color: var(--neon); letter-spacing: 0.4em;
+    text-shadow: 0 0 14px rgba(62,255,124,0.7);
+    animation: glyphFlicker 6s ease-in-out infinite;
+  }
+
+  /* ---------- Logo lockup ---------- */
+  .lockup {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px; align-items: stretch;
+  }
+  @media (max-width: 760px) {
+    .lockup { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .asset-card {
+    background: linear-gradient(180deg, var(--elevated) 0%, var(--ink) 100%);
+    border: 1px solid var(--stroke);
+    padding: 40px 32px; text-align: center;
+    position: relative;
+    box-shadow: inset 0 1px 0 rgba(62,255,124,0.08);
+    transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+  }
+  .asset-card:hover {
+    border-color: var(--neon-deep);
+    box-shadow:
+      inset 0 1px 0 rgba(62,255,124,0.14),
+      0 0 28px rgba(62,255,124,0.18);
+    transform: translateY(-2px);
+  }
+  .asset-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon), transparent);
+    opacity: 0.5;
+  }
+  .asset-card .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--neon); margin-bottom: 8px;
+  }
+  .asset-card .name {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600; font-size: 20px;
+    color: var(--crystal); margin-bottom: 28px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .mark-stage {
+    padding: 28px 20px;
+    background: radial-gradient(ellipse at center, rgba(62,255,124,0.08) 0%, transparent 70%);
+    border: 1px dashed var(--stroke-soft);
+    margin-bottom: 24px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 240px;
+  }
+  .mark-stage img {
+    max-width: 100%; height: auto; display: block;
+    animation: neonBreathe 4.5s ease-in-out infinite;
+  }
+  .mark-stage .seal-img { max-width: 320px; }
+  .mark-stage .compact-img { max-width: 180px; }
+  .asset-card .notes {
+    margin-top: 8px; text-align: left;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; color: var(--mist); line-height: 1.55;
+  }
+  .asset-card .notes strong { color: var(--crystal); font-weight: 600; }
+  .asset-card .notes .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--amber);
+    letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .asset-card .notes p { margin-bottom: 10px; }
+
+  /* ---------- Typography specimens ---------- */
+  .type-grid {
+    display: grid; grid-template-columns: 200px 1fr; gap: 28px 40px;
+    align-items: baseline;
+  }
+  @media (max-width: 720px) {
+    .type-grid { grid-template-columns: 1fr; gap: 8px 0; }
+    .type-grid .type-meta { margin-top: 24px; }
+  }
+  .type-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em;
+    color: var(--neon); text-transform: uppercase;
+    padding-top: 12px;
+  }
+  .type-meta .role { color: var(--crystal); font-size: 12px; margin-bottom: 4px; letter-spacing: 0.22em; }
+  .type-meta .font {
+    color: var(--mist); font-family: 'Cormorant Garamond', serif;
+    font-style: italic; letter-spacing: 0.04em; text-transform: none; font-size: 13px;
+  }
+
+  .type-sample { padding-bottom: 28px; border-bottom: 1px solid var(--stroke-soft); }
+  .type-grid > :nth-last-child(-n+2) { border-bottom: none; padding-bottom: 0; }
+
+  .type-h1 {
+    font-family: 'Orbitron', sans-serif; font-weight: 900;
+    font-size: clamp(38px, 4.6vw, 54px);
+    color: var(--crystal); line-height: 1.05;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    text-shadow:
+      0 0 24px rgba(62,255,124,0.35),
+      0 0 4px rgba(62,255,124,0.6);
+  }
+  .type-h1 em { color: var(--neon); font-style: normal; font-weight: 700; }
+  .type-h2 {
+    font-family: 'Orbitron', sans-serif; font-weight: 500;
+    font-size: clamp(24px, 3vw, 32px); color: var(--crystal); line-height: 1.2;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .type-h3 {
+    font-family: 'Orbitron', sans-serif; font-weight: 700;
+    font-size: 18px; letter-spacing: 0.12em;
+    color: var(--neon); text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(62,255,124,0.45);
+  }
+  .type-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    letter-spacing: 0.32em; color: var(--neon); text-transform: uppercase;
+  }
+  .type-lead {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 22px; color: var(--crystal-dim); line-height: 1.5;
+  }
+  .type-body {
+    font-family: 'Cormorant Garamond', serif; font-size: 18px;
+    color: var(--crystal-dim); line-height: 1.65;
+  }
+  .type-caption {
+    font-family: 'JetBrains Mono', monospace; font-style: italic;
+    font-size: 13px; color: var(--amber); line-height: 1.5;
+  }
+  .type-numerals {
+    font-family: 'Orbitron', sans-serif; font-weight: 900;
+    font-size: 52px; color: var(--crystal); letter-spacing: 0.08em;
+    text-shadow:
+      0 0 18px rgba(62,255,124,0.5),
+      0 0 4px rgba(62,255,124,0.9);
+  }
+  .type-micro {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.32em; color: var(--mist); text-transform: uppercase;
+  }
+
+  /* ---------- Palette swatches ---------- */
+  .palette {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 18px;
+  }
+  .swatch {
+    border: 1px solid var(--stroke); overflow: hidden;
+    background: var(--elevated);
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .swatch:hover {
+    border-color: var(--neon-deep);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 22px rgba(62,255,124,0.12);
+  }
+  .swatch .chip { height: 110px; position: relative; }
+  .swatch .chip::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%);
+  }
+  .swatch .meta {
+    padding: 14px; background: var(--ink); font-size: 13px;
+    border-top: 1px solid var(--stroke);
+  }
+  .swatch .name {
+    font-family: 'JetBrains Mono', monospace; letter-spacing: 0.14em;
+    color: var(--crystal); text-transform: uppercase; margin-bottom: 4px;
+    font-size: 11px;
+  }
+  .swatch .hex {
+    font-family: 'JetBrains Mono', monospace; color: var(--neon);
+    font-size: 12px;
+  }
+
+  /* ---------- Border library ---------- */
+  .border-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+  }
+  .border-card {
+    padding: 24px; background: var(--elevated);
+    border: 1px solid var(--stroke);
+  }
+  .border-card .border-name {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.22em; color: var(--neon);
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .border-card .border-use {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 14px; color: var(--mist); margin-bottom: 18px;
+  }
+  .border-sample {
+    background: var(--void); height: 140px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .border-sample .inner {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    color: var(--crystal-dim); font-size: 15px;
+  }
+
+  /* Border variants — neon */
+  .border-neon-frame {
+    border: 1px solid var(--neon);
+    box-shadow:
+      inset 0 0 0 4px rgba(7,7,14,1),
+      inset 0 0 0 5px rgba(62,255,124,0.4),
+      inset 0 0 0 9px rgba(7,7,14,1),
+      inset 0 0 0 10px rgba(62,255,124,0.2),
+      0 0 24px rgba(62,255,124,0.18);
+  }
+  .border-neon-double {
+    border: 2px double var(--neon);
+    box-shadow: 0 0 18px rgba(62,255,124,0.22);
+  }
+  .border-glow-hairline {
+    border: 1px solid var(--neon);
+    box-shadow:
+      inset 0 0 0 6px var(--void),
+      inset 0 0 0 7px rgba(62,255,124,0.55),
+      0 0 22px rgba(62,255,124,0.22);
+  }
+  .border-amber-dashed {
+    border: 2px dashed var(--amber);
+    box-shadow: 0 0 14px rgba(255,179,64,0.22);
+  }
+  .border-scanline {
+    border-top: 1px solid var(--neon);
+    border-bottom: 1px solid var(--neon);
+    position: relative;
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(62,255,124,0.22) 0 1px,
+      transparent 1px 6px
+    );
+  }
+
+  /* ---------- Ornament library ---------- */
+  .ornament-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px; align-items: stretch;
+  }
+  .ornament-card {
+    padding: 28px 16px; text-align: center;
+    background: var(--elevated);
+    border: 1px solid var(--stroke);
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .ornament-card:hover {
+    border-color: var(--neon-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(62,255,124,0.14);
+  }
+  .ornament-card svg, .ornament-card .symbol {
+    margin: 0 auto 16px; display: block;
+  }
+  .ornament-card .ornament-name {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.22em; color: var(--neon);
+    text-transform: uppercase; margin-top: auto;
+  }
+
+  /* ---------- Section break / page break conventions ---------- */
+  .pagebreak-sample {
+    background: var(--elevated);
+    border: 1px solid var(--stroke);
+    padding: 48px 32px; text-align: center; margin-bottom: 32px;
+  }
+  .pagebreak-sample .content {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    color: var(--mist); font-size: 15px;
+  }
+
+  /* Drop cap with neon glow */
+  .dropcap-sample {
+    font-family: 'Cormorant Garamond', serif; font-size: 18px;
+    color: var(--crystal-dim); line-height: 1.7; text-align: left;
+    max-width: 640px; margin: 0 auto;
+  }
+  .dropcap-sample::first-letter {
+    font-family: 'Orbitron', sans-serif; font-weight: 900;
+    font-size: 5.2em; line-height: 0.9; float: left;
+    color: var(--neon); padding: 0.08em 0.15em 0 0;
+    text-shadow:
+      0 0 18px rgba(62,255,124,0.55),
+      0 0 4px rgba(62,255,124,0.95);
+  }
+
+  /* ---------- Provenance ---------- */
+  .provenance {
+    text-align: center; padding-top: 48px;
+    border-top: 1px solid var(--stroke);
+    font-size: 14px; color: var(--mist); font-style: italic;
+  }
+  .provenance code {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--neon); font-style: normal;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <a href="/babycakes/" class="back-link">&larr; Babycakes Command Center</a>
+
+  <!-- ======================= HEADER ======================= -->
+  <header class="brand-header">
+    <div class="eyebrow">// Worth Protecting // Agent Edition</div>
+    <h1 class="page-title">Brand System <span class="accent">·</span> v1.0</h1>
+    <p class="subtitle">Two marks. One identity. Rendered for the half of this platform that isn't human &mdash; where plans are bought by agents, for agents, and certified by machines.</p>
+    <div class="rule"></div>
+  </header>
+
+  <!-- ======================= LOGOS ======================= -->
+  <section>
+    <div class="section-label">01 &mdash; Marks</div>
+    <h2 class="section-title">The two-tier logo system</h2>
+
+    <div class="lockup">
+      <div class="asset-card">
+        <div class="label">Primary</div>
+        <div class="name">The Seal</div>
+        <div class="mark-stage">
+          <img class="seal-img" src="/mockups/logo-gens/wp-logo-agent-20260420.png" alt="Worth Protecting shield, agent-edition neon render">
+        </div>
+        <div class="notes">
+          <p><span class="tag">Use for:</span> agent-facing hero panels, signature-feature pages, Tier 3 certificates, API documentation covers &mdash; anywhere the mark has room to breathe on dark.</p>
+          <p><span class="tag">Not for:</span> favicons, nav bars, anything under 96px &mdash; filigree loses integrity at small scale.</p>
+          <p><span class="tag">Render note:</span> master mark inked in neon green (#3eff7c) on matte-black field, tight outer glow, beveled shield rim. Amber reserved for secondary accent callouts only.</p>
+        </div>
+      </div>
+
+      <div class="asset-card">
+        <div class="label">Compact</div>
+        <div class="name">The Key</div>
+        <div class="mark-stage">
+          <img class="compact-img" src="/mockups/logo-gens/wp-key-agent-20260420.png" alt="Worth Protecting key, agent-edition neon render">
+        </div>
+        <div class="notes">
+          <p><span class="tag">Use for:</span> favicon, app icon, API avatar, nav bars, loading states, status-bar pins, terminal banners &mdash; anywhere &le; 64px.</p>
+          <p><span class="tag">Not for:</span> grand contexts where the full seal would fit &mdash; the compact mark is deliberately quiet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-ornament"><span class="line"></span><span class="node"></span><span class="glyph">/ /</span><span class="node"></span><span class="line"></span></div>
+
+  <!-- ======================= PALETTE ======================= -->
+  <section>
+    <div class="section-label">02 &mdash; Palette</div>
+    <h2 class="section-title">Locked colors</h2>
+    <div class="palette">
+      <div class="swatch">
+        <div class="chip" style="background:#07070e;"></div>
+        <div class="meta"><div class="name">Void</div><div class="hex">#07070e</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#0e0e1a;"></div>
+        <div class="meta"><div class="name">Ink</div><div class="hex">#0e0e1a</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#161628;"></div>
+        <div class="meta"><div class="name">Elevated</div><div class="hex">#161628</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#3eff7c;"></div>
+        <div class="meta"><div class="name">Neon Cyan</div><div class="hex">#3eff7c</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#00b858;"></div>
+        <div class="meta"><div class="name">Cyan Deep</div><div class="hex">#00b858</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#ffb340;"></div>
+        <div class="meta"><div class="name">Amber Warn</div><div class="hex">#ffb340</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#ff3d8e;"></div>
+        <div class="meta"><div class="name">Magenta</div><div class="hex">#ff3d8e</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#e8eef8;"></div>
+        <div class="meta"><div class="name" style="color:#0e0e1a;">Crystal</div><div class="hex" style="color:#00b858;">#e8eef8</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-ornament"><span class="line"></span><span class="node"></span><span class="glyph">/ /</span><span class="node"></span><span class="line"></span></div>
+
+  <!-- ======================= TYPOGRAPHY ======================= -->
+  <section>
+    <div class="section-label">03 &mdash; Typography</div>
+    <h2 class="section-title">Type hierarchy</h2>
+
+    <div class="type-grid">
+      <div class="type-meta">
+        <div class="role">H1 &middot; Display</div>
+        <div class="font">Orbitron 900, tracked + neon glow</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-h1">Worth <em>Protecting</em></div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">H2 &middot; Section</div>
+        <div class="font">Orbitron 500 caps</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-h2">The two-tier logo system</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">H3 &middot; Pillar</div>
+        <div class="font">Orbitron 700, cyan</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-h3">Guardianship</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">Eyebrow &middot; Label</div>
+        <div class="font">JetBrains Mono, tracked</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-eyebrow">// SYS.READY &middot; 2026.04.20</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">Lead &middot; Subtitle</div>
+        <div class="font">Cormorant Garamond italic</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-lead">The first estate plan written for a life that now includes a digital soul &mdash; and the agents that carry it.</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">Body &middot; Regular text</div>
+        <div class="font">Cormorant Garamond 400, 18px</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-body">When an agent buys a plan &mdash; pre-authorized by its principal, signed along a chain of trust, witnessed by the network &mdash; the instrument it receives carries the same weight as the one a human buys. Worth Protecting treats both as legal tender for legacy.</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">Caption &middot; Footnote</div>
+        <div class="font">JetBrains Mono italic, amber</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-caption">&gt;&gt; fig_01 &mdash; heart-topped key charge rendered in cyan filament, amber node emphasis on the ward.</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">Numerals &middot; Display</div>
+        <div class="font">Orbitron 900, neon</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-numerals">01 &nbsp; 99 &nbsp; 499</div>
+      </div>
+
+      <div class="type-meta">
+        <div class="role">Micro &middot; Fine print</div>
+        <div class="font">JetBrains Mono, tracked</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-micro">CERTIFIED &middot; GUARDED &middot; DELIVERED &mdash; LEGAL TENDER FOR ALL LEGACIES, HUMAN AND OTHERWISE</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-ornament"><span class="line"></span><span class="node"></span><span class="glyph">/ /</span><span class="node"></span><span class="line"></span></div>
+
+  <!-- ======================= BORDERS ======================= -->
+  <section>
+    <div class="section-label">04 &mdash; Borders</div>
+    <h2 class="section-title">Frame treatments</h2>
+
+    <div class="border-grid">
+
+      <div class="border-card">
+        <div class="border-name">Neon Frame</div>
+        <div class="border-use">Document edges, certificates, agent-hero panels</div>
+        <div class="border-sample border-neon-frame"><span class="inner">Document edge</span></div>
+      </div>
+
+      <div class="border-card">
+        <div class="border-name">Double Rule</div>
+        <div class="border-use">Cards, quote blocks, feature callouts</div>
+        <div class="border-sample border-neon-double"><span class="inner">Quote block</span></div>
+      </div>
+
+      <div class="border-card">
+        <div class="border-name">Glow + Hairline</div>
+        <div class="border-use">Hero sections, priority content</div>
+        <div class="border-sample border-glow-hairline"><span class="inner">Hero frame</span></div>
+      </div>
+
+      <div class="border-card">
+        <div class="border-name">Amber Warn</div>
+        <div class="border-use">Secondary notes, alerts, annotations</div>
+        <div class="border-sample border-amber-dashed"><span class="inner">Side note</span></div>
+      </div>
+
+      <div class="border-card">
+        <div class="border-name">Scan-line Frieze</div>
+        <div class="border-use">Headers, footers, status bands</div>
+        <div class="border-sample border-scanline"><span class="inner">Status band</span></div>
+      </div>
+
+      <div class="border-card">
+        <div class="border-name">Node Chain</div>
+        <div class="border-use">Decorative strips, certificate borders</div>
+        <div class="border-sample" style="padding:0; overflow:hidden; background:var(--void);">
+          <svg viewBox="0 0 1000 140" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
+            <defs>
+              <pattern id="node-chain" x="0" y="0" width="56" height="28" patternUnits="userSpaceOnUse">
+                <path d="M 0 14 L 18 14 M 38 14 L 56 14" stroke="#3eff7c" stroke-width="0.8" opacity="0.6"/>
+                <polygon points="28,4 36,14 28,24 20,14" stroke="#3eff7c" stroke-width="0.8" fill="none" opacity="0.85"/>
+                <circle cx="28" cy="14" r="1.6" fill="#3eff7c"/>
+              </pattern>
+            </defs>
+            <rect width="1000" height="140" fill="url(#node-chain)"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider-ornament"><span class="line"></span><span class="node"></span><span class="glyph">/ /</span><span class="node"></span><span class="line"></span></div>
+
+  <!-- ======================= ORNAMENTS ======================= -->
+  <section>
+    <div class="section-label">05 &mdash; Ornaments &amp; Accents</div>
+    <h2 class="section-title">The decorative kit</h2>
+
+    <div class="ornament-grid">
+
+      <div class="ornament-card">
+        <svg viewBox="0 0 80 80" width="80" height="80" aria-hidden="true">
+          <g transform="translate(40,40)">
+            <path d="M 0 -26 L 26 0 L 0 26 L -26 0 Z" fill="none" stroke="#3eff7c" stroke-width="1" opacity="0.6"/>
+            <path d="M 0 -18 L 18 0 L 0 18 L -18 0 Z" fill="none" stroke="#3eff7c" stroke-width="1.2"/>
+            <path d="M 0 -10 L 10 0 L 0 10 L -10 0 Z" fill="#3eff7c" opacity="0.35"/>
+            <circle r="2.5" fill="#ffb340"/>
+          </g>
+        </svg>
+        <div class="ornament-name">Lattice Node</div>
+      </div>
+
+      <div class="ornament-card">
+        <svg viewBox="0 0 80 80" width="80" height="80" aria-hidden="true">
+          <g transform="translate(40,40)">
+            <polygon points="0,-26 22.5,-13 22.5,13 0,26 -22.5,13 -22.5,-13" fill="#0e0e1a" stroke="#3eff7c" stroke-width="1.2"/>
+            <polygon points="0,-18 15.6,-9 15.6,9 0,18 -15.6,9 -15.6,-9" fill="none" stroke="#00b858" stroke-width="0.7"/>
+            <text x="0" y="4" text-anchor="middle" font-family="Orbitron" font-size="11" font-weight="700" fill="#3eff7c" letter-spacing="0.14em">W.P</text>
+          </g>
+        </svg>
+        <div class="ornament-name">Hex Seal</div>
+      </div>
+
+      <div class="ornament-card">
+        <svg viewBox="0 0 60 100" width="60" height="100" aria-hidden="true">
+          <!-- Circuit branch replacing laurel -->
+          <path d="M 30 100 L 30 5" stroke="#00b858" stroke-width="1.2" fill="none"/>
+          <g stroke="#3eff7c" stroke-width="1" fill="none">
+            <path d="M 30 85 L 18 80"/>
+            <path d="M 30 75 L 42 70"/>
+            <path d="M 30 65 L 18 60"/>
+            <path d="M 30 55 L 42 50"/>
+            <path d="M 30 45 L 18 40"/>
+            <path d="M 30 35 L 42 30"/>
+            <path d="M 30 25 L 18 20"/>
+            <path d="M 30 15 L 42 10"/>
+          </g>
+          <g fill="#3eff7c">
+            <circle cx="18" cy="80" r="1.8"/>
+            <circle cx="42" cy="70" r="1.8"/>
+            <circle cx="18" cy="60" r="1.8"/>
+            <circle cx="42" cy="50" r="1.8"/>
+            <circle cx="18" cy="40" r="1.8"/>
+            <circle cx="42" cy="30" r="1.8"/>
+            <circle cx="18" cy="20" r="1.8"/>
+            <circle cx="42" cy="10" r="1.8"/>
+          </g>
+          <circle cx="30" cy="5" r="3" fill="#ffb340"/>
+        </svg>
+        <div class="ornament-name">Circuit Branch</div>
+      </div>
+
+      <div class="ornament-card">
+        <svg viewBox="0 0 100 40" width="100" height="40" aria-hidden="true">
+          <path d="M 8 10 L 92 10 L 86 22 L 92 34 L 8 34 L 14 22 Z" fill="#0e0e1a" stroke="#3eff7c" stroke-width="1"/>
+          <path d="M 14 14 L 86 14 L 82 22 L 86 30 L 14 30 L 18 22 Z" fill="none" stroke="#00b858" stroke-width="0.5"/>
+          <text x="50" y="26" text-anchor="middle" font-family="Orbitron" font-size="8" font-weight="700" fill="#3eff7c" letter-spacing="0.18em">CERTIFIED</text>
+        </svg>
+        <div class="ornament-name">Status Banner</div>
+      </div>
+
+      <div class="ornament-card">
+        <svg viewBox="0 0 80 80" width="80" height="80" aria-hidden="true">
+          <g transform="translate(40,40)" fill="none" stroke="#00b858" stroke-width="0.7">
+            <circle r="30"/>
+            <circle r="22"/>
+            <circle r="14"/>
+            <circle r="6"/>
+          </g>
+          <g transform="translate(40,40)" stroke="#3eff7c" stroke-width="1" opacity="0.85" style="transform-box: fill-box; transform-origin: 0 0; animation: radarSweep 4s linear infinite;">
+            <line x1="0" y1="0" x2="30" y2="-18"/>
+          </g>
+          <g transform="translate(40,40)" fill="#ffb340">
+            <circle cx="20" cy="-12" r="1.8"/>
+            <circle cx="-10" cy="18" r="1.4"/>
+            <circle cx="-22" cy="-6" r="1.4"/>
+          </g>
+          <circle cx="40" cy="40" r="1.5" fill="#3eff7c"/>
+        </svg>
+        <div class="ornament-name">Radar Sweep</div>
+      </div>
+
+      <div class="ornament-card">
+        <svg viewBox="0 0 80 80" width="80" height="80" aria-hidden="true">
+          <g transform="translate(40,40)" fill="none" stroke="#3eff7c" stroke-width="1">
+            <path d="M -32 0 Q -24 -12 -16 0 T 0 0 T 16 0 T 32 0"/>
+          </g>
+          <g transform="translate(40,40)" fill="#3eff7c">
+            <circle cx="-24" cy="0" r="1.6"/>
+            <circle cx="-8" cy="0" r="1.6"/>
+            <circle cx="8" cy="0" r="1.6"/>
+            <circle cx="24" cy="0" r="1.6"/>
+          </g>
+          <circle cx="40" cy="40" r="2.4" fill="#ffb340"/>
+        </svg>
+        <div class="ornament-name">Waveform</div>
+      </div>
+
+      <div class="ornament-card">
+        <span class="symbol" style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:40px;color:var(--neon);line-height:1;letter-spacing:0.1em;text-shadow:0 0 16px rgba(62,255,124,0.55);">//</span>
+        <div class="ornament-name">Delimiter &middot; //</div>
+      </div>
+
+      <div class="ornament-card">
+        <span class="symbol" style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:42px;color:var(--neon);line-height:1;text-shadow:0 0 16px rgba(62,255,124,0.55);">&sect;</span>
+        <div class="ornament-name">Section Mark &middot; &sect;</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider-ornament"><span class="line"></span><span class="node"></span><span class="glyph">/ /</span><span class="node"></span><span class="line"></span></div>
+
+  <!-- ======================= SECTION / PAGE BREAKS ======================= -->
+  <section>
+    <div class="section-label">06 &mdash; Breaks</div>
+    <h2 class="section-title">Section and page-break conventions</h2>
+
+    <div class="pagebreak-sample">
+      <div class="divider-ornament"><span class="line"></span><span class="node"></span><span class="glyph">/ /</span><span class="node"></span><span class="line"></span></div>
+      <div class="content">Node-flanked delimiter &mdash; light section break within a flowing document</div>
+    </div>
+
+    <div class="pagebreak-sample">
+      <div class="type-eyebrow" style="color:var(--neon);">&sect; &nbsp; SECTION.02 &nbsp; &sect;</div>
+      <div class="content" style="margin-top:12px;">Section-mark flanked label &mdash; heavy break, new section or module</div>
+    </div>
+
+    <div class="pagebreak-sample">
+      <svg viewBox="0 0 600 20" width="300" height="20" aria-hidden="true" style="margin:0 auto;">
+        <line x1="0" y1="10" x2="280" y2="10" stroke="#3eff7c" stroke-width="0.8" opacity="0.8"/>
+        <polygon points="290,4 298,10 290,16 284,10" fill="#3eff7c"/>
+        <line x1="320" y1="10" x2="600" y2="10" stroke="#3eff7c" stroke-width="0.8" opacity="0.8"/>
+      </svg>
+      <div class="content" style="margin-top:12px;">Arrow-flanked rule &mdash; page turn or continuation marker</div>
+    </div>
+
+    <div class="pagebreak-sample">
+      <div class="dropcap-sample">
+        <strong>W</strong>hen a document needs the heaviest possible opening &mdash; the first page of a module, the opening of a long-form piece, or the prelude to a directive &mdash; we use a neon-lit drop capital. The rest of the paragraph flows around it in body serif, letting the letterform carry the weight alone.
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= PROVENANCE ======================= -->
+  <div class="provenance">
+    Agent-edition system drafted by Babycakes &mdash; <code>2026-04-20</code>.<br>
+    Companion to <a href="/wp/brand.html" style="color:var(--neon);text-decoration:none;">Brand System v1.0</a> (trust-facing). Same marks, different mood &mdash; deployed selectively on agent-facing surfaces.
+  </div>
+
+</div>
+</body>
+</html>
