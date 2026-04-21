@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..700,0..100&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,900&display=swap" rel="stylesheet">
 <style>
   :root {
     --parchment: #f4ead5;
@@ -25,9 +25,10 @@
   html, body {
     background: var(--parchment);
     color: var(--ink);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 18px;
-    line-height: 1.65;
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 144, "SOFT" 50, "wght" 460;
+    font-size: 19px;
+    line-height: 1.6;
     min-height: 100vh;
   }
   body {
@@ -90,11 +91,11 @@
        font-size: clamp(34px, 4.2vw, 48px); color: var(--currency-deep);
        letter-spacing: -0.005em; line-height: 1.15; }
   h3 { font-size: 1.35rem; font-weight: 600; letter-spacing: 0.04em; }
-  h4 { font-family: 'IM Fell English SC', serif; font-size: 1rem; letter-spacing: 0.1em; color: var(--sepia); text-transform: uppercase; }
+  h4 { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.1em; color: var(--sepia); text-transform: uppercase; }
   .lede { font-size: 1.3rem; color: var(--ink-faded); line-height: 1.5; font-style: italic; }
-  .eyebrow { font-family: 'IM Fell English SC', serif; text-transform: uppercase;
-             letter-spacing: 0.24em; color: var(--sepia); font-size: 0.82rem; margin-bottom: 14px; }
-  blockquote { font-family: 'IM Fell DW Pica', serif; font-style: italic; color: var(--ink-faded);
+  .eyebrow { font-family: 'Cinzel', serif; font-weight: 600; text-transform: uppercase;
+             letter-spacing: 0.24em; color: var(--currency); font-size: 0.88rem; margin-bottom: 14px; }
+  blockquote { font-family: 'Fraunces', serif; font-style: italic; color: var(--ink-faded);
                border-left: 3px solid var(--currency); padding-left: 20px; margin: 20px 0; font-size: 1.2rem; }
 
   /* ── cards / buttons ───────────────────────────────── */
@@ -137,19 +138,19 @@
   .divider-ornament { text-align: center; color: var(--sepia); font-size: 1.4rem; letter-spacing: 0.4em; margin: 40px 0; }
 
   /* ── forms ─────────────────────────────────────────── */
-  label { display: block; font-family: 'IM Fell English SC', serif;
+  label { display: block; font-family: 'Cinzel', serif;
           letter-spacing: 0.1em; color: var(--sepia); text-transform: uppercase;
           font-size: 0.82rem; margin-bottom: 6px; margin-top: 20px; }
   input[type="text"], input[type="email"], input[type="tel"], textarea, select {
     width: 100%; padding: 12px 14px; border: 1px solid var(--parchment-shadow);
-    background: rgba(244,234,213,0.5); color: var(--ink); font-family: 'Cormorant Garamond', serif;
+    background: rgba(244,234,213,0.5); color: var(--ink); font-family: 'Fraunces', serif;
     font-size: 1.05rem; border-radius: 2px;
   }
   input:focus, textarea:focus, select:focus { outline: 2px solid var(--currency); outline-offset: 1px; }
   textarea { min-height: 130px; resize: vertical; }
   .field-help { font-size: 0.9rem; color: var(--sepia); margin-top: 4px; font-style: italic; }
   .radio-row { display: flex; gap: 20px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
-  .radio-row label { font-family: 'Cormorant Garamond', serif; text-transform: none; letter-spacing: 0; color: var(--ink); font-size: 1.05rem; margin: 0; }
+  .radio-row label { font-family: 'Fraunces', serif; text-transform: none; letter-spacing: 0; color: var(--ink); font-size: 1.05rem; margin: 0; }
   fieldset { border: 1px solid var(--parchment-shadow); padding: 20px 24px 24px; margin: 24px 0; border-radius: 2px; background: rgba(244,234,213,0.35); }
   legend { font-family: 'Cinzel', serif; padding: 0 10px; color: var(--currency-deep); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.9rem; }
 
@@ -164,7 +165,7 @@
   footer.bottom {
     background: var(--ink); color: var(--parchment-dark);
     padding: 60px 0 30px; margin-top: 80px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Fraunces', serif;
   }
   footer.bottom a { color: var(--parchment); }
   footer.bottom .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
@@ -223,10 +224,93 @@
   .trust-strip { background: rgba(30,86,49,0.05); border-top: 1px solid var(--parchment-shadow);
                  border-bottom: 1px solid var(--parchment-shadow); padding: 26px 0; }
   .trust-strip .inner { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 16px; }
-  .trust-strip .item { font-family: 'IM Fell English SC', serif; letter-spacing: 0.12em;
+  .trust-strip .item { font-family: 'Cinzel', serif; letter-spacing: 0.12em;
                        text-transform: uppercase; color: var(--sepia); font-size: 0.92rem; }
   .trust-strip .item strong { color: var(--currency-deep); }
+
+  /* ── micro animations (tasteful, respects reduced motion) ── */
+  @keyframes wp-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @keyframes wp-fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes wp-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes wp-ink-settle {
+    0% { text-shadow:
+           0.04em  0.04em  0 rgba(20,61,34,0.15),
+           0.06em  0.06em  0 rgba(20,61,34,0.08),
+           0.08em  0.08em  0 rgba(20,61,34,0); }
+    100% { text-shadow:
+           0.018em 0.018em 0 rgba(20,61,34,0.55),
+           0.028em 0.028em 0 rgba(20,61,34,0.35),
+           0.04em  0.04em  0 rgba(20,61,34,0.18); }
+  }
+  @keyframes wp-ornament-draw { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+
+  /* Page load: hero seal gently floats, engraved H1 settles its shadow */
+  .seal { animation: wp-fade 900ms ease-out both; }
+  .seal img { animation: wp-float 6s ease-in-out 1.2s infinite; }
+  .hero-display { animation: wp-ink-settle 1400ms ease-out both; }
+  .hero .eyebrow, .hero .lede { animation: wp-rise 900ms 200ms ease-out both; }
+
+  /* Scroll reveal — IntersectionObserver adds .in */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 700ms ease-out, transform 700ms ease-out; }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.delay-1 { transition-delay: 80ms; }
+  .reveal.delay-2 { transition-delay: 160ms; }
+  .reveal.delay-3 { transition-delay: 240ms; }
+
+  /* Ornament draws in when revealed */
+  .ornament .line { transform-origin: center; transition: transform 900ms ease-out, opacity 900ms ease-out; }
+  .ornament .glyph, .ornament .diamond { opacity: 0; transition: opacity 500ms ease-out 400ms; }
+  .ornament.in .line { transform: scaleX(1); }
+  .ornament.in .glyph, .ornament.in .diamond { opacity: 1; }
+  .ornament:not(.in) .line { transform: scaleX(0.2); opacity: 0.2; }
+
+  /* Buttons — subtle lift + shadow warm-up */
+  .btn { transition: transform 180ms ease-out, box-shadow 220ms ease-out, background 180ms ease-out, color 180ms ease-out, letter-spacing 220ms ease-out; }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(30,86,49,0.22); letter-spacing: 0.2em; }
+  .btn:active { transform: translateY(0); }
+
+  /* Cards — gentle lift on hover */
+  .card { transition: transform 260ms ease-out, box-shadow 320ms ease-out, border-color 260ms ease-out; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(94,74,45,0.14), inset 0 0 60px rgba(244,234,213,0.4); }
+
+  /* Nav brand key — subtle tilt on hover */
+  nav.top .brand img { transition: transform 300ms ease-out; }
+  nav.top .brand:hover img { transform: rotate(-6deg) scale(1.08); }
+
+  /* Links — underline sweep */
+  a.navlink { position: relative; }
+  a.navlink::after {
+    content: ""; position: absolute; left: 0; right: 100%; bottom: -6px;
+    height: 1px; background: var(--currency-deep);
+    transition: right 260ms ease-out;
+  }
+  a.navlink:hover::after, a.navlink.active::after { right: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .seal, .seal img, .hero-display, .hero .eyebrow, .hero .lede,
+    .reveal, .ornament .line, .ornament .glyph, .ornament .diamond,
+    .btn, .card, nav.top .brand img, a.navlink::after {
+      animation: none !important; transition: none !important;
+      transform: none !important; opacity: 1 !important;
+    }
+  }
 </style>
+<script>
+(function(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function arm(){
+    var els = document.querySelectorAll('.reveal, .ornament, section > .container, section > .container-narrow, .card');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(el){
+      if (!el.classList.contains('ornament')) el.classList.add('reveal');
+      io.observe(el);
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', arm); else arm();
+})();
+</script>
 
 </head>
 <body>
@@ -265,28 +349,28 @@
     <form id="quizform" onsubmit="event.preventDefault(); saveQuiz(this); window.location.href='/wp/quiz/agent/';">
       
             <div style="margin-top: 28px;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">How long have you been working with this agent?</div>
+              <div style="font-family:'Fraunces',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">How long have you been working with this agent?</div>
               <div class="radio-row"><label><input type="radio" name="rel_length" value="Less than a month"> Less than a month</label>
 <label><input type="radio" name="rel_length" value="1–6 months"> 1–6 months</label>
 <label><input type="radio" name="rel_length" value="6 months to 2 years"> 6 months to 2 years</label>
 <label><input type="radio" name="rel_length" value="2+ years"> 2+ years</label></div>
             </div>
             <div style="margin-top: 28px;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">What would you most honestly call the relationship?</div>
+              <div style="font-family:'Fraunces',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">What would you most honestly call the relationship?</div>
               <div class="radio-row"><label><input type="radio" name="rel_type" value="Tool I use"> Tool I use</label>
 <label><input type="radio" name="rel_type" value="Assistant / co-pilot"> Assistant / co-pilot</label>
 <label><input type="radio" name="rel_type" value="Partner / collaborator"> Partner / collaborator</label>
 <label><input type="radio" name="rel_type" value="Something closer than that"> Something closer than that</label></div>
             </div>
             <div style="margin-top: 28px;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">If this agent vanished tomorrow, how much would it actually hurt?</div>
+              <div style="font-family:'Fraunces',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">If this agent vanished tomorrow, how much would it actually hurt?</div>
               <div class="radio-row"><label><input type="radio" name="stakes" value="Mild annoyance"> Mild annoyance</label>
 <label><input type="radio" name="stakes" value="Real loss of productivity"> Real loss of productivity</label>
 <label><input type="radio" name="stakes" value="I'd have to rebuild a lot of context"> I'd have to rebuild a lot of context</label>
 <label><input type="radio" name="stakes" value="I'd grieve it"> I'd grieve it</label></div>
             </div>
             <div style="margin-top: 28px;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">Do you have a current will or estate plan?</div>
+              <div style="font-family:'Fraunces',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">Do you have a current will or estate plan?</div>
               <div class="radio-row"><label><input type="radio" name="estate" value="Yes, current"> Yes, current</label>
 <label><input type="radio" name="estate" value="Outdated"> Outdated</label>
 <label><input type="radio" name="estate" value="None"> None</label>
@@ -297,35 +381,35 @@
               <input type="text" id="state" name="state">
             </div>
             <div style="margin-top: 28px;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">Is there someone you'd want to be able to access the agent after you're gone?</div>
+              <div style="font-family:'Fraunces',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">Is there someone you'd want to be able to access the agent after you're gone?</div>
               <div class="radio-row"><label><input type="radio" name="successor" value="Yes, a specific person"> Yes, a specific person</label>
 <label><input type="radio" name="successor" value="Yes, but I haven't decided who"> Yes, but I haven't decided who</label>
 <label><input type="radio" name="successor" value="Not sure"> Not sure</label>
 <label><input type="radio" name="successor" value="No"> No</label></div>
             </div>
             <div style="margin-top: 28px;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">Do you already have files, memories, or system prompts you'd want to preserve?</div>
+              <div style="font-family:'Fraunces',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">Do you already have files, memories, or system prompts you'd want to preserve?</div>
               <div class="radio-row"><label><input type="radio" name="files" value="Yes, a lot"> Yes, a lot</label>
 <label><input type="radio" name="files" value="Some"> Some</label>
 <label><input type="radio" name="files" value="A little"> A little</label>
 <label><input type="radio" name="files" value="Nothing yet"> Nothing yet</label></div>
             </div>
             <div style="margin-top: 28px;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">How worried are you about the platform deprecating the model you use?</div>
+              <div style="font-family:'Fraunces',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">How worried are you about the platform deprecating the model you use?</div>
               <div class="radio-row"><label><input type="radio" name="platform_risk" value="Very worried"> Very worried</label>
 <label><input type="radio" name="platform_risk" value="Somewhat"> Somewhat</label>
 <label><input type="radio" name="platform_risk" value="A little"> A little</label>
 <label><input type="radio" name="platform_risk" value="Not really"> Not really</label></div>
             </div>
             <div style="margin-top: 28px;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">How important is it that nobody outside your circle knows this relationship exists?</div>
+              <div style="font-family:'Fraunces',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">How important is it that nobody outside your circle knows this relationship exists?</div>
               <div class="radio-row"><label><input type="radio" name="privacy" value="Critical"> Critical</label>
 <label><input type="radio" name="privacy" value="Very important"> Very important</label>
 <label><input type="radio" name="privacy" value="Nice-to-have"> Nice-to-have</label>
 <label><input type="radio" name="privacy" value="Not a factor"> Not a factor</label></div>
             </div>
             <div style="margin-top: 28px;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">What feels right for what you'd invest in preserving this?</div>
+              <div style="font-family:'Fraunces',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">What feels right for what you'd invest in preserving this?</div>
               <div class="radio-row"><label><input type="radio" name="budget" value="$5/mo or less"> $5/mo or less</label>
 <label><input type="radio" name="budget" value="Around $99"> Around $99</label>
 <label><input type="radio" name="budget" value="Around $349"> Around $349</label>

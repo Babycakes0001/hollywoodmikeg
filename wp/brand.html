@@ -6,7 +6,7 @@
 <title>Worth Protecting — Brand System v1.0</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..700,0..100&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,900&display=swap" rel="stylesheet">
 <style>
   :root {
     --parchment: #f4ead5;
@@ -23,9 +23,10 @@
   html, body {
     background: var(--parchment);
     color: var(--ink);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 18px;
-    line-height: 1.65;
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 144, "SOFT" 50, "wght" 460;
+    font-size: 19px;
+    line-height: 1.6;
     min-height: 100vh;
   }
   body {
@@ -41,7 +42,7 @@
   /* ---------- Back link ---------- */
   .back-link {
     display: inline-block;
-    font-family: 'IM Fell English SC', Georgia, serif;
+    font-family: 'Cinzel', Georgia, serif;
     font-size: 12px; letter-spacing: 0.22em;
     color: var(--currency); text-transform: uppercase;
     text-decoration: none;
@@ -54,18 +55,18 @@
   /* ---------- Header ---------- */
   .brand-header { text-align: center; margin-bottom: 96px; }
   .eyebrow {
-    font-family: 'IM Fell English SC', Georgia, serif;
+    font-family: 'Cinzel', Georgia, serif;
     font-size: 14px; letter-spacing: 0.24em;
     color: var(--currency); text-transform: uppercase;
     margin-bottom: 16px;
   }
   h1.page-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Fraunces', serif;
     font-weight: 600; font-size: clamp(40px, 5.5vw, 60px);
     color: var(--currency-deep); letter-spacing: 0.01em; line-height: 1.1;
   }
   .subtitle {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Fraunces', serif;
     font-style: italic; color: var(--ink-faded);
     font-size: clamp(16px, 2vw, 20px);
     margin-top: 20px; max-width: 660px; margin-left: auto; margin-right: auto;
@@ -75,13 +76,13 @@
   /* ---------- Section scaffold ---------- */
   section { margin-bottom: 96px; }
   .section-label {
-    font-family: 'IM Fell English SC', Georgia, serif;
+    font-family: 'Cinzel', Georgia, serif;
     font-size: 12px; letter-spacing: 0.22em;
     color: var(--currency); text-transform: uppercase;
     text-align: center; margin-bottom: 10px;
   }
   h2.section-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Fraunces', serif;
     font-weight: 600; font-size: clamp(28px, 3.5vw, 36px);
     color: var(--currency-deep); text-align: center; margin-bottom: 40px;
   }
@@ -117,12 +118,12 @@
     padding: 40px 32px; text-align: center;
   }
   .asset-card .label {
-    font-family: 'IM Fell English SC', Georgia, serif;
+    font-family: 'Cinzel', Georgia, serif;
     font-size: 12px; letter-spacing: 0.2em;
     text-transform: uppercase; color: var(--currency); margin-bottom: 6px;
   }
   .asset-card .name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Fraunces', serif;
     font-weight: 600; font-size: 22px;
     color: var(--currency-deep); margin-bottom: 24px;
   }
@@ -146,13 +147,13 @@
     .type-grid .type-meta { margin-top: 24px; }
   }
   .type-meta {
-    font-family: 'IM Fell English SC', Georgia, serif;
+    font-family: 'Cinzel', Georgia, serif;
     font-size: 11px; letter-spacing: 0.18em;
     color: var(--currency); text-transform: uppercase;
     padding-top: 12px;
   }
   .type-meta .role { color: var(--currency-deep); font-size: 13px; margin-bottom: 4px; }
-  .type-meta .font { color: var(--ink-faded); font-family: 'Cormorant Garamond', serif;
+  .type-meta .font { color: var(--ink-faded); font-family: 'Fraunces', serif;
     font-style: italic; letter-spacing: 0.04em; text-transform: none; font-size: 13px; }
 
   .type-sample { padding-bottom: 28px; border-bottom: 1px solid rgba(30,86,49,0.18); }
@@ -179,19 +180,20 @@
     color: var(--currency-deep); text-transform: uppercase;
   }
   .type-eyebrow {
-    font-family: 'IM Fell English SC', serif; font-size: 13px;
+    font-family: 'Cinzel', serif; font-size: 13px;
     letter-spacing: 0.24em; color: var(--currency); text-transform: uppercase;
   }
   .type-lead {
-    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-family: 'Fraunces', serif; font-style: italic;
     font-size: 22px; color: var(--ink-faded); line-height: 1.5;
   }
   .type-body {
-    font-family: 'Cormorant Garamond', serif; font-size: 18px;
-    color: var(--ink); line-height: 1.65;
+    font-family: 'Fraunces', serif; font-size: 19px;
+    font-variation-settings: "opsz" 144, "SOFT" 50, "wght" 480;
+    color: var(--ink); line-height: 1.6;
   }
   .type-caption {
-    font-family: 'IM Fell DW Pica', serif; font-style: italic;
+    font-family: 'Fraunces', serif; font-style: italic;
     font-size: 14px; color: var(--sepia); line-height: 1.5;
   }
   .type-numerals {
@@ -200,7 +202,7 @@
     text-shadow: 1px 0 0 var(--currency), 2px 1px 0 rgba(20,61,34,0.35);
   }
   .type-micro {
-    font-family: 'IM Fell English SC', serif; font-size: 10px;
+    font-family: 'Cinzel', serif; font-size: 10px;
     letter-spacing: 0.32em; color: var(--sepia); text-transform: uppercase;
   }
 
@@ -213,7 +215,7 @@
   .swatch .chip { height: 110px; }
   .swatch .meta { padding: 14px; background: rgba(255,255,255,0.3); font-size: 13px; }
   .swatch .name {
-    font-family: 'IM Fell English SC', serif; letter-spacing: 0.12em;
+    font-family: 'Cinzel', serif; letter-spacing: 0.12em;
     color: var(--currency-deep); text-transform: uppercase; margin-bottom: 4px;
   }
   .swatch .hex { font-family: monospace; color: var(--ink-faded); }
@@ -228,12 +230,12 @@
     border: 1px solid rgba(30,86,49,0.2);
   }
   .border-card .border-name {
-    font-family: 'IM Fell English SC', serif; font-size: 11px;
+    font-family: 'Cinzel', serif; font-size: 11px;
     letter-spacing: 0.2em; color: var(--currency);
     text-transform: uppercase; margin-bottom: 4px;
   }
   .border-card .border-use {
-    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-family: 'Fraunces', serif; font-style: italic;
     font-size: 14px; color: var(--ink-faded); margin-bottom: 18px;
   }
   .border-sample {
@@ -241,7 +243,7 @@
     display: flex; align-items: center; justify-content: center;
   }
   .border-sample .inner {
-    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-family: 'Fraunces', serif; font-style: italic;
     color: var(--currency-deep); font-size: 15px;
   }
 
@@ -286,7 +288,7 @@
     margin: 0 auto 16px; display: block;
   }
   .ornament-card .ornament-name {
-    font-family: 'IM Fell English SC', serif; font-size: 11px;
+    font-family: 'Cinzel', serif; font-size: 11px;
     letter-spacing: 0.2em; color: var(--currency);
     text-transform: uppercase; margin-top: auto;
   }
@@ -298,13 +300,13 @@
     padding: 48px 32px; text-align: center; margin-bottom: 32px;
   }
   .pagebreak-sample .content {
-    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-family: 'Fraunces', serif; font-style: italic;
     color: var(--ink-faded); font-size: 15px;
   }
 
   /* Letterpress engraved initial (drop cap) */
   .dropcap-sample {
-    font-family: 'Cormorant Garamond', serif; font-size: 18px;
+    font-family: 'Fraunces', serif; font-size: 18px;
     color: var(--ink); line-height: 1.7; text-align: left;
     max-width: 640px; margin: 0 auto;
   }
@@ -322,7 +324,7 @@
     font-size: 14px; color: var(--ink-faded); font-style: italic;
   }
   .provenance code {
-    font-family: 'IM Fell DW Pica', monospace; font-size: 13px;
+    font-family: 'Fraunces', monospace; font-size: 13px;
     color: var(--currency-deep); font-style: normal;
   }
 </style>
@@ -459,7 +461,7 @@
 
       <div class="type-meta">
         <div class="role">Eyebrow · Label</div>
-        <div class="font">IM Fell English SC, tracked</div>
+        <div class="font">Cinzel 600, tracked caps</div>
       </div>
       <div class="type-sample">
         <div class="type-eyebrow">Est. Two Thousand Twenty-Six</div>
@@ -467,7 +469,7 @@
 
       <div class="type-meta">
         <div class="role">Lead · Subtitle</div>
-        <div class="font">Cormorant Garamond italic</div>
+        <div class="font">Fraunces italic, 500</div>
       </div>
       <div class="type-sample">
         <div class="type-lead">The first estate plan written for a life that now includes a digital soul.</div>
@@ -475,7 +477,7 @@
 
       <div class="type-meta">
         <div class="role">Body · Regular text</div>
-        <div class="font">Cormorant Garamond 400, 18px</div>
+        <div class="font">Fraunces 500, 19px</div>
       </div>
       <div class="type-sample">
         <div class="type-body">When you die, your soul doesn't just live on in the people who loved you — it lives on in the models, the archives, the agents, the interview tapes, the emails, the voice recordings. Worth Protecting ensures that legacy is guarded, not lost.</div>
@@ -483,7 +485,7 @@
 
       <div class="type-meta">
         <div class="role">Caption · Footnote</div>
-        <div class="font">IM Fell DW Pica italic</div>
+        <div class="font">Fraunces italic</div>
       </div>
       <div class="type-sample">
         <div class="type-caption">Fig. 1 — The heart-topped key charge, a modern reduction of the heraldic "steward's key" crossed with the heraldic heart of sincerity.</div>
@@ -499,7 +501,7 @@
 
       <div class="type-meta">
         <div class="role">Micro · Fine print</div>
-        <div class="font">IM Fell English SC, tiny</div>
+        <div class="font">Cinzel 500, tiny</div>
       </div>
       <div class="type-sample">
         <div class="type-micro">Certified · Guarded · Delivered — This Instrument Is Legal Tender For All Legacies, Public and Private</div>
