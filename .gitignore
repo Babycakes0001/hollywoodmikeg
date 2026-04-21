@@ -1,0 +1,54 @@
+# --- Private memory — NEVER commit ---
+memory/
+mikeg/
+private/
+**/private/
+**/mikeg/private/
+
+# --- Secrets / credentials ---
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+*_secret*
+*_credentials*
+.aws/
+.ssh/
+
+# --- Vector DBs / embeddings ---
+chroma_db/
+*.sqlite3
+*.db
+*.bin
+
+# --- Logs ---
+*.log
+logs/
+
+# --- OS / editor cruft ---
+.DS_Store
+._*
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+
+# --- Node / Python build artifacts ---
+node_modules/
+__pycache__/
+*.pyc
+venv/
+*-venv/
+.pytest_cache/
+dist/
+build/
+
+# --- Backup files ---
+*.bak
+*.backup
+*.orig
