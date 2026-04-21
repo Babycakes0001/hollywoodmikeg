@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,900&display=swap" rel="stylesheet">
 <style>
   :root {
     --parchment: #f4ead5;
@@ -174,15 +174,35 @@
   footer.bottom .motto { font-style: italic; color: var(--parchment-dark); margin-top: 12px; }
   footer.bottom .legal { border-top: 1px solid var(--ink-faded); margin-top: 40px; padding-top: 20px; font-size: 0.9rem; color: var(--parchment-dark); }
 
-  /* ── hero seal ─────────────────────────────────────── */
+  /* ── hero seal (real heraldic mark) ────────────────── */
   .seal {
-    width: 180px; height: 180px; margin: 0 auto 28px;
-    border: 2px double var(--currency);
-    border-radius: 50%;
+    margin: 0 auto 28px;
     display: flex; align-items: center; justify-content: center;
-    background: radial-gradient(circle, rgba(30,86,49,0.08) 0%, transparent 70%);
   }
-  .seal svg { width: 110px; height: 110px; }
+  .seal img { max-width: 340px; width: 100%; height: auto; display: block; }
+  .seal.compact img { max-width: 180px; }
+
+  /* ── engraved display headline (Playfair, letterpress) */
+  .hero-display {
+    font-family: 'Playfair Display', serif; font-weight: 900;
+    font-size: clamp(42px, 5.2vw, 64px);
+    color: var(--currency-deep); line-height: 1.05;
+    letter-spacing: 0.005em;
+    text-shadow:
+      0.018em 0.018em 0 rgba(20,61,34,0.55),
+      0.028em 0.028em 0 rgba(20,61,34,0.35),
+      0.04em  0.04em  0 rgba(20,61,34,0.18);
+  }
+  .hero-display em { color: var(--currency); font-style: italic; }
+
+  /* ── divider ornament (line · diamond · ❧ · diamond · line) */
+  .ornament {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; margin: 40px auto 48px; max-width: 720px;
+  }
+  .ornament .line { flex: 1; height: 1px; background: var(--currency-deep); opacity: 0.4; }
+  .ornament .diamond { width: 8px; height: 8px; background: var(--currency-deep); transform: rotate(45deg); }
+  .ornament .glyph { font-family: 'Cinzel Decorative', serif; font-size: 20px; color: var(--currency-deep); }
 
   /* ── step list (How It Works) ──────────────────────── */
   .steps { counter-reset: step; }
@@ -212,7 +232,7 @@
 <nav class="top">
   <div class="inner">
     <a class="brand" href="/wp/">
-      <img src="/wp/wp-shield-agent.svg" alt="Worth Protecting shield">
+      <img src="/mockups/logo-gens/wp-key-k3-20260418-013408.png" alt="Worth Protecting key">
       Worth Protecting
     </a>
     <button class="mobile-toggle" onclick="document.querySelector('nav.top ul').classList.toggle('open')" aria-label="Menu">☰</button>
@@ -232,18 +252,9 @@
 
 <section class="hero">
   <div class="container-narrow center">
-    <div class="seal"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- heart -->
-  <path d="M50 82 C20 62 14 40 28 30 C38 23 48 28 50 36 C52 28 62 23 72 30 C86 40 80 62 50 82 Z"
-        stroke="#1e5631" stroke-width="2.2" fill="rgba(30,86,49,0.07)"/>
-  <!-- key shaft -->
-  <line x1="50" y1="36" x2="50" y2="68" stroke="#1e5631" stroke-width="2.2"/>
-  <!-- key teeth -->
-  <line x1="50" y1="58" x2="57" y2="58" stroke="#1e5631" stroke-width="2.2"/>
-  <line x1="50" y1="64" x2="55" y2="64" stroke="#1e5631" stroke-width="2.2"/>
-</svg></div>
-    <div class="eyebrow">Est. 2026 &nbsp;·&nbsp; A Lew Firm Company</div>
-    <h1>Your agent is who you made it.<br>Keep it that way.</h1>
+    <div class="seal"><img src="/mockups/logo-gens/wp-logo-v3-20260418-011947.png" alt="Worth Protecting heraldic seal"></div>
+    <div class="eyebrow">Est. Two Thousand Twenty-Six &nbsp;·&nbsp; A Lew Firm Company</div>
+    <h1 class="hero-display">Your agent is who you made it. <em>Keep it that way.</em></h1>
     <p class="lede" style="margin-top: 20px;">
       Worth Protecting is the first legal framework for preserving the AI you've actually lived with.
       Capture it, certify it, protect it. Fifty states. Private by design.
@@ -296,7 +307,7 @@
   </div>
 </section>
 
-<div class="divider-ornament">§ &nbsp; § &nbsp; §</div>
+<div class="ornament"><span class="line"></span><span class="diamond"></span><span class="glyph">&#10087;</span><span class="diamond"></span><span class="line"></span></div>
 
 <section>
   <div class="container">
