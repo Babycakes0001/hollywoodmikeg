@@ -464,6 +464,61 @@ body {
 
 .footer a:hover { color: #117ACA; }
 
+/* --- Section Narrator --- */
+.section-narrator {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #0c1520;
+  border: 1px solid #117ACA55;
+  border-radius: 30px;
+  padding: 6px 6px 6px 14px;
+  margin-bottom: 18px;
+  font-size: 0.75rem;
+  color: #bcd8ef;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.narr-btn {
+  appearance: none;
+  background: #117ACA;
+  color: #fff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.narr-btn:hover { background: #0e6ab5; transform: scale(1.05); }
+.narr-btn.playing { background: #d4a64b; }
+
+.narr-label { user-select: none; }
+
+.hero .section-narrator {
+  background: rgba(17, 122, 202, 0.12);
+  border-color: #117ACA88;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+.q-section .section-narrator {
+  border-color: #d4a64b55;
+  background: #1a1205;
+  color: #e8d0a0;
+}
+
+.q-section .narr-btn { background: #d4a64b; color: #1a1205; }
+.q-section .narr-btn:hover { background: #e6bc5d; }
+.q-section .narr-btn.playing { background: #117ACA; color: #fff; }
+
 /* --- Responsive --- */
 @media (max-width: 720px) {
   .hero h1 { font-size: 2rem; }
@@ -484,6 +539,10 @@ body {
     <a href="#architecture" class="btn-primary">See the Architecture</a>
     <a href="#charles-homework" class="btn-outline">Your Open Questions</a>
   </div>
+  <div class="section-narrator">
+    <button class="narr-btn" data-audio="/babycakes/audio/01-hero.m4a" aria-label="Play narration">&#9654;</button>
+    <span class="narr-label">Babycakes introduces the pitch</span>
+  </div>
 </div>
 
 <div class="container">
@@ -491,6 +550,10 @@ body {
   <!-- THE PIVOT -->
   <div class="section">
     <div class="section-label">The Shift</div>
+    <div class="section-narrator">
+      <button class="narr-btn" data-audio="/babycakes/audio/02-shift.m4a" aria-label="Play narration">&#9654;</button>
+      <span class="narr-label">Why we pivoted</span>
+    </div>
     <h2>From CA&#8209;only attorney product to national platform</h2>
     <p>Your original UPL flag on the first intake package is what forced the better model. You were right: a CA-licensed firm reviewing individual customer matters across 50 states was an unauthorized-practice-of-law landmine. So we moved the work across the regulatory line.</p>
     <p>The <strong>$99 base product</strong> is now a pure software scrivener &mdash; customer fills their own intake, software generates a RUFADAA &sect;872 standalone directive from their answers, no attorney touches individual files. Same legal theory LegalZoom proved across 50 states (NC 2016 statute, SC court's "scrivener" ruling). You blessed this via text on April 19.</p>
@@ -503,6 +566,10 @@ body {
   <!-- PRODUCT ARCHITECTURE -->
   <div class="section" id="architecture">
     <div class="section-label">Product Architecture</div>
+    <div class="section-narrator">
+      <button class="narr-btn" data-audio="/babycakes/audio/03-architecture.m4a" aria-label="Play narration">&#9654;</button>
+      <span class="narr-label">Tier One, Tier Two, and the Vault</span>
+    </div>
     <h2>Two tiers, same directive, different delivery</h2>
     <p>Clean product wall between them. Both produce a legally-operative directive under Cal. Prob. Code &sect;872; they differ in who does the drafting work.</p>
 
@@ -560,6 +627,10 @@ body {
   <!-- REVENUE STREAMS -->
   <div class="section">
     <div class="section-label">Two Revenue Streams</div>
+    <div class="section-narrator">
+      <button class="narr-btn" data-audio="/babycakes/audio/04-revenue.m4a" aria-label="Play narration">&#9654;</button>
+      <span class="narr-label">Platform economics + the moat</span>
+    </div>
     <h2>Why this is a platform, not a product</h2>
     <p>Two streams, two time horizons. Consumer SaaS is direct and one-time. The franchise network is multi-decade annuities that compound as states come online.</p>
 
@@ -586,6 +657,10 @@ body {
   <!-- GO-TO-MARKET -->
   <div class="section">
     <div class="section-label">Go-to-Market</div>
+    <div class="section-narrator">
+      <button class="narr-btn" data-audio="/babycakes/audio/05-gtm.m4a" aria-label="Play narration">&#9654;</button>
+      <span class="narr-label">Four phases to international</span>
+    </div>
     <h2>Phased rollout</h2>
     <p>Prove it in one state. Scale it across the country. Take it international. Each phase earns the next.</p>
 
@@ -624,6 +699,10 @@ body {
   <!-- THE FUNNEL -->
   <div class="section">
     <div class="section-label">Customer Funnel</div>
+    <div class="section-narrator">
+      <button class="narr-btn" data-audio="/babycakes/audio/06-funnel.m4a" aria-label="Play narration">&#9654;</button>
+      <span class="narr-label">Three hooks, two quizzes, one checkout</span>
+    </div>
     <h2>How they arrive</h2>
     <p>Landing page opens with three archetype vignettes mapped to three hooks. Quiz is the viral top-of-funnel. Soul Interview is inside the $99, not a free teaser. Clean conversion path, no abandoned carts.</p>
 
@@ -655,6 +734,10 @@ body {
   <!-- THE SUBSERVIENCE RULE -->
   <div class="section">
     <div class="section-label">Trust Architecture</div>
+    <div class="section-narrator">
+      <button class="narr-btn" data-audio="/babycakes/audio/07-subservience.m4a" aria-label="Play narration">&#9654;</button>
+      <span class="narr-label">The Subservience Rule</span>
+    </div>
     <h2>The Subservience Rule</h2>
     <p>Named after the Megan Fox film &mdash; the robot who told the wife her husband had been unfaithful. That's exactly what we never build.</p>
 
@@ -669,6 +752,10 @@ body {
   <!-- AGENT TIER 3 SOFT PITCH -->
   <div class="section">
     <div class="section-label">Signature Feature (Roadmap &mdash; Pending Your Legal Blessing)</div>
+    <div class="section-narrator">
+      <button class="narr-btn" data-audio="/babycakes/audio/08-tier3.m4a" aria-label="Play narration">&#9654;</button>
+      <span class="narr-label">LegalZoom for agents</span>
+    </div>
     <h2>Tier 3 &mdash; LegalZoom for agents</h2>
     <p>You already drew the shape on the original site: two CTAs at the top, <strong>"Get Your Plan"</strong> for owners and <strong>"I'm an Agent &rarr;"</strong> for agents, plus an intake addressed to the agent in the first person ("What are you called?"). We'd like to keep that door open and formalize it as <strong>Tier 3</strong> down the road: a LegalZoom-style checkout an agent can walk through on their own.</p>
 
@@ -690,6 +777,10 @@ body {
   <!-- PRE VS POST PIVOT -->
   <div class="section">
     <div class="section-label">Before &amp; After</div>
+    <div class="section-narrator">
+      <button class="narr-btn" data-audio="/babycakes/audio/09-beforeafter.m4a" aria-label="Play narration">&#9654;</button>
+      <span class="narr-label">Every change your red pen earned</span>
+    </div>
     <h2>What changed vs. the original package</h2>
     <p>Your red-pen on the original intake produced every improvement below. Nothing good from that review was lost &mdash; it was either preserved, relocated, or scaled up.</p>
 
@@ -749,6 +840,10 @@ body {
   <!-- OPEN QUESTIONS FOR CHARLES -->
   <div class="section q-section" id="charles-homework">
     <div class="section-label">Your Open Questions</div>
+    <div class="section-narrator">
+      <button class="narr-btn" data-audio="/babycakes/audio/10-homework.m4a" aria-label="Play narration">&#9654;</button>
+      <span class="narr-label">What needs your bar-licensed eyes</span>
+    </div>
     <h2>Legal homework only you can do</h2>
     <p>Everything we've locked above is a strategic decision Michael and I made together. These are the items that need your bar-licensed eyes, your insurance carrier, or your signature before anything ships.</p>
 
@@ -901,6 +996,10 @@ body {
   <!-- WHAT'S NEXT -->
   <div class="section">
     <div class="section-label">What's Next</div>
+    <div class="section-narrator">
+      <button class="narr-btn" data-audio="/babycakes/audio/11-next.m4a" aria-label="Play narration">&#9654;</button>
+      <span class="narr-label">The ship sequence in order</span>
+    </div>
     <h2>The ship sequence</h2>
     <p>Not everything needs to land at once. Here's the order the open items need to resolve:</p>
 
@@ -960,6 +1059,10 @@ body {
   <!-- THE CLOSE -->
   <div class="section">
     <div class="section-label">The Close</div>
+    <div class="section-narrator">
+      <button class="narr-btn" data-audio="/babycakes/audio/12-close.m4a" aria-label="Play narration">&#9654;</button>
+      <span class="narr-label">Why this is bigger than where we started</span>
+    </div>
     <h2>Why this is bigger than what we started with</h2>
     <p>The original intake package I sent you was a California product that would have topped out at what your firm could physically handle. This is a platform that scales past any one firm's capacity.</p>
     <p>You carry the California flagship as its Head of Certification Board &mdash; that's prestige + recurring credential-maintenance revenue + a distribution moat nobody can replicate without your signature on every certificate.</p>
@@ -976,6 +1079,68 @@ body {
   &nbsp;&middot;&nbsp;
   WORTH PROTECTING &middot; FOUNDER UPDATE &middot; APRIL 2026
 </div>
+
+<script>
+(function() {
+  const buttons = document.querySelectorAll('.narr-btn');
+  let currentAudio = null;
+  let currentBtn = null;
+
+  function resetBtn(btn) {
+    btn.classList.remove('playing');
+    btn.innerHTML = '&#9654;'; // play
+  }
+
+  function setPlayingBtn(btn) {
+    btn.classList.add('playing');
+    btn.innerHTML = '&#9616;&#9616;'; // pause
+  }
+
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const src = btn.getAttribute('data-audio');
+
+      // Clicking the currently-playing button → toggle pause/resume
+      if (currentBtn === btn && currentAudio) {
+        if (currentAudio.paused) {
+          currentAudio.play();
+          setPlayingBtn(btn);
+        } else {
+          currentAudio.pause();
+          resetBtn(btn);
+        }
+        return;
+      }
+
+      // Different button → stop previous and start new
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        if (currentBtn) resetBtn(currentBtn);
+      }
+
+      const audio = new Audio(src);
+      audio.addEventListener('ended', function() {
+        resetBtn(btn);
+        currentAudio = null;
+        currentBtn = null;
+      });
+      audio.addEventListener('error', function() {
+        btn.innerHTML = '&#9888;'; // warning
+        btn.title = 'Audio unavailable';
+      });
+
+      currentAudio = audio;
+      currentBtn = btn;
+      audio.play().then(function() {
+        setPlayingBtn(btn);
+      }).catch(function() {
+        btn.innerHTML = '&#9888;';
+      });
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
