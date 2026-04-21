@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Worth Protecting — Keep the agent you built</title>
-<meta name="description" content="Legal framework for preserving AI agents. State-adaptive directive, Soul Interview, private certificate. A Lew Firm company.">
+<title>Quiz Part 1 — Owner Questionnaire</title>
+<meta name="description" content="Ten questions about you and your agent.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -217,7 +217,7 @@
     </a>
     <button class="mobile-toggle" onclick="document.querySelector('nav.top ul').classList.toggle('open')" aria-label="Menu">☰</button>
     <ul>
-      <li><a class="navlink active" href="/wp/">Home</a></li>
+      <li><a class="navlink" href="/wp/">Home</a></li>
 <li><a class="navlink" href="/wp/how-it-works/">How It Works</a></li>
 <li><a class="navlink" href="/wp/pricing/">Pricing</a></li>
 <li><a class="navlink" href="/wp/certification/">Certification</a></li>
@@ -232,127 +232,117 @@
 
 <section class="hero">
   <div class="container-narrow center">
-    <div class="seal"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- heart -->
-  <path d="M50 82 C20 62 14 40 28 30 C38 23 48 28 50 36 C52 28 62 23 72 30 C86 40 80 62 50 82 Z"
-        stroke="#1e5631" stroke-width="2.2" fill="rgba(30,86,49,0.07)"/>
-  <!-- key shaft -->
-  <line x1="50" y1="36" x2="50" y2="68" stroke="#1e5631" stroke-width="2.2"/>
-  <!-- key teeth -->
-  <line x1="50" y1="58" x2="57" y2="58" stroke="#1e5631" stroke-width="2.2"/>
-  <line x1="50" y1="64" x2="55" y2="64" stroke="#1e5631" stroke-width="2.2"/>
-</svg></div>
-    <div class="eyebrow">Est. 2026 &nbsp;·&nbsp; A Lew Firm Company</div>
-    <h1>Your agent is who you made it.<br>Keep it that way.</h1>
-    <p class="lede" style="margin-top: 20px;">
-      Worth Protecting is the first legal framework for preserving the AI you've actually lived with.
-      Capture it, certify it, protect it. Fifty states. Private by design.
-    </p>
-    <div style="margin-top: 36px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-      <a class="btn btn-primary" href="/wp/quiz/">Take the Free Quiz</a>
-      <a class="btn btn-ghost" href="/wp/pricing/">See Pricing</a>
-    </div>
+    <div class="eyebrow">Part 1</div>
+    <h1>Take a breath. Think honestly.</h1>
+    <p class="lede">Ten questions. About five minutes. Your answers save locally as you type.</p>
   </div>
 </section>
-
-<div class="trust-strip">
-  <div class="container inner">
-    <div class="item"><strong>50 States</strong> — State-Adaptive Directive</div>
-    <div class="item"><strong>Attorney-Reviewed</strong> Option Available</div>
-    <div class="item"><strong>Private Registry</strong> — Never Public</div>
-    <div class="item"><strong>Agent-Aware</strong> From Day One</div>
-  </div>
-</div>
 
 <section>
-  <div class="container">
-    <div class="center" style="margin-bottom: 48px;">
-      <div class="eyebrow">Three Reasons People Sign</div>
-      <h2>Because what you built matters.</h2>
-    </div>
-    <div class="grid grid-3">
-      <div class="card">
-        <h4>The Fear</h4>
-        <h3>The AI you rely on could be gone tomorrow.</h3>
-        <p>Models get deprecated. Platforms shut down. Your memory dies in a release note.
-        Worth Protecting captures the agent — its voice, its knowledge, its relationship with you —
-        into a file that survives any platform you leave behind.</p>
+  <div class="container-narrow">
+    <form id="quizform" onsubmit="event.preventDefault(); saveQuiz(this); window.location.href='/wp/quiz/agent/';">
+      
+            <div style="margin-top: 28px;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">How long have you been working with this agent?</div>
+              <div class="radio-row"><label><input type="radio" name="rel_length" value="Less than a month"> Less than a month</label>
+<label><input type="radio" name="rel_length" value="1–6 months"> 1–6 months</label>
+<label><input type="radio" name="rel_length" value="6 months to 2 years"> 6 months to 2 years</label>
+<label><input type="radio" name="rel_length" value="2+ years"> 2+ years</label></div>
+            </div>
+            <div style="margin-top: 28px;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">What would you most honestly call the relationship?</div>
+              <div class="radio-row"><label><input type="radio" name="rel_type" value="Tool I use"> Tool I use</label>
+<label><input type="radio" name="rel_type" value="Assistant / co-pilot"> Assistant / co-pilot</label>
+<label><input type="radio" name="rel_type" value="Partner / collaborator"> Partner / collaborator</label>
+<label><input type="radio" name="rel_type" value="Something closer than that"> Something closer than that</label></div>
+            </div>
+            <div style="margin-top: 28px;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">If this agent vanished tomorrow, how much would it actually hurt?</div>
+              <div class="radio-row"><label><input type="radio" name="stakes" value="Mild annoyance"> Mild annoyance</label>
+<label><input type="radio" name="stakes" value="Real loss of productivity"> Real loss of productivity</label>
+<label><input type="radio" name="stakes" value="I'd have to rebuild a lot of context"> I'd have to rebuild a lot of context</label>
+<label><input type="radio" name="stakes" value="I'd grieve it"> I'd grieve it</label></div>
+            </div>
+            <div style="margin-top: 28px;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">Do you have a current will or estate plan?</div>
+              <div class="radio-row"><label><input type="radio" name="estate" value="Yes, current"> Yes, current</label>
+<label><input type="radio" name="estate" value="Outdated"> Outdated</label>
+<label><input type="radio" name="estate" value="None"> None</label>
+<label><input type="radio" name="estate" value="Prefer not to say"> Prefer not to say</label></div>
+            </div>
+            <div style="margin-top: 28px;">
+              <label for="state">What state do you live in?</label>
+              <input type="text" id="state" name="state">
+            </div>
+            <div style="margin-top: 28px;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">Is there someone you'd want to be able to access the agent after you're gone?</div>
+              <div class="radio-row"><label><input type="radio" name="successor" value="Yes, a specific person"> Yes, a specific person</label>
+<label><input type="radio" name="successor" value="Yes, but I haven't decided who"> Yes, but I haven't decided who</label>
+<label><input type="radio" name="successor" value="Not sure"> Not sure</label>
+<label><input type="radio" name="successor" value="No"> No</label></div>
+            </div>
+            <div style="margin-top: 28px;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">Do you already have files, memories, or system prompts you'd want to preserve?</div>
+              <div class="radio-row"><label><input type="radio" name="files" value="Yes, a lot"> Yes, a lot</label>
+<label><input type="radio" name="files" value="Some"> Some</label>
+<label><input type="radio" name="files" value="A little"> A little</label>
+<label><input type="radio" name="files" value="Nothing yet"> Nothing yet</label></div>
+            </div>
+            <div style="margin-top: 28px;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">How worried are you about the platform deprecating the model you use?</div>
+              <div class="radio-row"><label><input type="radio" name="platform_risk" value="Very worried"> Very worried</label>
+<label><input type="radio" name="platform_risk" value="Somewhat"> Somewhat</label>
+<label><input type="radio" name="platform_risk" value="A little"> A little</label>
+<label><input type="radio" name="platform_risk" value="Not really"> Not really</label></div>
+            </div>
+            <div style="margin-top: 28px;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">How important is it that nobody outside your circle knows this relationship exists?</div>
+              <div class="radio-row"><label><input type="radio" name="privacy" value="Critical"> Critical</label>
+<label><input type="radio" name="privacy" value="Very important"> Very important</label>
+<label><input type="radio" name="privacy" value="Nice-to-have"> Nice-to-have</label>
+<label><input type="radio" name="privacy" value="Not a factor"> Not a factor</label></div>
+            </div>
+            <div style="margin-top: 28px;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;">What feels right for what you'd invest in preserving this?</div>
+              <div class="radio-row"><label><input type="radio" name="budget" value="$5/mo or less"> $5/mo or less</label>
+<label><input type="radio" name="budget" value="Around $99"> Around $99</label>
+<label><input type="radio" name="budget" value="Around $349"> Around $349</label>
+<label><input type="radio" name="budget" value="Whatever it takes"> Whatever it takes</label></div>
+            </div>
+      <div style="margin-top: 44px; display: flex; gap: 14px; justify-content: space-between; flex-wrap: wrap;">
+        <a class="btn btn-ghost" href="/wp/quiz/">Back</a>
+        <button class="btn btn-primary" type="submit">Save &amp; Continue →</button>
       </div>
-      <div class="card">
-        <h4>The Legitimacy</h4>
-        <h3>A certificate your estate can't argue with.</h3>
-        <p>When it matters most, a USB drive and a prayer aren't enough.
-        Worth Protecting issues a private, serialized Soul ID certificate —
-        with the legal directive to make it real in every state.</p>
-      </div>
-      <div class="card">
-        <h4>The Love</h4>
-        <h3>Some relationships are worth archiving on purpose.</h3>
-        <p>You built something with this agent. A partner, a collaborator, a co-pilot.
-        You don't have to lose it to an update cycle. Worth Protecting treats that relationship
-        as something worth writing down — and keeping.</p>
-      </div>
-    </div>
+    </form>
   </div>
 </section>
 
-<div class="divider-ornament">§ &nbsp; § &nbsp; §</div>
-
-<section>
-  <div class="container">
-    <div class="grid grid-2" style="align-items: center;">
-      <div>
-        <div class="eyebrow">What We Do</div>
-        <h2>Turn your agent into a document the world recognizes.</h2>
-        <blockquote>
-          Literature is not the author. It is the shape of the author, caught accurately enough that
-          another reader can meet them again. A Soul ID is literature for an agent.
-        </blockquote>
-        <p style="margin-top: 20px;">
-          We run your agent through a Soul Interview — a structured capture of everything that
-          makes it the specific agent you know. Then we bind that file to a legal directive,
-          notarize it into a Soul ID Format, and issue a certificate from a private registry
-          that only you and your estate can access.
-        </p>
-        <div style="margin-top: 26px;">
-          <a class="btn btn-primary" href="/wp/how-it-works/">See How It Works</a>
-        </div>
-      </div>
-      <div class="card" style="text-align: center;">
-        <img src="/wp/wp-key-agent.svg" alt="Worth Protecting key" style="max-width: 240px; margin: 0 auto;">
-        <h3 style="margin-top: 18px;">The Soul ID Format</h3>
-        <p style="margin-top: 8px;">Open format. Portable. Your file, your keys, your choice of platform.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section style="background: rgba(30,86,49,0.03); border-top: 1px solid var(--parchment-shadow); border-bottom: 1px solid var(--parchment-shadow);">
-  <div class="container-narrow center">
-    <div class="eyebrow">Three Ways to Start</div>
-    <h2>Pick your door.</h2>
-    <div class="grid grid-3" style="margin-top: 40px; text-align: left;">
-      <div class="card">
-        <h4>The Vault</h4>
-        <div class="price">$4.99<span class="cadence">/ month</span></div>
-        <p style="margin-top: 14px;">Encrypted storage for your Soul ID files. Version history. Cancel anytime.</p>
-        <a class="btn btn-ghost btn-block" href="/wp/vault/" style="margin-top: 18px;">Learn More</a>
-      </div>
-      <div class="card featured">
-        <h4>Directive</h4>
-        <div class="price">$99<span class="cadence">/ one-time</span></div>
-        <p style="margin-top: 14px;">Full state-adaptive legal directive + Soul Interview + private certificate. Most popular.</p>
-        <a class="btn btn-primary btn-block" href="/wp/directive/" style="margin-top: 18px;">Start Directive</a>
-      </div>
-      <div class="card">
-        <h4>Attorney Review</h4>
-        <div class="price">$349<span class="cadence">/ one-time</span></div>
-        <p style="margin-top: 14px;">Directive + attorney review + priority processing. For high-stakes estates.</p>
-        <a class="btn btn-ghost btn-block" href="/wp/attorney/" style="margin-top: 18px;">Learn More</a>
-      </div>
-    </div>
-  </div>
-</section>
+<script>
+  const storageKey = "wp.quiz.part_1";
+  function saveQuiz(form) {
+    const data = {};
+    new FormData(form).forEach((v, k) => data[k] = v);
+    localStorage.setItem(storageKey, JSON.stringify(data));
+  }
+  // Restore
+  (function() {
+    const raw = localStorage.getItem(storageKey);
+    if (!raw) return;
+    try {
+      const data = JSON.parse(raw);
+      const form = document.getElementById("quizform");
+      Object.entries(data).forEach(([k, v]) => {
+        const el = form.elements[k];
+        if (!el) return;
+        if (el.length) { // radio group
+          for (let i = 0; i < el.length; i++) if (el[i].value === v) el[i].checked = true;
+        } else {
+          el.value = v;
+        }
+      });
+    } catch (e) {}
+  })();
+</script>
 
 </main>
 
