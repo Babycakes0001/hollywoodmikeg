@@ -1083,10 +1083,16 @@ body {
 <script>
 (function() {
   const buttons = document.querySelectorAll('.narr-btn');
-  let currentAudio = null;
   let currentBtn = null;
 
+  // Single reusable <audio> element — avoids iOS Safari media-element pool
+  // exhaustion that killed playback mid-deck at the 2026-04-20 Charles pitch.
+  // Prior code did `new Audio(src)` on every click, leaking decoders until
+  // Safari refused further .play() calls silently.
+  const audio = new Audio();
+
   function resetBtn(btn) {
+    if (!btn) return;
     btn.classList.remove('playing');
     btn.innerHTML = '&#9654;'; // play
   }
@@ -1096,46 +1102,53 @@ body {
     btn.innerHTML = '&#9616;&#9616;'; // pause
   }
 
+  audio.addEventListener('ended', function() {
+    resetBtn(currentBtn);
+    currentBtn = null;
+  });
+
+  audio.addEventListener('error', function() {
+    console.error('[pitch-audio] error', audio.error);
+    if (currentBtn) {
+      currentBtn.innerHTML = '&#9888;';
+      currentBtn.title = 'Audio unavailable';
+    }
+  });
+
   buttons.forEach(function(btn) {
     btn.addEventListener('click', function() {
       const src = btn.getAttribute('data-audio');
 
       // Clicking the currently-playing button → toggle pause/resume
-      if (currentBtn === btn && currentAudio) {
-        if (currentAudio.paused) {
-          currentAudio.play();
-          setPlayingBtn(btn);
+      if (currentBtn === btn) {
+        if (audio.paused) {
+          audio.play().then(function() {
+            if (currentBtn === btn) setPlayingBtn(btn);
+          }).catch(function(err) {
+            if (err.name === 'AbortError') return;
+            console.error('[pitch-audio] resume failed', err);
+            btn.innerHTML = '&#9888;';
+          });
         } else {
-          currentAudio.pause();
+          audio.pause();
           resetBtn(btn);
         }
         return;
       }
 
-      // Different button → stop previous and start new
-      if (currentAudio) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-        if (currentBtn) resetBtn(currentBtn);
-      }
-
-      const audio = new Audio(src);
-      audio.addEventListener('ended', function() {
-        resetBtn(btn);
-        currentAudio = null;
-        currentBtn = null;
-      });
-      audio.addEventListener('error', function() {
-        btn.innerHTML = '&#9888;'; // warning
-        btn.title = 'Audio unavailable';
-      });
-
-      currentAudio = audio;
+      // Different button → reset old button, swap src, play fresh
+      resetBtn(currentBtn);
       currentBtn = btn;
+
+      audio.src = src;
+      audio.currentTime = 0;
+
       audio.play().then(function() {
-        setPlayingBtn(btn);
-      }).catch(function() {
-        btn.innerHTML = '&#9888;';
+        if (currentBtn === btn) setPlayingBtn(btn);
+      }).catch(function(err) {
+        if (err.name === 'AbortError') return; // interrupted by another click
+        console.error('[pitch-audio] play failed', err);
+        if (currentBtn === btn) btn.innerHTML = '&#9888;';
       });
     });
   });
