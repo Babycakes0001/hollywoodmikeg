@@ -1,2 +1,2 @@
-:HL["/babycakes/wp-preview/_next/static/chunks/0x4bpqy4ckfhu.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"1BjVyJvW6_WRTUmKdeDf4"}
+:HL["/babycakes/wp-preview/_next/static/chunks/0rdiffls2kf8c.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"HHsbpVo70U_cq_4z3NQUz"}
