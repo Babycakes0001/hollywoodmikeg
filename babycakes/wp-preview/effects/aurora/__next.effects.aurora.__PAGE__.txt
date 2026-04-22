@@ -1,0 +1,7 @@
+1:"$Sreact.fragment"
+2:I[43067,["/babycakes/wp-preview/_next/static/chunks/04t2py-q~nwrn.js","/babycakes/wp-preview/_next/static/chunks/0crpm58fd~v77.js","/babycakes/wp-preview/_next/static/chunks/0zkdcrzb204j7.js","/babycakes/wp-preview/_next/static/chunks/0vl4~mdgr6g4k.js","/babycakes/wp-preview/_next/static/chunks/0uninv39-lbi8.js"],"AuroraBackground"]
+3:I[90611,["/babycakes/wp-preview/_next/static/chunks/04t2py-q~nwrn.js","/babycakes/wp-preview/_next/static/chunks/0crpm58fd~v77.js","/babycakes/wp-preview/_next/static/chunks/0zkdcrzb204j7.js","/babycakes/wp-preview/_next/static/chunks/0vl4~mdgr6g4k.js","/babycakes/wp-preview/_next/static/chunks/0uninv39-lbi8.js"],"PreviewCopy"]
+4:I[92754,["/babycakes/wp-preview/_next/static/chunks/04t2py-q~nwrn.js","/babycakes/wp-preview/_next/static/chunks/0crpm58fd~v77.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"className":"bg-ink min-h-screen","children":[["$","$L3",null,{}],["$","div",null,{"className":"absolute bottom-6 inset-x-0 z-10 text-center text-[10px] tracking-[0.28em] uppercase text-zinc-500 font-display","children":"Option 01 · Aurora"}]]}],[["$","script","script-0",{"src":"/babycakes/wp-preview/_next/static/chunks/0vl4~mdgr6g4k.js","async":true}],["$","script","script-1",{"src":"/babycakes/wp-preview/_next/static/chunks/0uninv39-lbi8.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"ecF2sCYKK5QUaHoKK_kRa"}
+6:null
