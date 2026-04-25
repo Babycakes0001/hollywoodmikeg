@@ -484,6 +484,99 @@
     margin: 20px 0;
     border-radius: 2px;
   }
+
+  /* ========== MOBILE / iPhone ========== */
+  @media (max-width: 768px) {
+    .page {
+      width: 100%;
+      padding: 36px 20px 36px;
+      page-break-before: auto;
+      break-before: auto;
+    }
+    .cover {
+      min-height: auto;
+      padding: 60px 22px 80px;
+    }
+    .cover h1 {
+      font-size: 42px;
+      line-height: 1.06;
+      margin: 22px 0 16px;
+    }
+    .cover .lede {
+      font-size: 16px;
+      line-height: 1.55;
+      max-width: 100%;
+    }
+    .cover .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+    }
+
+    h2 {
+      font-size: 30px;
+      line-height: 1.12;
+      margin-bottom: 14px;
+    }
+    h3 { font-size: 17px; }
+    p { font-size: 14.5px; }
+    p.muted { font-size: 14px; }
+    ul li { font-size: 14.5px; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+    }
+
+    .line-item { padding: 14px 14px; }
+    .line-item-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .line-name { font-size: 16.5px; }
+    .line-price { font-size: 18px; }
+    .line-spec {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .line-note { font-size: 14px; line-height: 1.55; }
+    .line-link {
+      font-size: 11.5px;
+      line-height: 1.5;
+    }
+
+    .value-block {
+      grid-template-columns: 36px 1fr;
+      gap: 10px;
+      padding: 14px 14px;
+    }
+    .value-block .num { font-size: 24px; }
+    .value-block .name { font-size: 17px; }
+    .value-block .what { font-size: 14px; line-height: 1.55; }
+    .value-block .why { font-size: 10px; }
+    .value-block .why-text { font-size: 13.5px; line-height: 1.55; }
+
+    .summary {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .summary .card { padding: 18px; }
+    .summary .card .amount { font-size: 30px; }
+
+    .callout { padding: 14px 16px; }
+    .callout p { font-size: 13.5px; line-height: 1.55; }
+
+    table.price { font-size: 13px; }
+    table.price tbody td { padding: 10px 8px; }
+
+    .pill {
+      font-size: 8.5px;
+      padding: 3px 7px;
+      margin-left: 6px;
+    }
+
+    .page-footer { display: none; }
+  }
 </style>
 </head>
 <body>
