@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Private Agent Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --scarlet: #ff1744;
+    --chase: #00a4ff;
+    --near-black: #0a0f1a;
+    --panel: #111826;
+    --panel-hi: #1a2238;
+    --ink: #f5f7fb;
+    --muted: #8a94ab;
+    --rule: #1f2a44;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--near-black);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: Letter; margin: 0; }
+
+  a { color: var(--chase); text-decoration: none; word-break: break-all; }
+
+  /* Print-flow rules — sections start on new page, blocks never split */
+  .page {
+    width: 8.5in;
+    padding: 0.75in 0.8in 0.6in;
+    page-break-before: always;
+    break-before: page;
+    position: relative;
+    background:
+      linear-gradient(rgba(10,15,26,0.92), rgba(10,15,26,0.96)),
+      repeating-linear-gradient(0deg, transparent 0, transparent 39px, rgba(0,164,255,0.04) 39px, rgba(0,164,255,0.04) 40px),
+      repeating-linear-gradient(90deg, transparent 0, transparent 39px, rgba(0,164,255,0.04) 39px, rgba(0,164,255,0.04) 40px),
+      var(--near-black);
+  }
+  .page::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--scarlet) 30%, var(--chase) 70%, transparent);
+    opacity: 0.6;
+  }
+  .page:first-of-type {
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+
+  /* Keep these whole — never split across pages */
+  .line-item,
+  .value-block,
+  .callout,
+  .summary,
+  .stack,
+  table.price {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .stack-row { page-break-inside: avoid; break-inside: avoid; }
+
+  /* Headers stay with their next content */
+  h2, h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  /* Don't leave one line stranded */
+  p { orphans: 3; widows: 3; }
+
+  /* Cover — fixed-height since it's a one-pager */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 11in;
+    padding: 1in 0.8in;
+    background:
+      radial-gradient(1200px 800px at 85% -10%, rgba(255,23,68,0.28), transparent 55%),
+      radial-gradient(1000px 700px at 10% 110%, rgba(0,164,255,0.24), transparent 55%),
+      repeating-linear-gradient(0deg, transparent 0, transparent 39px, rgba(0,164,255,0.05) 39px, rgba(0,164,255,0.05) 40px),
+      repeating-linear-gradient(90deg, transparent 0, transparent 39px, rgba(0,164,255,0.05) 39px, rgba(0,164,255,0.05) 40px),
+      var(--near-black);
+  }
+  .cover .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--chase);
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid rgba(0,164,255,0.4);
+    border-radius: 3px;
+    background: rgba(0,164,255,0.06);
+  }
+  .cover h1 {
+    font-size: 64px;
+    line-height: 1.02;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin: 26px 0 18px;
+  }
+  .cover h1 .accent {
+    color: var(--scarlet);
+  }
+  .cover .lede {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 5.4in;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .cover-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--scarlet);
+    margin-top: 28px;
+  }
+  .cover-mark::before {
+    content: "";
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--scarlet);
+  }
+  .cover .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+  .cover .meta span { display: block; color: var(--ink); font-weight: 500; margin-top: 4px; letter-spacing: 0.05em; }
+
+  /* Interior pages */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--chase);
+    margin-bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 0;
+  }
+  .section-label::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--chase), transparent);
+  }
+  h2 {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    margin-bottom: 16px;
+    line-height: 1.05;
+  }
+  h2 .accent {
+    color: var(--scarlet);
+  }
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0;
+    margin: 18px 0 6px;
+  }
+  p { font-size: 12.5px; color: var(--ink); margin-bottom: 10px; }
+  p.muted { color: var(--muted); font-size: 11.5px; }
+  ul { list-style: none; padding: 0; margin: 8px 0 12px; }
+  ul li {
+    font-size: 12.5px;
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+  ul li::before {
+    content: "›";
+    color: var(--scarlet);
+    position: absolute;
+    left: 0;
+    top: -1px;
+    font-weight: 700;
+  }
+
+  /* Line items — hardware cards */
+  .line-items { margin: 14px 0 8px; }
+  .line-item {
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 13px 16px;
+    margin-bottom: 10px;
+    background: linear-gradient(180deg, var(--panel), rgba(17,24,38,0.7));
+    position: relative;
+    overflow: hidden;
+  }
+  .line-item::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 28px;
+    background: linear-gradient(180deg, var(--chase), transparent);
+  }
+  .line-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 28px; height: 3px;
+    background: linear-gradient(270deg, var(--chase), transparent);
+  }
+  .line-item.required {
+    border: 1px solid var(--rule);
+    background: linear-gradient(180deg, var(--panel), rgba(17,24,38,0.7));
+    border-top: 2px solid rgba(255,23,68,0.7);
+  }
+  .line-item.required::before {
+    background: linear-gradient(180deg, var(--scarlet), transparent);
+    width: 3px;
+    height: 28px;
+  }
+  .line-item.required::after {
+    background: linear-gradient(270deg, var(--scarlet), transparent);
+    width: 28px;
+    height: 3px;
+  }
+  .line-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .line-name {
+    font-weight: 600;
+    font-size: 13.5px;
+    color: var(--ink);
+  }
+  .line-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .line-price.scarlet { color: var(--scarlet); }
+  .pill {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: 2px;
+  }
+  .pill.required {
+    background: var(--scarlet);
+    color: white;
+  }
+  .pill.suggested {
+    background: rgba(0,164,255,0.18);
+    color: var(--chase);
+    border: 1px solid rgba(0,164,255,0.35);
+  }
+  .pill.discretion {
+    background: rgba(138,148,171,0.18);
+    color: var(--muted);
+    border: 1px solid rgba(138,148,171,0.3);
+  }
+  .line-spec {
+    font-size: 10.5px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 5px;
+    letter-spacing: 0.01em;
+  }
+  .line-note {
+    font-size: 11.5px;
+    color: var(--ink);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  .line-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--chase);
+    margin-top: 4px;
+    word-break: break-all;
+  }
+
+  /* Value blocks — our build */
+  .value-block {
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    background: linear-gradient(180deg, var(--panel), rgba(17,24,38,0.7));
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 14px;
+    align-items: start;
+    position: relative;
+    overflow: hidden;
+  }
+  .value-block::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--scarlet), var(--chase));
+  }
+  .value-block .num {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--scarlet);
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1;
+    padding-top: 2px;
+  }
+  .value-block .name { font-weight: 600; font-size: 13.5px; color: var(--ink); margin-bottom: 4px; }
+  .value-block .what { font-size: 11.5px; color: var(--ink); margin-bottom: 4px; }
+  .value-block .why {
+    font-size: 10.5px;
+    color: var(--chase);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .value-block .why-text { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+
+  /* Price tables */
+  table.price {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 8px;
+    font-size: 12px;
+  }
+  table.price thead th {
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--chase);
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  table.price thead th.right { text-align: right; }
+  table.price tbody td {
+    padding: 11px 12px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  table.price tbody td.right { text-align: right; font-family: 'JetBrains Mono', monospace; }
+  table.price tbody tr:last-child td { border-bottom: none; }
+  table.price .item { font-weight: 600; color: var(--ink); }
+  table.price .note { color: var(--muted); font-size: 11px; margin-top: 2px; display: block; }
+  table.price .subtotal td {
+    border-top: 1px solid var(--scarlet);
+    font-weight: 600;
+    color: var(--ink);
+    background: rgba(255,23,68,0.06);
+  }
+
+  /* Summary cards */
+  .summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .summary .card {
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 18px;
+    background: linear-gradient(180deg, var(--panel), rgba(17,24,38,0.6));
+    position: relative;
+    overflow: hidden;
+  }
+  .summary .card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--chase), transparent);
+  }
+  .summary .card:last-child::before {
+    background: linear-gradient(90deg, var(--scarlet), transparent);
+  }
+  .summary .card .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--chase);
+    margin-bottom: 10px;
+  }
+  .summary .card .amount {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+  .summary .card .amount.scarlet {
+    color: var(--scarlet);
+  }
+  .summary .card .freq {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 6px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .summary .card .detail {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+
+  /* Callout */
+  .callout {
+    border-left: 4px solid var(--scarlet);
+    background: linear-gradient(90deg, rgba(255,23,68,0.10), rgba(255,23,68,0.02) 40%);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 8px 8px 0;
+    position: relative;
+  }
+  .callout .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--scarlet);
+    margin-bottom: 8px;
+  }
+  .callout p { font-size: 12px; margin: 0 0 6px; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* Footer — sits at end of section content, doesn't anchor to page bottom */
+  .page-footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 8px;
+  }
+
+  /* Divider rule */
+  .rule {
+    height: 2px;
+    background: linear-gradient(90deg, var(--scarlet), var(--chase) 50%, transparent);
+    border: none;
+    margin: 20px 0;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== COVER ========== -->
+<section class="page cover">
+  <div>
+    <div class="eyebrow">Private Agent Proposal · v1</div>
+    <h1>Your own <span class="accent">AI agent</span>.<br>Living on your hardware.<br>Always on. Always yours.</h1>
+    <p class="lede">A private AI agent — built on a proven, production-grade stack. Telegram-native, memory-preserving, voice-capable, and entirely under your control. This document lays out the hardware you'll buy, the services you'll sign up for, and the system we'll build for you.</p>
+    <div class="cover-mark">System · Online · Ready for Install</div>
+  </div>
+</section>
+
+<!-- ========== HARDWARE SUGGESTED ========== -->
+<section class="page">
+  <div class="section-label">01 · Hardware Suggested</div>
+  <h2>What you'll <span class="accent">buy</span></h2>
+  <p class="muted">Hardware is purchased directly by you — <strong>not included</strong> in our setup fee. The Mac Mini is the only required spec; pick <strong>Option A</strong> or <strong>Option B</strong> below. Everything else is at your discretion — we've picked solid references, but feel free to buy whatever monitor, keyboard, mouse, and webcam you prefer.</p>
+
+  <div class="line-items">
+
+    <div class="line-item required">
+      <div class="line-item-row">
+        <div class="line-name">Mac Mini M4 · Option A (entry)<span class="pill required">Required · pick one</span></div>
+        <div class="line-price scarlet">Est. $799</div>
+      </div>
+      <div class="line-spec">M4 chip · 10-core CPU · 10-core GPU · 16 GB memory · 512 GB SSD</div>
+      <div class="line-note">The spec our reference agent runs on today. Handles OpenClaw, the memory index, and a live Playwright browser without slowdown. Solid minimum-viable build.</div>
+      <div class="line-link">apple.com/shop/buy-mac/mac-mini/m4-chip-10-core-cpu-10-core-gpu-16gb-memory-512gb-storage</div>
+    </div>
+
+    <div class="line-item required">
+      <div class="line-item-row">
+        <div class="line-name">Mac Mini M4 · Option B (recommended)<span class="pill required">Required · pick one</span></div>
+        <div class="line-price scarlet">Est. $1,199</div>
+      </div>
+      <div class="line-spec">M4 chip · 10-core CPU · 10-core GPU · 24 GB memory · 1 TB SSD</div>
+      <div class="line-note">Extra 8 GB RAM gives the agent headroom for heavier workloads — larger memory indexes, multiple Playwright sessions, longer-running research tasks — without swapping. 1 TB SSD means you never manage storage as the agent's memory grows over years of use. <strong>Recommended for a daily-driver agent.</strong></div>
+      <div class="line-link">apple.com/shop/buy-mac/mac-mini/m4-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage</div>
+    </div>
+
+    <div class="line-item">
+      <div class="line-item-row">
+        <div class="line-name">Monitor · Option A (big screen)<span class="pill discretion">Owner's discretion</span></div>
+        <div class="line-price">Est. $400</div>
+      </div>
+      <div class="line-spec">Element EI491CR — 49" super-ultrawide · 3840 × 1080 @ 120 Hz</div>
+      <div class="line-note">"Double wide" real-estate — keep the agent console on one half, work on the other half without tab-switching. Our reference agent runs on this exact monitor. Upgrade picks within the same shape: Samsung Odyssey CRG9 (est. $899), LG 49WQ95X-W (est. $1,100).</div>
+      <div class="line-link">amazon.com/s?k=Element+EI491CR+49+inch+super+ultrawide</div>
+    </div>
+
+    <div class="line-item">
+      <div class="line-item-row">
+        <div class="line-name">Monitor · Option B (standard, name-brand)<span class="pill discretion">Owner's discretion</span></div>
+        <div class="line-price">Est. $300</div>
+      </div>
+      <div class="line-spec">Dell S2722QC or LG 27UL500-W — 27" 4K IPS · USB-C · adjustable stand</div>
+      <div class="line-note">Good size, good quality, name brand, reasonable price. 4K resolution on a 27" panel gives crisp text at reading distance. A solid "just works" choice if the super-ultrawide is too much.</div>
+      <div class="line-link">amazon.com/s?k=Dell+S2722QC+27+inch+4K+USB-C</div>
+    </div>
+
+    <div class="line-item">
+      <div class="line-item-row">
+        <div class="line-name">Keyboard + Mouse · Option A (gaming / RGB)<span class="pill discretion">Owner's discretion</span></div>
+        <div class="line-price">Est. $240</div>
+      </div>
+      <div class="line-spec">Razer BlackWidow V4 keyboard (~$169) + Razer Basilisk V3 mouse (~$70)</div>
+      <div class="line-note">The reference rig, with one correction — we swapped from the Razer Cobra to the <strong>Razer Basilisk V3</strong> because the Basilisk pairs cleanly with the BlackWidow V4 in Razer Synapse (the software sees both devices). Full RGB, mechanical feel, all the gaming flair.</div>
+      <div class="line-link">amazon.com/s?k=Razer+BlackWidow+V4 &nbsp;·&nbsp; amazon.com/s?k=Razer+Basilisk+V3</div>
+    </div>
+
+    <div class="line-item">
+      <div class="line-item-row">
+        <div class="line-name">Keyboard + Mouse · Option B (plain office)<span class="pill discretion">Owner's discretion</span></div>
+        <div class="line-price">Est. $60</div>
+      </div>
+      <div class="line-spec">Logitech MK540 Advanced — wireless keyboard + mouse combo, plain black</div>
+      <div class="line-note">No RGB, no gaming flair — just a clean, reliable wireless keyboard and mouse, the kind you'd see on any office desk. One USB receiver runs both. Step-down alternative: Logitech MK270 (est. $30). Step-up: Logitech MX Keys S + MX Master 3S combo (est. $210).</div>
+      <div class="line-link">amazon.com/s?k=Logitech+MK540+Advanced+wireless+combo</div>
+    </div>
+
+    <div class="line-item">
+      <div class="line-item-row">
+        <div class="line-name">Webcam<span class="pill suggested">Optional · single pick</span></div>
+        <div class="line-price">Est. $70</div>
+      </div>
+      <div class="line-spec">Logitech C920 — HD 1080p camera with dual stereo microphone</div>
+      <div class="line-note">This is the webcam our reference agent runs on. Optional — primarily useful for its dual stereo microphone (the Mac Mini's built-in mic is near-field only, weak for room pickup). The camera is a bonus if you want the agent to have eyes (peek-on-demand, presence detection). Skip entirely if you don't need a mic or camera.</div>
+      <div class="line-link">amazon.com/s?k=Logitech+C920+HD+Pro+Webcam</div>
+    </div>
+
+    <div class="line-item">
+      <div class="line-item-row">
+        <div class="line-name">USB-C hub + HDMI cable<span class="pill suggested">Suggested</span></div>
+        <div class="line-price">Est. $30</div>
+      </div>
+      <div class="line-spec">Anker 7-in-1 USB-C hub + 6 ft HDMI 2.1 cable</div>
+      <div class="line-note">Mac Mini has limited ports. A hub makes plugging in the webcam, keyboard, and any external storage painless.</div>
+      <div class="line-link">amazon.com/s?k=Anker+7-in-1+USB-C+hub</div>
+    </div>
+
+    <div class="line-item">
+      <div class="line-item-row">
+        <div class="line-name">USB-C backup drive<span class="pill suggested">Recommended</span></div>
+        <div class="line-price">Est. $30–$80</div>
+      </div>
+      <div class="line-spec">SanDisk Ultra Dual Drive Go 256 GB ($30) — or — Samsung T7 Shield 500 GB SSD ($80)</div>
+      <div class="line-note">For off-Mac backup of the agent's memory and identity. The nightly auto-save writes to this drive on a schedule. Memory + identity files stay under 1 GB even after years of accumulation, so <strong>256 GB is massive headroom.</strong> Step up to the 500 GB Samsung T7 Shield SSD if you want better long-term reliability for nightly write cycles, or if you also want room for other Mac backups.</div>
+      <div class="line-link">amazon.com/s?k=Samsung+T7+Shield+500GB+USB-C+SSD</div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <div class="label">Approximate totals (estimates — check Amazon/Apple for current pricing)</div>
+    <p><strong>Big-screen gaming build</strong> (Mac Mini A + Monitor A + Razer combo + webcam + hub + 256GB backup): <strong>Est. ~$1,570</strong></p>
+    <p><strong>Standard office build</strong> (Mac Mini A + Monitor B + Logitech MK540 + webcam + hub + 256GB backup): <strong>Est. ~$1,290</strong></p>
+    <p><strong>Recommended daily-driver</strong> (Mac Mini B + Monitor A + Razer combo + webcam + hub + 500GB SSD backup): <strong>Est. ~$2,020</strong></p>
+  </div>
+
+  <div class="page-footer"><div>Private Agent Proposal</div><div>01</div></div>
+</section>
+
+<!-- ========== SOFTWARE & SERVICES ========== -->
+<section class="page">
+  <div class="section-label">02 · Software &amp; Services</div>
+  <h2>What <span class="accent">runs on it</span></h2>
+  <p class="muted">Accounts and usage costs the client pays directly. These are <strong>not included</strong> in our setup fee — we configure them during install, but the subscriptions and credit cards are in your name.</p>
+
+  <div class="line-items">
+
+    <div class="line-item required">
+      <div class="line-item-row">
+        <div class="line-name">Anthropic API — the brain<span class="pill required">Required</span></div>
+        <div class="line-price scarlet">usage-based</div>
+      </div>
+      <div class="line-spec">console.anthropic.com · Claude Opus 4.7 · pay-per-token · credit card on file</div>
+      <div class="line-note"><strong>This is how production agents on this stack are billed today.</strong> Not a flat-rate Claude subscription — an API account with a credit card on file and auto-top-up enabled. When the balance runs low, Anthropic auto-charges your card to refill. Every message the agent processes bills against that balance at the per-token rate below.</div>
+      <div class="line-note" style="margin-top:10px;">
+        <strong>Claude Opus 4.7 — current rates:</strong><br>
+        Input tokens: <span style="font-family:'JetBrains Mono',monospace;color:var(--chase)">$5.00 / million</span><br>
+        Output tokens: <span style="font-family:'JetBrains Mono',monospace;color:var(--chase)">$25.00 / million</span><br>
+        Cache hits (repeated context): <span style="font-family:'JetBrains Mono',monospace;color:var(--chase)">$0.50 / million</span> — 90% discount on repeated input
+      </div>
+      <div class="line-note" style="margin-top:10px;">
+        <strong>Realistic monthly spend (with prompt caching active):</strong><br>
+        Light use (~15 msgs/day): <strong>$30–60 / month</strong><br>
+        Daily-driver (~50 msgs/day): <strong>$80–150 / month</strong><br>
+        Heavy use (web search, long research): <strong>$150–300+ / month</strong>
+      </div>
+      <div class="line-note" style="margin-top:8px;">During install, we set a monthly spending cap in the Anthropic console — the bill can't surprise you. Usage is visible in real-time from the dashboard.</div>
+      <div class="line-link">console.anthropic.com</div>
+    </div>
+
+    <div class="line-item">
+      <div class="line-item-row">
+        <div class="line-name">OpenClaw — the gateway<span class="pill suggested">Free · we install</span></div>
+        <div class="line-price">Free</div>
+      </div>
+      <div class="line-spec">Open-source Telegram → Claude API gateway · runs on your Mac Mini</div>
+      <div class="line-note">OpenClaw is the system that connects your private Telegram bot to the Claude Opus brain. Same gateway used by production agents today. It's free and open source — we install and configure it during setup. You don't need to download anything yourself.</div>
+    </div>
+
+    <div class="line-item">
+      <div class="line-item-row">
+        <div class="line-name">Telegram Bot<span class="pill suggested">Free</span></div>
+        <div class="line-price">Free</div>
+      </div>
+      <div class="line-spec">@BotFather registration · private bot token · allowlist locked to you</div>
+      <div class="line-note">Telegram doesn't charge for bots. We register the bot during install, secure the token, and lock the allowlist so only you can message it.</div>
+    </div>
+
+    <div class="line-item">
+      <div class="line-item-row">
+        <div class="line-name">ElevenLabs Voice<span class="pill suggested">Optional · paid</span></div>
+        <div class="line-price">$6–$99 / mo</div>
+      </div>
+      <div class="line-spec">elevenlabs.io · realistic AI voice · pay-per-use · credit card on file</div>
+      <div class="line-note"><strong>If you want the agent to speak back in a real human-quality voice.</strong> Same setup pattern as the Anthropic API — your account, your credit card, your spending cap. Skip entirely if voice isn't a priority; the agent works fine text-only over Telegram.</div>
+      <div class="line-note" style="margin-top:10px;">
+        <strong>Tier guide (current):</strong><br>
+        <strong>Starter ($6/mo):</strong> ~30 minutes of audio/month — light use, occasional voice notes<br>
+        <strong>Creator ($22/mo):</strong> ~100 minutes of audio/month — daily voice replies<br>
+        <strong>Pro ($99/mo):</strong> ~500 minutes of audio/month — voice as the primary channel<br>
+        Overages bill at roughly $0.17–$0.36 per extra minute depending on tier.
+      </div>
+      <div class="line-note" style="margin-top:8px;">ElevenLabs is the gold standard for AI voice quality and runs near-real-time. We integrate it during install if you opt in; turn it off any time you want to stop spending.</div>
+      <div class="line-link">elevenlabs.io/pricing</div>
+    </div>
+
+    <div class="line-item">
+      <div class="line-item-row">
+        <div class="line-name">Domain<span class="pill suggested">Optional</span></div>
+        <div class="line-price">~$12 / yr</div>
+      </div>
+      <div class="line-spec">Cloudflare Registrar or similar</div>
+      <div class="line-note">Only if you want a branded endpoint or email (e.g., <span style="font-family:'JetBrains Mono',monospace;color:var(--chase)">agent.yourname.com</span>). Skip if not needed.</div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <div class="label">The architecture, one line</div>
+    <p>Your phone (Telegram) → Telegram Bot API → <strong>OpenClaw</strong> on your Mac Mini → <strong>Anthropic API</strong> (Claude Opus 4.7) → OpenClaw → Telegram → your phone. Same shape used by production agents today. Your credit card lives on the Anthropic account; we never hold it.</p>
+  </div>
+
+  <div class="page-footer"><div>Private Agent Proposal</div><div>02</div></div>
+</section>
+
+<!-- ========== OUR BUILD ========== -->
+<section class="page">
+  <div class="section-label">03 · Our Build</div>
+  <h2>The <span class="accent">WP Agent Framework</span> skeleton</h2>
+  <p>The hardware and the brain are off-the-shelf. <strong>What makes this a true partner agent instead of a generic chatbot is the skeleton we install on top.</strong> Our proprietary WP Agent Framework turns Claude Opus into a persistent, memory-preserving, identity-stable companion that grows more useful the longer you use it.</p>
+  <p class="muted">Simple rundown below — six components, what each one is, why it matters.</p>
+
+  <div class="line-items" style="margin-top:14px;">
+
+    <div class="value-block">
+      <div class="num">01</div>
+      <div>
+        <div class="name">Blank Agent Interview</div>
+        <div class="what">A short guided interview (about ten practical questions) run during install. Captures who you are, how you work, what you want the agent to help with, what to avoid.</div>
+        <div class="why">Why it matters</div>
+        <div class="why-text">Out-of-the-box AI is generic. The interview is the difference between "a chatbot that knows nothing about you" and "an agent that shows up already knowing who you are."</div>
+      </div>
+    </div>
+
+    <div class="value-block">
+      <div class="num">02</div>
+      <div>
+        <div class="name">Identity files — SOUL, RULES, DEFAULTS</div>
+        <div class="what">Three text files generated from the interview. Loaded at every session. They define the agent's personality, operating rules, and reflex behaviors.</div>
+        <div class="why">Why it matters</div>
+        <div class="why-text">The agent wakes up the same person every conversation. No drift, no re-explaining yourself, no "wait, who are you again?"</div>
+      </div>
+    </div>
+
+    <div class="value-block">
+      <div class="num">03</div>
+      <div>
+        <div class="name">Memory system</div>
+        <div class="what">A local vector database (ChromaDB) plus a knowledge graph plus a semantic-search tool. Every meaningful fact — names, preferences, decisions, projects — is stored and recallable forever.</div>
+        <div class="why">Why it matters</div>
+        <div class="why-text">Generic AI forgets everything between chats. Real partnership needs continuity. The agent remembers what you told it six months ago.</div>
+      </div>
+    </div>
+
+    <div class="value-block">
+      <div class="num">04</div>
+      <div>
+        <div class="name">Brain backup</div>
+        <div class="what">Automated nightly saves at 4 AM, a 5 AM safety-net redundant commit, and optional USB or off-site mirror. Full recovery procedure documented.</div>
+        <div class="why">Why it matters</div>
+        <div class="why-text">If the Mac Mini is stolen, fails, or fried, the agent's complete memory and identity restore to new hardware in under an hour. The agent is yours to keep.</div>
+      </div>
+    </div>
+
+    <div class="value-block">
+      <div class="num">05</div>
+      <div>
+        <div class="name">Self Study Web Browsing</div>
+        <div class="what">A visible Chromium browser the agent can drive on its own. Opens real tabs, reads real sites, files study notes to its library you can walk through later.</div>
+        <div class="why">Why it matters</div>
+        <div class="why-text">A useful agent researches on its own <em>and</em> on command. Hand it a topic to study, set a time to do it, or let it run free during idle hours — your call. Either way, every session permanently grows your library.</div>
+      </div>
+    </div>
+
+    <div class="value-block">
+      <div class="num">06</div>
+      <div>
+        <div class="name">OpenClaw + Telegram bridge</div>
+        <div class="what">Your private Telegram bot, connected to the agent through OpenClaw. Text and voice notes, no phone calls, no third-party middleman.</div>
+        <div class="why">Why it matters</div>
+        <div class="why-text">The agent is in your pocket on the road and on your desk at home — same agent, same memory, both places. Same architecture used by production agents today.</div>
+      </div>
+    </div>
+
+    <div class="value-block">
+      <div class="num">07</div>
+      <div>
+        <div class="name">Skill modules</div>
+        <div class="what">A library of pre-installed expert skills the agent draws on — creative writing, journalism, design literacy, longform editorial method, and more. Each is a focused craft module the agent pulls from when relevant.</div>
+        <div class="why">Why it matters</div>
+        <div class="why-text">Generic AI is a generalist. Skill modules turn it into an expert at the things you'd otherwise pay a specialist for — drafting, editorial, brand voice, research write-ups — without staffing it out.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <div class="label">What $500 gets you</div>
+    <p>Full WP Agent Framework install on your Mac Mini, all seven components above (substrate plus skill modules), Blank Agent Interview run live during setup, Telegram bot registered and secured, Anthropic API configured with spending cap, webcam calibrated, optional ElevenLabs voice integration if you opt in, first 30 days of white-glove support — anything breaks, anything feels off, anything you want added, we handle it.</p>
+  </div>
+
+  <div class="page-footer"><div>Private Agent Proposal</div><div>03</div></div>
+</section>
+
+<!-- ========== COST SUMMARY ========== -->
+<section class="page">
+  <div class="section-label">04 · Total Cost</div>
+  <h2>What it <span class="accent">actually costs</span></h2>
+  <p class="muted">Three buckets. Clear separation. Nothing bundled.</p>
+
+  <div class="summary">
+    <div class="card">
+      <div class="label">Hardware · one-time</div>
+      <div class="amount">Est. $1,290–2,020</div>
+      <div class="freq">Apple + Amazon</div>
+      <div class="detail">Mac Mini (required, Option A or B) plus monitor, keyboard, mouse, webcam, USB backup drive — all your choice.</div>
+    </div>
+    <div class="card">
+      <div class="label">Anthropic API · monthly</div>
+      <div class="amount">$30–300</div>
+      <div class="freq">usage-based</div>
+      <div class="detail">Pay-per-token to Anthropic, credit card on file. Light use $30–60, daily-driver $80–150, heavy $150–300+.</div>
+    </div>
+    <div class="card">
+      <div class="label">Our build · one-time</div>
+      <div class="amount scarlet">$500</div>
+      <div class="freq">paid to us</div>
+      <div class="detail">Full WP Agent Framework install, Blank Agent Interview, configuration, first 30 days white-glove support.</div>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <h3>Honest math — first year, recommended daily-driver build</h3>
+  <p class="muted">Mac Mini Option B + big-screen monitor + Razer combo + webcam + hub. All prices estimated; actual will vary slightly.</p>
+  <table class="price">
+    <tbody>
+      <tr><td class="item">Hardware (one-time, reference build with backup SSD)</td><td></td><td class="right">Est. ~$2,020</td></tr>
+      <tr><td class="item">Our build (one-time, fixed fee)</td><td></td><td class="right">$500</td></tr>
+      <tr><td class="item">Anthropic API — Opus 4.7 (12 × ~$120)</td><td></td><td class="right">Est. ~$1,440</td></tr>
+      <tr><td class="item">Optional domain (skip if not needed)</td><td></td><td class="right">Est. ~$12</td></tr>
+      <tr class="subtotal"><td colspan="2">Year-one total (estimate)</td><td class="right">Est. ~$3,972</td></tr>
+    </tbody>
+  </table>
+
+  <p class="muted">After year one, ongoing cost is just the Anthropic API bill — roughly <strong>$120 / month</strong> at daily-driver usage (plus ElevenLabs if you opted in). The hardware lasts years; our build is one-and-done. API spend can be tuned up or down by adjusting how much the agent is used, and the spending cap in the Anthropic console prevents surprise bills.</p>
+
+  <div class="page-footer"><div>Private Agent Proposal</div><div>04</div></div>
+</section>
+
+<!-- ========== NEXT STEPS ========== -->
+<section class="page">
+  <div class="section-label">05 · Next Steps</div>
+  <h2>If this is <span class="accent">a yes</span></h2>
+  <ul>
+    <li>You order the Mac Mini from Apple (Option A or B) and the peripherals you've picked — we'll provide the exact product links if you want them. Typical ship time: 3–5 days.</li>
+    <li>You create an Anthropic API account at <a href="https://console.anthropic.com">console.anthropic.com</a>, add a payment method, and we help set the spending cap.</li>
+    <li>Once hardware arrives, we schedule the install session — roughly 4–6 hours, on-site (LA area) or remote.</li>
+    <li>Blank Agent Interview runs during install. The agent is live by end of session.</li>
+    <li>30-day white-glove window begins. Anything you need, we're one message away.</li>
+  </ul>
+
+  <hr class="rule">
+
+  <h3>Questions or adjustments</h3>
+  <p>The package above is the baseline. If you want any of it scoped up or down — different hardware, industry-specific memory seeding, additional channels — we'll quote cleanly. Nothing here is locked.</p>
+
+  <div class="callout">
+    <div class="label">One note on ownership</div>
+    <p>Your agent's identity, memory, and all files are <strong>yours</strong>. They live on your Mac Mini, they back up to your chosen location, and they're encrypted where appropriate. We don't keep copies, we don't monitor, and the agent never phones home. It's fully under your control from day one.</p>
+  </div>
+
+  <div class="page-footer"><div>Private Agent Proposal</div><div>05</div></div>
+</section>
+
+</body>
+</html>
