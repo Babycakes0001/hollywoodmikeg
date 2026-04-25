@@ -485,94 +485,201 @@
     border-radius: 2px;
   }
 
-  /* ========== MOBILE / iPhone ========== */
+  /* ========== MOBILE / iPhone — generous, eye-friendly ========== */
   @media (max-width: 768px) {
+    :root {
+      --muted: #a4adc1;  /* brighter, easier on the eye on phone */
+    }
+
+    body { line-height: 1.62; }
+
     .page {
       width: 100%;
-      padding: 36px 20px 36px;
+      padding: 40px 22px 48px;
       page-break-before: auto;
       break-before: auto;
+      /* drop the Tron grid on mobile — visual noise hurts readability */
+      background: var(--near-black);
     }
+    .page::before { display: none; }
+
     .cover {
       min-height: auto;
-      padding: 60px 22px 80px;
+      padding: 80px 24px 100px;
+      background:
+        radial-gradient(800px 600px at 90% -10%, rgba(255,23,68,0.18), transparent 55%),
+        radial-gradient(700px 500px at -10% 110%, rgba(0,164,255,0.16), transparent 55%),
+        var(--near-black);
     }
     .cover h1 {
-      font-size: 42px;
-      line-height: 1.06;
-      margin: 22px 0 16px;
+      font-size: 44px;
+      line-height: 1.08;
+      margin: 26px 0 22px;
+      letter-spacing: -0.02em;
     }
     .cover .lede {
-      font-size: 16px;
-      line-height: 1.55;
+      font-size: 17.5px;
+      line-height: 1.65;
       max-width: 100%;
+      color: #c4cad8;
     }
     .cover .eyebrow {
-      font-size: 10px;
-      letter-spacing: 0.24em;
+      font-size: 11px;
+      letter-spacing: 0.26em;
+      padding: 7px 14px;
+    }
+    .cover-mark {
+      font-size: 11px;
+      margin-top: 36px;
     }
 
     h2 {
-      font-size: 30px;
-      line-height: 1.12;
+      font-size: 32px;
+      line-height: 1.14;
+      margin-bottom: 18px;
+    }
+    h3 {
+      font-size: 18px;
+      margin: 22px 0 8px;
+    }
+    p {
+      font-size: 16.5px;
+      line-height: 1.65;
       margin-bottom: 14px;
     }
-    h3 { font-size: 17px; }
-    p { font-size: 14.5px; }
-    p.muted { font-size: 14px; }
-    ul li { font-size: 14.5px; }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 0.22em;
+    p.muted {
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    ul li {
+      font-size: 16.5px;
+      line-height: 1.6;
+      margin-bottom: 10px;
     }
 
-    .line-item { padding: 14px 14px; }
+    .section-label {
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      margin-bottom: 14px;
+    }
+
+    .line-items { margin: 18px 0 14px; }
+    .line-item {
+      padding: 18px 16px;
+      margin-bottom: 14px;
+    }
     .line-item-row {
       flex-direction: column;
       align-items: flex-start;
-      gap: 6px;
+      gap: 8px;
     }
-    .line-name { font-size: 16.5px; }
-    .line-price { font-size: 18px; }
+    .line-name {
+      font-size: 18px;
+      line-height: 1.35;
+    }
+    .line-price {
+      font-size: 19px;
+    }
     .line-spec {
-      font-size: 12px;
-      line-height: 1.5;
+      font-size: 12.5px;
+      line-height: 1.55;
+      margin-top: 8px;
     }
-    .line-note { font-size: 14px; line-height: 1.55; }
+    .line-note {
+      font-size: 15.5px;
+      line-height: 1.62;
+      margin-top: 10px;
+    }
     .line-link {
-      font-size: 11.5px;
-      line-height: 1.5;
+      font-size: 12px;
+      line-height: 1.55;
+      margin-top: 6px;
     }
 
     .value-block {
-      grid-template-columns: 36px 1fr;
-      gap: 10px;
-      padding: 14px 14px;
+      grid-template-columns: 40px 1fr;
+      gap: 12px;
+      padding: 18px 16px;
+      margin-bottom: 14px;
     }
-    .value-block .num { font-size: 24px; }
-    .value-block .name { font-size: 17px; }
-    .value-block .what { font-size: 14px; line-height: 1.55; }
-    .value-block .why { font-size: 10px; }
-    .value-block .why-text { font-size: 13.5px; line-height: 1.55; }
+    .value-block .num {
+      font-size: 26px;
+      padding-top: 4px;
+    }
+    .value-block .name {
+      font-size: 18.5px;
+      margin-bottom: 8px;
+    }
+    .value-block .what {
+      font-size: 15.5px;
+      line-height: 1.62;
+      margin-bottom: 10px;
+    }
+    .value-block .why {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      margin-top: 6px;
+    }
+    .value-block .why-text {
+      font-size: 15px;
+      line-height: 1.62;
+      margin-top: 4px;
+    }
 
     .summary {
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 14px;
     }
-    .summary .card { padding: 18px; }
-    .summary .card .amount { font-size: 30px; }
+    .summary .card {
+      padding: 22px 20px;
+    }
+    .summary .card .label {
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      margin-bottom: 12px;
+    }
+    .summary .card .amount {
+      font-size: 32px;
+    }
+    .summary .card .freq {
+      font-size: 11px;
+      margin-top: 8px;
+    }
+    .summary .card .detail {
+      font-size: 14.5px;
+      line-height: 1.6;
+      margin-top: 12px;
+    }
 
-    .callout { padding: 14px 16px; }
-    .callout p { font-size: 13.5px; line-height: 1.55; }
+    .callout {
+      padding: 18px 18px 18px 20px;
+      margin: 20px 0;
+    }
+    .callout .label {
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      margin-bottom: 10px;
+    }
+    .callout p {
+      font-size: 15px;
+      line-height: 1.62;
+    }
 
-    table.price { font-size: 13px; }
-    table.price tbody td { padding: 10px 8px; }
+    table.price { font-size: 14.5px; }
+    table.price thead th {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      padding: 12px 10px;
+    }
+    table.price tbody td {
+      padding: 12px 10px;
+    }
 
     .pill {
-      font-size: 8.5px;
+      font-size: 9px;
       padding: 3px 7px;
-      margin-left: 6px;
+      margin-left: 0;
+      margin-top: 4px;
     }
 
     .page-footer { display: none; }
