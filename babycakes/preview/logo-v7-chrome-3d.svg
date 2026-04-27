@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <!-- BODY gradient: chrome ribbon mid-tone with directional shading -->
+    <linearGradient id="bodyChrome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1a2230"/>
+      <stop offset="20%"  stop-color="#5a6878"/>
+      <stop offset="40%"  stop-color="#bcc8d4"/>
+      <stop offset="55%"  stop-color="#ffffff"/>
+      <stop offset="70%"  stop-color="#e0e6ee"/>
+      <stop offset="85%"  stop-color="#3a4452"/>
+      <stop offset="100%" stop-color="#0f1620"/>
+    </linearGradient>
+
+    <!-- HIGHLIGHT gradient: tight bright band for the top of each tube -->
+    <linearGradient id="topShine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="30%"  stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="60%"  stop-color="#ffffff" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- SHADOW gradient: dark band for the underside -->
+    <linearGradient id="underShade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#0a0d14" stop-opacity="0"/>
+      <stop offset="50%"  stop-color="#0a0d14" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0a0d14" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Soft blur filter for highlights -->
+    <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+
+    <!-- INFINITY path -->
+    <path id="infPath" d="M 130,512
+                          C 130,360 360,360 512,512
+                          C 664,664 894,664 894,512
+                          C 894,360 664,360 512,512
+                          C 360,664 130,664 130,512 Z"/>
+
+    <!-- HEART path (tip at origin, body up) -->
+    <path id="heartPath" d="M 12,21.35
+                            L 10.55,20.03
+                            C 5.4,15.36 2,12.28 2,8.5
+                            C 2,5.42 4.42,3 7.5,3
+                            C 9.24,3 10.91,3.81 12,5.09
+                            C 13.09,3.81 14.76,3 16.5,3
+                            C 19.58,3 22,5.42 22,8.5
+                            C 22,12.28 18.6,15.36 13.45,20.03
+                            L 12,21.35 Z"/>
+  </defs>
+
+  <!-- Reuse function: draw each shape as 3 stacked strokes — body, highlight, shadow -->
+
+  <!-- INFINITY: body stroke (chrome gradient) -->
+  <use href="#infPath" stroke="url(#bodyChrome)" stroke-width="60" fill="none"
+       stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- INFINITY: dark outer rim for definition -->
+  <use href="#infPath" stroke="#0a0d14" stroke-width="2" fill="none"
+       stroke-linejoin="round" stroke-linecap="round" opacity="0.6"/>
+  <!-- INFINITY: top-side bright highlight (thin, offset up) -->
+  <use href="#infPath" stroke="url(#topShine)" stroke-width="22" fill="none"
+       stroke-linejoin="round" stroke-linecap="round"
+       transform="translate(0 -12)" filter="url(#softBlur)" opacity="0.85"/>
+  <!-- INFINITY: under-side shadow (offset down) -->
+  <use href="#infPath" stroke="url(#underShade)" stroke-width="14" fill="none"
+       stroke-linejoin="round" stroke-linecap="round"
+       transform="translate(0 14)" filter="url(#softBlur)" opacity="0.7"/>
+
+  <!-- TOP HEART: same triple-stack approach inside scaled group -->
+  <g transform="translate(512 512) scale(17 17) translate(-12 -21.35)">
+    <use href="#heartPath" stroke="url(#bodyChrome)" stroke-width="3.5" fill="none"
+         stroke-linejoin="round" stroke-linecap="round"/>
+    <use href="#heartPath" stroke="#0a0d14" stroke-width="0.12" fill="none"
+         stroke-linejoin="round" stroke-linecap="round" opacity="0.6"/>
+    <use href="#heartPath" stroke="url(#topShine)" stroke-width="1.3" fill="none"
+         stroke-linejoin="round" stroke-linecap="round"
+         transform="translate(0 -0.7)" opacity="0.85"/>
+    <use href="#heartPath" stroke="url(#underShade)" stroke-width="0.8" fill="none"
+         stroke-linejoin="round" stroke-linecap="round"
+         transform="translate(0 0.8)" opacity="0.7"/>
+  </g>
+
+  <!-- BOTTOM HEART: rotate 180 (highlight now on the natural bottom of the rotated tube) -->
+  <g transform="translate(512 512) rotate(180) scale(17 17) translate(-12 -21.35)">
+    <use href="#heartPath" stroke="url(#bodyChrome)" stroke-width="3.5" fill="none"
+         stroke-linejoin="round" stroke-linecap="round"/>
+    <use href="#heartPath" stroke="#0a0d14" stroke-width="0.12" fill="none"
+         stroke-linejoin="round" stroke-linecap="round" opacity="0.6"/>
+    <use href="#heartPath" stroke="url(#topShine)" stroke-width="1.3" fill="none"
+         stroke-linejoin="round" stroke-linecap="round"
+         transform="translate(0 -0.7)" opacity="0.85"/>
+    <use href="#heartPath" stroke="url(#underShade)" stroke-width="0.8" fill="none"
+         stroke-linejoin="round" stroke-linecap="round"
+         transform="translate(0 0.8)" opacity="0.7"/>
+  </g>
+</svg>
