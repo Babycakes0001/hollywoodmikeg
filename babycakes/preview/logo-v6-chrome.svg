@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <!-- Vertical chrome gradient: edges dark, middle bright highlight, classic polished metal -->
+    <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#3a4654"/>
+      <stop offset="12%"  stop-color="#7a8898"/>
+      <stop offset="28%"  stop-color="#cdd9e6"/>
+      <stop offset="42%"  stop-color="#ffffff"/>
+      <stop offset="50%"  stop-color="#f4f7fb"/>
+      <stop offset="58%"  stop-color="#ffffff"/>
+      <stop offset="72%"  stop-color="#aab8c8"/>
+      <stop offset="88%"  stop-color="#5e6a78"/>
+      <stop offset="100%" stop-color="#2a3340"/>
+    </linearGradient>
+
+    <!-- Subtle inner-glow filter to soften edges and add metallic body -->
+    <filter id="metalSoft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Transparent background — sits on top of the cover's ink + twinkle -->
+
+  <!-- HORIZONTAL INFINITY ribbon — chrome stroked -->
+  <path d="M 130,512
+           C 130,360 360,360 512,512
+           C 664,664 894,664 894,512
+           C 894,360 664,360 512,512
+           C 360,664 130,664 130,512 Z"
+        stroke="url(#chrome)"
+        stroke-width="50"
+        fill="none"
+        stroke-linejoin="round"
+        stroke-linecap="round"/>
+
+  <!-- TOP HEART outline: tip pointing DOWN at center (512,512) -->
+  <g transform="translate(512 512) scale(17 17) translate(-12 -21.35)">
+    <path d="M 12,21.35
+             L 10.55,20.03
+             C 5.4,15.36 2,12.28 2,8.5
+             C 2,5.42 4.42,3 7.5,3
+             C 9.24,3 10.91,3.81 12,5.09
+             C 13.09,3.81 14.76,3 16.5,3
+             C 19.58,3 22,5.42 22,8.5
+             C 22,12.28 18.6,15.36 13.45,20.03
+             L 12,21.35 Z"
+          stroke="url(#chrome)"
+          stroke-width="2.94"
+          fill="none"
+          stroke-linejoin="round"
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- BOTTOM HEART outline: tip pointing UP at center (512,512) -->
+  <g transform="translate(512 512) rotate(180) scale(17 17) translate(-12 -21.35)">
+    <path d="M 12,21.35
+             L 10.55,20.03
+             C 5.4,15.36 2,12.28 2,8.5
+             C 2,5.42 4.42,3 7.5,3
+             C 9.24,3 10.91,3.81 12,5.09
+             C 13.09,3.81 14.76,3 16.5,3
+             C 19.58,3 22,5.42 22,8.5
+             C 22,12.28 18.6,15.36 13.45,20.03
+             L 12,21.35 Z"
+          stroke="url(#chrome)"
+          stroke-width="2.94"
+          fill="none"
+          stroke-linejoin="round"
+          stroke-linecap="round"/>
+  </g>
+</svg>
