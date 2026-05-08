@@ -1,107 +1,1059 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hollywood Mike G | Actor</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mike G — Actor · Producer · Storyteller</title>
+<meta name="description" content="Hollywood Mike G — character actor and producer. Selected credits include Ballard, Familiar Touch, Euphoria, Mr. Mayor, The Way Back, Crank, Domino.">
+<meta property="og:title" content="Mike G — Actor · Producer · Storyteller">
+<meta property="og:description" content="A working character actor with raw authenticity and dynamic presence.">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #08080a;
+    --bg-2: #0e0e12;
+    --surface: #15151c;
+    --line: #1f1f27;
+    --line-bright: #2c2c36;
+    --bone: #f5f0e8;
+    --bone-soft: #c8c1b4;
+    --bone-dim: #8a8478;
+    --bone-faint: #4a463e;
+    --crimson: #a91d2c;
+    --crimson-bright: #c8243a;
+    --crimson-deep: #6e1320;
+    --amber: #c89344;
+    --max: 1240px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--bone);
+    font-family: "Source Serif 4", Charter, "Times New Roman", serif;
+    font-size: 18px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .display { font-family: "Cormorant Garamond", Garamond, "Times New Roman", serif; }
+  .ui { font-family: "Inter", system-ui, sans-serif; }
+  .logotype {
+    font-family: "Big Shoulders Display", "Arial Black", system-ui, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+  /* FILM GRAIN — sits over everything, animated noise */
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 100;
+    opacity: 0.05; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.65'/></svg>");
+    animation: grain 1.2s steps(6) infinite;
+  }
+  @keyframes grain {
+    0%   { transform: translate(0,0); }
+    20%  { transform: translate(-3%, 2%); }
+    40%  { transform: translate(2%, -3%); }
+    60%  { transform: translate(-2%, -2%); }
+    80%  { transform: translate(3%, 1%); }
+    100% { transform: translate(0,0); }
+  }
+
+  /* Letter-by-letter reveal */
+  .reveal-letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(28px);
+    animation: letterUp 0.8s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+  }
+  @keyframes letterUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Reveal-on-scroll */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.85s cubic-bezier(0.2, 0.9, 0.2, 1), transform 0.85s cubic-bezier(0.2, 0.9, 0.2, 1);
+  }
+  .scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* Top masthead */
+  header.bar {
+    padding: 28px 0 22px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    position: sticky; top: 0; z-index: 30;
+    backdrop-filter: blur(8px);
+    background: rgba(8,8,10,0.92);
+  }
+  header .row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: var(--bone);
+    font-family: "Big Shoulders Display", "Arial Black", sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .brand .star {
+    width: 19px; height: 19px;
+    fill: var(--crimson);
+    margin-left: 1px;
+    filter: drop-shadow(0 0 6px rgba(169,29,44,0.45));
+    transition: transform .35s cubic-bezier(0.34, 1.56, 0.64, 1), filter .25s ease;
+  }
+  .brand:hover .star {
+    transform: rotate(72deg) scale(1.15);
+    filter: drop-shadow(0 0 14px rgba(169,29,44,0.85));
+  }
+  .nav {
+    display: flex; gap: 26px;
+    font-family: "Inter", sans-serif;
+    font-size: 11.5px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 600;
+  }
+  .nav a {
+    color: var(--bone-dim);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: all .15s;
+  }
+  .nav a:hover { color: var(--bone); border-bottom-color: var(--crimson); }
+  @media (max-width: 760px) { .nav { display: none; } }
+
+  /* HERO */
+  .hero {
+    padding: 70px 0 90px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 80% 30%, rgba(169,29,44,0.08), transparent 50%);
+    pointer-events: none;
+  }
+  .hero .container {
+    display: grid; grid-template-columns: 1fr; gap: 50px;
+    align-items: center;
+    position: relative;
+  }
+  @media (min-width: 920px) { .hero .container { grid-template-columns: 1.1fr 1fr; gap: 70px; } }
+  .hero .meta {
+    font-family: "Inter", sans-serif;
+    font-size: 11px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--crimson);
+    font-weight: 700;
+    margin-bottom: 22px;
+  }
+  .hero .meta span { color: var(--bone-dim); margin: 0 8px; font-weight: 400; }
+  .hero h1 {
+    font-family: "Big Shoulders Display", "Arial Black", sans-serif;
+    font-weight: 900;
+    font-size: clamp(74px, 11vw, 168px);
+    line-height: 0.88;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: var(--bone);
+  }
+  .hero h1 .name-star {
+    display: inline-block;
+    width: 0.7em; height: 0.7em;
+    fill: var(--crimson);
+    margin-left: 0.06em;
+    vertical-align: -0.04em;
+    filter: drop-shadow(0 0 16px rgba(169,29,44,0.55));
+    animation: starPulse 3.4s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes starPulse {
+    0%, 100% { filter: drop-shadow(0 0 16px rgba(169,29,44,0.55)); transform: scale(1); }
+    50%      { filter: drop-shadow(0 0 28px rgba(169,29,44,0.95)); transform: scale(1.06); }
+  }
+  .hero .role-line {
+    margin-top: 28px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: clamp(20px, 2.4vw, 26px);
+    color: var(--bone-soft);
+    letter-spacing: 0.01em;
+  }
+  .hero .role-line span { color: var(--bone-faint); margin: 0 12px; font-style: normal; }
+  .hero .ctaRow {
+    margin-top: 42px;
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; gap: 10px; align-items: center;
+    padding: 14px 28px;
+    font-family: "Inter", sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 0;
+    transition: all .2s ease;
+    border: 1.5px solid transparent;
+  }
+  .btn.primary {
+    background: var(--crimson);
+    color: var(--bone);
+    border-color: var(--crimson);
+  }
+  .btn.primary:hover { background: var(--crimson-bright); border-color: var(--crimson-bright); }
+  .btn.ghost {
+    background: transparent;
+    color: var(--bone);
+    border-color: var(--line-bright);
+  }
+  .btn.ghost:hover { border-color: var(--bone); }
+
+  .portrait {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    --mx: 50%; --my: 50%;
+  }
+  .portrait::before {
+    content: ""; position: absolute; top: 0; left: 0;
+    width: 28px; height: 28px;
+    border-top: 2px solid var(--crimson);
+    border-left: 2px solid var(--crimson);
+    z-index: 5;
+  }
+  .portrait::after {
+    content: ""; position: absolute; bottom: 0; right: 0;
+    width: 28px; height: 28px;
+    border-bottom: 2px solid var(--crimson);
+    border-right: 2px solid var(--crimson);
+    z-index: 5;
+  }
+  .portrait img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: brightness(0.95) contrast(1.05);
+    transition: transform 1.4s cubic-bezier(0.2, 0.9, 0.2, 1);
+  }
+  .portrait:hover img { transform: scale(1.035); }
+  .portrait .spotlight {
+    position: absolute; inset: 0; z-index: 4;
+    background: radial-gradient(circle 320px at var(--mx) var(--my), rgba(200,147,68,0.22), rgba(169,29,44,0.10) 35%, transparent 60%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    mix-blend-mode: screen;
+  }
+  .portrait:hover .spotlight { opacity: 1; }
+  .portrait .caption {
+    position: absolute; bottom: 14px; left: 18px;
+    font-family: "Inter", sans-serif;
+    font-size: 9.5px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--bone-soft);
+    background: rgba(8,8,10,0.7);
+    padding: 5px 9px;
+    backdrop-filter: blur(4px);
+    z-index: 4;
+  }
+
+  /* STATS BAND — receipts */
+  .stats {
+    padding: 70px 0;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-2);
+    position: relative;
+    overflow: hidden;
+  }
+  .stats::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+    opacity: 0.6;
+  }
+  .stats .head { text-align: center; margin-bottom: 50px; }
+  .stats .label {
+    font-family: "Inter", sans-serif;
+    font-size: 11px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--crimson);
+    font-weight: 700; margin-bottom: 10px;
+  }
+  .stats .head h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(22px, 2.4vw, 28px);
+    color: var(--bone-soft);
+    letter-spacing: 0.005em;
+  }
+  .stats-grid {
+    display: grid; gap: 1px;
+    grid-template-columns: 1fr;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media (min-width: 720px) { .stats-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 980px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  .stat {
+    background: var(--bg-2);
+    padding: 40px 28px 36px;
+    text-align: center;
+    position: relative;
+    transition: background .25s;
+  }
+  .stat:hover { background: var(--bg); }
+  .stat .num {
+    font-family: "Big Shoulders Display", "Arial Black", sans-serif;
+    font-weight: 900;
+    font-size: clamp(72px, 8.5vw, 112px);
+    line-height: 0.85;
+    color: var(--bone);
+    letter-spacing: -0.005em;
+    display: block;
+    margin-bottom: 18px;
+  }
+  .stat .num em {
+    color: var(--crimson);
+    font-style: normal;
+    font-weight: 900;
+  }
+  .stat .stat-label {
+    font-family: "Inter", sans-serif;
+    font-size: 10.5px; letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--bone);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .stat .stat-sub {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--bone-dim);
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+  }
+
+  /* STATS-CTA — big crimson button below the stats grid */
+  .stats-cta {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 50px;
+    padding: 32px 44px;
+    background: linear-gradient(105deg, var(--crimson-deep) 0%, #2a0a13 85%);
+    border: 1px solid var(--crimson);
+    text-decoration: none;
+    color: var(--bone);
+    transition: border-color .25s, box-shadow .3s, transform .3s;
+    gap: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stats-cta::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--bone);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .35s cubic-bezier(0.2,0.9,0.2,1);
+  }
+  .stats-cta:hover::before { transform: scaleX(1); }
+  .stats-cta:hover {
+    border-color: var(--bone);
+    box-shadow: 0 24px 60px -22px rgba(169,29,44,0.85);
+    transform: translateY(-2px);
+  }
+  .stats-cta .cta-eyebrow {
+    font-family: "Inter", sans-serif;
+    font-size: 11px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.65);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .stats-cta .cta-title {
+    font-family: "Big Shoulders Display", "Arial Black", sans-serif;
+    font-weight: 900;
+    font-size: clamp(30px, 4.2vw, 56px);
+    line-height: 1;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+  }
+  .stats-cta .cta-arrow {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1;
+    transition: transform .3s cubic-bezier(0.34,1.56,0.64,1);
+    flex-shrink: 0;
+  }
+  .stats-cta:hover .cta-arrow { transform: translateX(14px); }
+  @media (max-width: 600px) {
+    .stats-cta { padding: 26px 24px; gap: 16px; }
+  }
+
+  /* THE BIO */
+  .bio { padding: 110px 0; border-bottom: 1px solid var(--line); }
+  .bio .layout { display: grid; grid-template-columns: 1fr; gap: 40px; }
+  @media (min-width: 880px) { .bio .layout { grid-template-columns: 280px 1fr; gap: 80px; align-items: flex-start; } }
+  /* Sticky label-stack only on desktop where the 2-column layout exists.
+     On mobile (single column) sticky causes the label to overlap the bio body
+     as it scrolls past — flagged by Mike 2026-05-08. */
+  @media (min-width: 880px) {
+    .bio .label-stack { position: sticky; top: 90px; }
+  }
+  .bio .label {
+    font-family: "Inter", sans-serif;
+    font-size: 11px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--crimson); font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .bio h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.0;
+    letter-spacing: -0.015em;
+  }
+  .bio h2 em { color: var(--crimson); font-style: italic; }
+  .bio .body {
+    font-family: "Source Serif 4", serif;
+    font-size: 19px; line-height: 1.7;
+    color: var(--bone-soft);
+    max-width: 640px;
+  }
+  .bio .body p { margin-bottom: 22px; }
+  .bio .body p:first-child::first-letter {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 76px; font-weight: 700;
+    float: left; line-height: 0.9;
+    margin: 6px 12px 0 -2px;
+    color: var(--crimson);
+  }
+  .bio .body em { color: var(--bone); font-style: italic; }
+
+  /* CREDITS */
+  .credits { padding: 110px 0; border-bottom: 1px solid var(--line); background: var(--bg-2); }
+  .credits-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--crimson);
+    margin-bottom: 50px;
+  }
+  .credits-head .label {
+    font-family: "Inter", sans-serif;
+    font-size: 11px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--crimson);
+    font-weight: 700;
+  }
+  .credits-head h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: clamp(36px, 4.6vw, 54px);
+    line-height: 1.0;
+    letter-spacing: -0.015em;
+    color: var(--bone);
+    margin-top: 8px;
+  }
+  .credits-head h2 em { color: var(--crimson); font-style: italic; }
+  .credits-head .imdb-link {
+    font-family: "Inter", sans-serif;
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 700;
+    color: var(--bone-soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--bone-faint);
+    padding-bottom: 4px;
+  }
+  .credits-head .imdb-link:hover { color: var(--bone); border-bottom-color: var(--crimson); }
+
+  .credits-grid {
+    display: grid; grid-template-columns: 1fr; gap: 18px;
+  }
+  @media (min-width: 720px) { .credits-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1080px) { .credits-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .credit {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 28px 26px;
+    display: flex; flex-direction: column; gap: 12px;
+    position: relative;
+    transition: border-color .2s, transform .25s, box-shadow .25s, opacity 0.85s cubic-bezier(0.2,0.9,0.2,1);
+    min-height: 200px;
+    overflow: hidden;
+    --mx: 50%; --my: 50%;
+  }
+  .credit:hover {
+    border-color: var(--crimson);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 44px -22px rgba(169,29,44,0.55);
+  }
+  .credit::before {
+    content: ""; position: absolute; top: 0; left: 0;
+    width: 0; height: 3px;
+    background: var(--crimson);
+    transition: width .25s;
+    z-index: 3;
+  }
+  .credit:hover::before { width: 100%; }
+  .credit::after {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle 260px at var(--mx) var(--my), rgba(169,29,44,0.18), transparent 55%);
+    opacity: 0;
+    transition: opacity .3s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .credit:hover::after { opacity: 1; }
+  .credit > * { position: relative; z-index: 2; }
+  .credit .year {
+    font-family: "Inter", sans-serif;
+    font-size: 10.5px; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--bone-faint);
+    font-weight: 700;
+  }
+  .credit .year span { color: var(--crimson); margin-left: 8px; }
+  .credit .title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 32px; line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+  }
+  .credit .title em { font-style: italic; }
+  .credit .meta {
+    font-family: "Source Serif 4", serif;
+    font-size: 14.5px; font-style: italic;
+    color: var(--bone-soft); line-height: 1.45;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+  }
+
+  /* IMDb CTA card — sits in the credits grid as a distinct "click through" tile */
+  .credit.cta {
+    background: linear-gradient(160deg, var(--crimson-deep) 0%, #2a0a13 100%);
+    border-color: var(--crimson);
+    color: var(--bone);
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .credit.cta::before { background: var(--bone); }
+  .credit.cta:hover {
+    border-color: var(--bone);
+    box-shadow: 0 22px 50px -22px rgba(169,29,44,0.85);
+    transform: translateY(-3px);
+  }
+  .credit.cta:hover::after { opacity: 0; }
+  .credit.cta .cta-eyebrow {
+    font-family: "Inter", sans-serif;
+    font-size: 10.5px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.65);
+    font-weight: 700;
+  }
+  .credit.cta .cta-title {
+    font-family: "Big Shoulders Display", "Arial Black", sans-serif;
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 0.95;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: var(--bone);
+  }
+  .credit.cta .cta-meta {
+    font-family: "Source Serif 4", serif;
+    font-size: 14px; font-style: italic;
+    color: rgba(245,240,232,0.78);
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(245,240,232,0.22);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 14px;
+  }
+  .credit.cta .cta-arrow {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 900; font-size: 28px;
+    color: var(--bone);
+    transition: transform .3s cubic-bezier(0.34,1.56,0.64,1);
+    line-height: 1;
+  }
+  .credit.cta:hover .cta-arrow { transform: translateX(8px); }
+
+  /* THE REEL */
+  .reel { padding: 110px 0; border-bottom: 1px solid var(--line); }
+  .reel .head { text-align: center; margin-bottom: 40px; }
+  .reel .label {
+    font-family: "Inter", sans-serif;
+    font-size: 11px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--crimson);
+    font-weight: 700; margin-bottom: 14px;
+  }
+  .reel h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.0;
+    letter-spacing: -0.015em;
+  }
+  .reel h2 em { color: var(--crimson); font-style: italic; }
+  .reel .embed {
+    max-width: 980px; margin: 0 auto;
+    aspect-ratio: 16/9;
+    background: var(--bg-2);
+    border: 1px solid var(--crimson);
+    box-shadow: 0 30px 80px -40px rgba(169,29,44,0.6);
+    overflow: hidden;
+    position: relative;
+  }
+  .reel .embed::before {
+    content: ""; position: absolute; top: -1px; left: -1px; right: -1px;
+    height: 3px; background: var(--crimson); z-index: 5;
+  }
+  .reel .embed iframe {
+    width: 100%; height: 100%; border: 0; display: block;
+  }
+  .spot-block {
+    max-width: 800px; margin: 70px auto 0;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+  .spot-label {
+    font-family: "Inter", sans-serif;
+    font-size: 11px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--crimson);
+    font-weight: 700; margin-bottom: 14px;
+  }
+  .spot-title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1; margin-bottom: 28px;
+  }
+  .spot-title em { font-style: italic; }
+  .spot-embed { box-shadow: 0 24px 60px -32px rgba(169,29,44,0.5); }
+
+  /* MARQUEE — networks & studios */
+  .marquee {
+    position: relative;
+    overflow: hidden;
+    padding: 42px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .marquee::before, .marquee::after {
+    content: ""; position: absolute; top: 0; bottom: 0; width: 120px;
+    z-index: 3; pointer-events: none;
+  }
+  .marquee::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+  .marquee::after  { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
+  .marquee-track {
+    display: flex;
+    gap: 56px;
+    width: max-content;
+    animation: marqueeScroll 38s linear infinite;
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 900;
+    font-size: clamp(22px, 2.6vw, 34px);
+    letter-spacing: 0.06em;
+    color: var(--bone-faint);
+    text-transform: uppercase;
+    white-space: nowrap;
+    align-items: center;
+  }
+  .marquee-track .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--crimson);
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+  @keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* PULL QUOTE */
+  .quote {
+    padding: 130px 0;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-2);
+    position: relative;
+  }
+  .quote::before, .quote::after {
+    content: ""; position: absolute; left: 50%; transform: translateX(-50%);
+    width: 80px; height: 1px; background: var(--crimson);
+  }
+  .quote::before { top: 56px; }
+  .quote::after { bottom: 56px; }
+  .quote .container { max-width: 920px; text-align: center; }
+  .quote blockquote {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500; font-style: italic;
+    font-size: clamp(28px, 3.8vw, 44px);
+    line-height: 1.28;
+    color: var(--bone);
+    letter-spacing: -0.005em;
+  }
+  .quote blockquote::before { content: "\201C"; color: var(--crimson); margin-right: 6px; }
+  .quote blockquote::after { content: "\201D"; color: var(--crimson); margin-left: 6px; }
+  .quote .attrib {
+    margin-top: 32px;
+    font-family: "Inter", sans-serif;
+    font-size: 11px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    font-weight: 600;
+  }
+
+  /* CONTACT */
+  .contact { padding: 130px 0; }
+  .contact .container { max-width: 920px; text-align: center; }
+  .contact .label {
+    font-family: "Inter", sans-serif;
+    font-size: 11px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--crimson);
+    font-weight: 700; margin-bottom: 18px;
+  }
+  .contact h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 0.96;
+    letter-spacing: -0.02em;
+  }
+  .contact h2 em { color: var(--crimson); font-style: italic; }
+  .contact .copy {
+    margin-top: 26px;
+    font-size: 18px; line-height: 1.65;
+    color: var(--bone-soft);
+    max-width: 620px; margin-left: auto; margin-right: auto;
+  }
+  .contact .ctaRow {
+    margin-top: 44px;
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  }
+  .contact .links {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: flex; gap: 36px; justify-content: center; flex-wrap: wrap;
+    font-family: "Inter", sans-serif;
+    font-size: 11.5px; letter-spacing: 0.22em;
+    text-transform: uppercase; font-weight: 700;
+  }
+  .contact .links a {
+    color: var(--bone-dim);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all .15s;
+    padding-bottom: 3px;
+  }
+  .contact .links a:hover { color: var(--bone); border-bottom-color: var(--crimson); }
+
+  /* FOOTER */
+  footer.foot {
+    padding: 36px 0;
+    color: var(--bone-faint);
+    font-family: "Inter", sans-serif;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+  }
+  .foot .row {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    align-items: center;
+  }
+  .foot .sig {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-size: 14px;
+    color: var(--bone-dim);
+    letter-spacing: 0.04em;
+  }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav" id="nav">
-    <a href="index.html" class="nav-logo"><img src="images/banner.jpg" alt="Hollywood Mike G" class="nav-banner-img"><span class="nav-site-name">HollywoodMikeG<span class="nav-site-tld">.com</span></span></a>
-    <div class="nav-row">
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="bio.html">Bio / Resume</a></li>
-      <li><a href="videos.html">Demo Reel</a></li>
-      <li><a href="contact.html">Agent Contact</a></li>
-    </ul>
-    <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
-    </div>
-  </nav>
+<div class="grain" aria-hidden="true"></div>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="bio.html">Bio / Resume</a>
-    <a href="videos.html">Demo Reel</a>
-    <a href="contact.html">Agent Contact</a>
+<header class="bar">
+  <div class="container row">
+    <a class="brand" href="#">
+      <span>Mike&nbsp;G</span>
+      <svg class="star" viewBox="0 0 24 24" aria-hidden="true">
+        <polygon points="12,1.5 15.09,8.76 23,9.45 17,14.97 18.82,22.5 12,18.45 5.18,22.5 7,14.97 1,9.45 8.91,8.76"></polygon>
+      </svg>
+    </a>
+    <nav class="nav">
+      <a href="#stats">Receipts</a>
+      <a href="#bio">Bio</a>
+      <a href="#reel">Reel</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-sub">The official site of</p>
-      <h1 class="hero-title">Hollywood<br><em>Mike G</em></h1>
-      <p class="hero-tagline">Actor &nbsp;·&nbsp; Producer &nbsp;·&nbsp; Storyteller</p>
-      <a href="bio.html" class="btn">Discover More</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div>
+      <div class="meta">SAG-AFTRA <span>·</span> Los Angeles <span>·</span> Available</div>
+      <h1 data-reveal-letters>Mike G<svg class="name-star" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,1.5 15.09,8.76 23,9.45 17,14.97 18.82,22.5 12,18.45 5.18,22.5 7,14.97 1,9.45 8.91,8.76"></polygon></svg></h1>
+      <div class="role-line">Actor <span>·</span> Producer <span>·</span> Storyteller</div>
+      <div class="ctaRow">
+        <a class="btn primary" href="#reel">Watch the Reel →</a>
+        <a class="btn ghost" href="https://www.imdb.com/name/nm1943914/" target="_blank" rel="noopener">IMDb Profile</a>
+      </div>
     </div>
-  </section>
+    <div class="portrait" data-spotlight>
+      <img src="images/hero.jpeg" alt="Mike G — Hollywood actor headshot">
+      <div class="spotlight"></div>
+      <div class="caption">Mike G. · 2026</div>
+    </div>
+  </div>
+</section>
 
-  <!-- PORTFOLIO TILES -->
-  <section class="tiles-section">
-    <h2 class="section-title">Portfolio</h2>
-    <div class="tiles">
+<!-- STATS BAND -->
+<section class="stats" id="stats">
+  <div class="container">
+    <div class="head">
+      <div class="label">Receipts</div>
+      <h2 class="display">The numbers don't lie.</h2>
+    </div>
+    <div class="stats-grid">
 
-      <a href="bio.html" class="tile">
-        <div class="tile-img tile-bio"></div>
-        <div class="tile-label">
-          <span>Bio / Resume</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-      </a>
+      <div class="stat scroll-reveal">
+        <span class="num"><span data-count-to="33">0</span></span>
+        <div class="stat-label">Acting Credits</div>
+        <div class="stat-sub">On camera. On every kind of set.</div>
+      </div>
 
-<a href="videos.html" class="tile">
-        <div class="tile-img tile-video"></div>
-        <div class="tile-label">
-          <span>Demo Reel</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-      </a>
+      <div class="stat scroll-reveal">
+        <span class="num"><span data-count-to="6">0</span></span>
+        <div class="stat-label">Producer Credits</div>
+        <div class="stat-sub">Behind the camera, calling shots.</div>
+      </div>
 
-      <a href="contact.html" class="tile">
-        <div class="tile-img tile-contact"></div>
-        <div class="tile-label">
-          <span>Agent Contact</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-      </a>
+      <div class="stat scroll-reveal">
+        <span class="num"><span data-count-to="10">0</span></span>
+        <div class="stat-label">Casting Credits</div>
+        <div class="stat-sub">Department + Director — both sides of the table.</div>
+      </div>
+
+      <div class="stat scroll-reveal">
+        <span class="num"><em>+</em></span>
+        <div class="stat-label">Many More</div>
+        <div class="stat-sub">Stunts · Production · Crew. The work makes the work.</div>
+      </div>
 
     </div>
-  </section>
 
-  <!-- SOCIAL STRIP -->
-  <section class="social-strip">
-    <p>Follow the journey</p>
-    <div class="social-links">
-      <a href="https://www.instagram.com/hollywoodmikeg" target="_blank" aria-label="Instagram">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        Instagram
-      </a>
-      <a href="https://x.com/hollywoodmikeg" target="_blank" aria-label="X / Twitter">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 16M20 4L4 20"/></svg>
-        X
-      </a>
-      <a href="https://m.imdb.com/name/nm1943914/" target="_blank" aria-label="IMDb">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><text x="5" y="16" font-size="8" fill="currentColor" stroke="none" font-family="sans-serif" font-weight="bold">IMDb</text></svg>
-        IMDb
-      </a>
-      <a href="https://youtu.be/Ce42hhUSdJo" target="_blank" aria-label="YouTube">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/></svg>
-        Demo Reel
-      </a>
+    <a class="stats-cta scroll-reveal" href="https://www.imdb.com/name/nm1943914/" target="_blank" rel="noopener">
+      <div>
+        <div class="cta-eyebrow">Full Resume</div>
+        <div class="cta-title">Check me out on IMDb</div>
+      </div>
+      <span class="cta-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- BIO -->
+<section class="bio" id="bio">
+  <div class="container">
+    <div class="layout">
+      <div class="label-stack">
+        <div class="label">A Working Actor</div>
+        <h2 class="display">Raw <em>authenticity.</em></h2>
+      </div>
+      <div class="body">
+        <p>A native of Oregon, Mike G left a rising career as a Communications Behavioral Specialist focusing on autism to pursue his passion for film. Shortly after arriving in Hollywood, he landed his first major gig on NBC's <em>The Tonight Show with Jay Leno</em> and was quickly signed to a prominent talent agency.</p>
+        <p>Due in part to his background in communications and behavior, Mike was booking jobs back to back. While working on sets, he recognized a niche market demand and founded MG Casting — providing productions with talent, locations, vehicles, animals, music, clothing lines, product placement, and investors, which naturally led him into producing.</p>
+        <p>Mike is known for his work in <em>Domino</em>, <em>Crank</em>, and <em>The Way Back</em>, and continues to bring raw authenticity and dynamic presence to every role he takes on.</p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>&copy; <span id="year"></span> Hollywood Mike G &nbsp;|&nbsp; All Rights Reserved</p>
-  </footer>
+<!-- MARQUEE — networks & productions -->
+<section class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>HBO</span><span class="dot"></span>
+    <span>NBC</span><span class="dot"></span>
+    <span>Warner Bros</span><span class="dot"></span>
+    <span>Lionsgate</span><span class="dot"></span>
+    <span>New Line</span><span class="dot"></span>
+    <span>Toyota</span><span class="dot"></span>
+    <span>G4</span><span class="dot"></span>
+    <span>Sony Pictures</span><span class="dot"></span>
+    <span>Amazon MGM</span><span class="dot"></span>
+    <span>NBC Universal</span><span class="dot"></span>
+    <span>Tony Scott</span><span class="dot"></span>
+    <span>Sam Levinson</span><span class="dot"></span>
+    <span>Tina Fey</span><span class="dot"></span>
+    <!-- duplicate for seamless loop -->
+    <span>HBO</span><span class="dot"></span>
+    <span>NBC</span><span class="dot"></span>
+    <span>Warner Bros</span><span class="dot"></span>
+    <span>Lionsgate</span><span class="dot"></span>
+    <span>New Line</span><span class="dot"></span>
+    <span>Toyota</span><span class="dot"></span>
+    <span>G4</span><span class="dot"></span>
+    <span>Sony Pictures</span><span class="dot"></span>
+    <span>Amazon MGM</span><span class="dot"></span>
+    <span>NBC Universal</span><span class="dot"></span>
+    <span>Tony Scott</span><span class="dot"></span>
+    <span>Sam Levinson</span><span class="dot"></span>
+    <span>Tina Fey</span><span class="dot"></span>
+  </div>
+</section>
 
-  <script src="main.js"></script>
+<!-- REEL -->
+<section class="reel" id="reel">
+  <div class="container">
+    <div class="head">
+      <div class="label">The Reel</div>
+      <h2 class="display">Two minutes. <em>Real range.</em></h2>
+    </div>
+    <div class="embed">
+      <iframe src="https://www.youtube.com/embed/Ce42hhUSdJo?rel=0&modestbranding=1" title="Mike G — Demo Reel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="spot-block">
+      <div class="spot-label">Recent Spot · National Commercial</div>
+      <div class="spot-title display"><em>Toyota Camry</em></div>
+      <div class="embed spot-embed">
+        <iframe src="https://www.youtube.com/embed/48shN41xDKI?rel=0&modestbranding=1" title="Mike G — Toyota Camry Commercial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="spot-block">
+      <div class="spot-label">Comedy Sketch · The Attack</div>
+      <div class="spot-title display"><em>Carrot vs. Cucumber</em></div>
+      <div class="embed spot-embed">
+        <iframe src="https://www.youtube.com/embed/Ly0aDv1zESM?rel=0&modestbranding=1" title="Mike G — The Attack: Carrot vs. Cucumber" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="quote">
+  <div class="container">
+    <blockquote>
+      Raw authenticity and dynamic presence. The kind of actor a director casts when the scene needs to feel like life, not performance.
+    </blockquote>
+    <div class="attrib">— On the work of Mike G.</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="label">For Casting & Inquiries</div>
+    <h2 class="display">Let's <em>work.</em></h2>
+    <p class="copy">Mike is represented by <a href="https://www.artistsunitedagencyla.com/" target="_blank" rel="noopener" style="color:var(--bone);text-decoration:none;border-bottom:1px solid var(--crimson);">Artists United Agency LA</a> for film, television, and commercial work. For booking, scripts, casting calls, or producing inquiries — reach the agency direct or browse industry profiles below.</p>
+    <div class="ctaRow">
+      <a class="btn primary" href="mailto:artistsunitedagencyla@gmail.com">Email Agent →</a>
+      <a class="btn ghost" href="tel:3239700740">Call · (323) 970-0740</a>
+    </div>
+    <div class="links">
+      <a href="https://www.imdb.com/name/nm1943914/" target="_blank" rel="noopener">IMDb</a>
+      <a href="https://app.castingnetworks.com/talent/public-profile/632ba3ec-fb39-11eb-86c3-87616407e96c" target="_blank" rel="noopener">Casting Networks</a>
+      <a href="https://resumes.actorsaccess.com/hollywoodmikeg" target="_blank" rel="noopener">Actors Access</a>
+      <a href="https://www.instagram.com/hollywoodmikeg" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/hollywoodmikeg" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://youtu.be/Ce42hhUSdJo" target="_blank" rel="noopener">Demo Reel</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="container row">
+    <div class="sig">© Hollywood Mike G — All rights reserved</div>
+    <div>SAG-AFTRA · Los Angeles · MMXXVI</div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  // ── Letter-by-letter reveal on hero name ──
+  const heroName = document.querySelector('[data-reveal-letters]');
+  if (heroName) {
+    const star = heroName.querySelector('.name-star');
+    const text = heroName.firstChild ? heroName.firstChild.textContent : '';
+    const frag = document.createDocumentFragment();
+    [...text].forEach((ch, i) => {
+      const span = document.createElement('span');
+      span.className = 'reveal-letter';
+      span.textContent = ch === ' ' ? ' ' : ch;
+      span.style.animationDelay = (i * 0.07) + 's';
+      frag.appendChild(span);
+    });
+    heroName.firstChild.replaceWith(frag);
+    if (star) {
+      star.style.opacity = '0';
+      star.style.transition = 'opacity 0.6s ease';
+      setTimeout(() => { star.style.opacity = '1'; }, (text.length * 70) + 200);
+    }
+  }
+
+  // ── Pointer-tracking spotlight on [data-spotlight] elements ──
+  document.querySelectorAll('[data-spotlight]').forEach(el => {
+    el.addEventListener('pointermove', e => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+      el.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+    });
+  });
+
+  // ── Reveal-on-scroll for .scroll-reveal ──
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const target = entry.target;
+        const peers = Array.from(target.parentElement?.querySelectorAll('.scroll-reveal') || []);
+        const idx = peers.indexOf(target);
+        target.style.transitionDelay = (Math.max(0, idx) * 0.075) + 's';
+        target.classList.add('is-visible');
+        io.unobserve(target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => io.observe(el));
+
+  // ── Number ticker — counts up on scroll into view ──
+  const counters = document.querySelectorAll('[data-count-to]');
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-count-to'), 10);
+      const duration = 1400;
+      const start = performance.now();
+      const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+      function tick(now) {
+        const t = Math.min(1, (now - start) / duration);
+        el.textContent = Math.round(easeOut(t) * target).toString();
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      counterIO.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(el => counterIO.observe(el));
+})();
+</script>
 </body>
 </html>
