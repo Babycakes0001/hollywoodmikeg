@@ -1,0 +1,164 @@
+/* babycakes-consent-banner.css — minimal, neutral styling that adapts to
+   most site palettes. Each site can override the variables below to match
+   its own brand. */
+
+:root {
+  --bcb-bg: rgba(15, 23, 42, 0.96);
+  --bcb-text: #f1f5f9;
+  --bcb-muted: #cbd5e1;
+  --bcb-link: #67e8f9;
+  --bcb-primary: #06b6d4;
+  --bcb-primary-text: #0f172a;
+  --bcb-secondary-border: rgba(241, 245, 249, 0.35);
+  --bcb-toast-bg: rgba(15, 23, 42, 0.96);
+  --bcb-toast-text: #f1f5f9;
+  --bcb-toast-success: #34d399;
+}
+
+#babycakes-consent-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: var(--bcb-bg);
+  color: var(--bcb-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: bcb-slide-up 0.32s ease-out;
+}
+
+@keyframes bcb-slide-up {
+  from { transform: translateY(110%); }
+  to   { transform: translateY(0); }
+}
+
+#babycakes-consent-banner .bcb-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+#babycakes-consent-banner .bcb-text {
+  flex: 1 1 auto;
+}
+
+#babycakes-consent-banner .bcb-text strong {
+  color: var(--bcb-text);
+  font-weight: 600;
+}
+
+#babycakes-consent-banner .bcb-text a {
+  color: var(--bcb-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+#babycakes-consent-banner .bcb-text a:hover {
+  text-decoration-thickness: 2px;
+}
+
+#babycakes-consent-banner .bcb-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+#babycakes-consent-banner .bcb-btn {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: opacity 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+#babycakes-consent-banner .bcb-btn:focus-visible {
+  outline: 2px solid var(--bcb-primary);
+  outline-offset: 2px;
+}
+
+#babycakes-consent-banner .bcb-btn-primary {
+  background: var(--bcb-primary);
+  color: var(--bcb-primary-text);
+}
+#babycakes-consent-banner .bcb-btn-primary:hover {
+  opacity: 0.92;
+}
+
+#babycakes-consent-banner .bcb-btn-secondary {
+  background: transparent;
+  color: var(--bcb-text);
+  border-color: var(--bcb-secondary-border);
+}
+#babycakes-consent-banner .bcb-btn-secondary:hover {
+  border-color: var(--bcb-text);
+}
+
+@media (max-width: 640px) {
+  #babycakes-consent-banner .bcb-inner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  #babycakes-consent-banner .bcb-actions {
+    width: 100%;
+  }
+  #babycakes-consent-banner .bcb-btn {
+    flex: 1 1 50%;
+  }
+}
+
+/* ── Confirmation toast ───────────────────────────────────────────── */
+
+#babycakes-consent-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  background: var(--bcb-toast-bg);
+  color: var(--bcb-toast-text);
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  max-width: calc(100vw - 32px);
+  text-align: center;
+  animation: bcb-toast-in 0.28s ease-out;
+}
+
+@keyframes bcb-toast-in {
+  from { opacity: 0; transform: translate(-50%, 12px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+#babycakes-consent-toast.bcb-toast-fade {
+  animation: bcb-toast-out 0.5s ease-in forwards;
+}
+
+@keyframes bcb-toast-out {
+  to { opacity: 0; transform: translate(-50%, 12px); }
+}
+
+/* Reduced motion respected */
+@media (prefers-reduced-motion: reduce) {
+  #babycakes-consent-banner,
+  #babycakes-consent-toast {
+    animation: none !important;
+  }
+}
