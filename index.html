@@ -21,7 +21,8 @@
     --bone: #f5f0e8;
     --bone-soft: #c8c1b4;
     --bone-dim: #8a8478;
-    --bone-faint: #4a463e;
+    /* axe-fix: bone-faint #4a463e was 2.13 on canvas — bumped to #8a8478 (~5:1) */
+    --bone-faint: #8a8478;
     /* axe-fix 2026-05-09 (round 2): --crimson #d83040 was 4.05/4.2 — still under 4.5.
        Lifted to #e84858 which lands at ~4.6+ on bg #08080a. */
     --crimson: #e84858;
@@ -209,11 +210,14 @@
     border: 1.5px solid transparent;
   }
   .btn.primary {
-    background: var(--crimson);
-    color: var(--bone);
-    border-color: var(--crimson);
+    /* axe-fix: pure white on saturated red passes contrast; was bone (#f5f0e8) on
+       crimson #e84858 = 3.36 — flipped to ink on bone for 12+ contrast. */
+    background: var(--bone);
+    color: var(--ink);
+    border-color: var(--bone);
+    font-weight: 700;
   }
-  .btn.primary:hover { background: var(--crimson-bright); border-color: var(--crimson-bright); }
+  .btn.primary:hover { background: var(--bone-dim); color: var(--ink); border-color: var(--bone-dim); }
   .btn.ghost {
     background: transparent;
     color: var(--bone);
