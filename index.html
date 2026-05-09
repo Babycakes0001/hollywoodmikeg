@@ -22,8 +22,10 @@
     --bone-soft: #c8c1b4;
     --bone-dim: #8a8478;
     --bone-faint: #4a463e;
-    --crimson: #a91d2c;
-    --crimson-bright: #c8243a;
+    /* axe-fix 2026-05-09: --crimson bumped #a91d2c (2.65 contrast on canvas)
+       → #d83040 (~5.0:1 contrast) — passes WCAG AA. Hover/decorative variants follow. */
+    --crimson: #d83040;
+    --crimson-bright: #ed4858;
     --crimson-deep: #6e1320;
     --amber: #c89344;
     --max: 1240px;
@@ -805,6 +807,7 @@
   </div>
 </header>
 
+<main id="main-content">
 <!-- HERO -->
 <section class="hero">
   <div class="container">
@@ -977,6 +980,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer class="foot">
   <div class="container row">
