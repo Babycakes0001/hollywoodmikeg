@@ -772,6 +772,30 @@
   }
   .contact .links a:hover { color: var(--bone); border-bottom-color: var(--crimson); }
 
+  /* Branded profile buttons — official platform colors */
+  .brandbtns {
+    margin-top: 52px; padding-top: 36px;
+    border-top: 1px solid var(--line);
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  }
+  .bb {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 12px 20px; border-radius: 10px;
+    font-family: "Inter", sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.01em; text-decoration: none; line-height: 1;
+    border: 1px solid transparent; white-space: nowrap;
+    transition: transform .15s ease, box-shadow .2s ease, filter .15s ease;
+  }
+  .bb:hover { transform: translateY(-3px); box-shadow: 0 12px 30px -10px rgba(0,0,0,.7); filter: brightness(1.06); }
+  .bb svg { display: block; flex: none; }
+  .bb-imdb { background: #F5C518; color: #000; font-weight: 900; letter-spacing: -0.01em; }
+  .bb-cn   { background: #0090D6; color: #fff; }
+  .bb-aa   { background: #C8102E; color: #fff; }
+  .bb-ig   { background: linear-gradient(45deg,#feda75 0%,#fa7e1e 22%,#d62976 50%,#962fbf 75%,#4f5bd5 100%); color: #fff; }
+  .bb-x    { background: #000; color: #fff; border-color: #2b2b2b; }
+  .bb-reel { background: var(--crimson); color: #fff; }
+  @media (max-width: 640px) { .bb { font-size: 12px; padding: 11px 16px; } }
+
   /* FOOTER */
   footer.foot {
     padding: 36px 0;
@@ -1043,13 +1067,22 @@
       <a class="btn primary" href="mailto:artistsunitedagencyla@gmail.com">Email Agent →</a>
       <a class="btn ghost" href="tel:3239700740">Call · (323) 970-0740</a>
     </div>
-    <div class="links">
-      <a href="https://www.imdb.com/name/nm1943914/" target="_blank" rel="noopener">IMDb</a>
-      <a href="https://app.castingnetworks.com/talent/public-profile/632ba3ec-fb39-11eb-86c3-87616407e96c" target="_blank" rel="noopener">Casting Networks</a>
-      <a href="https://resumes.actorsaccess.com/hollywoodmikeg" target="_blank" rel="noopener">Actors Access</a>
-      <a href="https://www.instagram.com/hollywoodmikeg" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://x.com/hollywoodmikeg" target="_blank" rel="noopener">X / Twitter</a>
-      <a href="https://youtu.be/Ce42hhUSdJo" target="_blank" rel="noopener">Demo Reel</a>
+    <div class="brandbtns">
+      <a class="bb bb-imdb" href="https://www.imdb.com/name/nm1943914/" target="_blank" rel="noopener" aria-label="IMDb profile">IMDb</a>
+      <a class="bb bb-cn" href="https://app.castingnetworks.com/talent/public-profile/632ba3ec-fb39-11eb-86c3-87616407e96c" target="_blank" rel="noopener" aria-label="Casting Networks profile">Casting Networks</a>
+      <a class="bb bb-aa" href="https://resumes.actorsaccess.com/hollywoodmikeg" target="_blank" rel="noopener" aria-label="Actors Access profile">Actors Access</a>
+      <a class="bb bb-ig" href="https://www.instagram.com/hollywoodmikeg" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a class="bb bb-x" href="https://x.com/hollywoodmikeg" target="_blank" rel="noopener" aria-label="X (formerly Twitter)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X
+      </a>
+      <a class="bb bb-reel" href="https://youtu.be/Ce42hhUSdJo" target="_blank" rel="noopener" aria-label="Demo Reel">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Demo Reel
+      </a>
     </div>
   </div>
 </section>
