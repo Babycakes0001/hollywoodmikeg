@@ -4,13 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mike G — Full Acting Resume · Filmography</title>
-<meta name="description" content="Complete acting resume and filmography for Mike G (SAG-AFTRA). Film, television, and commercial credits including Domino, Crank, The Way Back, Euphoria, Mr. Mayor, The Revenant, and national commercials for Coca-Cola, Toyota, Nike, Chrysler, and Harley-Davidson.">
-<meta name="keywords" content="Mike G, actor, SAG-AFTRA, resume, filmography, IMDb nm1943914, Domino, Crank, The Way Back, Euphoria, Hollywood, character actor">
+<meta name="description" content="Complete acting resume and filmography for Mike G (SAG-AFTRA). Film, television, and short-film credits including Domino, Crank, The Way Back, Euphoria, 9-1-1: Lone Star, Gentefied, Mr. Mayor, Grimm, The Shield, plus producing and casting-director credits. Official IMDb nm1943914.">
+<meta name="keywords" content="Mike G, actor, SAG-AFTRA, resume, filmography, IMDb nm1943914, Domino, Crank, The Way Back, Euphoria, 9-1-1 Lone Star, Gentefied, character actor, casting director, producer, Hollywood">
 <meta property="og:title" content="Mike G — Full Acting Resume · Filmography">
-<meta property="og:description" content="Complete acting credentials: film, television, and commercial credits for Mike G (SAG-AFTRA).">
+<meta property="og:description" content="Complete acting credentials: film, television, short film, producing, and casting credits for Mike G (SAG-AFTRA).">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://hollywoodmikeg.com/resume/">
 <link rel="canonical" href="https://hollywoodmikeg.com/resume/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,700&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #08080a;
@@ -24,10 +27,12 @@
     --bone-faint: #8a8478;
     --crimson: #e84858;
     --crimson-bright: #ff5e6c;
+    --crimson-deep: #6e1320;
     --amber: #c89344;
     --max: 1100px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
     background: var(--bg);
     color: var(--bone);
@@ -46,12 +51,13 @@
     font-size: 13px; font-weight: 500;
     letter-spacing: 0.04em; text-transform: uppercase;
     transition: color 0.2s;
+    background: rgba(8,8,10,0.7); padding: 6px 10px; border-radius: 3px;
   }
   .back-link:hover { color: var(--bone); }
 
   /* Hero */
   .hero {
-    padding: 100px 0 60px;
+    padding: 100px 0 50px;
     text-align: center;
     border-bottom: 1px solid var(--line);
   }
@@ -64,35 +70,47 @@
   .hero h1 span { color: var(--crimson); }
   .hero .subtitle {
     font-family: "Cormorant Garamond", Garamond, serif;
-    font-size: 22px; font-style: italic; color: var(--bone-dim);
+    font-size: 24px; font-style: italic; color: var(--bone-dim);
     margin-top: 12px;
   }
   .hero .meta-row {
-    display: flex; justify-content: center; gap: 28px; flex-wrap: wrap;
-    margin-top: 20px;
+    display: flex; justify-content: center; gap: 22px; flex-wrap: wrap;
+    margin-top: 22px;
     font-family: "Inter", system-ui, sans-serif;
     font-size: 13px; color: var(--bone-faint);
     letter-spacing: 0.05em; text-transform: uppercase;
   }
-  .hero .meta-row a {
-    color: var(--amber); text-decoration: none;
-  }
+  .hero .meta-row a { color: var(--amber); text-decoration: none; }
   .hero .meta-row a:hover { color: var(--bone); }
 
-  /* Section */
-  section {
-    padding: 60px 0;
+  /* Bio */
+  .bio {
+    padding: 50px 0;
     border-bottom: 1px solid var(--line);
   }
+  .bio p {
+    max-width: 760px; margin: 0 auto;
+    font-size: 19px; line-height: 1.8; color: var(--bone-soft);
+    text-align: center;
+  }
+  .bio p + p { margin-top: 18px; font-size: 15px; color: var(--bone-dim); }
+  .bio .aka {
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--bone-faint);
+  }
+
+  /* Section */
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
   section:last-of-type { border-bottom: none; }
 
   .section-head {
-    display: flex; align-items: baseline; gap: 14px;
-    margin-bottom: 36px;
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+    margin-bottom: 30px;
   }
   .section-head h2 {
     font-family: "Big Shoulders Display", "Arial Black", system-ui, sans-serif;
-    font-weight: 800; font-size: 38px; text-transform: uppercase;
+    font-weight: 800; font-size: 36px; text-transform: uppercase;
     letter-spacing: 0.03em; color: var(--bone);
   }
   .section-head .count {
@@ -100,125 +118,127 @@
     font-size: 13px; color: var(--crimson);
     letter-spacing: 0.06em; text-transform: uppercase;
   }
+  .sub-head {
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--bone-dim);
+    margin: 30px 0 10px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  .sub-head:first-of-type { margin-top: 0; }
 
   /* Credit table */
-  .credit-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
+  .credit-table { width: 100%; border-collapse: collapse; }
   .credit-table th {
     font-family: "Inter", system-ui, sans-serif;
     font-size: 11px; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--bone-dim);
-    text-align: left; padding: 0 0 14px 0;
+    text-align: left; padding: 0 0 12px 0;
     border-bottom: 2px solid var(--line-bright);
   }
-  .credit-table th:last-child { text-align: right; }
+  .credit-table th.r, .credit-table td.year { text-align: right; }
   .credit-table td {
-    padding: 14px 0;
+    padding: 13px 0;
     border-bottom: 1px solid var(--line);
     vertical-align: top;
   }
+  .credit-table tr:last-child td { border-bottom: none; }
   .credit-table .title {
     font-family: "Cormorant Garamond", Garamond, serif;
-    font-size: 20px; font-weight: 600; color: var(--bone);
+    font-size: 21px; font-weight: 600; color: var(--bone);
+    line-height: 1.2;
   }
-  .credit-table .role {
-    font-size: 14px; color: var(--bone-soft);
-    margin-top: 2px;
+  .credit-table .role { font-size: 14px; color: var(--bone-soft); margin-top: 3px; }
+  .credit-table .role .unc {
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 11px; color: var(--bone-faint);
+    letter-spacing: 0.04em; text-transform: uppercase;
   }
   .credit-table .studio {
     font-family: "Inter", system-ui, sans-serif;
     font-size: 12px; color: var(--bone-faint);
-  }
-  .credit-table .year {
-    text-align: right;
-    font-family: "Inter", system-ui, sans-serif;
-    font-size: 13px; color: var(--bone-dim);
-    letter-spacing: 0.04em;
     white-space: nowrap;
   }
-  .credit-table .dept {
-    display: inline-block;
+  .credit-table .year {
     font-family: "Inter", system-ui, sans-serif;
-    font-size: 10px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.06em;
-    color: var(--crimson);
-    border: 1px solid var(--crimson-deep);
-    padding: 2px 8px;
-    border-radius: 2px;
-    margin-right: 6px;
-    margin-top: 4px;
+    font-size: 14px; color: var(--bone-dim);
+    letter-spacing: 0.04em; white-space: nowrap;
   }
+  .col-studio { width: 230px; }
+  .col-year { width: 90px; }
 
-  /* Commercials grid */
+  /* Upcoming banner */
+  .upcoming-row { display: flex; flex-wrap: wrap; gap: 14px; }
+  .upcoming-card {
+    flex: 1 1 280px;
+    background: var(--surface);
+    border: 1px solid var(--line-bright);
+    border-left: 3px solid var(--crimson);
+    padding: 18px 22px; border-radius: 2px;
+  }
+  .upcoming-card .tag {
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--crimson);
+  }
+  .upcoming-card .title {
+    font-family: "Cormorant Garamond", Garamond, serif;
+    font-size: 24px; font-weight: 700; color: var(--bone); margin-top: 4px;
+  }
+  .upcoming-card .role { font-size: 14px; color: var(--bone-soft); margin-top: 2px; }
+
+  /* Commercials */
   .commercials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 14px;
   }
   .commercial-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    padding: 18px 20px;
-    border-radius: 2px;
+    background: var(--surface); border: 1px solid var(--line);
+    padding: 18px 20px; border-radius: 2px;
   }
   .commercial-card .brand {
     font-family: "Cormorant Garamond", Garamond, serif;
-    font-size: 20px; font-weight: 600; color: var(--bone);
+    font-size: 22px; font-weight: 600; color: var(--bone);
   }
-  .commercial-card .campaign {
-    font-size: 13px; color: var(--bone-dim);
-    margin-top: 2px;
-  }
+  .commercial-card .campaign { font-size: 13px; color: var(--bone-dim); margin-top: 3px; }
 
-  /* Department bar */
-  .dept-grid {
-    display: flex; flex-wrap: wrap; gap: 10px;
-  }
-  .dept-pill {
+  /* Representation */
+  .rep-block {
     font-family: "Inter", system-ui, sans-serif;
-    font-size: 12px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.05em;
-    padding: 8px 16px;
-    background: var(--surface);
-    border: 1px solid var(--line-bright);
-    color: var(--bone-soft);
-    border-radius: 2px;
+    font-size: 15px; color: var(--bone-soft); line-height: 1.9;
   }
+  .rep-block strong { color: var(--bone); }
+  .rep-block a { color: var(--amber); text-decoration: none; }
+  .rep-block a:hover { color: var(--bone); }
 
   /* IMDb CTA */
   .imdb-cta {
-    text-align: center;
-    padding: 30px 0;
+    text-align: center; padding: 34px 0;
     font-family: "Inter", system-ui, sans-serif;
-    font-size: 14px;
-    color: var(--bone-faint);
+    font-size: 14px; color: var(--bone-faint);
+    border-top: 1px solid var(--line);
   }
-  .imdb-cta a {
-    color: var(--amber); text-decoration: none;
-    font-weight: 600;
-  }
+  .imdb-cta a { color: var(--amber); text-decoration: none; font-weight: 600; }
   .imdb-cta a:hover { color: var(--bone); }
 
   /* Footer */
   footer {
     text-align: center; padding: 48px 0;
     font-family: "Inter", system-ui, sans-serif;
-    font-size: 12px; color: var(--bone-faint);
-    letter-spacing: 0.04em;
+    font-size: 12px; color: var(--bone-faint); letter-spacing: 0.04em;
   }
   footer a { color: var(--bone-dim); text-decoration: none; }
   footer a:hover { color: var(--bone); }
 
-  /* Responsive */
   @media (max-width: 640px) {
-    .hero { padding: 60px 0 40px; }
-    .hero h1 { font-size: 42px; }
-    .credit-table .title { font-size: 17px; }
-    .credit-table .studio,
-    .credit-table .year { font-size: 11px; }
+    .hero { padding: 70px 0 40px; }
+    .hero h1 { font-size: 44px; }
+    .bio p { font-size: 17px; }
+    .credit-table .title { font-size: 18px; }
+    .credit-table .studio { font-size: 11px; white-space: normal; }
+    .col-studio { width: auto; }
     .commercials-grid { grid-template-columns: 1fr; }
   }
 </style>
@@ -228,16 +248,27 @@
 <a href="/" class="back-link">← Mike G</a>
 
 <div class="hero">
-  <h1>Mike <span>G.</span></h1>
-  <div class="subtitle">Actor · Producer · Storyteller</div>
-  <div class="meta-row">
-    <span>SAG-AFTRA</span>
-    <span>·</span>
-    <span>Los Angeles</span>
-    <span>·</span>
-    <span>Born Nov 23, 1978 · Portland, Oregon</span>
-    <span>·</span>
-    <a href="https://www.imdb.com/name/nm1943914/" rel="external">IMDb nm1943914</a>
+  <div class="container">
+    <h1>Mike <span>G.</span></h1>
+    <div class="subtitle">Actor · Producer · Casting Director</div>
+    <div class="meta-row">
+      <span>SAG-AFTRA</span>
+      <span>·</span>
+      <span>Los Angeles</span>
+      <span>·</span>
+      <span>5′11½″</span>
+      <span>·</span>
+      <a href="https://www.imdb.com/name/nm1943914/" rel="external">IMDb nm1943914</a>
+    </div>
+  </div>
+</div>
+
+<!-- BIO -->
+<div class="bio">
+  <div class="container">
+    <p>For more than two decades, Mike G has been the face you know before you know the name — the bouncer, the heavy, the cholo, the demon. A working character actor whose first national break came on <em>The Tonight Show with Jay Leno</em> in 2003, he's since turned up in studio features (<em>Domino</em>, <em>Crank</em>, <em>The Way Back</em>) and prestige television (<em>Euphoria</em>, <em>9-1-1: Lone Star</em>, <em>Gentefied</em>, <em>Grimm</em>, <em>The Shield</em>) — and served as Coca-Cola's official “Full Throttle” Low Rider Homie.</p>
+    <p>Off-camera, he works both sides of the lens as a producer and casting director, with credits spanning independent film, network casting, and specialty crew work.</p>
+    <p class="aka">Also credited as Michael J. Gonzalez</p>
   </div>
 </div>
 
@@ -249,16 +280,24 @@
       <div class="count">Feature Films</div>
     </div>
     <table class="credit-table">
-      <!-- Prior memory: 55+ credits across 9 depts. Known films below per TMDB/Moviefone/IMDb snippet. -->
-      <tr><td><div class="title">Familiar Touch</div></td><td><span class="dept">Actor</span></td><td class="studio">—</td><td class="year">—</td></tr>
-      <tr><td><div class="title">Exorcism at 60,000 Feet</div></td><td><span class="dept">Actor</span></td><td class="studio">—</td><td class="year">—</td></tr>
-      <tr><td><div class="title">The Way Back</div><div class="role">Co-Producer</div></td><td><span class="dept">Actor</span> <span class="dept">Producer</span></td><td class="studio">Warner Bros</td><td class="year">2020</td></tr>
-      <tr><td><div class="title">Cruisin'</div></td><td><span class="dept">Actor</span></td><td class="studio">—</td><td class="year">—</td></tr>
-      <tr><td><div class="title">The Revenant</div><div class="role">Principal Performer</div></td><td><span class="dept">Actor</span></td><td class="studio">20th Century Studios / New Regency</td><td class="year">2015</td></tr>
-      <tr><td><div class="title">Lake Noir</div></td><td><span class="dept">Actor</span></td><td class="studio">—</td><td class="year">—</td></tr>
-      <tr><td><div class="title">Shiver</div></td><td><span class="dept">Actor</span></td><td class="studio">—</td><td class="year">2012</td></tr>
-      <tr><td><div class="title">Crank</div></td><td><span class="dept">Actor</span></td><td class="studio">Lionsgate</td><td class="year">2006</td></tr>
-      <tr><td><div class="title">Domino</div><div class="role">Principal Performer</div></td><td><span class="dept">Actor</span></td><td class="studio">New Line Cinema / Scott Free</td><td class="year">2005</td></tr>
+      <thead>
+        <tr><th>Title &amp; Role</th><th class="col-studio">Studio</th><th class="col-year r">Year</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><div class="title">Familiar Touch</div><div class="role">Rudy</div></td><td class="studio">—</td><td class="year">2024</td></tr>
+        <tr><td><div class="title">The Way Back</div><div class="role">Employee</div></td><td class="studio">Warner Bros.</td><td class="year">2020</td></tr>
+        <tr><td><div class="title">Exorcism at 60,000 Feet</div><div class="role">Demon</div></td><td class="studio">—</td><td class="year">2019</td></tr>
+        <tr><td><div class="title">Almost Home</div><div class="role">Dan</div></td><td class="studio">—</td><td class="year">2018</td></tr>
+        <tr><td><div class="title">Off the Menu</div><div class="role">Mechanic</div></td><td class="studio">—</td><td class="year">2018</td></tr>
+        <tr><td><div class="title">Lake Noir</div><div class="role">Cesar</div></td><td class="studio">—</td><td class="year">2013</td></tr>
+        <tr><td><div class="title">Shiver</div><div class="role">Inmate Sanchez</div></td><td class="studio">—</td><td class="year">2012</td></tr>
+        <tr><td><div class="title">American Disciples</div><div class="role">Thug</div></td><td class="studio">—</td><td class="year">2011</td></tr>
+        <tr><td><div class="title">The Revenant</div><div class="role">Miguel's Friend <span class="unc">· 2009 indie horror</span></div></td><td class="studio">—</td><td class="year">2009</td></tr>
+        <tr><td><div class="title">Hitting the Bricks</div><div class="role">Thug</div></td><td class="studio">—</td><td class="year">2008</td></tr>
+        <tr><td><div class="title">Crank</div><div class="role">Warehouse Hood #2</div></td><td class="studio">Lionsgate</td><td class="year">2006</td></tr>
+        <tr><td><div class="title">Clash</div><div class="role">Bouncer</div></td><td class="studio">—</td><td class="year">2006</td></tr>
+        <tr><td><div class="title">Domino</div><div class="role">Hector Maldonado</div></td><td class="studio">New Line Cinema · dir. Tony Scott</td><td class="year">2005</td></tr>
+      </tbody>
     </table>
   </div>
 </section>
@@ -271,24 +310,125 @@
       <div class="count">Series</div>
     </div>
     <table class="credit-table">
-      <tr><td><div class="title">Ballard</div></td><td><span class="dept">Actor</span></td><td class="studio">—</td><td class="year">—</td></tr>
-      <tr><td><div class="title">Mr. Mayor</div></td><td><span class="dept">Actor</span></td><td class="studio">NBC / Universal Television</td><td class="year">2021</td></tr>
-      <tr><td><div class="title">Euphoria</div></td><td><span class="dept">Actor</span></td><td class="studio">HBO / A24</td><td class="year">2019–</td></tr>
-      <tr><td><div class="title">Grimm</div></td><td><span class="dept">Actor</span></td><td class="studio">NBC / Universal Television</td><td class="year">2011–2017</td></tr>
-      <tr><td><div class="title">House M.D.</div></td><td><span class="dept">Actor</span></td><td class="studio">Fox / Universal Television</td><td class="year">2005</td></tr>
-      <tr><td><div class="title">The Tonight Show with Jay Leno</div><div class="role">First major television appearance</div></td><td><span class="dept">Actor</span></td><td class="studio">NBC</td><td class="year">—</td></tr>
+      <thead>
+        <tr><th>Title &amp; Role</th><th class="col-studio">Network</th><th class="col-year r">Year</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><div class="title">Zaddies</div><div class="role">Big Larry</div></td><td class="studio">—</td><td class="year">2026</td></tr>
+        <tr><td><div class="title">Ballard</div><div class="role">Heavy #1</div></td><td class="studio">Prime Video</td><td class="year">2025</td></tr>
+        <tr><td><div class="title">Euphoria</div><div class="role">Strip Club Bouncer</div></td><td class="studio">HBO</td><td class="year">2022</td></tr>
+        <tr><td><div class="title">Mr. Mayor</div><div class="role">Cesar</div></td><td class="studio">NBC</td><td class="year">2021</td></tr>
+        <tr><td><div class="title">Gentefied</div><div class="role">Chubby Cholo</div></td><td class="studio">Netflix</td><td class="year">2020</td></tr>
+        <tr><td><div class="title">9-1-1: Lone Star</div><div class="role">Grady</div></td><td class="studio">Fox</td><td class="year">2020</td></tr>
+        <tr><td><div class="title">East Los High</div><div class="role">Flaco · 6 episodes</div></td><td class="studio">Hulu</td><td class="year">2016</td></tr>
+        <tr><td><div class="title">Tattoo Nightmares</div><div class="role">Slim</div></td><td class="studio">Spike</td><td class="year">2014</td></tr>
+        <tr><td><div class="title">Grimm</div><div class="role">Con #1</div></td><td class="studio">NBC</td><td class="year">2012</td></tr>
+        <tr><td><div class="title">Day Break</div><div class="role">Latin Disciple</div></td><td class="studio">ABC</td><td class="year">2007</td></tr>
+        <tr><td><div class="title">CSI: Miami</div><div class="role">Mala Noche Gangster #2</div></td><td class="studio">CBS</td><td class="year">2005</td></tr>
+        <tr><td><div class="title">House</div><div class="role">Carlos</div></td><td class="studio">Fox</td><td class="year">2005</td></tr>
+        <tr><td><div class="title">The Shield</div><div class="role">Garcia</div></td><td class="studio">FX</td><td class="year">2005</td></tr>
+        <tr><td><div class="title">Karen Sisco</div><div class="role">Featured Gangbanger</div></td><td class="studio">ABC</td><td class="year">2004</td></tr>
+      </tbody>
     </table>
   </div>
 </section>
 
-<!-- SPECIALS -->
+<!-- SHORT FILM -->
 <section>
   <div class="container">
     <div class="section-head">
-      <h2>Special Appearances</h2>
+      <h2>Short Film</h2>
     </div>
     <table class="credit-table">
-      <tr><td><div class="title">Sarah Silverman: We Are Miracles</div></td><td><span class="dept">Actor</span></td><td class="studio">HBO</td><td class="year">2013</td></tr>
+      <thead>
+        <tr><th>Title &amp; Role</th><th class="col-studio"></th><th class="col-year r">Year</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><div class="title">Quiet Storms</div><div class="role">Murder Mike · also Producer</div></td><td class="studio">—</td><td class="year">2021</td></tr>
+        <tr><td><div class="title">The Turnaround</div><div class="role">Bucket · also Assoc. Producer</div></td><td class="studio">—</td><td class="year">2019</td></tr>
+        <tr><td><div class="title">Crossing Minds</div><div class="role">Drug Dealer</div></td><td class="studio">—</td><td class="year">2012</td></tr>
+        <tr><td><div class="title">El Chisme</div><div class="role">Thug Gossiper · also Casting Director</div></td><td class="studio">—</td><td class="year">2007</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SELF / APPEARANCES -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>Appearances</h2>
+      <div class="count">As Himself</div>
+    </div>
+    <table class="credit-table">
+      <thead>
+        <tr><th>Title &amp; Role</th><th class="col-studio">Network</th><th class="col-year r">Year</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><div class="title">The Attack</div><div class="role">Self — “Zucchini” / Mike G. · 2 episodes</div></td><td class="studio">—</td><td class="year">2015–2017</td></tr>
+        <tr><td><div class="title">Sarah Silverman: We Are Miracles</div><div class="role">Self — Jorge</div></td><td class="studio">HBO</td><td class="year">2013</td></tr>
+        <tr><td><div class="title">The Arsenio Hall Show</div><div class="role">Self — Mexican Kidnaper</div></td><td class="studio">Syndicated</td><td class="year">2013</td></tr>
+        <tr><td><div class="title">The Tonight Show with Jay Leno</div><div class="role">“Lil Pookie” — first national TV break</div></td><td class="studio">NBC</td><td class="year">2003</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PRODUCING & CASTING -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>Producing &amp; Casting</h2>
+      <div class="count">Behind the Camera</div>
+    </div>
+
+    <div class="sub-head">Producer</div>
+    <table class="credit-table">
+      <tbody>
+        <tr><td><div class="title">Depth of Field</div><div class="role">Producer</div></td><td class="studio">—</td><td class="year">2024</td></tr>
+        <tr><td><div class="title">Quiet Storms</div><div class="role">Producer · Short</div></td><td class="studio">—</td><td class="year">2021</td></tr>
+        <tr><td><div class="title">The Turnaround</div><div class="role">Associate Producer · Short</div></td><td class="studio">—</td><td class="year">2019</td></tr>
+        <tr><td><div class="title">Cruisin'</div><div class="role">Producer</div></td><td class="studio">—</td><td class="year">2014</td></tr>
+        <tr><td><div class="title">Lake Noir</div><div class="role">Executive Producer</div></td><td class="studio">—</td><td class="year">2013</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-head">Casting Director</div>
+    <table class="credit-table">
+      <tbody>
+        <tr><td><div class="title">Cruisin'</div><div class="role">Casting Director</div></td><td class="studio">—</td><td class="year">2014</td></tr>
+        <tr><td><div class="title">Lake Noir</div><div class="role">Casting Director</div></td><td class="studio">—</td><td class="year">2013</td></tr>
+        <tr><td><div class="title">El Chisme</div><div class="role">Casting Director · Short</div></td><td class="studio">—</td><td class="year">2007</td></tr>
+        <tr><td><div class="title">Clash</div><div class="role">Casting Director</div></td><td class="studio">—</td><td class="year">2006</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-head">Casting Department</div>
+    <table class="credit-table">
+      <tbody>
+        <tr><td><div class="title">The Tiger Hunter</div><div class="role">Extras Casting</div></td><td class="studio">—</td><td class="year">2016</td></tr>
+        <tr><td><div class="title">Body High</div><div class="role">Casting Associate</div></td><td class="studio">—</td><td class="year">2015</td></tr>
+        <tr><td><div class="title">Down Dog</div><div class="role">Extras Casting Assistant · TV Short</div></td><td class="studio">—</td><td class="year">2015</td></tr>
+        <tr><td><div class="title">Jane the Virgin</div><div class="role">Extras Casting Assistant</div></td><td class="studio">The CW</td><td class="year">2014</td></tr>
+        <tr><td><div class="title">Shackles</div><div class="role">Extras Casting</div></td><td class="studio">—</td><td class="year">2005</td></tr>
+        <tr><td><div class="title">Officer Down</div><div class="role">Casting Associate · TV Movie</div></td><td class="studio">—</td><td class="year">2005</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SPECIALTY CREW -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>Specialty Crew</h2>
+    </div>
+    <table class="credit-table">
+      <tbody>
+        <tr><td><div class="title">American Disciples</div><div class="role">Weapons Master</div></td><td class="studio">—</td><td class="year">2011</td></tr>
+        <tr><td><div class="title">Days of Wrath</div><div class="role">Gang Consultant</div></td><td class="studio">—</td><td class="year">2008</td></tr>
+        <tr><td><div class="title">The Virgin of Juarez</div><div class="role">Stunts</div></td><td class="studio">—</td><td class="year">2006</td></tr>
+      </tbody>
     </table>
   </div>
 </section>
@@ -297,75 +437,31 @@
 <section>
   <div class="container">
     <div class="section-head">
-      <h2>National Commercials</h2>
-      <div class="count">Broadcast &amp; Streaming</div>
+      <h2>Commercials</h2>
+      <div class="count">National Campaign</div>
     </div>
     <div class="commercials-grid">
       <div class="commercial-card">
         <div class="brand">Coca-Cola</div>
-        <div class="campaign">Super Bowl National Spot</div>
       </div>
       <div class="commercial-card">
         <div class="brand">Toyota</div>
-        <div class="campaign">Camry — National Campaign</div>
       </div>
       <div class="commercial-card">
-        <div class="brand">Nike</div>
-        <div class="campaign">National Campaign</div>
+        <div class="brand">World of Warcraft</div>
       </div>
       <div class="commercial-card">
-        <div class="brand">Chrysler</div>
-        <div class="campaign">National Campaign</div>
+        <div class="brand">Perplexity AI</div>
       </div>
       <div class="commercial-card">
-        <div class="brand">Harley-Davidson</div>
-        <div class="campaign">National Campaign</div>
+        <div class="brand">AT&amp;T</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRODUCTION / DEPARTMENTS -->
-<section>
-  <div class="container">
-    <div class="section-head">
-      <h2>Departments</h2>
-      <div class="count">9 Departments Across 55+ Credits</div>
-    </div>
-    <div class="dept-grid">
-      <div class="dept-pill">Acting</div>
-      <div class="dept-pill">Producing</div>
-      <div class="dept-pill">Directing</div>
-      <div class="dept-pill">Writing</div>
-      <div class="dept-pill">Stunts</div>
-      <div class="dept-pill">Camera</div>
-      <div class="dept-pill">Editorial</div>
-      <div class="dept-pill">Art Department</div>
-      <div class="dept-pill">Crew</div>
-    </div>
-  </div>
-</section>
-
-<!-- STUDIOS & COLLABORATORS -->
-<section>
-  <div class="container">
-    <div class="section-head">
-      <h2>Studios &amp; Collaborators</h2>
-    </div>
-    <table class="credit-table">
-      <tr><td><div class="title">HBO</div></td><td class="year">Euphoria, Sarah Silverman: We Are Miracles</td></tr>
-      <tr><td><div class="title">NBC / Universal Television</div></td><td class="year">Mr. Mayor, Grimm, Jay Leno</td></tr>
-      <tr><td><div class="title">Warner Bros</div></td><td class="year">The Way Back</td></tr>
-      <tr><td><div class="title">Lionsgate</div></td><td class="year">Crank</td></tr>
-      <tr><td><div class="title">New Line Cinema</div></td><td class="year">Domino</td></tr>
-      <tr><td><div class="title">Scott Free Productions</div></td><td class="year">Domino (dir. Tony Scott)</td></tr>
-      <tr><td><div class="title">Sony Pictures</div></td><td class="year">—</td></tr>
-      <tr><td><div class="title">Amazon MGM</div></td><td class="year">—</td></tr>
-    </table>
-    <div class="dept-grid" style="margin-top:20px;">
-      <div class="dept-pill">Tony Scott</div>
-      <div class="dept-pill">Sam Levinson</div>
-      <div class="dept-pill">Tina Fey</div>
+      <div class="commercial-card">
+        <div class="brand">Panasonic</div>
+      </div>
+      <div class="commercial-card">
+        <div class="brand">Progressive Insurance</div>
+      </div>
     </div>
   </div>
 </section>
@@ -376,10 +472,10 @@
     <div class="section-head">
       <h2>Representation</h2>
     </div>
-    <p style="font-family:'Inter',system-ui,sans-serif;font-size:15px;color:var(--bone-soft);line-height:1.8;">
-      <strong style="color:var(--bone);">Artists United Agency LA</strong><br>
+    <p class="rep-block">
+      <strong>Artists United Agency · Los Angeles</strong><br>
       For film, television, and commercial bookings.<br>
-      <a href="https://www.artistsunitedagencyla.com/" style="color:var(--amber);text-decoration:none;" rel="external">artistsunitedagencyla.com</a><br>
+      <a href="https://www.artistsunitedagencyla.com/" rel="external">artistsunitedagencyla.com</a><br>
       (323) 970-0740
     </p>
   </div>
@@ -388,7 +484,7 @@
 <div class="imdb-cta">
   <div class="container">
     <p>Official IMDb: <a href="https://www.imdb.com/name/nm1943914/" rel="external">imdb.com/name/nm1943914</a></p>
-    <p style="margin-top:4px;">This resume page is published as a public, bot-accessible record of Mike G's professional acting career.</p>
+    <p style="margin-top:6px;">A complete, public record of Mike G's professional career across acting, producing, and casting.</p>
   </div>
 </div>
 
