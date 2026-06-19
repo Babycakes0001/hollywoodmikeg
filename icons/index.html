@@ -201,15 +201,17 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
 @media(min-width:640px){.ev-div{display:block;height:64px;width:1px;background:rgba(255,255,255,.1)}}
 .ev-foot{margin:36px auto 0;max-width:640px;font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.6;color:#cfc9bd}
 
-/* producer */
-.producer{display:grid;gap:40px;grid-template-columns:1fr;margin-top:32px;align-items:start}
-@media(min-width:760px){.producer{grid-template-columns:300px 1fr;gap:48px}}
-.prod-fig{max-width:300px;margin:0 auto}
-.prod-fig .im{overflow:hidden;border-radius:16px;border:1px solid rgba(211,173,88,.35);box-shadow:0 18px 50px rgba(0,0,0,.55)}
-.prod-cap{margin-top:16px;text-align:center}
-.prod-cap .n{font-family:'Cinzel',serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--bone)}
-.prod-cap .r{margin-top:4px;font-size:11px;text-transform:uppercase;letter-spacing:.26em;color:var(--gold)}
-.prod-cap .c{margin-top:4px;font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--mut3)}
+/* partners */
+.partners-figs{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:600px;margin:36px auto 0}
+.pfig .im{overflow:hidden;border-radius:16px;border:1px solid rgba(211,173,88,.35);box-shadow:0 18px 50px rgba(0,0,0,.55);aspect-ratio:1/1}
+.pfig .im img{width:100%;height:100%;object-fit:cover;object-position:top}
+.pfig figcaption{margin-top:14px;text-align:center}
+.pfig .n{font-family:'Cinzel',serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--bone)}
+.pfig .r{margin-top:4px;font-size:11px;text-transform:uppercase;letter-spacing:.26em;color:var(--gold)}
+.pfig .c{margin-top:4px;font-size:9.5px;text-transform:uppercase;letter-spacing:.14em;color:var(--mut3)}
+.partners-copy{max-width:760px;margin:34px auto 0;text-align:center}
+.partners-copy p{margin-top:18px}
+.partners-copy p:first-child{margin-top:0}
 
 /* sources */
 .src-groups{margin-top:44px;display:flex;flex-direction:column;gap:36px}
@@ -902,14 +904,17 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
 </div></section>
 
 <section class="pitch bg2"><div class="wrap">
-  <div class="eyebrow"><img src="logo-mark.png" alt="">The Producer</div>
-  <div class="producer">
-    <figure class="prod-fig"><div class="im"><img src="mike-g.jpg" alt="Mike Gonzalez"></div>
-      <figcaption class="prod-cap"><p class="n">Mike Gonzalez</p><p class="r">Producer</p><p class="c">Casting · Producing · SAG-AFTRA · Weapons-Master</p></figcaption></figure>
-    <div class="prose" style="margin-top:0">
-      <p style="margin-top:0">This program doesn&rsquo;t need a producer hired into it — <span class="bone">it arrives with one.</span> A room built on screen-used artifacts and live talent takes a single person who can cast it, win the actors&rsquo; trust, produce the show, and handle the real pieces with credibility. Mike Gonzalez is all four at once: a <span class="bone">casting director</span> who knows what makes an agent say yes; a <span class="bone">producer</span> who assembles talent, locations, music, wardrobe and sponsors into one room that opens on time; a <span class="bone">SAG-AFTRA actor</span> the talent trusts as one of their own; and a <span class="bone">former weapons-master</span> who can present and authenticate the collection.</p>
-      <p>He isn&rsquo;t asking for a seat at the table — <span class="gold">he set it.</span> He spent a career producing before he had the title, bringing the talent, the locations, the music, the wardrobe and the sponsors while others took the credit. This is the project where all of it points at one target — and it comes to you <span class="bone">already in his hands.</span></p>
-    </div>
+  <div class="eyebrow"><img src="logo-mark.png" alt="">The Partners</div>
+  <h2 class="h">We bring it as a team —<br><span class="gold">every piece already in hand.</span></h2>
+  <div class="partners-figs">
+    <figure class="pfig"><div class="im"><img src="charles-lew.jpg" alt="Charles Lew"></div>
+      <figcaption><p class="n">Charles Lew</p><p class="r">Partner</p><p class="c">Attorney &middot; Hospitality &middot; Dealmaking</p></figcaption></figure>
+    <figure class="pfig"><div class="im"><img src="mike-g.jpg" alt="Mike Gonzalez"></div>
+      <figcaption><p class="n">Mike Gonzalez</p><p class="r">Partner</p><p class="c">Casting &middot; Producing &middot; SAG-AFTRA &middot; Weapons-Master</p></figcaption></figure>
+  </div>
+  <div class="prose partners-copy">
+    <p>This doesn&rsquo;t come to you as a concept hunting for a team to run it — <span class="bone">it comes to you as a team.</span> Between the two of us, we already hold every piece this room needs. <span class="bone">Charles</span> brings the venue-building, the operator relationships, and the deal. <span class="bone">Mike</span> brings the talent, the show, and the trust of the legends — casting them, earning their loyalty, producing the room, and authenticating the collection.</p>
+    <p>The room and the deal on one side, the icons and the show on the other — and a brotherhood between us that means it actually gets built. We&rsquo;re not handing you something for someone else to run. <span class="gold">We&rsquo;re bringing it together, fully formed — and we&rsquo;ll run it.</span></p>
   </div>
 </div></section>
 
@@ -928,7 +933,7 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
   <p class="lead" style="margin-left:auto;margin-right:auto;text-align:center">A program modeled to add <span class="gold">$1.6M&ndash;$5M in enterprise value</span>, with the downside <span class="bone">near-zero</span>. The only thing it&rsquo;s missing is your name on it.</p>
   <blockquote>&ldquo;We don&rsquo;t need the room full — we need it a little fuller than it already is. And we get to be the room that gave a generation of legends a beautiful place to be paid well, and treated right.&rdquo;</blockquote>
   <div class="divider"></div>
-  <p class="sig a">Presented by Mike Gonzalez</p>
+  <p class="sig a">Presented by Mike Gonzalez &amp; Charles Lew</p>
   <p class="sig b">Babycakes Design Studio</p>
   <p class="sig c">Hollywood&rsquo;s Icons of Darkness · Las Vegas</p>
   <p class="eyes">Eyes-only working draft. All figures illustrative / for-discussion-only — not a forecast or securities offering. Reference images shown will be replaced with licensed or talent-provided photos before any public release.</p>
