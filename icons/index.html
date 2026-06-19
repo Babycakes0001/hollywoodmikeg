@@ -46,9 +46,10 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
 .beat .warmup{font-size:clamp(11px,2.4vw,15px);text-transform:uppercase;letter-spacing:.42em;color:var(--gold)}
 .beat .line{font-family:'Cinzel',serif;font-weight:900;line-height:1.08;color:var(--bone);margin-top:12px;font-size:clamp(34px,7vw,76px);max-width:15ch;text-shadow:0 4px 34px rgba(0,0,0,.95)}
 .beat .line-xl{font-size:clamp(36px,7.5vw,84px);max-width:16ch;line-height:1.05}
-.hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;text-transform:uppercase;letter-spacing:.3em;color:#8a8170}
-.hint .bar{height:28px;width:1px;background:linear-gradient(to bottom,var(--gold),transparent);animation:bob 1.7s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+.hint{position:absolute;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:9px;padding:16px 11px;border-radius:999px;background:rgba(8,8,10,.55);border:1px solid rgba(211,173,88,.55);box-shadow:0 0 26px rgba(211,173,88,.28);z-index:5}
+.hint svg{animation:bobup 1.15s ease-in-out infinite;filter:drop-shadow(0 0 8px rgba(211,173,88,.75))}
+.hint .cue-text{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);writing-mode:vertical-rl;text-orientation:mixed}
+@keyframes bobup{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
 /* ---- cards ---- */
 .cards3{display:grid;gap:16px;grid-template-columns:1fr;margin-top:44px}
@@ -224,7 +225,10 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
     <div class="beat" id="beatDrac"><p class="warmup">02 &middot; The funding</p><h2 class="line">A sponsor pays the talent &mdash; profit before a ticket sells.</h2></div>
     <div class="beat" id="beatMummy"><p class="warmup">03 &middot; The store</p><h2 class="line">Our own merch line &mdash; pure margin, every head.</h2></div>
     <div class="beat" id="beatCreature"><p class="warmup">Sponsor-funded &middot; near-zero downside</p><h2 class="line line-xl">+$1.6M&ndash;$5M in new value.</h2></div>
-    <div class="hint" id="hint">Scroll to enter<span class="bar"></span></div>
+    <div class="hint" id="hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#d3ad58" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+      <span class="cue-text">Scroll</span>
+    </div>
     <div class="vig"></div>
   </div>
 </div>
@@ -930,7 +934,7 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
       if(Math.abs(diff)>0.012) v.currentTime=v.currentTime+diff*0.18;
     }
     titleCard.style.opacity=String(1-ramp(tgt,0.10,0.18));
-    hint.style.opacity=String(1-ramp(tgt,0.04,0.09));
+    hint.style.opacity=String(1-ramp(tgt,0.015,0.06));
     beats.frank.style.opacity=String(band(tgt,0.27,0.32,0.40,0.45));
     beats.wolf.style.opacity=String(band(tgt,0.45,0.50,0.55,0.59));
     beats.drac.style.opacity=String(band(tgt,0.59,0.64,0.69,0.73));
