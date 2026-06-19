@@ -78,7 +78,12 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
 .ac-film{font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut3)}
 
 .upside-pill{display:inline-block;margin-top:20px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.03);border-radius:999px;padding:5px 12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--mut2)}
-.dream-anchor{margin-top:40px;border:1px solid rgba(211,173,88,.4);border-radius:16px;padding:32px;background:linear-gradient(135deg,rgba(211,173,88,.10),transparent)}
+.dream-anchor{margin-top:40px;border:1px solid rgba(211,173,88,.4);border-radius:16px;padding:28px;background:linear-gradient(135deg,rgba(211,173,88,.10),transparent);display:flex;flex-direction:column;gap:22px}
+@media(min-width:640px){.dream-anchor{flex-direction:row;align-items:center;gap:28px}}
+.da-photo{flex-shrink:0;width:100%;max-width:200px;margin:0 auto;border-radius:12px;overflow:hidden;border:1px solid rgba(211,173,88,.3)}
+@media(min-width:640px){.da-photo{width:170px;margin:0}}
+.da-photo img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top;filter:grayscale(.25)}
+.da-text{flex:1}
 .micro-gold{font-size:11px;text-transform:uppercase;letter-spacing:.3em;color:var(--gold)}
 .da-name{font-family:'Cinzel',serif;margin-top:8px;font-size:clamp(26px,4vw,36px);font-weight:900;color:var(--bone)}
 .da-role{margin-top:4px;font-size:14px;font-weight:500}
@@ -87,7 +92,11 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
 .dream-grid{display:grid;gap:16px;grid-template-columns:1fr;margin-top:24px}
 @media(min-width:640px){.dream-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.dream-grid{grid-template-columns:repeat(3,1fr)}}
-.dream-card{border:1px solid rgba(255,255,255,.1);background:var(--card);border-radius:12px;padding:20px}
+.dream-card{border:1px solid rgba(255,255,255,.1);background:var(--card);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.dc-photo{aspect-ratio:1/1;overflow:hidden;background:linear-gradient(to bottom,#1a1a1f,#0a0a0c)}
+.dc-photo img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(.3);transition:.5s}
+.dream-card:hover .dc-photo img{filter:grayscale(0);transform:scale(1.05)}
+.dc-body{padding:18px 20px 20px}
 .dc-name{font-family:'Cinzel',serif;font-size:16px;font-weight:700;color:var(--bone)}
 .dc-role{margin-top:2px;font-size:12px}
 .dc-note{margin-top:8px;font-size:12px;line-height:1.6;color:#a39e93}
@@ -673,43 +682,57 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
   <div class="eyebrow"><img src="logo-mark.png" alt="">Dream Asks — the marquee tributes</div>
   <span class="upside-pill">Aspirational upside — not in the base model</span>
       <p class="lead">Aspirational marquee tributes — a name on the marquee for one weekend, even a short appearance. Honest odds attached. Not base-case; pure upside and prestige.</p>
-      <div class="dream-anchor">
-        <p class="micro-gold">The headline dream</p>
-        <h3 class="da-name">Arnold Schwarzenegger</h3>
-        <p class="da-role" style="color:#d3ad58">The Terminator · Dutch (Predator) · Conan</p>
-        <p class="da-note">Frame as a LEGACY TRIBUTE / curator weekend, not a signing. He anchors three franchises already in the collection. ~$300–750K, high-touch — a multi-year cultivation, transformative if landed.</p>
-        <span class="odds-pill">Conceivable long-shot</span>
+      <div class="dream-anchor"><div class="da-photo"><img loading="lazy" src="photos/arnold-schwarzenegger.jpg" alt="Arnold Schwarzenegger"></div>
+        <div class="da-text">
+          <p class="micro-gold">The headline dream</p>
+          <h3 class="da-name">Arnold Schwarzenegger</h3>
+          <p class="da-role" style="color:#d3ad58">The Terminator · Dutch (Predator) · Conan</p>
+          <p class="da-note">Frame as a LEGACY TRIBUTE / curator weekend, not a signing. He anchors three franchises already in the collection. ~$300–750K, high-touch — a multi-year cultivation, transformative if landed.</p>
+          <span class="odds-pill">Conceivable long-shot</span>
+        </div>
       </div>
-      <div class="dream-grid"><div class="dream-card">
-        <p class="dc-name">Bruce Campbell</p>
-        <p class="dc-role" style="color:#d3ad58">Ash · <span class="muted">Evil Dead</span></p>
-        <p class="dc-note">Loves cons, low fee — a proof-of-concept get.</p>
-        <span class="dc-odds">Highly plausible</span>
-      </div><div class="dream-card">
-        <p class="dc-name">David Arquette</p>
-        <p class="dc-role" style="color:#d3ad58">Dewey Riley · <span class="muted">Scream</span></p>
-        <p class="dc-note">Convention regular, affordable, embraces the fandom.</p>
-        <span class="dc-odds">Highly plausible</span>
-      </div><div class="dream-card">
-        <p class="dc-name">Jamie Lee Curtis</p>
-        <p class="dc-role" style="color:#d3ad58">Laurie Strode · <span class="muted">Halloween</span></p>
-        <p class="dc-note">Proud horror ambassador; renewed engagement post-45th.</p>
-        <span class="dc-odds">Plausible (premium)</span>
-      </div><div class="dream-card">
-        <p class="dc-name">Sigourney Weaver</p>
-        <p class="dc-role" style="color:#d3ad58">Ellen Ripley · <span class="muted">Alien</span></p>
-        <p class="dc-note">Does anniversary retrospectives; selective but accessible.</p>
-        <span class="dc-odds">Plausible (premium)</span>
-      </div><div class="dream-card">
-        <p class="dc-name">Kurt Russell</p>
-        <p class="dc-role" style="color:#d3ad58">Snake Plissken / R.J. MacReady · <span class="muted">Escape from New York · The Thing</span></p>
-        <p class="dc-note">Cult-film nostalgia is his sweet spot; small curated events.</p>
-        <span class="dc-odds">Plausible (premium)</span>
-      </div><div class="dream-card">
-        <p class="dc-name">Neve Campbell</p>
-        <p class="dc-role" style="color:#d3ad58">Sidney Prescott · <span class="muted">Scream</span></p>
-        <p class="dc-note">Selective; Scream reboot reignited fan appetite.</p>
-        <span class="dc-odds">Long-shot</span>
+      <div class="dream-grid"><div class="dream-card"><div class="dc-photo"><img loading="lazy" src="photos/bruce-campbell.jpg" alt="Bruce Campbell"></div>
+        <div class="dc-body">
+          <p class="dc-name">Bruce Campbell</p>
+          <p class="dc-role" style="color:#d3ad58">Ash · <span class="muted">Evil Dead</span></p>
+          <p class="dc-note">Loves cons, low fee — a proof-of-concept get.</p>
+          <span class="dc-odds">Highly plausible</span>
+        </div>
+      </div><div class="dream-card"><div class="dc-photo"><img loading="lazy" src="photos/david-arquette.jpg" alt="David Arquette"></div>
+        <div class="dc-body">
+          <p class="dc-name">David Arquette</p>
+          <p class="dc-role" style="color:#d3ad58">Dewey Riley · <span class="muted">Scream</span></p>
+          <p class="dc-note">Convention regular, affordable, embraces the fandom.</p>
+          <span class="dc-odds">Highly plausible</span>
+        </div>
+      </div><div class="dream-card"><div class="dc-photo"><img loading="lazy" src="photos/jamie-lee-curtis.jpg" alt="Jamie Lee Curtis"></div>
+        <div class="dc-body">
+          <p class="dc-name">Jamie Lee Curtis</p>
+          <p class="dc-role" style="color:#d3ad58">Laurie Strode · <span class="muted">Halloween</span></p>
+          <p class="dc-note">Proud horror ambassador; renewed engagement post-45th.</p>
+          <span class="dc-odds">Plausible (premium)</span>
+        </div>
+      </div><div class="dream-card"><div class="dc-photo"><img loading="lazy" src="photos/sigourney-weaver.jpg" alt="Sigourney Weaver"></div>
+        <div class="dc-body">
+          <p class="dc-name">Sigourney Weaver</p>
+          <p class="dc-role" style="color:#d3ad58">Ellen Ripley · <span class="muted">Alien</span></p>
+          <p class="dc-note">Does anniversary retrospectives; selective but accessible.</p>
+          <span class="dc-odds">Plausible (premium)</span>
+        </div>
+      </div><div class="dream-card"><div class="dc-photo"><img loading="lazy" src="photos/kurt-russell.jpg" alt="Kurt Russell"></div>
+        <div class="dc-body">
+          <p class="dc-name">Kurt Russell</p>
+          <p class="dc-role" style="color:#d3ad58">Snake Plissken / R.J. MacReady · <span class="muted">Escape from New York · The Thing</span></p>
+          <p class="dc-note">Cult-film nostalgia is his sweet spot; small curated events.</p>
+          <span class="dc-odds">Plausible (premium)</span>
+        </div>
+      </div><div class="dream-card"><div class="dc-photo"><img loading="lazy" src="photos/neve-campbell.jpg" alt="Neve Campbell"></div>
+        <div class="dc-body">
+          <p class="dc-name">Neve Campbell</p>
+          <p class="dc-role" style="color:#d3ad58">Sidney Prescott · <span class="muted">Scream</span></p>
+          <p class="dc-note">Selective; Scream reboot reignited fan appetite.</p>
+          <span class="dc-odds">Long-shot</span>
+        </div>
       </div></div>
 </div></section>
 
