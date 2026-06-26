@@ -61,7 +61,8 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
 .tc-kicker{opacity:0;animation:tcRise .9s .25s ease-out forwards;font-size:clamp(10px,2.4vw,13px);letter-spacing:.5em;text-transform:uppercase;color:var(--gold)}
 .tc-logo{position:relative;width:82%;max-width:500px;margin-top:18px;opacity:0;animation:tcLogo 1.3s .35s cubic-bezier(.16,1,.3,1) forwards}
 .tc-logo img{width:100%;display:block}
-.tc-glint{position:absolute;inset:0;background:linear-gradient(110deg,transparent 38%,rgba(255,241,204,.55) 50%,transparent 62%);transform:translateX(-130%);animation:tcGlint 1.7s 1.25s ease-out forwards;mix-blend-mode:screen;pointer-events:none}
+.tc-glint{position:absolute;inset:0;pointer-events:none;overflow:hidden;-webkit-mask:url(logo-lockup.png) center/100% 100% no-repeat;mask:url(logo-lockup.png) center/100% 100% no-repeat}
+.tc-glint::before{content:"";position:absolute;inset:0;background-image:linear-gradient(105deg,transparent 36%,rgba(255,255,255,.5) 46%,#ffffff 50%,rgba(255,255,255,.5) 54%,transparent 64%);background-repeat:no-repeat;background-size:300% 100%;background-position:115% 0;animation:tcGlintBG 5.5s 1s ease-in-out infinite}
 .tc-rule{height:1px;width:0;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin-top:20px;animation:tcRule 1s .95s ease-out forwards}
 .tc-tag{opacity:0;animation:tcRise 1s 1.15s ease-out forwards;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(17px,3.6vw,26px);color:#e6dfd0;margin-top:14px}
 .tc-foot{opacity:0;animation:tcRise 1s 1.4s ease-out forwards;font-size:clamp(10px,2.2vw,12px);letter-spacing:.42em;text-transform:uppercase;color:var(--mut2);margin-top:16px}
@@ -69,6 +70,7 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
 @keyframes tcRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes tcLogo{from{opacity:0;transform:scale(.9);filter:blur(14px) drop-shadow(0 10px 50px rgba(0,0,0,.85))}to{opacity:1;transform:scale(1);filter:blur(0) drop-shadow(0 10px 50px rgba(0,0,0,.85))}}
 @keyframes tcGlint{from{transform:translateX(-130%)}to{transform:translateX(130%)}}
+@keyframes tcGlintBG{0%{background-position:115% 0}28%{background-position:-15% 0}100%{background-position:-15% 0}}
 @keyframes tcRule{from{width:0}to{width:min(300px,62%)}}
 .beat{position:absolute;left:0;right:0;bottom:13%;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 24px;opacity:0}
 .beat .warmup{font-size:clamp(11px,2.4vw,15px);text-transform:uppercase;letter-spacing:.42em;color:var(--gold)}
@@ -156,6 +158,8 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
 .spon-rows{margin-top:32px;display:flex;flex-direction:column;gap:12px}
 .spon-row{display:flex;gap:16px;border:1px solid rgba(255,255,255,.1);background:var(--card);border-radius:12px;padding:20px}
 .sr-emoji{font-size:24px;line-height:1}
+.sr-ico{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:30px;height:30px;color:var(--gold);opacity:.95}
+.sr-ico svg{width:100%;height:100%;display:block;filter:drop-shadow(0 0 6px rgba(211,173,88,.28))}
 .sr-h{font-size:15px;font-weight:700;color:var(--bone)}
 .sr-d{font-size:14px;line-height:1.6;color:#a39e93}
 .spon-foot{margin-top:24px;border:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.3);border-radius:8px;padding:16px;font-size:13px;line-height:1.6;color:#a39e93}
@@ -252,17 +256,17 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
     <div class="title-card" id="titleCard">
       <div class="tc-bar tc-bar-top"></div>
       <div class="tc-bar tc-bar-bot"></div>
-      <p class="tc-kicker">The Weekend Residency</p>
+      <p class="tc-kicker">On the Las Vegas Strip</p>
       <div class="tc-logo"><img src="logo-lockup.png" alt="Hollywood's Icons of Darkness"><span class="tc-glint"></span></div>
       <div class="tc-rule"></div>
       <p class="tc-tag">Where the legends never die.</p>
       <p class="tc-foot">Las Vegas &middot; On the Strip</p>
     </div>
-    <div class="beat" id="beatFrank"><p class="warmup">The idea</p><h2 class="line">A one-and-done walkthrough becomes a weekly destination.</h2></div>
-    <div class="beat" id="beatWolf"><p class="warmup">01 &middot; The draw</p><h2 class="line">Book the real icons &mdash; tourists become regulars.</h2></div>
-    <div class="beat" id="beatDrac"><p class="warmup">02 &middot; The funding</p><h2 class="line">A sponsor pays the talent &mdash; profit before a ticket sells.</h2></div>
-    <div class="beat" id="beatMummy"><p class="warmup">03 &middot; The store</p><h2 class="line">Our own merch line &mdash; pure margin, every head.</h2></div>
-    <div class="beat" id="beatCreature"><p class="warmup">Sponsor-funded &middot; near-zero downside</p><h2 class="line line-xl">+$1.6M&ndash;$5M in new value.</h2></div>
+    <div class="beat" id="beatFrank"><p class="warmup">The Collection</p><h2 class="line">The largest private collection of authentic movie monsters on Earth.</h2></div>
+    <div class="beat" id="beatWolf"><p class="warmup">The Relics</p><h2 class="line">$21 million in real, screen-used Hollywood history.</h2></div>
+    <div class="beat" id="beatDrac"><p class="warmup">The Stage</p><h2 class="line">On the Strip. Inside the Excalibur. 32,000 square feet of the dark.</h2></div>
+    <div class="beat" id="beatMummy"><p class="warmup">The Twist</p><h2 class="line">The monsters made the legend &mdash; now the legends return, live.</h2></div>
+    <div class="beat" id="beatCreature"><p class="warmup">Las Vegas</p><h2 class="line line-xl">Come own a piece of the dark.</h2></div>
     <div class="hint" id="hint" aria-hidden="true">
       <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#d3ad58" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
       <span class="cue-text">Scroll</span>
@@ -271,9 +275,343 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
   </div>
 </div>
 
-<!-- ===== PITCH ===== -->
+<!-- ===== ACT I — THE ATTRACTION (Rich Correll's Candlewood deck — words & numbers VERBATIM) ===== -->
+<section class="pitch bg1" id="act1"><div class="wrap" style="text-align:center">
+  <div class="eyebrow" style="justify-content:center"><img src="logo-mark.png" alt="">Act I &middot; The Attraction</div>
+  <h2 class="h">The world&rsquo;s largest private collection of<br><span class="gold">authentic movie relics.</span></h2>
+  <p class="lead" style="margin:26px auto 0;max-width:760px">Hollywood&rsquo;s Icons of Darkness is a one-of-a-kind experience attraction with the world&rsquo;s largest private collection of authentic movie memorabilia. Featuring <span class="bone">horror, fantasy, sci-fi, superhero, and medieval</span> genres, Icons is the ultimate Las Vegas destination for movie enthusiasts.</p>
+</div></section>
+
+<section class="pitch bg2"><div class="wrap">
+  <div class="eyebrow"><img src="logo-mark.png" alt="">The Opportunity</div>
+  <h2 class="h">An attraction built on a<br><span class="gold">multi-faceted revenue model.</span></h2>
+  <p class="lead" style="max-width:820px">Icons showcases the world&rsquo;s most extensive, privately-held collection of genuine film relics from iconic movies spanning multiple genres. The interactive experience is engineered for a multi-faceted revenue model and unique features that make Icons <span class="bone">the gem of Las Vegas</span> &mdash; the haven for film aficionados.</p>
+  <div class="cards3" style="margin-top:40px">
+    <div class="kpi gold"><p class="k-lab muted">5-Year MOIC</p><p class="k-big">&gt; 3.0&times;</p><p class="k-sub">Multiple on invested capital</p></div>
+    <div class="kpi gold"><p class="k-lab muted">5-Year IRR</p><p class="k-big">&gt; 25%</p><p class="k-sub">Internal rate of return</p></div>
+    <div class="kpi gold"><p class="k-lab muted">Tax treatment</p><p class="k-big">QSBS Eligible</p><p class="k-sub">Qualified Small Business Stock</p></div>
+  </div>
+  <div class="cards3" style="margin-top:16px">
+    <div class="tier-card" style="border-color:rgba(255,255,255,.1);background:#0e0e10"><p class="tc-label gold">Consistent &amp; Predictable Earnings</p></div>
+    <div class="tier-card" style="border-color:rgba(255,255,255,.1);background:#0e0e10"><p class="tc-label gold">Substantial Merchandising Opportunity</p></div>
+    <div class="tier-card" style="border-color:rgba(255,255,255,.1);background:#0e0e10"><p class="tc-label gold">Healthy &amp; Sustainable Margins</p></div>
+  </div>
+  <p class="fine">5-Year MOIC and IRR are illustrative targets; QSBS eligibility is potential and subject to the Offering Memorandum &mdash; consult your tax advisor.</p>
+</div></section>
+
+<section class="pitch bg1"><div class="wrap-md">
+  <div class="ev-box">
+    <p class="e-lab">The Collection</p>
+    <p style="font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(48px,9vw,86px);font-weight:900;line-height:1;margin-top:14px">$21.2M</p>
+    <p class="e-h" style="margin-top:18px">Founding Member and Collector <span class="gold">Rich Correll</span> is contributing the entire Collection to the Company &mdash; appraised at approximately $21.2&nbsp;million.</p>
+    <p class="ev-foot">It spans generations of film, providing a foundation that will attract a broad and diverse audience.</p>
+  </div>
+  <div class="duo" style="margin-top:24px">
+    <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(211,173,88,.22);aspect-ratio:4/3;background:#0c0c0e"><img src="gallery/terminator.jpg" alt="The T-800 endoskeleton" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:contrast(1.05) saturate(.92) brightness(.97)"></div>
+    <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(211,173,88,.22);aspect-ratio:4/3;background:#0c0c0e"><img src="gallery/beetlejuice.jpg" alt="Beetlejuice figure from the collection" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 18%;filter:contrast(1.04) saturate(.94) brightness(.97)"></div>
+  </div>
+  <p class="fine" style="text-align:center">Pieces from the collection — the T-800 endoskeleton and the Beetlejuice figure.</p>
+</div></section>
+
+<!-- ===== ACT I · THE COLLECTION TIMELINE (Rich's deck p17 — artifact list VERBATIM) ===== -->
+<section class="pitch bg2"><div class="wrap-md">
+  <div class="eyebrow"><img src="logo-mark.png" alt="">The Collection &middot; across a century</div>
+  <h2 class="h">A history of film,<br><span class="gold">told in real artifacts.</span></h2>
+  <p class="lead" style="max-width:680px">The largest collection of original props, costumes, and pieces from iconic films &mdash; spanning the 1930s through today. Not replicas. The actual artifacts behind the genre&rsquo;s defining moments.</p>
+  <div style="margin-top:50px;position:relative;padding-left:40px;border-left:1px solid rgba(211,173,88,.28)">
+    <div style="position:relative;padding-bottom:40px">
+      <span style="position:absolute;left:-46px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 13px 2px rgba(211,173,88,.55)"></span>
+      <p class="cin" style="color:var(--gold);font-size:15px;font-weight:700;letter-spacing:.14em">1920s &ndash; 1930s</p>
+      <p class="serif" style="margin-top:9px;font-size:17px;line-height:1.6;color:#cfc9bd;max-width:640px">Lon Chaney Sr.&rsquo;s <span class="bone">Phantom of the Opera</span> makeup kit &middot; <span class="bone">Dracula&rsquo;s</span> screen-used cape &middot; <span class="bone">Frankenstein&rsquo;s</span> life cast and costume &middot; artifacts from <span class="bone">The Mummy, the Wolfman,</span> and <span class="bone">The Invisible Man.</span></p>
+    </div>
+    <div style="position:relative;padding-bottom:40px">
+      <span style="position:absolute;left:-46px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 13px 2px rgba(211,173,88,.55)"></span>
+      <p class="cin" style="color:var(--gold);font-size:15px;font-weight:700;letter-spacing:.14em">1950s &ndash; 1960s</p>
+      <p class="serif" style="margin-top:9px;font-size:17px;line-height:1.6;color:#cfc9bd;max-width:640px">The <span class="bone">Creature from the Black Lagoon&rsquo;s</span> suit &middot; the Cyclops from <span class="bone">7th Voyage of Sinbad</span> &middot; costumes and props from <span class="bone">Star Trek</span> and <span class="bone">The Twilight Zone</span> &middot; the Giant Ants from <span class="bone">Them.</span></p>
+    </div>
+    <div style="position:relative;padding-bottom:40px">
+      <span style="position:absolute;left:-46px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 13px 2px rgba(211,173,88,.55)"></span>
+      <p class="cin" style="color:var(--gold);font-size:15px;font-weight:700;letter-spacing:.14em">1970s &ndash; 1980s</p>
+      <p class="serif" style="margin-top:9px;font-size:17px;line-height:1.6;color:#cfc9bd;max-width:640px">The <span class="bone">Exorcist</span> effects dummy &middot; <span class="bone">Michael Myers</span> and <span class="bone">Freddie Krueger</span> costumes and weapons &middot; a complete costume and artifacts collection from <span class="bone">Star Wars</span> &middot; Christopher Reeve&rsquo;s flying suit from <span class="bone">Superman.</span></p>
+    </div>
+    <div style="position:relative;padding-bottom:40px">
+      <span style="position:absolute;left:-46px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 13px 2px rgba(211,173,88,.55)"></span>
+      <p class="cin" style="color:var(--gold);font-size:15px;font-weight:700;letter-spacing:.14em">1990s &ndash; 2000s</p>
+      <p class="serif" style="margin-top:9px;font-size:17px;line-height:1.6;color:#cfc9bd;max-width:640px">The <span class="bone">T-800</span> from Terminator II &middot; full-size <span class="bone">Xenomorphs and Predators</span> from the Alien and Predator franchises &middot; costumes and masks from <span class="bone">Scream</span> and <span class="bone">Chucky</span> films &middot; a complete collection of <span class="bone">Batman</span> original suits and weapons.</p>
+    </div>
+    <div style="position:relative">
+      <span style="position:absolute;left:-46px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 16px 3px rgba(211,173,88,.7)"></span>
+      <p class="cin" style="color:var(--amber,#e8b66a);font-size:15px;font-weight:700;letter-spacing:.14em">2010s &ndash; Present</p>
+      <p class="serif" style="margin-top:9px;font-size:17px;line-height:1.6;color:#cfc9bd;max-width:640px">The <span class="bone">Demogorgon</span> from Stranger Things &middot; <span class="bone">Iron Man&rsquo;s</span> original costume &middot; a plethora of <span class="bone">DC and Marvel</span> costumes and props &middot; <span class="bone">Deadpool and Wolverine&rsquo;s</span> original costumes.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== ACT I · VALUE PROPOSITION — KEY HIGHLIGHTS (Rich's deck p15 VERBATIM) ===== -->
 <section class="pitch bg1"><div class="wrap">
-  <div class="eyebrow"><img src="logo-mark.png" alt="">The Plan</div>
+  <div class="eyebrow"><img src="logo-mark.png" alt="">Why it wins</div>
+  <h2 class="h">A one-of-a-kind attraction —<br><span class="gold">impossible to copy.</span></h2>
+  <p class="lead" style="max-width:760px">Icons delivers a value proposition no competitor can replicate: an immersive experience built on authentic movie memorabilia, in the entertainment capital of the world.</p>
+  <div class="vp-grid" style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px">
+    <article style="position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(211,173,88,.30);min-height:320px;box-shadow:0 22px 54px rgba(0,0,0,.6);display:flex;flex-direction:column;justify-content:flex-end">
+      <img src="gallery/vp_authenticity.png" alt="Authentic screen-used Hollywood artifacts" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,.12) 0%,rgba(8,8,10,.5) 42%,rgba(8,8,10,.94) 100%);z-index:1"></div>
+      <div style="position:relative;z-index:2;padding:26px">
+        <span class="sr-ico" style="width:26px;height:26px;color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5c0 4.6 3.2 7.5 7.5 9 4.3-1.5 7.5-4.4 7.5-9V6z"/><path d="M8.8 12l2.1 2.1 4.3-4.6"/></svg></span>
+        <p class="cin" style="margin-top:12px;color:var(--gold);font-size:21px;font-weight:700;letter-spacing:.02em">Authenticity</p>
+        <p class="serif" style="margin-top:8px;font-size:15px;line-height:1.55;color:#e8e3d8;max-width:34ch">The largest collection of original props, costumes and pieces from iconic films spanning the 1930s through today.</p>
+      </div>
+    </article>
+    <article style="position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(211,173,88,.30);min-height:320px;box-shadow:0 22px 54px rgba(0,0,0,.6);display:flex;flex-direction:column;justify-content:flex-end">
+      <img src="gallery/vp_inimitable.png" alt="A one-of-a-kind collection hall" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,.12) 0%,rgba(8,8,10,.5) 42%,rgba(8,8,10,.94) 100%);z-index:1"></div>
+      <div style="position:relative;z-index:2;padding:26px">
+        <span class="sr-ico" style="width:26px;height:26px;color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12l3 4.2-9 11.6L3 8.2z"/><path d="M3 8.2h18M9 4 7.4 8.2 12 19.8M15 4l1.6 4.2L12 19.8"/></svg></span>
+        <p class="cin" style="margin-top:12px;color:var(--gold);font-size:21px;font-weight:700;letter-spacing:.02em">Inimitable</p>
+        <p class="serif" style="margin-top:8px;font-size:15px;line-height:1.55;color:#e8e3d8;max-width:34ch">A one-of-a-kind, irreplicable attraction that creates a nearly-impossible barrier to entry for competitors.</p>
+      </div>
+    </article>
+    <article style="position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(211,173,88,.30);min-height:320px;box-shadow:0 22px 54px rgba(0,0,0,.6);display:flex;flex-direction:column;justify-content:flex-end">
+      <img src="gallery/vp_location.png" alt="The Las Vegas Strip at night" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,.12) 0%,rgba(8,8,10,.5) 42%,rgba(8,8,10,.94) 100%);z-index:1"></div>
+      <div style="position:relative;z-index:2;padding:26px">
+        <span class="sr-ico" style="width:26px;height:26px;color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+        <p class="cin" style="margin-top:12px;color:var(--gold);font-size:21px;font-weight:700;letter-spacing:.02em">Location</p>
+        <p class="serif" style="margin-top:8px;font-size:15px;line-height:1.55;color:#e8e3d8;max-width:34ch">A prime location in Las Vegas — a global entertainment hub, easily accessed from anywhere.</p>
+      </div>
+    </article>
+    <article style="position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(211,173,88,.30);min-height:320px;box-shadow:0 22px 54px rgba(0,0,0,.6);display:flex;flex-direction:column;justify-content:flex-end">
+      <img src="gallery/vp_immersive.png" alt="Guests walking through an immersive exhibit" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,.12) 0%,rgba(8,8,10,.5) 42%,rgba(8,8,10,.94) 100%);z-index:1"></div>
+      <div style="position:relative;z-index:2;padding:26px">
+        <span class="sr-ico" style="width:26px;height:26px;color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+        <p class="cin" style="margin-top:12px;color:var(--gold);font-size:21px;font-weight:700;letter-spacing:.02em">Immersive &amp; Diverse</p>
+        <p class="serif" style="margin-top:8px;font-size:15px;line-height:1.55;color:#e8e3d8;max-width:34ch">Interactive displays and activities for visitors of all ages — a positive, multi-generational experience.</p>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<!-- ===== ACT I · THE OPERATORS (Rich's deck p8-9 VERBATIM) ===== -->
+<section class="pitch bg1"><div class="wrap">
+  <div class="eyebrow"><img src="logo-mark.png" alt="">A world-class operator</div>
+  <h2 class="h">Run by the people who<br><span class="gold">build the world's exhibitions.</span></h2>
+  <p class="lead" style="max-width:780px">Icons isn&rsquo;t a first-timer&rsquo;s experiment. The day-to-day is run by a seasoned global operator, and the build is fabricated by a studio that supplies the biggest names in themed entertainment.</p>
+  <div class="duo" style="margin-top:36px">
+    <div class="panel dark">
+      <p class="p-lab gold">Operating Partner</p>
+      <p class="p-h gold">Imagine Exhibitions</p>
+      <p class="serif" style="margin-top:14px;font-size:16px;line-height:1.6;color:#cfc9bd">A seasoned operator with expertise in Las Vegas, overseeing operations and spearheading staffing, hiring, marketing, sales, and day-to-day. Currently producing <span class="bone">40+ unique exhibitions globally</span> across museums, science centers, zoos, and resorts &mdash; <span class="bone">millions of visitors a year.</span></p>
+      <p class="note" style="margin-top:14px">Titanic: The Artifact Exhibition &middot; Real Bodies &middot; Harry Potter: The Exhibition. HQ Atlanta, with offices in Las Vegas, Chicago, Cleveland &amp; France.</p>
+    </div>
+    <div class="panel dark">
+      <p class="p-lab gold">Design &amp; Fabrication</p>
+      <p class="p-h gold">The Scarefactory</p>
+      <p class="serif" style="margin-top:14px;font-size:16px;line-height:1.6;color:#cfc9bd">A global themed-entertainment design and fabrication studio serving <span class="bone">150+ event producers</span> across 40+ countries, designing <span class="bone">125 characters a month</span> from its 65,000 sq ft Ohio studios &mdash; for clients like Disney, Universal, and Paramount.</p>
+      <p class="note" style="margin-top:14px">Built 180+ Pirates for Disney&rsquo;s &ldquo;Pirates of the Caribbean,&rdquo; David Copperfield&rsquo;s climactic character, and the F1 Bahrain Grand Prix since 2015.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== ACT I · THE SPACE — EXCALIBUR (Rich's deck p10 VERBATIM) ===== -->
+<section class="pitch bg2"><div class="wrap">
+  <div class="eyebrow"><img src="logo-mark.png" alt="">The space</div>
+  <h2 class="h">The entire 3rd floor of the<br><span class="gold">Excalibur Hotel &amp; Casino.</span></h2>
+  <p class="lead" style="max-width:780px">Icons strategically chose the Excalibur &mdash; <span class="bone">leasing the entire 3rd floor</span> &mdash; capitalizing on its reputation as one of the best and few <span class="bone">family-friendly</span> casinos on the Las Vegas Strip. The entrance sits at the casino&rsquo;s main escalators, building anticipation as visitors approach.</p>
+  <div class="cards3" style="margin-top:40px">
+    <div class="kpi gold"><p class="k-lab muted">Target age group</p><p class="k-big">&lt; 55</p></div>
+    <div class="kpi gold"><p class="k-lab muted">First-time guests</p><p class="k-big">60%</p></div>
+    <div class="kpi gold"><p class="k-lab muted">Pleasure travelers</p><p class="k-big">85%</p></div>
+  </div>
+  <p class="fine">Excalibur target-audience data per the MGM presentation deck.</p>
+</div></section>
+
+<!-- ===== ACT I · THE EXHIBITION (Rich's deck p11-12 VERBATIM) ===== -->
+<section class="pitch bg1"><div class="wrap">
+  <div class="eyebrow"><img src="logo-mark.png" alt="">The exhibition</div>
+  <h2 class="h">A 45-minute to one-hour<br><span class="gold">walk through the dark.</span></h2>
+  <p class="lead" style="max-width:780px">Horror sections arranged chronologically with regulated lighting, pacing, and suspense; sci-fi and fantasy galleries elevated on pediments with controlled audio commentary on the artifacts. Guests move at their own pace.</p>
+  <div style="margin-top:34px;border-radius:16px;overflow:hidden;border:1px solid rgba(211,173,88,.25);box-shadow:0 26px 64px rgba(0,0,0,.55)">
+    <img src="gallery/entrance.jpg" alt="The Icons of Darkness entrance — Excalibur, Las Vegas" loading="lazy" style="display:block;width:100%;height:auto">
+  </div>
+  <div class="gallery-grid" style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+    <figure class="gal-card" style="margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(211,173,88,.25);box-shadow:0 18px 44px rgba(0,0,0,.55)">
+      <img src="gallery/gal_alien.png" alt="Alien / Predator Gallery" loading="lazy" style="display:block;width:100%;height:210px;object-fit:cover">
+      <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:24px 16px 14px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-family:'Cinzel',serif;color:var(--gold);font-size:14px;letter-spacing:.04em">Alien / Predator Gallery</figcaption>
+    </figure>
+    <figure class="gal-card" style="margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(211,173,88,.25);box-shadow:0 18px 44px rgba(0,0,0,.55)">
+      <img src="gallery/gal_starwars.png" alt="Star Wars Gallery" loading="lazy" style="display:block;width:100%;height:210px;object-fit:cover">
+      <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:24px 16px 14px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-family:'Cinzel',serif;color:var(--gold);font-size:14px;letter-spacing:.04em">Star Wars Gallery</figcaption>
+    </figure>
+    <figure class="gal-card" style="margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(211,173,88,.25);box-shadow:0 18px 44px rgba(0,0,0,.55)">
+      <img src="gallery/gal_dragon.png" alt="Dragon&rsquo;s Lair" loading="lazy" style="display:block;width:100%;height:210px;object-fit:cover">
+      <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:24px 16px 14px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-family:'Cinzel',serif;color:var(--gold);font-size:14px;letter-spacing:.04em">Dragon&rsquo;s Lair</figcaption>
+    </figure>
+    <figure class="gal-card" style="margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(211,173,88,.25);box-shadow:0 18px 44px rgba(0,0,0,.55)">
+      <img src="gallery/gal_seance.png" alt="Séance Experience" loading="lazy" style="display:block;width:100%;height:210px;object-fit:cover">
+      <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:24px 16px 14px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-family:'Cinzel',serif;color:var(--gold);font-size:14px;letter-spacing:.04em">Séance Experience</figcaption>
+    </figure>
+    <figure class="gal-card" style="margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(211,173,88,.25);box-shadow:0 18px 44px rgba(0,0,0,.55)">
+      <img src="gallery/gal_jurassic.png" alt="Jurassic Jungle" loading="lazy" style="display:block;width:100%;height:210px;object-fit:cover">
+      <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:24px 16px 14px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-family:'Cinzel',serif;color:var(--gold);font-size:14px;letter-spacing:.04em">Jurassic Jungle</figcaption>
+    </figure>
+    <figure class="gal-card" style="margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(211,173,88,.25);box-shadow:0 18px 44px rgba(0,0,0,.55)">
+      <img src="gallery/gal_possessed.png" alt="The &ldquo;Possessed&rdquo; Room" loading="lazy" style="display:block;width:100%;height:210px;object-fit:cover">
+      <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:24px 16px 14px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-family:'Cinzel',serif;color:var(--gold);font-size:14px;letter-spacing:.04em">The &ldquo;Possessed&rdquo; Room</figcaption>
+    </figure>
+    <figure class="gal-card" style="margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(211,173,88,.25);box-shadow:0 18px 44px rgba(0,0,0,.55)">
+      <img src="gallery/gal_30s.png" alt="30&rsquo;s Horror" loading="lazy" style="display:block;width:100%;height:210px;object-fit:cover">
+      <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:24px 16px 14px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-family:'Cinzel',serif;color:var(--gold);font-size:14px;letter-spacing:.04em">30&rsquo;s Horror</figcaption>
+    </figure>
+    <figure class="gal-card" style="margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(211,173,88,.25);box-shadow:0 18px 44px rgba(0,0,0,.55)">
+      <img src="gallery/gal_crypt.png" alt="Crypt Ring Toss" loading="lazy" style="display:block;width:100%;height:210px;object-fit:cover">
+      <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:24px 16px 14px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-family:'Cinzel',serif;color:var(--gold);font-size:14px;letter-spacing:.04em">Crypt Ring Toss</figcaption>
+    </figure>
+  </div>
+  <p class="note">Experiential games throughout &mdash; Giant Corpse Ring Toss, Zombie Brain Smash, Skeleton Basketball &mdash; with prizes and merchandise to win.</p>
+</div></section>
+
+<!-- ===== ACT I · COMPETITIVE LANDSCAPE (Rich's deck p13 VERBATIM) ===== -->
+<section class="pitch bg2"><div class="wrap">
+  <div class="eyebrow"><img src="logo-mark.png" alt="">The comps</div>
+  <h2 class="h">Proven by the<br><span class="gold">company it keeps.</span></h2>
+  <p class="lead" style="max-width:780px">Comparable Las Vegas attractions at similar price points and admission counts. The model isn&rsquo;t theoretical &mdash; it&rsquo;s the Strip&rsquo;s daily business.</p>
+  <div style="margin-top:32px;overflow-x:auto;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:#0e0e10">
+    <table style="width:100%;border-collapse:collapse;min-width:640px;font-size:14px">
+      <thead><tr style="text-align:right;color:var(--mut2);font-size:11px;text-transform:uppercase;letter-spacing:.14em">
+        <th style="text-align:left;padding:16px 18px;font-weight:600">Attraction</th><th style="padding:16px 12px;font-weight:600">Adm./Day</th><th style="padding:16px 12px;font-weight:600">Annual</th><th style="padding:16px 12px;font-weight:600">Ticket</th><th style="padding:16px 12px;font-weight:600">Gross</th><th style="text-align:left;padding:16px 18px;font-weight:600">Location</th>
+      </tr></thead>
+      <tbody style="color:#cfc9bd">
+        <tr style="background:rgba(211,173,88,.10);border-top:1px solid rgba(211,173,88,.3)"><td style="padding:15px 18px;font-family:'Cinzel',serif;color:var(--gold);font-weight:700">Icons of Darkness</td><td style="text-align:right;padding:15px 12px;color:var(--bone)">694</td><td style="text-align:right;padding:15px 12px;color:var(--bone)">250,000</td><td style="text-align:right;padding:15px 12px;color:var(--bone)">$39.99</td><td style="text-align:right;padding:15px 12px;color:var(--gold);font-weight:700">$10.0M</td><td style="padding:15px 18px;color:var(--bone)">Excalibur</td></tr>
+        <tr style="border-top:1px solid rgba(255,255,255,.06)"><td style="padding:15px 18px">Avengers S.T.A.T.I.O.N.</td><td style="text-align:right;padding:15px 12px">675</td><td style="text-align:right;padding:15px 12px">243,000</td><td style="text-align:right;padding:15px 12px">$39.95</td><td style="text-align:right;padding:15px 12px">$9.5M</td><td style="padding:15px 18px">Treasure Island</td></tr>
+        <tr style="border-top:1px solid rgba(255,255,255,.06)"><td style="padding:15px 18px">Tournament of Kings</td><td style="text-align:right;padding:15px 12px">834</td><td style="text-align:right;padding:15px 12px">300,240</td><td style="text-align:right;padding:15px 12px">$73.24</td><td style="text-align:right;padding:15px 12px">$22.0M</td><td style="padding:15px 18px">Excalibur</td></tr>
+        <tr style="border-top:1px solid rgba(255,255,255,.06)"><td style="padding:15px 18px">Shark Reef Aquarium</td><td style="text-align:right;padding:15px 12px">1,800</td><td style="text-align:right;padding:15px 12px">648,000</td><td style="text-align:right;padding:15px 12px">$27.00</td><td style="text-align:right;padding:15px 12px">$17.5M</td><td style="padding:15px 18px">Mandalay Bay</td></tr>
+        <tr style="border-top:1px solid rgba(255,255,255,.06)"><td style="padding:15px 18px">Titanic: The Artifact Exhibition</td><td style="text-align:right;padding:15px 12px">550</td><td style="text-align:right;padding:15px 12px">198,000</td><td style="text-align:right;padding:15px 12px">$32.00</td><td style="text-align:right;padding:15px 12px">$6.3M</td><td style="padding:15px 18px">Luxor</td></tr>
+        <tr style="border-top:1px solid rgba(255,255,255,.06)"><td style="padding:15px 18px">Real Bodies: The Exhibition</td><td style="text-align:right;padding:15px 12px">300</td><td style="text-align:right;padding:15px 12px">108,000</td><td style="text-align:right;padding:15px 12px">$32.00</td><td style="text-align:right;padding:15px 12px">$3.5M</td><td style="padding:15px 18px">Horseshoe</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Tournament of Kings &mdash; a live attraction inside the same Excalibur &mdash; proves a Vegas attraction can sustain success in this venue; its customers are look-alikes for Icons. Icons figures shown as stabilized.</p>
+</div></section>
+
+<!-- ===== ACT I · THE RAISE ===== -->
+<section class="pitch bg2"><div class="wrap">
+  <div class="eyebrow"><img src="logo-mark.png" alt="">The Raise</div>
+  <h2 class="h"><span class="gold">$11,000,000</span> private placement.</h2>
+  <p class="lead" style="max-width:720px">A single private-placement round funds the build-out, the Collection reserve, and a working-capital runway through stabilization.</p>
+  <div class="duo" style="margin-top:32px">
+    <div class="panel gold">
+      <p class="p-lab">Sources</p>
+      <p class="p-h gold">$11.0M &middot; 100%</p>
+      <div class="dl">
+        <div class="row"><span class="muted">Private Placement</span><span class="bone">$11,000,000</span></div>
+        <div class="row"><span class="bone" style="font-weight:700">Total Sources</span><span class="gold" style="font-weight:700">100%</span></div>
+      </div>
+    </div>
+    <div class="panel dark">
+      <p class="p-lab">Uses of Funds</p>
+      <p class="p-h">Where it goes</p>
+      <div class="dl">
+        <div class="row"><span class="muted">Offsite Set Construction</span><span class="bone">$7,182,863 &middot; 65.3%</span></div>
+        <div class="row"><span class="muted">Working Capital Reserve</span><span class="bone">$1,301,137 &middot; 11.8%</span></div>
+        <div class="row"><span class="muted">Onsite Tenant Improvement</span><span class="bone">$750,000 &middot; 6.8%</span></div>
+        <div class="row"><span class="muted">Security Deposit</span><span class="bone">$700,000 &middot; 6.4%</span></div>
+        <div class="row"><span class="muted">Transaction Closing Costs</span><span class="bone">$816,000 &middot; 7.4%</span></div>
+        <div class="row"><span class="muted">Collection Fund</span><span class="bone">$250,000 &middot; 2.3%</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="note">Proceeds fund design, construction and premises improvements &mdash; architecture, permitting, general contractor and on-site tenant improvements, and advanced animatronic technology with trigger video and audio that bring the artifacts to life &mdash; plus lease deposit, working-capital reserve through stabilization, closing costs, and a reserve for additions to the Collection.</p>
+</div></section>
+
+<section class="pitch bg1"><div class="wrap">
+  <div class="eyebrow"><img src="logo-mark.png" alt="">The Economics</div>
+  <h2 class="h">A predictable, <span class="gold">high-margin attraction.</span></h2>
+  <div class="cards3" style="margin-top:40px">
+    <div class="kpi dark"><p class="k-lab muted">Projected annual admissions</p><p class="k-big">~250,000</p></div>
+    <div class="kpi dark"><p class="k-lab muted">Average ticket</p><p class="k-big">~$40</p></div>
+    <div class="kpi dark"><p class="k-lab muted">Projected gross</p><p class="k-big">~$13.1M</p></div>
+  </div>
+  <div style="margin-top:16px">
+    <div class="kpi gold"><p class="k-lab muted">Projected EBITDA</p><p class="k-big">~$4.76M</p><p class="k-sub">The base the entire expansion builds from &mdash; never altered by it.</p></div>
+  </div>
+  <p class="fine">Figures are the attraction&rsquo;s own projected operating metrics carried from the offering deck; illustrative and subject to the Offering Memorandum. Not a forecast or guarantee of returns.</p>
+</div></section>
+
+<!-- ===== ACT I · FINANCIAL SUMMARY (Rich's deck p25-28 VERBATIM) ===== -->
+<section class="pitch bg1"><div class="wrap">
+  <div class="eyebrow"><img src="logo-mark.png" alt="">The financials</div>
+  <h2 class="h">From build-out to<br><span class="gold">$17M revenue and 41% margins.</span></h2>
+  <p class="lead" style="max-width:780px">After the 2025 build-out year, Icons stabilizes fast: a <span class="bone">~92% gross margin</span> attraction throwing off <span class="bone">EBITDA margins north of 40%</span> by 2028. Every figure is the offering deck&rsquo;s own forecast.</p>
+  <div style="margin-top:36px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:linear-gradient(180deg,#0f0f12,#0b0b0d);padding:28px 22px 18px">
+    <div style="display:flex;gap:26px;align-items:center;margin-bottom:14px;padding-left:6px">
+      <span style="display:flex;align-items:center;gap:8px;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--mut2)"><span style="width:15px;height:11px;background:rgba(211,173,88,.22);border:1px solid rgba(211,173,88,.6);border-radius:2px"></span>Total Revenue</span>
+      <span style="display:flex;align-items:center;gap:8px;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--mut2)"><span style="width:17px;height:2px;background:var(--amber,#e8b66a)"></span>EBITDA</span>
+    </div>
+    <svg viewBox="0 0 760 320" style="width:100%;height:auto;display:block" font-family="Helvetica,Arial,sans-serif">
+      <line x1="40" y1="270" x2="730" y2="270" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+      <g>
+        <rect x="88.5" y="250.3" width="56" height="19.7" rx="2" fill="rgba(211,173,88,.20)" stroke="rgba(211,173,88,.5)"/>
+        <rect x="201.8" y="86.1" width="56" height="183.9" rx="2" fill="rgba(211,173,88,.20)" stroke="rgba(211,173,88,.5)"/>
+        <rect x="315" y="60.8" width="56" height="209.2" rx="2" fill="rgba(211,173,88,.20)" stroke="rgba(211,173,88,.5)"/>
+        <rect x="428.3" y="51" width="56" height="219" rx="2" fill="rgba(211,173,88,.20)" stroke="rgba(211,173,88,.5)"/>
+        <rect x="541.7" y="39.7" width="56" height="230.3" rx="2" fill="rgba(211,173,88,.20)" stroke="rgba(211,173,88,.5)"/>
+        <rect x="655" y="29.9" width="56" height="240.1" rx="2" fill="rgba(211,173,88,.20)" stroke="rgba(211,173,88,.5)"/>
+      </g>
+      <g fill="#cfc9bd" font-size="12.5" text-anchor="middle">
+        <text x="116.5" y="244">$1.4M</text><text x="229.8" y="79">$13.1M</text><text x="343" y="54">$14.9M</text><text x="456.3" y="44">$15.6M</text><text x="569.7" y="33">$16.4M</text><text x="683" y="23">$17.1M</text>
+      </g>
+      <polyline points="116.5,272 229.8,203.2 343,213 456.3,181.5 569.7,177.1 683,170.3" fill="none" stroke="#e8b66a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <g fill="#e8b66a"><circle cx="116.5" cy="272" r="3.6"/><circle cx="229.8" cy="203.2" r="3.6"/><circle cx="343" cy="213" r="3.6"/><circle cx="456.3" cy="181.5" r="3.6"/><circle cx="569.7" cy="177.1" r="3.6"/><circle cx="683" cy="170.3" r="3.6"/></g>
+      <g fill="#e8b66a" font-size="11.5" font-weight="700" text-anchor="middle"><text x="229.8" y="197">$4.76M</text><text x="615" y="167">$7.10M</text></g>
+      <g fill="#9a958c" font-size="12.5" text-anchor="middle"><text x="116.5" y="291">2025*</text><text x="229.8" y="291">2026</text><text x="343" y="291">2027</text><text x="456.3" y="291">2028</text><text x="569.7" y="291">2029</text><text x="683" y="291">2030</text></g>
+    </svg>
+  </div>
+  <div style="margin-top:36px;overflow-x:auto;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:#0e0e10">
+    <table style="width:100%;border-collapse:collapse;min-width:720px;font-size:14px">
+      <thead><tr style="color:var(--mut2);font-size:11px;text-transform:uppercase;letter-spacing:.12em">
+        <th style="text-align:left;padding:16px 18px;font-weight:600"></th><th style="padding:16px 10px;font-weight:600;text-align:right">2025*</th><th style="padding:16px 10px;font-weight:600;text-align:right">2026</th><th style="padding:16px 10px;font-weight:600;text-align:right">2027</th><th style="padding:16px 10px;font-weight:600;text-align:right">2028</th><th style="padding:16px 10px;font-weight:600;text-align:right">2029</th><th style="padding:16px 18px;font-weight:600;text-align:right">2030</th>
+      </tr></thead>
+      <tbody>
+        <tr style="border-top:1px solid rgba(255,255,255,.08)"><td style="padding:14px 18px;color:#e6dfd0;font-weight:600">Total Revenue</td><td style="text-align:right;padding:14px 10px;color:#cfc9bd">$1.4M</td><td style="text-align:right;padding:14px 10px;color:#cfc9bd">$13.1M</td><td style="text-align:right;padding:14px 10px;color:#cfc9bd">$14.9M</td><td style="text-align:right;padding:14px 10px;color:#cfc9bd">$15.6M</td><td style="text-align:right;padding:14px 10px;color:#cfc9bd">$16.4M</td><td style="text-align:right;padding:14px 18px;color:#cfc9bd">$17.1M</td></tr>
+        <tr style="border-top:1px solid rgba(255,255,255,.05)"><td style="padding:14px 18px;color:#9a958c">Gross Profit</td><td style="text-align:right;padding:14px 10px;color:#a39e93">$1.3M</td><td style="text-align:right;padding:14px 10px;color:#a39e93">$12.1M</td><td style="text-align:right;padding:14px 10px;color:#a39e93">$13.8M</td><td style="text-align:right;padding:14px 10px;color:#a39e93">$14.5M</td><td style="text-align:right;padding:14px 10px;color:#a39e93">$15.2M</td><td style="text-align:right;padding:14px 18px;color:#a39e93">$15.9M</td></tr>
+        <tr style="border-top:1px solid rgba(211,173,88,.28);background:rgba(211,173,88,.08)"><td style="padding:15px 18px;font-family:'Cinzel',serif;color:var(--gold);font-weight:700">EBITDA</td><td style="text-align:right;padding:15px 10px;color:var(--mut2)">($0.4M)</td><td style="text-align:right;padding:15px 10px;color:var(--gold);font-weight:700">$4.76M</td><td style="text-align:right;padding:15px 10px;color:var(--gold);font-weight:700">$4.06M</td><td style="text-align:right;padding:15px 10px;color:var(--gold);font-weight:700">$6.30M</td><td style="text-align:right;padding:15px 10px;color:var(--gold);font-weight:700">$6.62M</td><td style="text-align:right;padding:15px 18px;color:var(--gold);font-weight:700">$7.10M</td></tr>
+        <tr style="border-top:1px solid rgba(255,255,255,.05)"><td style="padding:14px 18px;color:#9a958c">EBITDA Margin</td><td style="text-align:right;padding:14px 10px;color:#a39e93">&mdash;</td><td style="text-align:right;padding:14px 10px;color:#a39e93">36.4%</td><td style="text-align:right;padding:14px 10px;color:#a39e93">27.2%</td><td style="text-align:right;padding:14px 10px;color:#a39e93">40.3%</td><td style="text-align:right;padding:14px 10px;color:#a39e93">40.4%</td><td style="text-align:right;padding:14px 18px;color:#a39e93">41.4%</td></tr>
+        <tr style="border-top:1px solid rgba(255,255,255,.05)"><td style="padding:14px 18px;color:#e6dfd0;font-weight:600">Net Income</td><td style="text-align:right;padding:14px 10px;color:var(--mut2)">($3.2M)</td><td style="text-align:right;padding:14px 10px;color:#cfc9bd">$3.9M</td><td style="text-align:right;padding:14px 10px;color:#cfc9bd">$2.6M</td><td style="text-align:right;padding:14px 10px;color:#cfc9bd">$4.5M</td><td style="text-align:right;padding:14px 10px;color:#cfc9bd">$4.7M</td><td style="text-align:right;padding:14px 18px;color:#cfc9bd">$5.2M</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="fine">* 2025 includes initial build-out and start-up costs. Figures per the offering deck&rsquo;s Income Statement Forecast; illustrative and subject to the Offering Memorandum. Forward-looking — not a guarantee of returns.</p>
+
+  <h3 class="group-head" style="margin-top:48px">The Excalibur lease &mdash; key terms</h3>
+  <div class="duo">
+    <div class="panel dark"><div class="dl">
+      <div class="row"><span class="muted">Lease term</span><span class="bone">6 years + 5-year option</span></div>
+      <div class="row"><span class="muted">Premises</span><span class="bone">~32,000 sq ft</span></div>
+      <div class="row"><span class="muted">Minimum annual rent</span><span class="bone">$787,500 ($45 PSF)</span></div>
+      <div class="row"><span class="muted">Security deposit</span><span class="bone">$700,000</span></div>
+    </div></div>
+    <div class="panel dark"><div class="dl">
+      <div class="row"><span class="muted">Percentage rent</span><span class="bone">15% ($7.5&ndash;10M) · 20% (&gt;$10M)</span></div>
+      <div class="row"><span class="muted">TI from landlord</span><span class="bone">None</span></div>
+      <div class="row"><span class="muted">Rent concession</span><span class="bone">First 6 months, Yr 1 credited</span></div>
+      <div class="row"><span class="muted">Permitted use</span><span class="bone">Walk-through exhibition + retail</span></div>
+    </div></div>
+  </div>
+  <p class="note">Icons and MGM finalized a term sheet and are negotiating the full lease &mdash; a six-year lease on ~32,000 sq ft at the Excalibur, rent calculated on 17,500 usable sq ft, with a 3% annual escalator.</p>
+</div></section>
+
+<!-- ===== TRANSITION → ACT II (the hook up loud; required securities note kept as fine print) ===== -->
+<section class="pitch bg2" id="act2"><div class="wrap-md" style="text-align:center">
+  <div class="eyebrow" style="justify-content:center"><img src="logo-mark.png" alt="">The collection is just the beginning</div>
+  <h2 class="h">Now watch it become<br><span class="gold">a phenomenon.</span></h2>
+  <p class="lead" style="margin:26px auto 0;max-width:720px">The collection fills the building. <span class="bone">Three more moves fill the calendar</span> &mdash; the legends sign autographs on the floor, the merch flies off the wall, and every October the whole Strip lines up to be scared. This is how a one-of-a-kind attraction becomes <span class="gold">the most talked-about address in Las Vegas.</span></p>
+  <p class="fine" style="max-width:680px;margin:22px auto 0">A proposed expansion presented by Charles Lew &amp; Mike Gonzalez &mdash; not part of the current Candlewood offering; illustrative and for discussion only.</p>
+</div></section>
+
+<!-- ===== ACT II — THE EXPANSION (our proposed add-on) ===== -->
+<section class="pitch bg1"><div class="wrap">
+  <div class="eyebrow"><img src="logo-mark.png" alt="">Act II &middot; The Plan</div>
   <h2 class="h">Three moves —<br><span class="gold">and every one makes money.</span></h2>
   <p class="lead" style="max-width:720px">This is not a cost you hope earns its keep in return business. <span class="bone">Each of these three moves puts money in the building on its own</span> — repeat visitors, a sponsorship that more than pays for itself, and high-margin merch — and they stack. That&rsquo;s the entire plan in one breath; everything below is how we execute it.</p>
   <div class="cards3"><div class="plan-card"><span class="pc-num">01</span><p class="pc-h">The actors turn visitors into regulars</p><p class="pc-b">Like Comic-Con, the real stars behind the artifacts give fans a reason to keep coming back. One-and-done tourists become repeat ticket buyers — so you earn more gate on the same foot traffic you already pay to bring in.</p><span class="pc-tag">+ More repeat-ticket revenue</span></div><div class="plan-card"><span class="pc-num">02</span><p class="pc-h">The sponsor pays for more than the actors</p><p class="pc-b">A title sponsor — Amazon — is structured to do more than cover the appearance fees. It leaves room on top and brings co-marketing that advertises the whole event for you. The talent is paid for, with a marketing engine and margin to spare.</p><span class="pc-tag">+ Sponsor surplus + free marketing</span></div><div class="plan-card"><span class="pc-num">03</span><p class="pc-h">Custom merch is pure margin</p><p class="pc-b">Every fan walks our custom Icons-of-Darkness line on the way out. Branded product at retail markup is the highest-margin dollar in the building — straight add-on profit on each head through the door.</p><span class="pc-tag">+ High-margin product sales</span></div></div>
@@ -521,7 +859,7 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
         <p class="ac-film">Predator 2</p>
       </div>
     </div><div class="actor-card">
-      <div class="ac-media"><div class="ac-ini">ST</div>
+      <div class="ac-media"><img loading="lazy" src="photos/sven-ole-thorsen.jpg" alt="Sven-Ole Thorsen">
         <span class="tier-pill" style="color:#cdb98f;background:rgba(205,185,143,0.10);border-color:rgba(205,185,143,0.35)">CIRCUIT</span>
       </div>
       <div class="ac-body">
@@ -791,7 +1129,7 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
   <div class="eyebrow"><img src="logo-mark.png" alt="">The Sponsor Play — our funding strategy</div>
   <h2 class="h" style="font-size:clamp(24px,4vw,40px)">Anchor-sponsor target: <span class="gold">Amazon MGM Studios.</span></h2>
   <p class="lead">The strategy is to land an anchor sponsor to underwrite the appearance fees, so the calendar is <span class="bone">paid for before a ticket sells</span> — turning the one scary line item into near-pure margin. <span class="bone">Amazon MGM is the lead target</span>, with a warm door through Kevin Wilson, who runs Domestic Theatrical Distribution there. This is a target profile, not a signed deal &mdash; and here&rsquo;s why it&rsquo;s a no-brainer for <em>them</em>:</p>
-  <div class="spon-rows"><div class="spon-row"><span class="sr-emoji">💰</span><div><span class="sr-h">Pocket change.</span> <span class="sr-d">A year of genre-talent fees is a rounding error against an Amazon MGM marketing budget — less than a single trailer.</span></div></div><div class="spon-row"><span class="sr-emoji">🍿</span><div><span class="sr-h">It&#x27;s literally their job.</span> <span class="sr-d">Promote a current Amazon MGM release with its star and real props on the Strip — and when there&#x27;s no new title, the deep Prime Video horror catalog is the inventory to push.</span></div></div><div class="spon-row"><span class="sr-emoji">🔁</span><div><span class="sr-h">The flywheel prints engagement.</span> <span class="sr-d">The exhibit sends people home to stream on Prime; Prime sends subscribers to see the real props; a visitor who&#x27;s never seen a title goes back to Prime to watch it. Every loop is measurable Prime viewership — the metric Amazon actually buys.</span></div></div><div class="spon-row"><span class="sr-emoji">🎬</span><div><span class="sr-h">A marquee Vegas flagship, zero build risk.</span> <span class="sr-d">A branded, press-ready activation on the most-visited entertainment Strip on earth — their stars, their props, their catalog, in a permanent physical moment Vegas money can&#x27;t easily manufacture. We deliver the room, the talent, and the calendar.</span></div></div></div>
+  <div class="spon-rows"><div class="spon-row"><span class="sr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 7.3v9.4M14.3 9.1c-.5-.9-1.5-1.3-2.5-1.3-1.4 0-2.5.7-2.5 1.9 0 2.6 5.2 1.3 5.2 3.9 0 1.2-1.1 2-2.6 2-1.1 0-2.2-.5-2.7-1.4"/></svg></span><div><span class="sr-h">Pocket change.</span> <span class="sr-d">A year of genre-talent fees is a rounding error against an Amazon MGM marketing budget — less than a single trailer.</span></div></div><div class="spon-row"><span class="sr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9.2" width="17" height="10.8" rx="1.4"/><path d="M3.9 9.2 6.8 5.6 10 9.2M8.7 9.2 11.6 5.6 14.8 9.2M13.5 9.2 16.4 5.6 19.6 9.2"/></svg></span><div><span class="sr-h">It&#x27;s literally their job.</span> <span class="sr-d">Promote a current Amazon MGM release with its star and real props on the Strip — and when there&#x27;s no new title, the deep Prime Video horror catalog is the inventory to push.</span></div></div><div class="spon-row"><span class="sr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 8A8 8 0 1 0 20 12.6"/><path d="M18.7 3.5V8H14.2"/></svg></span><div><span class="sr-h">The flywheel prints engagement.</span> <span class="sr-d">The exhibit sends people home to stream on Prime; Prime sends subscribers to see the real props; a visitor who&#x27;s never seen a title goes back to Prime to watch it. Every loop is measurable Prime viewership — the metric Amazon actually buys.</span></div></div><div class="spon-row"><span class="sr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V3.4"/><path d="M6 4.4h11l-2.6 3.3L17 11H6"/></svg></span><div><span class="sr-h">A marquee Vegas flagship, zero build risk.</span> <span class="sr-d">A branded, press-ready activation on the most-visited entertainment Strip on earth — their stars, their props, their catalog, in a permanent physical moment Vegas money can&#x27;t easily manufacture. We deliver the room, the talent, and the calendar.</span></div></div></div>
   <p class="spon-foot">Net to a sponsor like Amazon: cheap, on-strategy, engagement-driving. Net to Icons: the talent calendar <span class="bone">fully funded by the sponsor.</span> <span style="color:#615d54">(Target profile, not a closed deal — Amazon MGM is the lead, with Shudder/AMC and other studio/streamer partners as clean fallbacks if it isn&rsquo;t the one.)</span></p>
 </div></section>
 
@@ -868,12 +1206,59 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
       </div></div>
 </div></section>
 
+<!-- ===== NIGHTS OF DARKNESS (proposed seasonal pillar — production partner UNNAMED until confirmed) ===== -->
+<section class="pitch bg2"><div class="wrap">
+  <div class="eyebrow"><img src="logo-mark.png" alt="">Nights of Darkness &middot; the seasonal escalation</div>
+  <h2 class="h">Once a year, <span class="red">October becomes ours.</span></h2>
+  <p class="lead" style="max-width:760px">Layered on top of the year-round attraction, <span class="bone">Nights of Darkness</span> turns the collection into a ticketed, after-dark <span class="bone">haunted-maze experience</span> for the Halloween season &mdash; the highest-demand window on the haunt calendar, on the busiest stretch of the Strip.</p>
+  <div class="cards3" style="margin-top:36px">
+    <div class="tier-card" style="border-color:rgba(176,58,58,.32);background:rgba(176,58,58,.06)"><p class="tc-label" style="color:#c25b5b">The caliber</p><p class="tc-desc">Built to the standard of the genre&rsquo;s best &mdash; in the tradition of Universal&rsquo;s Halloween Horror Nights and the Queen Mary&rsquo;s Dark Harbor.</p></div>
+    <div class="tier-card" style="border-color:rgba(176,58,58,.32);background:rgba(176,58,58,.06)"><p class="tc-label" style="color:#c25b5b">The window</p><p class="tc-desc">October is the single highest-revenue season in the haunt business &mdash; a self-contained ticketed event on assets already in the building.</p></div>
+    <div class="tier-card" style="border-color:rgba(176,58,58,.32);background:rgba(176,58,58,.06)"><p class="tc-label" style="color:#c25b5b">The build</p><p class="tc-desc">Produced with a leading haunt-attraction partner &mdash; in discussion now &mdash; so the maze is professionally designed, not a seasonal afterthought.</p></div>
+  </div>
+  <p class="note">Universal&rsquo;s Halloween Horror Nights and the Queen Mary&rsquo;s Dark Harbor are referenced here as <span class="bone">quality and format benchmarks only &mdash; not partners, sponsors, or affiliates.</span> The production partner is in active discussion and not yet named; this pillar is part of the proposed expansion concept &mdash; illustrative and for discussion only.</p>
+</div></section>
+
+<!-- ===== THE UPSIDE STACK — three engines, counted separately (honest) but stacked (pumped) ===== -->
+<section class="pitch bg2"><div class="wrap">
+  <div class="eyebrow"><img src="logo-mark.png" alt="">The upside stack</div>
+  <h2 class="h">Three engines —<br><span class="gold">counted separately, honestly.</span></h2>
+  <p class="lead" style="max-width:820px">We keep these <span class="bone">separate on purpose.</span> The offering you&rsquo;re evaluating is the attraction &mdash; clean, standalone, its numbers never lean on anything below. The residency and the haunt are each counted on their own and <span class="bone">never blended into the offering.</span> Stacked, here&rsquo;s the full picture of what Icons becomes.</p>
+  <div style="margin-top:36px;display:flex;flex-direction:column;gap:14px">
+    <div class="panel" style="border:1px solid rgba(211,173,88,.45);background:linear-gradient(160deg,rgba(211,173,88,.12),transparent)">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px">
+        <div><p class="p-lab gold">The deal on the table</p><p class="p-h gold" style="margin-top:4px">1 · The Attraction</p></div>
+        <p class="cin" style="color:var(--gold);font-size:clamp(19px,3vw,28px);font-weight:900">$13M → $17M revenue</p>
+      </div>
+      <p class="note" style="margin-top:8px">Rich&rsquo;s Candlewood offering, standalone &mdash; ~$4.76M → ~$7.10M EBITDA. <span class="bone">This is what you&rsquo;re buying. Verbatim, unaltered.</span></p>
+    </div>
+    <p style="text-align:center;color:var(--gold);font-family:'Cinzel',serif;font-size:24px;margin:2px 0">+</p>
+    <div class="panel dark" style="border-color:rgba(211,173,88,.28)">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px">
+        <div><p class="p-lab gold">Proposed add-on · separate</p><p class="p-h" style="margin-top:4px">2 · The Residency</p></div>
+        <p class="cin" style="color:var(--gold);font-size:clamp(19px,3vw,28px);font-weight:900">+$1.6M–$5M enterprise value</p>
+      </div>
+      <p class="note" style="margin-top:8px">Incremental EBITDA from the actor weekends &mdash; valued at the <span class="bone">8–12× multiple attractions sell for.</span> <span class="bone">Sponsor-funded (near-zero downside)</span>, and it turns a one-and-done visit into a <span class="bone">weekly destination</span> that drives the casino room-nights MGM actually monetizes. Never counted in the offering above. <span style="color:#8a857a">(~$164K–$210K conservative annual net gate, before the multiple.)</span></p>
+    </div>
+    <p style="text-align:center;color:var(--gold);font-family:'Cinzel',serif;font-size:24px;margin:2px 0">+</p>
+    <div class="panel dark" style="border-color:rgba(176,58,58,.32)">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px">
+        <div><p class="p-lab" style="color:#c25b5b">Proposed October season · separate</p><p class="p-h" style="margin-top:4px">3 · Nights of Darkness</p></div>
+        <p class="cin" style="color:#e6c463;font-size:clamp(19px,3vw,28px);font-weight:900">~$1.5M–$3M / season*</p>
+      </div>
+      <p class="note" style="margin-top:8px">A ticketed October haunt &mdash; its own seasonal P&amp;L, <span class="bone">separate again.</span> *Illustrative, benchmarked against property haunts (Queen Mary&rsquo;s Dark Harbor tickets $30–$95; Horror Nights draws 10K–20K/night). Not part of the offering; proposed concept, for discussion only.</p>
+    </div>
+  </div>
+  <p class="lead" style="max-width:800px;margin-top:30px;text-align:center;margin-left:auto;margin-right:auto">A year-round attraction. A weekly destination. The Strip&rsquo;s October phenomenon. <span class="gold">Three honest engines &mdash; and you only have to fund the first.</span></p>
+  <p class="fine" style="text-align:center">Engines 2 and 3 are proposed add-ons by Charles Lew &amp; Mike Gonzalez, counted separately and never included in the Candlewood offering&rsquo;s figures. All add-on figures illustrative and for discussion only.</p>
+</div></section>
+
 <section class="pitch bg1"><div class="wrap">
   <div class="eyebrow"><img src="logo-mark.png" alt="">The Revenue Engine</div>
   <h2 class="h">What the residency adds —<br><span class="gold">side by side.</span></h2>
   <p class="lead" style="max-width:720px">You&rsquo;ve seen all three moves — the actors, the sponsor, the store. Here&rsquo;s what they add up to, in dollars: <span class="bone">incremental, high-margin revenue</span> layered on a business that already works — funded by a sponsor, on assets already owned. <span style="color:#7d786e">Every number sourced — see the receipts below.</span></p>
   <div class="duo">
-    <div class="kpi gold"><p class="k-lab gold">The number a Vegas operator cares about</p><p class="k-big">+$1.6M – $5M enterprise value</p><p class="k-sub">created at a standard 8–12× attraction EBITDA multiple. An exit number, not just gate — the full math is below.</p></div>
+    <div class="kpi gold"><p class="k-lab gold">The receipts — where it comes from</p><p class="k-big">+$200K – $420K net / yr</p><p class="k-sub">incremental contribution on owned assets, with the talent paid by the sponsor. The line-by-line math is below — and it compounds into the enterprise value shown up in the stack.</p></div>
     <div class="kpi dark"><p class="k-lab" style="color:#8a857a">We build on your audited base</p><p class="k-sub" style="font-size:12.5px;color:#cfc9bd">Every figure starts from the deck&rsquo;s own numbers — ~250K admissions / ~$13.07M / <span class="bone">~$4.76M EBITDA</span> — and adds to them. We don&rsquo;t reinvent the base; final figures reconciled for the public cut.</p></div>
   </div>
   <div class="duo">
@@ -922,7 +1307,7 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
   <div class="eyebrow"><img src="logo-mark.png" alt="">Sources &amp; Method</div>
   <h2 class="h">Every number —<br><span class="gold">and where it comes from.</span></h2>
   <p class="lead">We&rsquo;d rather quote a <span class="bone">conservative figure we can defend</span> than a headline number we can&rsquo;t. Nothing here is compared to Titanic or Bodies to inflate a projection — these are published, sourced benchmarks, and our model assumes a <span class="bone">fraction</span> of them, not the ceiling. Here&rsquo;s the receipts.</p>
-  <div class="src-groups"><div class="src-group"><p class="src-cat">Our starting point — the attraction&#x27;s own numbers</p><div class="src-table"><div class="src-row"><span class="sr-fig">~250K / yr · $40 · ~$13.07M · ~$4.76M</span><div><p class="sr-claim">Admissions, ticket price, revenue and EBITDA we build on top of</p><p class="sr-cite">Carried directly from the Icons of Darkness offering materials — to be reconciled for the public cut. We add to this base; we don&#x27;t reinvent it.</p></div></div></div></div><div class="src-group"><p class="src-cat">Fan conventions are a proven business — that&#x27;s the model we&#x27;re importing</p><div class="src-table"><div class="src-row"><span class="sr-fig">$161.1M</span><div><p class="sr-claim">Regional economic impact of San Diego Comic-Con (2023); 135,000+ attendees</p><p class="sr-cite">San Diego Convention Center Corp. / City of San Diego, 2024.</p></div></div><div class="src-row"><span class="sr-fig">$35.4M</span><div><p class="sr-claim">San Diego Comic-Con&#x27;s own annual revenue (FY2024)</p><p class="sr-cite">IRS Form 990, via ProPublica Nonprofit Explorer (primary filing).</p></div></div><div class="src-row"><span class="sr-fig">200,000</span><div><p class="sr-claim">New York Comic Con attendance (2023)</p><p class="sr-cite">ReedPop, reported via Popverse.</p></div></div><div class="src-row"><span class="sr-fig">$39M / 85K</span><div><p class="sr-claim">C2E2 Chicago economic impact &amp; attendance (2024)</p><p class="sr-cite">Choose Chicago (city tourism bureau) / ReedPop.</p></div></div></div></div><div class="src-group"><p class="src-cat">What the talent actually costs</p><div class="src-table"><div class="src-row"><span class="sr-fig">$5,000 – $10,000</span><div><p class="sr-claim">Per-appearance guarantee, mid-tier genre / horror actor — the tier this model is built on</p><p class="sr-cite">The Hollywood Reporter (2016); corroborated by Money.com.</p></div></div><div class="src-row"><span class="sr-fig">$40 – $160</span><div><p class="sr-claim">Published per-autograph &amp; photo-op prices fans pay (kept by the talent)</p><p class="sr-cite">Convention-published price lists (e.g. South Texas Comic Con; THR on Famous Monsters Fest, 2024).</p></div></div><div class="src-row"><span class="sr-fig">$35K – $250K+</span><div><p class="sr-claim">Per-weekend fees for current series leads — shown for context; above our tier</p><p class="sr-cite">The Hollywood Reporter. We model the genre tier, not these.</p></div></div></div></div><div class="src-group"><p class="src-cat">Do people come for the guests?</p><div class="src-table"><div class="src-row"><span class="sr-fig">47%</span><div><p class="sr-claim">Of fans interested in Comic-Con name celebrity appearances as a draw †</p><p class="sr-cite">YouGov, July 2024 (n=1,135, nationally representative). Proxy — interest, not attendance.</p></div></div><div class="src-row"><span class="sr-fig">~1 in 5</span><div><p class="sr-claim">Attendees regularly buy autographs or photo ops †</p><p class="sr-cite">Eventbrite &quot;Fandoms&quot; study (n=2,000+). Behavioral proxy; likely a floor for celebrity-heavy cons.</p></div></div></div></div><div class="src-group"><p class="src-cat">Comparable Las Vegas attractions</p><div class="src-table"><div class="src-row"><span class="sr-fig">400,000+</span><div><p class="sr-claim">The Mob Museum, annual visitors (2024) — most-visited museum in Nevada †</p><p class="sr-cite">Museum self-reported milestone, 2024.</p></div></div><div class="src-row"><span class="sr-fig">~200,000</span><div><p class="sr-claim">The Neon Museum, annual visitors (2023)</p><p class="sr-cite">Las Vegas Weekly / Las Vegas Review-Journal.</p></div></div><div class="src-row"><span class="sr-fig">$25 – $35</span><div><p class="sr-claim">Typical adult admission for a mid-size Vegas attraction</p><p class="sr-cite">Official ticketing — Neon Museum, Mob Museum, Madame Tussauds (2026).</p></div></div></div></div><div class="src-group"><p class="src-cat">What a visitor spends on merch</p><div class="src-table"><div class="src-row"><span class="sr-fig">$37.61</span><div><p class="sr-claim">Theme-park in-park per-capita (food + merch + other) — directional proxy †</p><p class="sr-cite">United Parks &amp; Resorts, SEC-filed earnings, 2026. Blended, not merch-only.</p></div></div><div class="src-row"><span class="sr-fig">~$2 – $9 · 20–40% buy</span><div><p class="sr-claim">Order-of-magnitude museum / attraction merch spend &amp; conversion †</p><p class="sr-cite">Industry consultant benchmarks; treated as a sanity check, not gospel. We model the low end.</p></div></div></div></div></div>
+  <div class="src-groups"><div class="src-group"><p class="src-cat">Our starting point — the attraction&#x27;s own numbers</p><div class="src-table"><div class="src-row"><span class="sr-fig">~250K / yr · $40 · ~$13.07M · ~$4.76M</span><div><p class="sr-claim">Admissions, ticket price, revenue and EBITDA we build on top of</p><p class="sr-cite">Carried directly from the Icons of Darkness offering materials — to be reconciled for the public cut. We add to this base; we don&#x27;t reinvent it.</p></div></div></div></div><div class="src-group"><p class="src-cat">Fan conventions are a proven business — that&#x27;s the model we&#x27;re importing</p><div class="src-table"><div class="src-row"><span class="sr-fig">$161.1M</span><div><p class="sr-claim">Regional economic impact of San Diego Comic-Con (2023); 135,000+ attendees</p><p class="sr-cite">San Diego Convention Center Corp. / City of San Diego, 2024.</p></div></div><div class="src-row"><span class="sr-fig">$35.4M</span><div><p class="sr-claim">San Diego Comic-Con&#x27;s own annual revenue (FY2024)</p><p class="sr-cite">IRS Form 990, via ProPublica Nonprofit Explorer (primary filing).</p></div></div><div class="src-row"><span class="sr-fig">200,000</span><div><p class="sr-claim">New York Comic Con attendance (2023)</p><p class="sr-cite">ReedPop, reported via Popverse.</p></div></div><div class="src-row"><span class="sr-fig">$39M / 85K</span><div><p class="sr-claim">C2E2 Chicago economic impact &amp; attendance (2024)</p><p class="sr-cite">Choose Chicago (city tourism bureau) / ReedPop.</p></div></div></div></div><div class="src-group"><p class="src-cat">What the talent actually costs</p><div class="src-table"><div class="src-row"><span class="sr-fig">$5,000 – $10,000</span><div><p class="sr-claim">Per-appearance guarantee, mid-tier genre / horror actor — the tier this model is built on</p><p class="sr-cite">The Hollywood Reporter (2016); corroborated by Money.com.</p></div></div><div class="src-row"><span class="sr-fig">$40 – $160</span><div><p class="sr-claim">Published per-autograph &amp; photo-op prices fans pay (kept by the talent)</p><p class="sr-cite">Convention-published price lists (e.g. South Texas Comic Con; THR on Famous Monsters Fest, 2024).</p></div></div><div class="src-row"><span class="sr-fig">$35K – $250K+</span><div><p class="sr-claim">Per-weekend fees for current series leads — shown for context; above our tier</p><p class="sr-cite">The Hollywood Reporter. We model the genre tier, not these.</p></div></div></div></div><div class="src-group"><p class="src-cat">Do people come for the guests?</p><div class="src-table"><div class="src-row"><span class="sr-fig">47%</span><div><p class="sr-claim">Of fans interested in Comic-Con name celebrity appearances as a draw †</p><p class="sr-cite">YouGov, July 2024 (n=1,135, nationally representative). Proxy — interest, not attendance.</p></div></div><div class="src-row"><span class="sr-fig">~1 in 5</span><div><p class="sr-claim">Attendees regularly buy autographs or photo ops †</p><p class="sr-cite">Eventbrite &quot;Fandoms&quot; study (n=2,000+). Behavioral proxy; likely a floor for celebrity-heavy cons.</p></div></div></div></div><div class="src-group"><p class="src-cat">Comparable Las Vegas attractions</p><div class="src-table"><div class="src-row"><span class="sr-fig">400,000+</span><div><p class="sr-claim">The Mob Museum, annual visitors (2024) — most-visited museum in Nevada †</p><p class="sr-cite">Museum self-reported milestone, 2024.</p></div></div><div class="src-row"><span class="sr-fig">~200,000</span><div><p class="sr-claim">The Neon Museum, annual visitors (2023)</p><p class="sr-cite">Las Vegas Weekly / Las Vegas Review-Journal.</p></div></div><div class="src-row"><span class="sr-fig">$25 – $35</span><div><p class="sr-claim">Typical adult admission for a mid-size Vegas attraction</p><p class="sr-cite">Official ticketing — Neon Museum, Mob Museum, Madame Tussauds (2026).</p></div></div></div></div><div class="src-group"><p class="src-cat">What a visitor spends on merch</p><div class="src-table"><div class="src-row"><span class="sr-fig">$37.61</span><div><p class="sr-claim">Theme-park in-park per-capita (food + merch + other) — directional proxy †</p><p class="sr-cite">United Parks &amp; Resorts, SEC-filed earnings, 2026. Blended, not merch-only.</p></div></div><div class="src-row"><span class="sr-fig">~$2 – $9 · 20–40% buy</span><div><p class="sr-claim">Order-of-magnitude museum / attraction merch spend &amp; conversion †</p><p class="sr-cite">Industry consultant benchmarks; treated as a sanity check, not gospel. We model the low end.</p></div></div></div></div><div class="src-group"><p class="src-cat">The October haunt — what a seasonal haunt does (illustrative benchmarks)</p><div class="src-table"><div class="src-row"><span class="sr-fig">$30 – $95</span><div><p class="sr-claim">Per-ticket range at a single-property Halloween haunt (general → Fast Fright → VIP); season pass $99</p><p class="sr-cite">Queen Mary&rsquo;s Dark Harbor, Long Beach — official ticketing, 2024–25. Price/format benchmark only; not a partner or affiliate.</p></div></div><div class="src-row"><span class="sr-fig">10K – 20K / night</span><div><p class="sr-claim">Per-night attendance at a major haunt event; 1M+ over a ~21-night season</p><p class="sr-cite">Universal&rsquo;s Halloween Horror Nights, reported attendance. Scale reference — our concept is a property add-on, not park-scale.</p></div></div><div class="src-row"><span class="sr-fig">~$1.5M – $3M</span><div><p class="sr-claim">Our illustrative October season — a small fraction of property-haunt scale, ticketed, on owned space</p><p class="sr-cite">Babycakes model: conservative nightly draw × ~25–30 October nights × a mid haunt ticket, benchmarked to the comps above. Proposed concept; illustrative, for discussion only.</p></div></div></div></div></div>
   <p class="fine">† Figures marked are proxies or estimates, not hard measured numbers for this venue — flagged on purpose. Convention attendance and fee figures are organizer- or press-reported. The point of this page is the opposite of overhyping: assume the low end of every sourced benchmark, show the math, and let the upside be the pleasant surprise. Final model to be reconciled against the audited offering numbers.</p>
 </div></section>
 
@@ -984,6 +1369,114 @@ h2.h{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,52px);font-weight:900;l
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
+})();
+</script>
+
+<!-- ===== JAZZ — atmospheric motion: scroll-reveal + signature beats (motion-audited, reduced-motion safe, never gates content) ===== -->
+<style id="jz-css">
+@media (prefers-reduced-motion: no-preference){
+  .jz-on .jz-reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .jz-on .jz-reveal.jz-in{opacity:1;transform:none}
+  section.pitch{overflow:hidden}
+  section.pitch .wrap,section.pitch .wrap-sm,section.pitch .wrap-md{position:relative;z-index:1}
+  #jzSpider{position:fixed;top:13vh;left:0;z-index:7;pointer-events:none;opacity:0;color:#9a9aa4;filter:drop-shadow(0 0 6px rgba(195,195,220,.45))}
+  #jzSpider.run{animation:jzRun 4.4s linear forwards}
+  @keyframes jzRun{0%{opacity:0;transform:translateX(-8vw)}6%{opacity:.95}25%{transform:translateX(24vw) translateY(8px)}50%{transform:translateX(50vw) translateY(-5px)}75%{transform:translateX(76vw) translateY(8px)}94%{opacity:.95}100%{opacity:0;transform:translateX(112vw)}}
+  #jzSpider .lg{transform-box:fill-box;transform-origin:50% 50%;animation:jzLegs .16s linear infinite alternate}
+  @keyframes jzLegs{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
+  .jz-eyes{position:absolute;z-index:4;pointer-events:none;display:flex;gap:12px;opacity:0}
+  .jz-eyes.on{animation:jzBlink 5s ease-in-out forwards}
+  .jz-eyes b{width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 50% 42%,#ffe08a,#c0392b 72%);box-shadow:0 0 13px 3px rgba(192,57,43,.5)}
+  @keyframes jzBlink{0%{opacity:0}10%{opacity:.95}15%{opacity:.08}22%{opacity:.95}76%{opacity:.85}100%{opacity:0}}
+  .jz-claw{position:absolute;inset:0;z-index:5;pointer-events:none}
+  .jz-claw i{position:absolute;top:-10%;height:120%;width:9px;border-radius:8px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.92) 45%,rgba(0,0,0,.92) 55%,transparent);filter:blur(1.4px);opacity:0}
+  .jz-claw.go i{animation:jzClaw 1s cubic-bezier(.45,0,.15,1) forwards}
+  @keyframes jzClaw{0%{opacity:0;transform:translateX(-22vw) skewX(-14deg)}25%{opacity:.85}100%{opacity:0;transform:translateX(122vw) skewX(-14deg)}}
+  .jz-fog{position:absolute;left:-10%;right:-10%;bottom:-25%;height:75%;z-index:0;pointer-events:none;opacity:0;background:radial-gradient(60% 100% at 30% 100%,rgba(150,160,180,.12),transparent 70%),radial-gradient(55% 100% at 76% 100%,rgba(130,140,160,.09),transparent 70%);filter:blur(7px)}
+  .jz-fog.roll{animation:jzFog 3.4s ease-out forwards}
+  @keyframes jzFog{0%{opacity:0;transform:translateY(34px) scale(1.04)}45%{opacity:1}100%{opacity:.7;transform:translateY(0) scale(1.12)}}
+  .jz-flare{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;background:radial-gradient(55% 45% at 50% 55%,rgba(232,182,106,.18),transparent 72%)}
+  .jz-flare.lit{animation:jzFlare 2.8s ease-out forwards}
+  @keyframes jzFlare{0%{opacity:0}18%{opacity:1}34%{opacity:.45}50%{opacity:.9}100%{opacity:.55}}
+  /* cobwebs — persistent corner atmosphere */
+  .jz-web{position:absolute;width:128px;height:128px;z-index:2;pointer-events:none;opacity:.16}
+  .jz-web.tr{top:-1px;right:-1px;transform:scaleX(-1)}
+  .jz-web.tl{top:-1px;left:-1px}
+  /* rat scuttle */
+  #jzRat{position:fixed;bottom:7vh;left:0;z-index:7;pointer-events:none;opacity:0;color:#56565e;filter:drop-shadow(0 0 6px rgba(195,195,220,.4))}
+  #jzRat.run{animation:jzRat 3.8s linear forwards}
+  @keyframes jzRat{0%{opacity:0;transform:translateX(-6vw)}6%{opacity:.92}94%{opacity:.92}100%{opacity:0;transform:translateX(112vw)}}
+  #jzRat .tail{animation:jzTail .3s ease-in-out infinite alternate;transform-origin:left center}
+  @keyframes jzTail{from{transform:rotate(-7deg)}to{transform:rotate(7deg)}}
+  /* ghost drift */
+  .jz-ghost{position:absolute;z-index:3;pointer-events:none;opacity:0;color:rgba(222,228,242,.5);filter:drop-shadow(0 0 10px rgba(180,200,255,.25))}
+  .jz-ghost.float{animation:jzGhost 5.5s ease-in-out forwards}
+  @keyframes jzGhost{0%{opacity:0;transform:translateY(44px) scale(.9)}25%{opacity:.5}75%{opacity:.45}100%{opacity:0;transform:translateY(-54px) scale(1.06)}}
+  /* BAT — medium, noticeable, flies across the screen on scroll */
+  .jz-bat{position:fixed;top:0;left:0;width:108px;z-index:7;pointer-events:none;opacity:0;will-change:transform}
+  .jz-bat img{display:block;width:100%;filter:drop-shadow(0 8px 13px rgba(0,0,0,.55));animation:jzFlap .2s ease-in-out infinite alternate}
+  @keyframes jzFlap{from{transform:scaleY(.72) scaleX(1.06)}to{transform:scaleY(1) scaleX(.95)}}
+  .jz-bat.fly{animation:jzBatFly 5.2s ease-in-out forwards}
+  @keyframes jzBatFly{0%{opacity:0;transform:translate(-14vw,22vh) rotate(-5deg)}8%{opacity:1}30%{transform:translate(20vw,7vh) rotate(4deg)}55%{transform:translate(50vw,26vh) rotate(-4deg)}80%{transform:translate(78vw,6vh) rotate(3deg)}93%{opacity:1}100%{opacity:0;transform:translate(118vw,18vh) rotate(0)}}
+  /* RAVEN — flies across like the bat (different path/size) */
+  .jz-raven{position:fixed;top:0;left:0;width:124px;z-index:7;pointer-events:none;opacity:0;will-change:transform}
+  .jz-raven img{display:block;width:100%;filter:drop-shadow(0 8px 13px rgba(0,0,0,.55));animation:jzFlap .26s ease-in-out infinite alternate}
+  .jz-raven.fly{animation:jzRavenFly 5.6s ease-in-out forwards}
+  @keyframes jzRavenFly{0%{opacity:0;transform:translate(116vw,10vh) scaleX(-1) rotate(4deg)}8%{opacity:1}35%{transform:translate(70vw,26vh) scaleX(-1) rotate(-3deg)}65%{transform:translate(34vw,8vh) scaleX(-1) rotate(4deg)}90%{opacity:1}100%{opacity:0;transform:translate(-16vw,20vh) scaleX(-1) rotate(0)}}
+  /* SPIDER on a dropline — descends between headings */
+  .jz-drop{position:absolute;top:0;z-index:6;pointer-events:none;display:flex;flex-direction:column;align-items:center;opacity:0}
+  .jz-drop .thread{width:1px;height:120px;background:linear-gradient(180deg,transparent,rgba(211,173,88,.45))}
+  .jz-drop .body{color:#a6a6b0;margin-top:-3px;filter:drop-shadow(0 0 8px rgba(195,195,220,.55))}
+  .jz-drop.go{animation:jzDrop 6.5s ease-in-out forwards}
+  @keyframes jzDrop{0%{opacity:0;transform:translateY(-100%)}9%{opacity:1}42%{transform:translateY(0)}58%{transform:translateY(9px)}72%{transform:translateY(0)}100%{opacity:0;transform:translateY(-105%)}}
+}
+</style>
+<script id="jz-js">
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.documentElement.classList.add('jz-on');
+  var conts=document.querySelectorAll('section.pitch .wrap, section.pitch .wrap-sm, section.pitch .wrap-md');
+  Array.prototype.forEach.call(conts,function(c){
+    Array.prototype.forEach.call(c.children,function(el,i){ el.classList.add('jz-reveal'); el.style.transitionDelay=(Math.min(i,8)*60)+'ms'; });
+  });
+  var revs=document.querySelectorAll('.jz-reveal');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('jz-in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
+  Array.prototype.forEach.call(revs,function(el){io.observe(el);});
+  setTimeout(function(){Array.prototype.forEach.call(revs,function(el){el.classList.add('jz-in');});},6000); // safety: never ship blank
+  function secWith(txt){var els=document.querySelectorAll('section.pitch h2.h, section.pitch .eyebrow');for(var i=0;i<els.length;i++){if(els[i].textContent.indexOf(txt)>-1)return els[i].closest('section');}return null;}
+  function once(sec,cb){if(!sec)return;var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cb();o.disconnect();}});},{threshold:.28});o.observe(sec);}
+  var rost=secWith('wall of legends');
+  if(rost){[['4%','13%'],['90%','19%'],['6%','27%']].forEach(function(p){var e=document.createElement('div');e.className='jz-eyes';e.style.left=p[0];e.style.top=p[1];e.innerHTML='<b></b><b></b>';rost.appendChild(e);});
+    once(rost,function(){Array.prototype.forEach.call(rost.querySelectorAll('.jz-eyes'),function(e,i){setTimeout(function(){e.classList.add('on');},i*850);});});}
+  var a2=document.getElementById('act2');
+  if(a2){var cl=document.createElement('div');cl.className='jz-claw';var h='';for(var k=0;k<4;k++){h+='<i style="left:'+(k*8)+'px;animation-delay:'+(k*55)+'ms"></i>';}cl.innerHTML=h;a2.appendChild(cl);once(a2,function(){cl.classList.add('go');});}
+  var ni=secWith('October becomes ours');
+  if(ni){var fg=document.createElement('div');fg.className='jz-fog';ni.appendChild(fg);once(ni,function(){fg.classList.add('roll');});}
+  var cz=secWith('say yes');
+  if(cz){var fl=document.createElement('div');fl.className='jz-flare';cz.appendChild(fl);once(cz,function(){fl.classList.add('lit');});}
+  // Act I distributed beats (keep jazz alive through the first half, not just Act II)
+  var tl=secWith('told in real artifacts');
+  if(tl){var fg2=document.createElement('div');fg2.className='jz-fog';tl.appendChild(fg2);once(tl,function(){fg2.classList.add('roll');});}
+  var a1=secWith('authentic movie relics');
+  if(a1){[['5%','22%'],['89%','30%']].forEach(function(p){var e=document.createElement('div');e.className='jz-eyes';e.style.left=p[0];e.style.top=p[1];e.innerHTML='<b></b><b></b>';a1.appendChild(e);});once(a1,function(){Array.prototype.forEach.call(a1.querySelectorAll('.jz-eyes'),function(e,i){setTimeout(function(){e.classList.add('on');},i*800);});});}
+  var fin=secWith('41% margins');
+  if(fin){var fl2=document.createElement('div');fl2.className='jz-flare';fin.appendChild(fl2);once(fin,function(){fl2.classList.add('lit');});}
+  // COBWEBS — persistent, alternating corners across the deck (constant haunted atmosphere)
+  var webSVG='<svg viewBox="0 0 100 100" width="128" height="128"><g stroke="#d3ad58" stroke-width="0.7" fill="none" opacity="0.85"><path d="M2 2 L100 36 M2 2 L76 76 M2 2 L36 100 M2 2 L100 2 M2 2 L2 100"/><path d="M26 9 Q16 16 9 26 M48 14 Q31 31 14 48 M70 20 Q45 45 20 70 M92 26 Q59 59 26 92"/></g></svg>';
+  Array.prototype.forEach.call(document.querySelectorAll('section.pitch'),function(sec,i){
+    if(i%2===0){ var w=document.createElement('div'); w.className='jz-web '+(i%4===0?'tl':'tr'); w.innerHTML=webSVG; sec.appendChild(w); }
+  });
+  // BAT — medium creature, flies across at several points top → bottom (incl. the very end)
+  var bat=document.createElement('div'); bat.className='jz-bat'; bat.innerHTML='<img src="gallery/bat.png" alt="">';
+  document.body.appendChild(bat);
+  function flyBat(){ bat.classList.remove('fly'); void bat.offsetWidth; bat.classList.add('fly'); }
+  ['multi-faceted revenue model','41% margins','October becomes ours'].forEach(function(t){ once(secWith(t), flyBat); });
+  // RAVEN — flies the other direction at points the bat doesn't use
+  var raven=document.createElement('div'); raven.className='jz-raven'; raven.innerHTML='<img src="gallery/raven.png" alt="">';
+  document.body.appendChild(raven);
+  function flyRaven(){ raven.classList.remove('fly'); void raven.offsetWidth; raven.classList.add('fly'); }
+  ['walk through the dark','wall of legends','network to deliver'].forEach(function(t){ once(secWith(t), flyRaven); });
 })();
 </script>
 </body>
